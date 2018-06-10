@@ -2,12 +2,12 @@ package myApp;
 
 public class Calculator {
 
-	public int add(int... nums ){
+	public long add(long... nums ){
 
-		int total=0;
+		long total=0;
 
 
-		for (int num:nums){
+		for (long num:nums){
 
 			total=total+num;
 		}
