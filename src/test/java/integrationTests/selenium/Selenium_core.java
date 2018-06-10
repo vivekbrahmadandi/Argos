@@ -43,7 +43,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.smartbear.ready.cmd.runner.SoapUITestCaseRunner;
+//import com.smartbear.ready.cmd.runner.SoapUITestCaseRunner;
 
 public class Selenium_core{
 
@@ -511,112 +511,112 @@ public class Selenium_core{
 	 */ 
 	//=====================================================
 
-	private SoapUITestCaseRunner runner;
-	
-	public void loadAPI(String projectXML){
-
-		runner = new SoapUITestCaseRunner(); 
-		runner.setProjectFile(projectXML);
-		runner.setPrintReport(true);
-
-	}
-
-	public List<String> runAPI(String setTestSuite, String setTestCase) {
-
-		ByteArrayOutputStream baos = null;
-		PrintStream newPrintStream = null;
-		PrintStream oldPrintStream = null;
-
-		try{
-
-			//==========================================================================
-			//redirect console output so it can be saved to a string and queried later.
-			//==========================================================================
-
-			// new stream to hold console output
-			baos = new ByteArrayOutputStream();
-			newPrintStream = new PrintStream(baos);
-
-			// Save the old stream
-			oldPrintStream = System.out;
-
-			// Set Java to use new stream
-			System.setOut(newPrintStream);
-
-			//==========================================================================
-			//run SOAPUI test
-			//==========================================================================
-
-			System.out.println("===== SOAP UI LOG (START) =====");
-
-			runner.setTestSuite(setTestSuite);
-			runner.setTestCase(setTestCase);
-
-			runner.run();
-
-
-		}catch(Exception e){
-
-			//If test fails, fail build, and show SOAPUI exception.
-			Assert.fail(e.getMessage());
-
-			//finally block required to redirect Java back to old console output	
-		}finally{
-
-			//==========================================================================
-			//Save redirected output and put console output back to normal
-			//==========================================================================
-
-			System.out.flush();
-			System.setOut(oldPrintStream);
-
-			//==========================================================================
-			//Show and then return the console output to calling method
-			//==========================================================================
-
-			System.out.println(baos.toString());
-
-		}
-
-		List<String> logs = new ArrayList<String>();
-
-		String StringStart = "[log] ";
-		String StringEnd = "\r";
-
-		Pattern p = Pattern.compile(Pattern.quote(StringStart) + "(.*?)" + Pattern.quote(StringEnd));
-		Matcher m = p.matcher(baos.toString());
-		while (m.find()) {
-
-			logs.add(m.group(1));
-
-		}
-
-		//if method is succesful, then SOAPUI logs will be pulled and return to calling method.
-		return logs;
-
-	}	
-
-	//Use this to output to console all the logs returned by runAPI
-	public void showRunAPIlog(List<String> logs) {
-
-		System.out.println("#### showRunAPIlog results below ####");	
-
-		for (String a: logs){
-			System.out.println(a);	
-		}
-
-	}
-
-	public void setAPIproperties(String...properties) {
-
-		//Example use: 
-
-		//setAPIproperties("access_token="+accessToken,"execute_url="+executeURL_API);
-
-		runner.setProjectProperties(properties); 
-
-
-	}
+//	private SoapUITestCaseRunner runner;
+//	
+//	public void loadAPI(String projectXML){
+//
+//		runner = new SoapUITestCaseRunner(); 
+//		runner.setProjectFile(projectXML);
+//		runner.setPrintReport(true);
+//
+//	}
+//
+//	public List<String> runAPI(String setTestSuite, String setTestCase) {
+//
+//		ByteArrayOutputStream baos = null;
+//		PrintStream newPrintStream = null;
+//		PrintStream oldPrintStream = null;
+//
+//		try{
+//
+//			//==========================================================================
+//			//redirect console output so it can be saved to a string and queried later.
+//			//==========================================================================
+//
+//			// new stream to hold console output
+//			baos = new ByteArrayOutputStream();
+//			newPrintStream = new PrintStream(baos);
+//
+//			// Save the old stream
+//			oldPrintStream = System.out;
+//
+//			// Set Java to use new stream
+//			System.setOut(newPrintStream);
+//
+//			//==========================================================================
+//			//run SOAPUI test
+//			//==========================================================================
+//
+//			System.out.println("===== SOAP UI LOG (START) =====");
+//
+//			runner.setTestSuite(setTestSuite);
+//			runner.setTestCase(setTestCase);
+//
+//			runner.run();
+//
+//
+//		}catch(Exception e){
+//
+//			//If test fails, fail build, and show SOAPUI exception.
+//			Assert.fail(e.getMessage());
+//
+//			//finally block required to redirect Java back to old console output	
+//		}finally{
+//
+//			//==========================================================================
+//			//Save redirected output and put console output back to normal
+//			//==========================================================================
+//
+//			System.out.flush();
+//			System.setOut(oldPrintStream);
+//
+//			//==========================================================================
+//			//Show and then return the console output to calling method
+//			//==========================================================================
+//
+//			System.out.println(baos.toString());
+//
+//		}
+//
+//		List<String> logs = new ArrayList<String>();
+//
+//		String StringStart = "[log] ";
+//		String StringEnd = "\r";
+//
+//		Pattern p = Pattern.compile(Pattern.quote(StringStart) + "(.*?)" + Pattern.quote(StringEnd));
+//		Matcher m = p.matcher(baos.toString());
+//		while (m.find()) {
+//
+//			logs.add(m.group(1));
+//
+//		}
+//
+//		//if method is succesful, then SOAPUI logs will be pulled and return to calling method.
+//		return logs;
+//
+//	}	
+//
+//	//Use this to output to console all the logs returned by runAPI
+//	public void showRunAPIlog(List<String> logs) {
+//
+//		System.out.println("#### showRunAPIlog results below ####");	
+//
+//		for (String a: logs){
+//			System.out.println(a);	
+//		}
+//
+//	}
+//
+//	public void setAPIproperties(String...properties) {
+//
+//		//Example use: 
+//
+//		//setAPIproperties("access_token="+accessToken,"execute_url="+executeURL_API);
+//
+//		runner.setProjectProperties(properties); 
+//
+//
+//	}
 
 
 }

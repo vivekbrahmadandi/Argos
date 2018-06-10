@@ -130,6 +130,10 @@
 		<!-- SOAPUI-FULL-LIB (START) ============================ -->
 		<!-- ================================================ -->
 
+		<!-- Commented out for now, because build profile is not portable across machines -->
+		<!-- due to these files not available online. Would need to create a custom repo -->
+
+
 		<!-- All this lib files are required if you wish to run the SoapUITestCaseRunner -->
 		<!-- object, which allows you to control SOAPUI project execution programmatically. -->
 		<!-- This is prefered choice if wish to run within specific BDD steps and 
@@ -146,2079 +150,2079 @@
 		<!-- It copies a jar file from the smartBear readyAPI software in local 
 			maven repo. -->
 
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>activation</artifactId>
-			<version>1.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>activeQueryBuilder</artifactId>
-			<version>activeQueryBuilder</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>analytics-core</artifactId>
-			<version>2.3.8</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>annotations</artifactId>
-			<version>2.0.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>aopalliance</artifactId>
-			<version>1.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>aopalliance-repackaged-2.5.0</artifactId>
-			<version>b05</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>asm</artifactId>
-			<version>5.0.4</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>autocomplete</artifactId>
-			<version>2.5.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>aws-java-sdk-core</artifactId>
-			<version>1.11.136</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>aws-java-sdk-ec2</artifactId>
-			<version>1.11.136</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>axis-ant</artifactId>
-			<version>protection</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>axis</artifactId>
-			<version>protection</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>bcmail-jdk15</artifactId>
-			<version>1.46</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>bcprov-jdk15</artifactId>
-			<version>1.46</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>bctsp-jdk15</artifactId>
-			<version>1.46</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>binding</artifactId>
-			<version>2.0.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>btf</artifactId>
-			<version>1.2</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>cajo</artifactId>
-			<version>1.142</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>cal10n-api</artifactId>
-			<version>0.8.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>castor-core</artifactId>
-			<version>1.3.3</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>castor-xml</artifactId>
-			<version>1.3.3</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>com.springsource.javax.servlet</artifactId>
-			<version>2.5.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>commons-beanutils</artifactId>
-			<version>1.8.3</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>commons-cli</artifactId>
-			<version>1.3.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>commons-codec</artifactId>
-			<version>1.6</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>commons-collections</artifactId>
-			<version>3.2.2</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>commons-csv</artifactId>
-			<version>1.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>commons-digester</artifactId>
-			<version>2.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>commons-discovery</artifactId>
-			<version>0.2</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>commons-fileupload</artifactId>
-			<version>1.3.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>commons-httpclient</artifactId>
-			<version>3.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.4</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>2.6</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.3.2</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>commons-logging</artifactId>
-			<version>1.1.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>commons-math</artifactId>
-			<version>1.2</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>commons-net</artifactId>
-			<version>2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>commons-validator</artifactId>
-			<version>1.3.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>controlsfx</artifactId>
-			<version>8.40.12</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>core</artifactId>
-			<version>3.2.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>cssparser</artifactId>
-			<version>0.9.5</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>dom4j</artifactId>
-			<version>1.6.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>ecj</artifactId>
-			<version>4.3.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>ezmorph</artifactId>
-			<version>1.0.5</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>flex-messaging-common</artifactId>
-			<version>1.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>flex-messaging-core</artifactId>
-			<version>1.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>flex-messaging-opt</artifactId>
-			<version>1.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>flex-messaging-proxy</artifactId>
-			<version>1.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>flex-messaging-remoting</artifactId>
-			<version>1.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>flying-saucer-core</artifactId>
-			<version>9.0.7</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>flying-saucer-pdf</artifactId>
-			<version>9.0.7</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>forms</artifactId>
-			<version>1.0.7</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>google-http-client</artifactId>
-			<version>1.21.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>google-oauth-client</artifactId>
-			<version>1.21.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>governator</artifactId>
-			<version>1.15.9</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>governator-api</artifactId>
-			<version>1.15.9</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>governator-core</artifactId>
-			<version>1.15.9</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>groovy-all</artifactId>
-			<version>2.4.4</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.3.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>guava</artifactId>
-			<version>20.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>guice</artifactId>
-			<version>4.1.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>guice-assistedinject</artifactId>
-			<version>4.1.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>guice-grapher</artifactId>
-			<version>4.1.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>guice-multibindings</artifactId>
-			<version>4.1.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>h2</artifactId>
-			<version>1.3.176</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>hamcrest-core</artifactId>
-			<version>1.3</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>har-java</artifactId>
-			<version>1.0.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>hermes</artifactId>
-			<version>1.14</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>4.1.0.Final</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>hk2-api-2.5.0</artifactId>
-			<version>b05</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>hk2-locator-2.5.0</artifactId>
-			<version>b05</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>hk2-utils-2.5.0</artifactId>
-			<version>b05</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>htmlunit</artifactId>
-			<version>2.7</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>htmlunit-core-js</artifactId>
-			<version>2.7</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>httpasyncclient</artifactId>
-			<version>4.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.5.2</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>httpclient-cache</artifactId>
-			<version>4.5.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>httpcore</artifactId>
-			<version>4.4.3</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>httpcore-nio</artifactId>
-			<version>4.4.3</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>httpmime</artifactId>
-			<version>4.5.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>icu4j</artifactId>
-			<version>57.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>idw</artifactId>
-			<version>1.6.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>ion-java</artifactId>
-			<version>1.0.2</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>itext</artifactId>
-			<version>2.1.7</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>ivy</artifactId>
-			<version>2.3.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jackson-annotations</artifactId>
-			<version>2.8.5</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jackson-core</artifactId>
-			<version>2.8.5</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jackson-core-asl</artifactId>
-			<version>1.9.13</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jackson-coreutils</artifactId>
-			<version>1.8</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.8.5</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jackson-dataformat-cbor</artifactId>
-			<version>2.6.6</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jackson-dataformat-xml</artifactId>
-			<version>2.8.7</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jackson-dataformat-yaml</artifactId>
-			<version>2.8.5</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jackson-datatype-joda</artifactId>
-			<version>2.8.5</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jackson-datatype-jsr310</artifactId>
-			<version>2.8.5</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jackson-jaxrs-base</artifactId>
-			<version>2.8.5</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jackson-jaxrs-json-provider</artifactId>
-			<version>2.5.4</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jackson-jaxrs-xml-provider</artifactId>
-			<version>2.8.7</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.13</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jackson-module-jaxb-annotations</artifactId>
-			<version>2.5.4</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jackson-module-jsonSchema</artifactId>
-			<version>2.4.4</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jacob</artifactId>
-			<version>1.14.3</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jakarta-regexp</artifactId>
-			<version>1.4</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>japura</artifactId>
-			<version>1.18.3</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jasperreports</artifactId>
-			<version>6.4.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>javassist-3.19.0</artifactId>
-			<version>GA</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>javax.annotation-api</artifactId>
-			<version>1.2</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>javax.inject</artifactId>
-			<version>1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>javax.inject-2.5.0</artifactId>
-			<version>b05</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>javax.json-1.0</artifactId>
-			<version>b06</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>javax.json-api-1.0</artifactId>
-			<version>b06</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>javax.ws.rs-api</artifactId>
-			<version>2.0.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jaxen-1.1-beta</artifactId>
-			<version>8</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jaxrpc</artifactId>
-			<version>protection</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jcalendar</artifactId>
-			<version>1.3.2</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jcifs</artifactId>
-			<version>1.2.9</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jcommon</artifactId>
-			<version>1.0.23</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jdom</artifactId>
-			<version>1.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jdtcore</artifactId>
-			<version>3.2.0.v_658</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jersey-client</artifactId>
-			<version>2.24</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jersey-common</artifactId>
-			<version>2.24</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jersey-container-servlet-core</artifactId>
-			<version>2.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jersey-entity-filtering</artifactId>
-			<version>2.24</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jersey-guava</artifactId>
-			<version>2.24</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jersey-media-json-jackson</artifactId>
-			<version>2.24</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jersey-media-multipart</artifactId>
-			<version>2.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jersey-server</artifactId>
-			<version>2.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jettison</artifactId>
-			<version>1.2</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jetty</artifactId>
-			<version>6.1.26</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jetty-util</artifactId>
-			<version>6.1.26</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jfreechart</artifactId>
-			<version>1.0.19</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jhall</artifactId>
-			<version>protection</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jide-charts</artifactId>
-			<version>3.6.6</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jide-common</artifactId>
-			<version>3.6.6</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jmespath-java</artifactId>
-			<version>1.11.136</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jms</artifactId>
-			<version>1.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jna</artifactId>
-			<version>4.1.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>2.7</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jopt-simple</artifactId>
-			<version>4.6</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>json</artifactId>
-			<version>20090211</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>json-lib-2.2.2-jdk15</artifactId>
-			<version>fixed</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>json-path</artifactId>
-			<version>2.0.0</version>
-			<scope>test</scope>
-		</dependency>
-
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>json-schema-core</artifactId>
-			<version>1.2.8</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>json-schema-validator</artifactId>
-			<version>0.1.7</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>json-schema-validator</artifactId>
-			<version>2.2.8</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>json-smart</artifactId>
-			<version>2.1.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jsoup</artifactId>
-			<version>1.6.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jsr173_api</artifactId>
-			<version>1.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jsr305</artifactId>
-			<version>2.0.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jtidy-r872</artifactId>
-			<version>jdk15</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jug</artifactId>
-			<version>protection</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>juniversalchardet</artifactId>
-			<version>1.0.3</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>jxl</artifactId>
-			<version>2.6.12</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>keen-client-api-java</artifactId>
-			<version>2.0.2</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>l2fprod-common-fontchooser</artifactId>
-			<version>7.3</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>languagesupport</artifactId>
-			<version>r795</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>libphonenumber</artifactId>
-			<version>6.2</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>liquibase-core</artifactId>
-			<version>3.5.3</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>liquibase-slf4j</artifactId>
-			<version>2.0.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>loadui-api</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>loadui-base</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>loadui-cmd-base</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>loadui-component</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>loadui-controller-base</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>loadui-pro-agent-base</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>loadui-pro-base</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>loadui-pro-socket-client</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>loadui-reporting</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>loadui-soapui-runner</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>loadui-store-h2</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>loadui-test-utils</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>loadui-ui</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>loadui-utils</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>logback-core</artifactId>
-			<version>1.0.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>looks</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>lucene-analyzers-common</artifactId>
-			<version>4.5.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>lucene-core</artifactId>
-			<version>4.5.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>lucene-queries</artifactId>
-			<version>4.5.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>lucene-queryparser</artifactId>
-			<version>4.5.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>lucene-sandbox</artifactId>
-			<version>4.5.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.4</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>mailapi</artifactId>
-			<version>1.4.3</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>maven-plugin-api</artifactId>
-			<version>2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>mbassador</artifactId>
-			<version>1.1.10</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>miglayout-core</artifactId>
-			<version>5.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>miglayout-swing</artifactId>
-			<version>5.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>mimepull</artifactId>
-			<version>1.8</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>mina-core</artifactId>
-			<version>2.0.9</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>mixpanel-java</artifactId>
-			<version>1.4.4</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>mongo-java-driver</artifactId>
-			<version>2.12.3</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>msg-simple</artifactId>
-			<version>1.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>nekohtml</artifactId>
-			<version>1.9.14</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>not-yet-commons-ssl</artifactId>
-			<version>0.3.17</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>olap4j</artifactId>
-			<version>1.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>opencsv</artifactId>
-			<version>2.3</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>opensaml-2.5.1</artifactId>
-			<version>1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>openws-1.4.2</artifactId>
-			<version>1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>org.apache.oltu.commons.encodedtoken</artifactId>
-			<version>1.0.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>org.apache.oltu.commons.json</artifactId>
-			<version>1.0.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>org.apache.oltu.oauth2.authzserver</artifactId>
-			<version>1.0.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>org.apache.oltu.oauth2.client</artifactId>
-			<version>0.31</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>org.apache.oltu.oauth2.common</artifactId>
-			<version>0.31</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>org.apache.oltu.oauth2.httpclient4</artifactId>
-			<version>0.31</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>org.apache.oltu.oauth2.jwt</artifactId>
-			<version>1.0.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>osgi-resource-locator</artifactId>
-			<version>1.0.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>out-app-analytics-provider</artifactId>
-			<version>2.3.8</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>poi</artifactId>
-			<version>3.12</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>poi-ooxml</artifactId>
-			<version>3.12</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>poi-ooxml-schemas</artifactId>
-			<version>3.12</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>Protection</artifactId>
-			<version>4.6</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>ProtectionPriv</artifactId>
-			<version>4.6</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>proxy-vole</artifactId>
-			<version>20131209</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>raml-parser</artifactId>
-			<version>0.8.14</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>ready-api-core</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>ready-api-dashboard-tiles</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>ready-api-db</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>ready-api-jdbc-virts</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>ready-api-license</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>ready-api-module-base</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>ready-api-projects</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>ready-api-runners</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>ready-api-security</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>ready-api-service-v</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>ready-api-service-v-core</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>ready-api-soapui</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>ready-api-soapui-ng</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>ready-api-soapui-pro</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>ready-api-starterpage</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>ready-api-testserver-api</artifactId>
-			<version>2.2.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>reflections</artifactId>
-			<version>0.9.9</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>reports</artifactId>
-			<version>1.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>rhino</artifactId>
-			<version>1.7R4</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>rsyntaxtextarea</artifactId>
-			<version>2.5.3</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>sac</artifactId>
-			<version>1.3</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>saxon</artifactId>
-			<version>9.1.0.8j</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>saxon-dom</artifactId>
-			<version>9.1.0.8j</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>serializer</artifactId>
-			<version>2.7.2</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>servlet-api-2.5</artifactId>
-			<version>20081211</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.21</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>slf4j-ext</artifactId>
-			<version>1.7.21</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.21</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>snakeyaml</artifactId>
-			<version>1.16</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>snmp4j</artifactId>
-			<version>1.10.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>snmp4j-agent</artifactId>
-			<version>1.3.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>spring-aop</artifactId>
-			<version>4.1.6.RELEASE</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>spring-beans</artifactId>
-			<version>4.1.6.RELEASE</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>4.1.6.RELEASE</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>4.1.6.RELEASE</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>spring-expression</artifactId>
-			<version>4.1.6.RELEASE</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>spring-jdbc</artifactId>
-			<version>4.1.6.RELEASE</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>spring-tx</artifactId>
-			<version>4.1.6.RELEASE</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>stax-1.1.2</artifactId>
-			<version>dev</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>stax-api-1.0</artifactId>
-			<version>2</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>stax-api</artifactId>
-			<version>1.0.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>stax2-api</artifactId>
-			<version>3.1.4</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>swagger-annotations-2.0.0</artifactId>
-			<version>rc2</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>swagger-core-2.0.0</artifactId>
-			<version>rc2</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>swagger-inflector</artifactId>
-			<version>1.0.14</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>swagger-jaxrs</artifactId>
-			<version>1.5.12</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>swagger-jersey2-jaxrs</artifactId>
-			<version>1.5.12</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>swagger-models-2.0.0</artifactId>
-			<version>rc2</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>swagger-parser-2.0.0</artifactId>
-			<version>rc1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>swagger-parser-core-2.0.0</artifactId>
-			<version>rc1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>swagger-parser-v2-2.0.0</artifactId>
-			<version>rc1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>swagger-parser-v2-converter-2.0.0</artifactId>
-			<version>rc1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>swagger-parser-v3-2.0.0</artifactId>
-			<version>rc1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>swagger4j-1.0.0</artifactId>
-			<version>SNAPSHOT</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>swingx</artifactId>
-			<version>soapui</version>
-			<scope>test</scope>
-		</dependency>
-
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>uri-template</artifactId>
-			<version>0.9</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>1.0.0.GA</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>vt-crypt</artifactId>
-			<version>2.1.4</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>vt-dictionary</artifactId>
-			<version>3.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>vt-password</artifactId>
-			<version>3.1.2</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>woodstox-core</artifactId>
-			<version>5.0.3</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>woodstox-core-asl</artifactId>
-			<version>4.4.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>ws-commons-util</artifactId>
-			<version>1.0.2</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>wsdl4j-1.6.2</artifactId>
-			<version>fixed</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>wss4j</artifactId>
-			<version>1.6.18</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>xalan</artifactId>
-			<version>2.7.2</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>xbean-bundleutils</artifactId>
-			<version>3.11.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>xbean-finder</artifactId>
-			<version>3.11.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>xbean-fixed</artifactId>
-			<version>2.4.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>xbean_xpath</artifactId>
-			<version>2.4.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>xercesImpl</artifactId>
-			<version>2.9.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>xlsx-streamer-0.2.10</artifactId>
-			<version>fixed</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>xml-apis</artifactId>
-			<version>2.9.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>xmlbeans</artifactId>
-			<version>2.4.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>xmlParserAPIs</artifactId>
-			<version>2.6.2</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>xmlpublic</artifactId>
-			<version>2.4.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>xmlsec</artifactId>
-			<version>2.0.8</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>xmltooling-1.3.2</artifactId>
-			<version>1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>xmlunit</artifactId>
-			<version>1.2</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>xom</artifactId>
-			<version>1.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.smartbear.ready-api-full</groupId>
-			<artifactId>xstream</artifactId>
-			<version>1.3.1</version>
-			<scope>test</scope>
-		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>activation</artifactId> -->
+		<!-- <version>1.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>activeQueryBuilder</artifactId> -->
+		<!-- <version>activeQueryBuilder</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>analytics-core</artifactId> -->
+		<!-- <version>2.3.8</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>annotations</artifactId> -->
+		<!-- <version>2.0.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>aopalliance</artifactId> -->
+		<!-- <version>1.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>aopalliance-repackaged-2.5.0</artifactId> -->
+		<!-- <version>b05</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>asm</artifactId> -->
+		<!-- <version>5.0.4</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>autocomplete</artifactId> -->
+		<!-- <version>2.5.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>aws-java-sdk-core</artifactId> -->
+		<!-- <version>1.11.136</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>aws-java-sdk-ec2</artifactId> -->
+		<!-- <version>1.11.136</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>axis-ant</artifactId> -->
+		<!-- <version>protection</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>axis</artifactId> -->
+		<!-- <version>protection</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>bcmail-jdk15</artifactId> -->
+		<!-- <version>1.46</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>bcprov-jdk15</artifactId> -->
+		<!-- <version>1.46</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>bctsp-jdk15</artifactId> -->
+		<!-- <version>1.46</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>binding</artifactId> -->
+		<!-- <version>2.0.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>btf</artifactId> -->
+		<!-- <version>1.2</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>cajo</artifactId> -->
+		<!-- <version>1.142</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>cal10n-api</artifactId> -->
+		<!-- <version>0.8.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>castor-core</artifactId> -->
+		<!-- <version>1.3.3</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>castor-xml</artifactId> -->
+		<!-- <version>1.3.3</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>com.springsource.javax.servlet</artifactId> -->
+		<!-- <version>2.5.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>commons-beanutils</artifactId> -->
+		<!-- <version>1.8.3</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>commons-cli</artifactId> -->
+		<!-- <version>1.3.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>commons-codec</artifactId> -->
+		<!-- <version>1.6</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>commons-collections</artifactId> -->
+		<!-- <version>3.2.2</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>commons-csv</artifactId> -->
+		<!-- <version>1.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>commons-digester</artifactId> -->
+		<!-- <version>2.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>commons-discovery</artifactId> -->
+		<!-- <version>0.2</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>commons-fileupload</artifactId> -->
+		<!-- <version>1.3.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>commons-httpclient</artifactId> -->
+		<!-- <version>3.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>commons-io</artifactId> -->
+		<!-- <version>2.4</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>commons-lang</artifactId> -->
+		<!-- <version>2.6</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>commons-lang3</artifactId> -->
+		<!-- <version>3.3.2</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>commons-logging</artifactId> -->
+		<!-- <version>1.1.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>commons-math</artifactId> -->
+		<!-- <version>1.2</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>commons-net</artifactId> -->
+		<!-- <version>2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>commons-validator</artifactId> -->
+		<!-- <version>1.3.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>controlsfx</artifactId> -->
+		<!-- <version>8.40.12</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>core</artifactId> -->
+		<!-- <version>3.2.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>cssparser</artifactId> -->
+		<!-- <version>0.9.5</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>dom4j</artifactId> -->
+		<!-- <version>1.6.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>ecj</artifactId> -->
+		<!-- <version>4.3.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>ezmorph</artifactId> -->
+		<!-- <version>1.0.5</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>flex-messaging-common</artifactId> -->
+		<!-- <version>1.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>flex-messaging-core</artifactId> -->
+		<!-- <version>1.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>flex-messaging-opt</artifactId> -->
+		<!-- <version>1.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>flex-messaging-proxy</artifactId> -->
+		<!-- <version>1.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>flex-messaging-remoting</artifactId> -->
+		<!-- <version>1.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>flying-saucer-core</artifactId> -->
+		<!-- <version>9.0.7</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>flying-saucer-pdf</artifactId> -->
+		<!-- <version>9.0.7</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>forms</artifactId> -->
+		<!-- <version>1.0.7</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>google-http-client</artifactId> -->
+		<!-- <version>1.21.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>google-oauth-client</artifactId> -->
+		<!-- <version>1.21.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>governator</artifactId> -->
+		<!-- <version>1.15.9</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>governator-api</artifactId> -->
+		<!-- <version>1.15.9</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>governator-core</artifactId> -->
+		<!-- <version>1.15.9</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>groovy-all</artifactId> -->
+		<!-- <version>2.4.4</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>gson</artifactId> -->
+		<!-- <version>2.3.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>guava</artifactId> -->
+		<!-- <version>20.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>guice</artifactId> -->
+		<!-- <version>4.1.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>guice-assistedinject</artifactId> -->
+		<!-- <version>4.1.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>guice-grapher</artifactId> -->
+		<!-- <version>4.1.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>guice-multibindings</artifactId> -->
+		<!-- <version>4.1.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>h2</artifactId> -->
+		<!-- <version>1.3.176</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>hamcrest-core</artifactId> -->
+		<!-- <version>1.3</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>har-java</artifactId> -->
+		<!-- <version>1.0.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>hermes</artifactId> -->
+		<!-- <version>1.14</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>hibernate-validator</artifactId> -->
+		<!-- <version>4.1.0.Final</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>hk2-api-2.5.0</artifactId> -->
+		<!-- <version>b05</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>hk2-locator-2.5.0</artifactId> -->
+		<!-- <version>b05</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>hk2-utils-2.5.0</artifactId> -->
+		<!-- <version>b05</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>htmlunit</artifactId> -->
+		<!-- <version>2.7</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>htmlunit-core-js</artifactId> -->
+		<!-- <version>2.7</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>httpasyncclient</artifactId> -->
+		<!-- <version>4.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>httpclient</artifactId> -->
+		<!-- <version>4.5.2</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>httpclient-cache</artifactId> -->
+		<!-- <version>4.5.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>httpcore</artifactId> -->
+		<!-- <version>4.4.3</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>httpcore-nio</artifactId> -->
+		<!-- <version>4.4.3</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>httpmime</artifactId> -->
+		<!-- <version>4.5.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>icu4j</artifactId> -->
+		<!-- <version>57.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>idw</artifactId> -->
+		<!-- <version>1.6.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>ion-java</artifactId> -->
+		<!-- <version>1.0.2</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>itext</artifactId> -->
+		<!-- <version>2.1.7</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>ivy</artifactId> -->
+		<!-- <version>2.3.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jackson-annotations</artifactId> -->
+		<!-- <version>2.8.5</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jackson-core</artifactId> -->
+		<!-- <version>2.8.5</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jackson-core-asl</artifactId> -->
+		<!-- <version>1.9.13</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jackson-coreutils</artifactId> -->
+		<!-- <version>1.8</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jackson-databind</artifactId> -->
+		<!-- <version>2.8.5</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jackson-dataformat-cbor</artifactId> -->
+		<!-- <version>2.6.6</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jackson-dataformat-xml</artifactId> -->
+		<!-- <version>2.8.7</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jackson-dataformat-yaml</artifactId> -->
+		<!-- <version>2.8.5</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jackson-datatype-joda</artifactId> -->
+		<!-- <version>2.8.5</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jackson-datatype-jsr310</artifactId> -->
+		<!-- <version>2.8.5</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jackson-jaxrs-base</artifactId> -->
+		<!-- <version>2.8.5</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jackson-jaxrs-json-provider</artifactId> -->
+		<!-- <version>2.5.4</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jackson-jaxrs-xml-provider</artifactId> -->
+		<!-- <version>2.8.7</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jackson-mapper-asl</artifactId> -->
+		<!-- <version>1.9.13</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jackson-module-jaxb-annotations</artifactId> -->
+		<!-- <version>2.5.4</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jackson-module-jsonSchema</artifactId> -->
+		<!-- <version>2.4.4</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jacob</artifactId> -->
+		<!-- <version>1.14.3</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jakarta-regexp</artifactId> -->
+		<!-- <version>1.4</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>japura</artifactId> -->
+		<!-- <version>1.18.3</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jasperreports</artifactId> -->
+		<!-- <version>6.4.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>javassist-3.19.0</artifactId> -->
+		<!-- <version>GA</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>javax.annotation-api</artifactId> -->
+		<!-- <version>1.2</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>javax.inject</artifactId> -->
+		<!-- <version>1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>javax.inject-2.5.0</artifactId> -->
+		<!-- <version>b05</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>javax.json-1.0</artifactId> -->
+		<!-- <version>b06</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>javax.json-api-1.0</artifactId> -->
+		<!-- <version>b06</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>javax.ws.rs-api</artifactId> -->
+		<!-- <version>2.0.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jaxen-1.1-beta</artifactId> -->
+		<!-- <version>8</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jaxrpc</artifactId> -->
+		<!-- <version>protection</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jcalendar</artifactId> -->
+		<!-- <version>1.3.2</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jcifs</artifactId> -->
+		<!-- <version>1.2.9</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jcommon</artifactId> -->
+		<!-- <version>1.0.23</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jdom</artifactId> -->
+		<!-- <version>1.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jdtcore</artifactId> -->
+		<!-- <version>3.2.0.v_658</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jersey-client</artifactId> -->
+		<!-- <version>2.24</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jersey-common</artifactId> -->
+		<!-- <version>2.24</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jersey-container-servlet-core</artifactId> -->
+		<!-- <version>2.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jersey-entity-filtering</artifactId> -->
+		<!-- <version>2.24</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jersey-guava</artifactId> -->
+		<!-- <version>2.24</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jersey-media-json-jackson</artifactId> -->
+		<!-- <version>2.24</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jersey-media-multipart</artifactId> -->
+		<!-- <version>2.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jersey-server</artifactId> -->
+		<!-- <version>2.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jettison</artifactId> -->
+		<!-- <version>1.2</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jetty</artifactId> -->
+		<!-- <version>6.1.26</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jetty-util</artifactId> -->
+		<!-- <version>6.1.26</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jfreechart</artifactId> -->
+		<!-- <version>1.0.19</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jhall</artifactId> -->
+		<!-- <version>protection</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jide-charts</artifactId> -->
+		<!-- <version>3.6.6</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jide-common</artifactId> -->
+		<!-- <version>3.6.6</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jmespath-java</artifactId> -->
+		<!-- <version>1.11.136</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jms</artifactId> -->
+		<!-- <version>1.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jna</artifactId> -->
+		<!-- <version>4.1.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>joda-time</artifactId> -->
+		<!-- <version>2.7</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jopt-simple</artifactId> -->
+		<!-- <version>4.6</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>json</artifactId> -->
+		<!-- <version>20090211</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>json-lib-2.2.2-jdk15</artifactId> -->
+		<!-- <version>fixed</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>json-path</artifactId> -->
+		<!-- <version>2.0.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>json-schema-core</artifactId> -->
+		<!-- <version>1.2.8</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>json-schema-validator</artifactId> -->
+		<!-- <version>0.1.7</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>json-schema-validator</artifactId> -->
+		<!-- <version>2.2.8</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>json-smart</artifactId> -->
+		<!-- <version>2.1.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jsoup</artifactId> -->
+		<!-- <version>1.6.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jsr173_api</artifactId> -->
+		<!-- <version>1.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jsr305</artifactId> -->
+		<!-- <version>2.0.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jtidy-r872</artifactId> -->
+		<!-- <version>jdk15</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jug</artifactId> -->
+		<!-- <version>protection</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>junit</artifactId> -->
+		<!-- <version>4.11</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>juniversalchardet</artifactId> -->
+		<!-- <version>1.0.3</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>jxl</artifactId> -->
+		<!-- <version>2.6.12</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>keen-client-api-java</artifactId> -->
+		<!-- <version>2.0.2</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>l2fprod-common-fontchooser</artifactId> -->
+		<!-- <version>7.3</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>languagesupport</artifactId> -->
+		<!-- <version>r795</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>libphonenumber</artifactId> -->
+		<!-- <version>6.2</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>liquibase-core</artifactId> -->
+		<!-- <version>3.5.3</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>liquibase-slf4j</artifactId> -->
+		<!-- <version>2.0.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>loadui-api</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>loadui-base</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>loadui-cmd-base</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>loadui-component</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>loadui-controller-base</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>loadui-pro-agent-base</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>loadui-pro-base</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>loadui-pro-socket-client</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>loadui-reporting</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>loadui-soapui-runner</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>loadui-store-h2</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>loadui-test-utils</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>loadui-ui</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>loadui-utils</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>log4j</artifactId> -->
+		<!-- <version>1.2.17</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>logback-core</artifactId> -->
+		<!-- <version>1.0.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>looks</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>lucene-analyzers-common</artifactId> -->
+		<!-- <version>4.5.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>lucene-core</artifactId> -->
+		<!-- <version>4.5.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>lucene-queries</artifactId> -->
+		<!-- <version>4.5.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>lucene-queryparser</artifactId> -->
+		<!-- <version>4.5.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>lucene-sandbox</artifactId> -->
+		<!-- <version>4.5.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>mail</artifactId> -->
+		<!-- <version>1.4</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>mailapi</artifactId> -->
+		<!-- <version>1.4.3</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>maven-plugin-api</artifactId> -->
+		<!-- <version>2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>mbassador</artifactId> -->
+		<!-- <version>1.1.10</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>miglayout-core</artifactId> -->
+		<!-- <version>5.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>miglayout-swing</artifactId> -->
+		<!-- <version>5.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>mimepull</artifactId> -->
+		<!-- <version>1.8</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>mina-core</artifactId> -->
+		<!-- <version>2.0.9</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>mixpanel-java</artifactId> -->
+		<!-- <version>1.4.4</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>mongo-java-driver</artifactId> -->
+		<!-- <version>2.12.3</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>msg-simple</artifactId> -->
+		<!-- <version>1.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>nekohtml</artifactId> -->
+		<!-- <version>1.9.14</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>not-yet-commons-ssl</artifactId> -->
+		<!-- <version>0.3.17</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>olap4j</artifactId> -->
+		<!-- <version>1.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>opencsv</artifactId> -->
+		<!-- <version>2.3</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>opensaml-2.5.1</artifactId> -->
+		<!-- <version>1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>openws-1.4.2</artifactId> -->
+		<!-- <version>1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>org.apache.oltu.commons.encodedtoken</artifactId> -->
+		<!-- <version>1.0.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>org.apache.oltu.commons.json</artifactId> -->
+		<!-- <version>1.0.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>org.apache.oltu.oauth2.authzserver</artifactId> -->
+		<!-- <version>1.0.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>org.apache.oltu.oauth2.client</artifactId> -->
+		<!-- <version>0.31</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>org.apache.oltu.oauth2.common</artifactId> -->
+		<!-- <version>0.31</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>org.apache.oltu.oauth2.httpclient4</artifactId> -->
+		<!-- <version>0.31</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>org.apache.oltu.oauth2.jwt</artifactId> -->
+		<!-- <version>1.0.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>osgi-resource-locator</artifactId> -->
+		<!-- <version>1.0.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>out-app-analytics-provider</artifactId> -->
+		<!-- <version>2.3.8</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>poi</artifactId> -->
+		<!-- <version>3.12</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>poi-ooxml</artifactId> -->
+		<!-- <version>3.12</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>poi-ooxml-schemas</artifactId> -->
+		<!-- <version>3.12</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>Protection</artifactId> -->
+		<!-- <version>4.6</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>ProtectionPriv</artifactId> -->
+		<!-- <version>4.6</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>proxy-vole</artifactId> -->
+		<!-- <version>20131209</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>raml-parser</artifactId> -->
+		<!-- <version>0.8.14</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>ready-api-core</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>ready-api-dashboard-tiles</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>ready-api-db</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>ready-api-jdbc-virts</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>ready-api-license</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>ready-api-module-base</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>ready-api-projects</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>ready-api-runners</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>ready-api-security</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>ready-api-service-v</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>ready-api-service-v-core</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>ready-api-soapui</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>ready-api-soapui-ng</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>ready-api-soapui-pro</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>ready-api-starterpage</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>ready-api-testserver-api</artifactId> -->
+		<!-- <version>2.2.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>reflections</artifactId> -->
+		<!-- <version>0.9.9</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>reports</artifactId> -->
+		<!-- <version>1.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>rhino</artifactId> -->
+		<!-- <version>1.7R4</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>rsyntaxtextarea</artifactId> -->
+		<!-- <version>2.5.3</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>sac</artifactId> -->
+		<!-- <version>1.3</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>saxon</artifactId> -->
+		<!-- <version>9.1.0.8j</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>saxon-dom</artifactId> -->
+		<!-- <version>9.1.0.8j</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>serializer</artifactId> -->
+		<!-- <version>2.7.2</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>servlet-api-2.5</artifactId> -->
+		<!-- <version>20081211</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>slf4j-api</artifactId> -->
+		<!-- <version>1.7.21</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>slf4j-ext</artifactId> -->
+		<!-- <version>1.7.21</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>slf4j-log4j12</artifactId> -->
+		<!-- <version>1.7.21</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>snakeyaml</artifactId> -->
+		<!-- <version>1.16</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>snmp4j</artifactId> -->
+		<!-- <version>1.10.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>snmp4j-agent</artifactId> -->
+		<!-- <version>1.3.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>spring-aop</artifactId> -->
+		<!-- <version>4.1.6.RELEASE</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>spring-beans</artifactId> -->
+		<!-- <version>4.1.6.RELEASE</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>spring-context</artifactId> -->
+		<!-- <version>4.1.6.RELEASE</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>spring-core</artifactId> -->
+		<!-- <version>4.1.6.RELEASE</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>spring-expression</artifactId> -->
+		<!-- <version>4.1.6.RELEASE</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>spring-jdbc</artifactId> -->
+		<!-- <version>4.1.6.RELEASE</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>spring-tx</artifactId> -->
+		<!-- <version>4.1.6.RELEASE</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>stax-1.1.2</artifactId> -->
+		<!-- <version>dev</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>stax-api-1.0</artifactId> -->
+		<!-- <version>2</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>stax-api</artifactId> -->
+		<!-- <version>1.0.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>stax2-api</artifactId> -->
+		<!-- <version>3.1.4</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>swagger-annotations-2.0.0</artifactId> -->
+		<!-- <version>rc2</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>swagger-core-2.0.0</artifactId> -->
+		<!-- <version>rc2</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>swagger-inflector</artifactId> -->
+		<!-- <version>1.0.14</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>swagger-jaxrs</artifactId> -->
+		<!-- <version>1.5.12</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>swagger-jersey2-jaxrs</artifactId> -->
+		<!-- <version>1.5.12</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>swagger-models-2.0.0</artifactId> -->
+		<!-- <version>rc2</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>swagger-parser-2.0.0</artifactId> -->
+		<!-- <version>rc1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>swagger-parser-core-2.0.0</artifactId> -->
+		<!-- <version>rc1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>swagger-parser-v2-2.0.0</artifactId> -->
+		<!-- <version>rc1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>swagger-parser-v2-converter-2.0.0</artifactId> -->
+		<!-- <version>rc1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>swagger-parser-v3-2.0.0</artifactId> -->
+		<!-- <version>rc1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>swagger4j-1.0.0</artifactId> -->
+		<!-- <version>SNAPSHOT</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>swingx</artifactId> -->
+		<!-- <version>soapui</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>uri-template</artifactId> -->
+		<!-- <version>0.9</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>validation-api</artifactId> -->
+		<!-- <version>1.0.0.GA</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>vt-crypt</artifactId> -->
+		<!-- <version>2.1.4</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>vt-dictionary</artifactId> -->
+		<!-- <version>3.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>vt-password</artifactId> -->
+		<!-- <version>3.1.2</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>woodstox-core</artifactId> -->
+		<!-- <version>5.0.3</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>woodstox-core-asl</artifactId> -->
+		<!-- <version>4.4.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>ws-commons-util</artifactId> -->
+		<!-- <version>1.0.2</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>wsdl4j-1.6.2</artifactId> -->
+		<!-- <version>fixed</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>wss4j</artifactId> -->
+		<!-- <version>1.6.18</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>xalan</artifactId> -->
+		<!-- <version>2.7.2</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>xbean-bundleutils</artifactId> -->
+		<!-- <version>3.11.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>xbean-finder</artifactId> -->
+		<!-- <version>3.11.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>xbean-fixed</artifactId> -->
+		<!-- <version>2.4.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>xbean_xpath</artifactId> -->
+		<!-- <version>2.4.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>xercesImpl</artifactId> -->
+		<!-- <version>2.9.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>xlsx-streamer-0.2.10</artifactId> -->
+		<!-- <version>fixed</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>xml-apis</artifactId> -->
+		<!-- <version>2.9.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>xmlbeans</artifactId> -->
+		<!-- <version>2.4.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>xmlParserAPIs</artifactId> -->
+		<!-- <version>2.6.2</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>xmlpublic</artifactId> -->
+		<!-- <version>2.4.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>xmlsec</artifactId> -->
+		<!-- <version>2.0.8</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>xmltooling-1.3.2</artifactId> -->
+		<!-- <version>1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>xmlunit</artifactId> -->
+		<!-- <version>1.2</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>xom</artifactId> -->
+		<!-- <version>1.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.smartbear.ready-api-full</groupId> -->
+		<!-- <artifactId>xstream</artifactId> -->
+		<!-- <version>1.3.1</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
 
 		<!-- ================================================ -->
 		<!-- SOAPUI-FULL-LIB (END) ============================ -->
@@ -2401,7 +2405,7 @@
 									<cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir>
 
 									<tags>
-<!-- 										<tag>@Basket</tag> -->
+										<!-- <tag>@Basket</tag> -->
 										<!-- <tag>~@ignore</tag> -->
 									</tags>
 									<parallelScheme>FEATURE</parallelScheme>
