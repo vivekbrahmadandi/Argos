@@ -369,8 +369,8 @@
 								<chrome_headless>true</chrome_headless>
 								<QA_env>http://www.argos.co.uk</QA_env>
 								<webdriver.wait.time>60</webdriver.wait.time>
-								<webdriver.chrome.driver>${project.basedir}\src\test\resources\Browser_Drivers\chromedriver_mac64\chromedriver</webdriver.chrome.driver>
-								<webdriver.gecko.driver>${project.basedir}\src\test\resources\Browser_Drivers\</webdriver.gecko.driver>
+								<webdriver.chrome.driver>${project.basedir}/src/test/resources/Browser_Drivers/chromedriver_mac64/chromedriver</webdriver.chrome.driver>
+								<webdriver.gecko.driver>${project.basedir}/src/test/resources/Browser_Drivers/</webdriver.gecko.driver>
 
 
 								<!-- <remoteDriver>${remote}</remoteDriver> -->
