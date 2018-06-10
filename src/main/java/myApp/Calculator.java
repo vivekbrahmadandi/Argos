@@ -2,14 +2,14 @@ package myApp;
 
 public class Calculator {
 
-	public double add(double... nums ){
+	public int add(int... nums ){
 
 		int total=0;
 
 
-		for (double num:nums){
+		for (int num:nums){
 
-			total=(int) (total+num);
+			total=total+num;
 		}
 
 		return total;
