@@ -6,14 +6,21 @@
 	<artifactId>ARGOS</artifactId>
 	<version>1.1</version>
 
-	<dependencies>
+	<properties>
+		<jdk>1.8</jdk>
+		<dev_env>http://www.argos.co.uk</dev_env>
+		<qa_env>http://www.argos.co.uk</qa_env>
+		<preprod_env>http://www.argos.co.uk</preprod_env>
+		<prod_env>http://www.argos.co.uk</prod_env>
 
-		<dependency>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-surefire-plugin</artifactId>
-			<version>2.21.0</version>
-			<type>maven-plugin</type>
-		</dependency>
+		<!-- Specific to integration testing with Selenium -->
+		<os>windows</os>
+		<browser>chrome</browser>
+		<browser.headless>false</browser.headless>
+		<browser.parallel.count>4</browser.parallel.count>
+	</properties>
+
+	<dependencies>
 
 		<dependency>
 			<groupId>com.google.guava</groupId>
@@ -24,16 +31,6 @@
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
 			<version>3.7</version>
-		</dependency>
-
-		<!-- ================================================ -->
-		<!-- SELENIUM dependency -->
-		<!-- ================================================ -->
-
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>3.10.0</version>
 		</dependency>
 
 		<!-- ================================================ -->
@@ -49,6 +46,62 @@
 			<scope>test</scope>
 		</dependency>
 
+
+		<!-- ================================================ -->
+		<!-- SELENIUM dependency -->
+		<!-- ================================================ -->
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.12.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-server -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-server</artifactId>
+			<version>3.12.0</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-api -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-api</artifactId>
+			<version>3.12.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-firefox-driver -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-firefox-driver</artifactId>
+			<version>3.12.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-chrome-driver</artifactId>
+			<version>3.12.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-ie-driver -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-ie-driver</artifactId>
+			<version>3.12.0</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-safari-driver -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-safari-driver</artifactId>
+			<version>3.12.0</version>
+		</dependency>
+
+
 		<!-- ================================================ -->
 		<!-- CUCUMBER dependencies -->
 		<!-- Allows for BDD approach. Cucumber uses JUNIT (or testNG) framework -->
@@ -56,31 +109,50 @@
 			files -->
 		<!-- ================================================ -->
 
+		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
 		<dependency>
-			<groupId>info.cukes</groupId>
-			<artifactId>cucumber-java</artifactId>
-			<version>1.2.5</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>info.cukes</groupId>
-			<artifactId>cucumber-core</artifactId>
-			<version>1.2.5</version>
-		</dependency>
-
-		<dependency>
-			<groupId>info.cukes</groupId>
+			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit</artifactId>
-			<version>1.2.5</version>
+			<version>3.0.2</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-core -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-core</artifactId>
+			<version>3.0.2</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>3.0.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.cucumber/gherkin -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>gherkin</artifactId>
+			<version>5.1.0</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>net.masterthought</groupId>
 			<artifactId>cucumber-reporting</artifactId>
 			<version>1.1.0</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.github.temyers/cucumber-jvm-parallel-plugin -->
+		<dependency>
+			<groupId>com.github.temyers</groupId>
+			<artifactId>cucumber-jvm-parallel-plugin</artifactId>
+			<version>5.0.0</version>
+		</dependency>
+
 
 		<!-- ================================================ -->
 		<!-- SUREFILE and FAILSAFE -->
@@ -124,6 +196,31 @@
 		</pluginRepository>
 	</pluginRepositories>
 
+	<!-- ================================================ -->
+	<!-- GENETIC BUILD PLUGINS) -->
+	<!-- ================================================ -->
+
+	<build>
+		<plugins>
+
+			<!--Looks for java files beginning/ending with "TEST" to trigger in test -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.21.0</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>${jdk}</source>
+					<target>${jdk}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 	<profiles>
 
@@ -131,31 +228,15 @@
 		<!-- DEVELOPERS BUILD (Only doing Unit test for quick feedback) -->
 		<!-- ================================================ -->
 
+		<!-- Build command example: -->
+		<!-- clean verify -P qa_build -Dos=windows -Dbrowser=firefox -Dbrowser.headless=false 
+			-Dbrowser.parallel.count=4 -->
+
 		<profile>
 			<id>dev_build</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
-
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<version>2.21.0</version>
-					</plugin>
-
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-compiler-plugin</artifactId>
-						<configuration>
-							<source>1.8</source>
-							<target>1.8</target>
-						</configuration>
-					</plugin>
-
-				</plugins>
-			</build>
 		</profile>
 
 		<!-- ================================================ -->
@@ -163,7 +244,7 @@
 		<!-- ================================================ -->
 
 		<profile>
-			<id>QA_build_Windows</id>
+			<id>qa_build</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
@@ -189,19 +270,6 @@
 					</plugin>
 
 					<!-- ================================================ -->
-					<!-- UNIT TESTING CONFIG -->
-					<!-- ================================================ -->
-
-					<!--Looks for java files beginning/ending with "TEST" to trigger in 
-						test -->
-
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<version>2.21.0</version>
-					</plugin>
-
-					<!-- ================================================ -->
 					<!-- INTEGRATION TESTING CONFIG -->
 					<!-- ================================================ -->
 
@@ -211,15 +279,19 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-failsafe-plugin</artifactId>
 						<version>2.21.0</version>
+						<dependencies>
+							<dependency>
+								<groupId>org.apache.maven.surefire</groupId>
+								<artifactId>surefire-junit47</artifactId>
+								<version>2.21.0</version>
+							</dependency>
+						</dependencies>
 						<configuration>
-
 							<systemPropertyVariables>
-								<browser>chrome</browser>
-								<chrome_headless>true</chrome_headless>
-								<QA_env>http://www.argos.co.uk</QA_env>
-								<webdriver.wait.time>60</webdriver.wait.time>
-								<webdriver.chrome.driver>${project.basedir}\src\test\resources\Browser_Drivers\chromedriver.exe</webdriver.chrome.driver>
-								<webdriver.gecko.driver>${project.basedir}\src\test\resources\Browser_Drivers\geckodriver.exe</webdriver.gecko.driver>
+								<env>${qa_env}</env>
+								<os>${os}</os>
+								<browser>${browser}</browser>
+								<browser.headless>${browser.headless}</browser.headless>
 
 
 								<!-- <remoteDriver>${remote}</remoteDriver> -->
@@ -232,7 +304,6 @@
 
 								<!--Set properties passed in by the driver binary downloader -->
 
-
 							</systemPropertyVariables>
 							<properties>
 								<property>
@@ -240,7 +311,7 @@
 									<value>integrationTests.cucumber.Junit_listener</value>
 								</property>
 							</properties>
-							<forkCount>4</forkCount>
+							<forkCount>${browser.parallel.count}</forkCount>
 							<reuseForks>true</reuseForks>
 						</configuration>
 						<executions>
@@ -276,24 +347,20 @@
 									<goal>generateRunners</goal>
 								</goals>
 								<configuration>
-									<!-- Mandatory -->
-									<!-- List of package names to scan for glue code. -->
 									<glue>
 										<package>integrationTests.selenium.step_definitions</package>
 										<package>integrationTests.cucumber</package>
 									</glue>
-									<!-- These are optional, with the default values -->
-									<!-- Where to output the generated tests -->
+
 									<outputDirectory>${project.build.directory}/generated-test-sources/cucumber</outputDirectory>
-									<!-- The directory, which must be in the root of the runtime classpath, 
-										containing your feature files. -->
+
 									<featuresDirectory>src/test/resources/Features/</featuresDirectory>
-									<!-- Directory where the cucumber report files shall be written -->
+
 									<cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir>
 
 									<tags>
 										<!-- <tag>@Basket</tag> -->
-										<!-- <tag>~@ignore</tag> -->
+										<tag>@Just</tag>
 									</tags>
 									<parallelScheme>FEATURE</parallelScheme>
 								</configuration>
@@ -301,170 +368,9 @@
 						</executions>
 					</plugin>
 
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-compiler-plugin</artifactId>
-						<configuration>
-							<source>1.8</source>
-							<target>1.8</target>
-						</configuration>
-					</plugin>
 				</plugins>
 			</build>
 		</profile>
-		
-			<profile>
-			<id>QA_build_MAC</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-
-			<build>
-				<plugins>
-
-					<!-- ================================================ -->
-					<!-- API TESTING CONFIG -->
-					<!-- ================================================ -->
-
-					<!--Supports API testing with SOAPUI (both SOAP and REST projects) -->
-					<!--However not using Maven to trigger the API tests. Instead using 
-						the -->
-					<!--triggering tests within BDD step definitions using SoapUITestCaseRunner -->
-					<!--which relies on the 100s of SOAPUI dependencies included in this 
-						POM -->
-
-					<plugin>
-						<groupId>com.smartbear.soapui</groupId>
-						<artifactId>soapui-maven-plugin</artifactId>
-						<version>5.0.0</version>
-					</plugin>
-
-					<!-- ================================================ -->
-					<!-- UNIT TESTING CONFIG -->
-					<!-- ================================================ -->
-
-					<!--Looks for java files beginning/ending with "TEST" to trigger in 
-						test -->
-
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<version>2.21.0</version>
-					</plugin>
-
-					<!-- ================================================ -->
-					<!-- INTEGRATION TESTING CONFIG -->
-					<!-- ================================================ -->
-
-					<!--Looks for java files beginning/ending with "IT" to trigger in test -->
-
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-failsafe-plugin</artifactId>
-						<version>2.21.0</version>
-						<configuration>
-
-							<systemPropertyVariables>
-								<browser>chrome</browser>
-								<chrome_headless>true</chrome_headless>
-								<QA_env>http://www.argos.co.uk</QA_env>
-								<webdriver.wait.time>60</webdriver.wait.time>
-								<webdriver.chrome.driver>${project.basedir}/src/test/resources/Browser_Drivers/chromedriver_mac64/chromedriver</webdriver.chrome.driver>
-								<webdriver.gecko.driver>${project.basedir}/src/test/resources/Browser_Drivers/</webdriver.gecko.driver>
-
-
-								<!-- <remoteDriver>${remote}</remoteDriver> -->
-								<!-- <gridURL>${seleniumGridURL}</gridURL> -->
-								<!-- <desiredPlatform>${platform}</desiredPlatform> -->
-								<!-- <desiredBrowserVersion>${browserVersion}</desiredBrowserVersion> -->
-								<!-- <proxyEnabled>${proxyEnabled}</proxyEnabled> -->
-								<!-- <proxyHost>${proxyHost}</proxyHost> -->
-								<!-- <proxyPort>${proxyPort}</proxyPort> -->
-
-								<!--Set properties passed in by the driver binary downloader -->
-
-
-							</systemPropertyVariables>
-							<properties>
-								<property>
-									<name>listener</name>
-									<value>integrationTests.cucumber.Junit_listener</value>
-								</property>
-							</properties>
-							<forkCount>4</forkCount>
-							<reuseForks>true</reuseForks>
-						</configuration>
-						<executions>
-							<execution>
-								<id>Selenium-integration-tests</id>
-								<goals>
-									<goal>integration-test</goal>
-									<!--Use this goal to PASS/FAIL build based on results -->
-									<goal>verify</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-
-					<!-- ================================================ -->
-					<!-- CUCUMBER PARALLEL INTEGRATION TESTING CONFIG -->
-					<!-- ================================================ -->
-
-					<!--Auto generates multiple cucumber run-files on the fly & executes 
-						them -->
-					<!--This is a replacement for the hard coded cucumber run file -->
-					<!--(Thie file which has: contains @RunWith and @CucumberOptions -->
-
-					<plugin>
-						<groupId>com.github.temyers</groupId>
-						<artifactId>cucumber-jvm-parallel-plugin</artifactId>
-						<version>5.0.0</version>
-						<executions>
-							<execution>
-								<id>generateRunners</id>
-								<phase>generate-test-sources</phase>
-								<goals>
-									<goal>generateRunners</goal>
-								</goals>
-								<configuration>
-									<!-- Mandatory -->
-									<!-- List of package names to scan for glue code. -->
-									<glue>
-										<package>integrationTests.selenium.step_definitions</package>
-										<package>integrationTests.cucumber</package>
-									</glue>
-									<!-- These are optional, with the default values -->
-									<!-- Where to output the generated tests -->
-									<outputDirectory>${project.build.directory}/generated-test-sources/cucumber</outputDirectory>
-									<!-- The directory, which must be in the root of the runtime classpath, 
-										containing your feature files. -->
-									<featuresDirectory>src/test/resources/Features/</featuresDirectory>
-									<!-- Directory where the cucumber report files shall be written -->
-									<cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir>
-
-									<tags>
-										<!-- <tag>@Basket</tag> -->
-										<!-- <tag>~@ignore</tag> -->
-									</tags>
-									<parallelScheme>FEATURE</parallelScheme>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-compiler-plugin</artifactId>
-						<configuration>
-							<source>1.8</source>
-							<target>1.8</target>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		
-		
 	</profiles>
 
 </project>

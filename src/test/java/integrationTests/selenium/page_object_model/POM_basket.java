@@ -26,7 +26,7 @@ public class POM_basket extends Page_object_model {
 		List<WebElement> rows = webdriver.findElements(dropQuantity);
 
 		int productCount = elementCount(dropQuantity);
-		System.out.println("number of different products: " + productCount);
+		//System.out.println("number of different products: " + productCount);
 		return  productCount;
 		
 		
@@ -46,7 +46,7 @@ public class POM_basket extends Page_object_model {
 			Select select = new Select(element);
 			quantityCount = quantityCount + Integer.valueOf(select.getFirstSelectedOption().getText().replaceAll("\\s+",""));
 			
-			System.out.println("quantity of product: " + quantityCount);
+			//System.out.println("quantity of product: " + quantityCount);
 		}
 		
 		return quantityCount;

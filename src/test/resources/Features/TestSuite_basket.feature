@@ -8,7 +8,7 @@ Feature: Basket
 	Then empty basket is shown
 
  
-  @Basket  @Short  
+  @Basket  
   Scenario Outline: Customer views basket with one item x1 quantity
 	Given customer is on product page : <Product>
 	And adds product to basket
@@ -17,13 +17,13 @@ Feature: Basket
    Examples:
     | Product 					| ProductCount	| Quantity	|
     | XBOX		 				| 1				| 1			|
-    | COOKERS 					| 1				| 1			|
-    | PUSHCHAIR 				| 1				| 1			|
-    | SPIDERMAN					| 1				| 1			|
-    | FOOTBALL 					| 1				| 1			|
-    | WEIGHTS					| 1				| 1			|
-    | JEANS 					| 1				| 1			|       
-    | RING					 	| 1				| 1			|	
+#    | COOKERS 					| 1				| 1			|
+#    | PUSHCHAIR 				| 1				| 1			|
+#    | SPIDERMAN					| 1				| 1			|
+#    | FOOTBALL 					| 1				| 1			|
+#    | WEIGHTS					| 1				| 1			|
+#    | JEANS 					| 1				| 1			|       
+#    | RING					 	| 1				| 1			|	
 
 
   @Basket

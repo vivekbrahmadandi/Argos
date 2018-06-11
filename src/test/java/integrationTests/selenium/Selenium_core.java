@@ -79,7 +79,7 @@ public class Selenium_core{
 		System.out.println("Operating system: " + os );		
 		System.out.println("Web Browser: " + browser );	
 		System.out.println("Browser headless mode: " + browserHeadless );	
-		System.out.println("Browser parallel count: " + browserParallelCount );		
+		System.out.println("Browser max parallel count: " + browserParallelCount );		
 		System.out.println("===========================");
 
 		createWebDriver();
@@ -176,7 +176,9 @@ public class Selenium_core{
 				webdriver = new FirefoxDriver();
 				webdriver.manage().window().maximize();
 			}
+			break;
 
+		case "ie":
 		case "edge":
 
 			if (browserHeadless){
@@ -399,7 +401,7 @@ public class Selenium_core{
 			Thread.sleep(500);
 			iWaitTime++;
 
-			System.out.println(iWaitTime + " polling element" + target);
+			//System.out.println(iWaitTime + " polling element" + target);
 			if (iWaitTime==10){break;}
 		}	
 
