@@ -6,7 +6,16 @@ public class POM_popup extends Page_object_model {
 
 	private By btnClose = By.xpath("//a[@class=\"acsCloseButton acsAbandonButton \"]");	
 	public By linkCookieGotIt = By.linkText("GOT IT");
+	public By linkCookieGotIt_lowercase = By.xpath("//*[@id=\"__tealiumGDPRecModal\"]/div/div/div[2]/a");
+	
+	
 
+	
+
+	
+	//*[@id="__tealiumGDPRecModal"]/div/div/div[2]/a
+	
+	
 	public void escPopup() throws Exception{
 
 		Thread.sleep(500);
@@ -16,13 +25,18 @@ public class POM_popup extends Page_object_model {
 			click(btnClose);
 
 		}
+//		if(elementExists(linkCookieGotIt)){
+//
+//			//click(linkCookieGotIt);
+//
+//		}	
+//		
+		if(elementExists(linkCookieGotIt_lowercase)){
 
-
-		if(elementExists(linkCookieGotIt)){
-
-			click(linkCookieGotIt);
+			click(linkCookieGotIt_lowercase);
 
 		}	
+		
 
 	}
 

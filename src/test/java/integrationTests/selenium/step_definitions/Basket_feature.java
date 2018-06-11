@@ -22,6 +22,7 @@ public class Basket_feature extends Page_object_model {
 	@When("^adds product to basket$")
 	public void adds_product_to_basket() throws Throwable {
 
+		
 		productPage.adds_product_to_basket_via_productPage();
 
 	}

@@ -1,7 +1,5 @@
 package integrationTests.cucumber;
 
-import java.awt.Desktop;
-import java.io.File;
 
 import org.junit.runner.Description;
 import org.junit.runner.Result;
@@ -30,9 +28,6 @@ public class Junit_listener extends RunListener {
 		
 		Selenium_core.quitWebDriver();
 		
-		//Auto open report
-		//File htmlFile = new File(testReport);
-		//Desktop.getDesktop().browse(htmlFile.toURI());
 
 	}
 

@@ -10,22 +10,26 @@ public class Cucumber_report_generate {
 	public static List<String> getListOfJsonReports(String rootDir, String dir){
 
 		List<String> list = new ArrayList<String>();
-		
+
 		File folder = new File(rootDir + "\\" + dir);
-		File[] listOfFiles = folder.listFiles();
 
-		for (int i = 0; i < listOfFiles.length; i++) {
-			if (listOfFiles[i].isFile()) {
-				if (listOfFiles[i].getName().contains(".json")){
+		if (folder.listFiles() != null ){
 
-					String filepath = dir + "\\" + listOfFiles[i].getName();
-					
-					System.out.println(filepath);
-					
-					list.add(filepath);
+			File[] listOfFiles = folder.listFiles();
 
-				}
-			} 
+			for (int i = 0; i < listOfFiles.length; i++) {
+				if (listOfFiles[i].isFile()) {
+					if (listOfFiles[i].getName().contains(".json")){
+
+						String filepath = dir + "\\" + listOfFiles[i].getName();
+
+						System.out.println(filepath);
+
+						list.add(filepath);
+
+					}
+				} 
+			}
 		}
 		return list;
 

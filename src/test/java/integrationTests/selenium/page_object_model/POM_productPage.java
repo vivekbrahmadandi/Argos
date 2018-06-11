@@ -34,6 +34,7 @@ public class POM_productPage extends Page_object_model {
 
 		if (!textExists("Not available online")){
 			click(btnAddToBasket);
+			//popup.escPopup();
 			popupBasket.checkContinueShopping();
 		}else{
 			System.out.println("This item is not available online to add to basket");

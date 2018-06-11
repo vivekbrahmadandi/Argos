@@ -37,7 +37,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -47,27 +50,38 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Selenium_core{
 
-	protected static WebDriver webdriver;
+	public static WebDriver webdriver;
 	protected static WebDriverWait wait;
 
+	static String os; 
+	static String env; 
 	static String browser; 
-	static boolean chrome_headless; 	
-	static String QA_env; 	
-	static Long webDriverWaitTime; 		
-		
+	static boolean browserHeadless; 		
+	static String browserParallelCount; 
+
+	
 	//static blocks only called once 
 	static{
-		
+
 		//===========================
 		//Get system properties set within Maven using the maven-failsafe-plugin
 		//Create webdriver to launch browser
 		//===========================
-	
+
+		os = System.getProperty("os");
+		env = System.getProperty("env");	
 		browser = System.getProperty("browser");
-		chrome_headless = Boolean.parseBoolean(System.getProperty("chrome_headless"));
-		QA_env = System.getProperty("QA_env");	
-		webDriverWaitTime = Long.valueOf(System.getProperty("webdriver.wait.time"));
-		
+		browserHeadless = Boolean.parseBoolean(System.getProperty("browser.headless"));
+		browserParallelCount = System.getProperty("browser.parallel.count");
+
+		System.out.println("BUILD CONFIGURATION");
+		System.out.println("===========================");
+		System.out.println("Operating system: " + os );		
+		System.out.println("Web Browser: " + browser );	
+		System.out.println("Browser headless mode: " + browserHeadless );	
+		System.out.println("Browser parallel count: " + browserParallelCount );		
+		System.out.println("===========================");
+
 		createWebDriver();
 
 	}
@@ -75,23 +89,61 @@ public class Selenium_core{
 	public static void createWebDriver() {
 
 		//===========================
-		//set webdriver properties for chrome and firefox
-		//===========================
-		//Already set in maven using the maven-failsafe-plugin
-//		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")  + "\\src\\test\\resources\\Browser_Drivers\\chromedriver.exe");
-//		System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")  + "\\src\\test\\resources\\Browser_Drivers\\geckodriver.exe");
+		// Multi operating-system configuration
+		//===========================v
+
+		//set system properties for webdriver depending on OS.
+
+		os = os.toLowerCase();
+
+		switch (os){
+
+		case "windows":
+
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\windows\\chromedriver.exe");
+			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")  + "\\src\\test\\resources\\browser_drivers\\windows\\geckodriver.exe");
+			System.setProperty("webdriver.edge.driver", System.getProperty("user.dir")   + "\\src\\test\\resources\\browser_drivers\\windows\\MicrosoftWebDriver.exe");
+			System.setProperty("webdriver.opera.driver",  System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\windows\\operadriver.exe");
+			break;
+
+		case "linux":
+
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\linux\\");
+			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")  + "\\src\\test\\resources\\browser_drivers\\linux\\");
+			System.setProperty("webdriver.edge.driver", System.getProperty("user.dir")   + "\\src\\test\\resources\\browser_drivers\\linux\\");
+			System.setProperty("webdriver.opera.driver",  System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\linux\\");
+			break;
+
+
+		case "mac":
+
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\mac\\");
+			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")  + "\\src\\test\\resources\\browser_drivers\\mac\\");
+			System.setProperty("webdriver.edge.driver", System.getProperty("user.dir")   + "\\src\\test\\resources\\browser_drivers\\mac\\");
+			System.setProperty("webdriver.opera.driver",  System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\mac\\");
+			break;
+
+		default: 
+
+			System.out.println("===========================");
+			System.out.println(os + " is not a recognised operating system, please check config. Aborting test");
+			System.out.println("===========================");
+			System.exit(0);
+		}
 
 		//===========================
-		// Multi Browser testing
+		// Multi web browser configuration
 		//===========================
 
-		System.out.println("Executing with browser:" + browser);
+		browser = browser.toLowerCase();
 
-		if(browser.equals("chrome")) {
+		switch(browser){
+
+		case "chrome":
 
 			ChromeOptions options = new ChromeOptions();
 
-			if (chrome_headless){
+			if (browserHeadless){
 
 				options.addArguments("headless");
 				webdriver = new ChromeDriver(options);
@@ -101,25 +153,62 @@ public class Selenium_core{
 				webdriver = new ChromeDriver();
 				webdriver.manage().window().maximize();
 			}
+			break;
 
-		}else if(browser.equals("fireFox")) {
 
-			webdriver = new FirefoxDriver();
+		case "firefox":
 
+			System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE,"true");
+			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");
+			
+			if (browserHeadless){
+
+			    FirefoxBinary firefoxBinary = new FirefoxBinary();
+			    firefoxBinary.addCommandLineOptions("--headless");
+			    FirefoxOptions firefoxOptions = new FirefoxOptions();
+			    firefoxOptions.setBinary(firefoxBinary);
+			    webdriver = new FirefoxDriver(firefoxOptions);	
+			    webdriver.manage().window().setSize(new Dimension(1080, 1920));
+			    
+	
+			}else{
+
+				webdriver = new FirefoxDriver();
+				webdriver.manage().window().maximize();
+			}
+
+		case "edge":
+
+			if (browserHeadless){
+
+				System.out.println("===========================");
+				System.out.println(browser + " doesn't have a headless mode, launching normally");
+				System.out.println("===========================");
+				
+			}	
+				
+			webdriver = new  EdgeDriver();
+
+			break;
+
+
+		default: 
+	
+			System.out.println("===========================");
+			System.out.println(browser + " is not a recognised web browser, please check config. Aborting test");
+			System.out.println("===========================");
+			System.exit(0);
+	
 		}
-		else {
-			Assert.fail("No browser selected for selenium to run against, aborting");
-		}
 
-		wait = new WebDriverWait(webdriver,webDriverWaitTime);
 
+		wait = new WebDriverWait(webdriver,60);
 		deleteCookies();
 
 	}
 
 	public static void quitWebDriver() throws Exception{
-
-		webdriver.close(); 
+ 
 		webdriver.quit();
 
 	}
@@ -139,11 +228,11 @@ public class Selenium_core{
 
 	public void gotoHomePage() throws Exception{
 
-		webdriver.get(QA_env);
+		webdriver.get(env);
 		waitForAjaxComplete();
 
 	}
-	
+
 	public int elementCount(By target) throws InterruptedException{
 
 		waitForAjaxComplete();
@@ -156,8 +245,19 @@ public class Selenium_core{
 		waitForAjaxComplete();
 
 		if (webdriver.findElements(target).size()>0){
-			return true;
+
+			//[Fail-safe] check its clickable, to ensure it really does exist.
+			try{
+				WebDriverWait quickWait = new WebDriverWait(webdriver, 1);
+				quickWait.until(ExpectedConditions.elementToBeClickable(target));
+
+				return true;
+			}
+			catch (Exception e){
+				return false;
+			}
 		}
+
 		return false;
 
 	}	
@@ -222,7 +322,7 @@ public class Selenium_core{
 
 			}
 		}
-	
+
 	}
 
 	//==================================================
@@ -239,12 +339,9 @@ public class Selenium_core{
 
 	public void click(By target) throws Exception{
 
-		scrollTo(target);
 
-		waitForElement(target);
 		wait.until(ExpectedConditions.elementToBeClickable(target)).click();
 
-		
 	}
 
 	public void sendkeys(By target,String textToSend){
@@ -255,11 +352,11 @@ public class Selenium_core{
 
 			//Clear text field if it has text before sending text.
 			if(!webdriver.findElement(target).getAttribute("value").equals("") ||
-			   !webdriver.findElement(target).getText().equals("")){
+					!webdriver.findElement(target).getText().equals("")){
 
 				webdriver.findElement(target).clear();
 			}
-			
+
 		}finally{
 			webdriver.findElement(target).sendKeys(textToSend);	
 		}	
@@ -511,112 +608,112 @@ public class Selenium_core{
 	 */ 
 	//=====================================================
 
-//	private SoapUITestCaseRunner runner;
-//	
-//	public void loadAPI(String projectXML){
-//
-//		runner = new SoapUITestCaseRunner(); 
-//		runner.setProjectFile(projectXML);
-//		runner.setPrintReport(true);
-//
-//	}
-//
-//	public List<String> runAPI(String setTestSuite, String setTestCase) {
-//
-//		ByteArrayOutputStream baos = null;
-//		PrintStream newPrintStream = null;
-//		PrintStream oldPrintStream = null;
-//
-//		try{
-//
-//			//==========================================================================
-//			//redirect console output so it can be saved to a string and queried later.
-//			//==========================================================================
-//
-//			// new stream to hold console output
-//			baos = new ByteArrayOutputStream();
-//			newPrintStream = new PrintStream(baos);
-//
-//			// Save the old stream
-//			oldPrintStream = System.out;
-//
-//			// Set Java to use new stream
-//			System.setOut(newPrintStream);
-//
-//			//==========================================================================
-//			//run SOAPUI test
-//			//==========================================================================
-//
-//			System.out.println("===== SOAP UI LOG (START) =====");
-//
-//			runner.setTestSuite(setTestSuite);
-//			runner.setTestCase(setTestCase);
-//
-//			runner.run();
-//
-//
-//		}catch(Exception e){
-//
-//			//If test fails, fail build, and show SOAPUI exception.
-//			Assert.fail(e.getMessage());
-//
-//			//finally block required to redirect Java back to old console output	
-//		}finally{
-//
-//			//==========================================================================
-//			//Save redirected output and put console output back to normal
-//			//==========================================================================
-//
-//			System.out.flush();
-//			System.setOut(oldPrintStream);
-//
-//			//==========================================================================
-//			//Show and then return the console output to calling method
-//			//==========================================================================
-//
-//			System.out.println(baos.toString());
-//
-//		}
-//
-//		List<String> logs = new ArrayList<String>();
-//
-//		String StringStart = "[log] ";
-//		String StringEnd = "\r";
-//
-//		Pattern p = Pattern.compile(Pattern.quote(StringStart) + "(.*?)" + Pattern.quote(StringEnd));
-//		Matcher m = p.matcher(baos.toString());
-//		while (m.find()) {
-//
-//			logs.add(m.group(1));
-//
-//		}
-//
-//		//if method is succesful, then SOAPUI logs will be pulled and return to calling method.
-//		return logs;
-//
-//	}	
-//
-//	//Use this to output to console all the logs returned by runAPI
-//	public void showRunAPIlog(List<String> logs) {
-//
-//		System.out.println("#### showRunAPIlog results below ####");	
-//
-//		for (String a: logs){
-//			System.out.println(a);	
-//		}
-//
-//	}
-//
-//	public void setAPIproperties(String...properties) {
-//
-//		//Example use: 
-//
-//		//setAPIproperties("access_token="+accessToken,"execute_url="+executeURL_API);
-//
-//		runner.setProjectProperties(properties); 
-//
-//
-//	}
+	//	private SoapUITestCaseRunner runner;
+	//	
+	//	public void loadAPI(String projectXML){
+	//
+	//		runner = new SoapUITestCaseRunner(); 
+	//		runner.setProjectFile(projectXML);
+	//		runner.setPrintReport(true);
+	//
+	//	}
+	//
+	//	public List<String> runAPI(String setTestSuite, String setTestCase) {
+	//
+	//		ByteArrayOutputStream baos = null;
+	//		PrintStream newPrintStream = null;
+	//		PrintStream oldPrintStream = null;
+	//
+	//		try{
+	//
+	//			//==========================================================================
+	//			//redirect console output so it can be saved to a string and queried later.
+	//			//==========================================================================
+	//
+	//			// new stream to hold console output
+	//			baos = new ByteArrayOutputStream();
+	//			newPrintStream = new PrintStream(baos);
+	//
+	//			// Save the old stream
+	//			oldPrintStream = System.out;
+	//
+	//			// Set Java to use new stream
+	//			System.setOut(newPrintStream);
+	//
+	//			//==========================================================================
+	//			//run SOAPUI test
+	//			//==========================================================================
+	//
+	//			System.out.println("===== SOAP UI LOG (START) =====");
+	//
+	//			runner.setTestSuite(setTestSuite);
+	//			runner.setTestCase(setTestCase);
+	//
+	//			runner.run();
+	//
+	//
+	//		}catch(Exception e){
+	//
+	//			//If test fails, fail build, and show SOAPUI exception.
+	//			Assert.fail(e.getMessage());
+	//
+	//			//finally block required to redirect Java back to old console output	
+	//		}finally{
+	//
+	//			//==========================================================================
+	//			//Save redirected output and put console output back to normal
+	//			//==========================================================================
+	//
+	//			System.out.flush();
+	//			System.setOut(oldPrintStream);
+	//
+	//			//==========================================================================
+	//			//Show and then return the console output to calling method
+	//			//==========================================================================
+	//
+	//			System.out.println(baos.toString());
+	//
+	//		}
+	//
+	//		List<String> logs = new ArrayList<String>();
+	//
+	//		String StringStart = "[log] ";
+	//		String StringEnd = "\r";
+	//
+	//		Pattern p = Pattern.compile(Pattern.quote(StringStart) + "(.*?)" + Pattern.quote(StringEnd));
+	//		Matcher m = p.matcher(baos.toString());
+	//		while (m.find()) {
+	//
+	//			logs.add(m.group(1));
+	//
+	//		}
+	//
+	//		//if method is succesful, then SOAPUI logs will be pulled and return to calling method.
+	//		return logs;
+	//
+	//	}	
+	//
+	//	//Use this to output to console all the logs returned by runAPI
+	//	public void showRunAPIlog(List<String> logs) {
+	//
+	//		System.out.println("#### showRunAPIlog results below ####");	
+	//
+	//		for (String a: logs){
+	//			System.out.println(a);	
+	//		}
+	//
+	//	}
+	//
+	//	public void setAPIproperties(String...properties) {
+	//
+	//		//Example use: 
+	//
+	//		//setAPIproperties("access_token="+accessToken,"execute_url="+executeURL_API);
+	//
+	//		runner.setProjectProperties(properties); 
+	//
+	//
+	//	}
 
 
 }
