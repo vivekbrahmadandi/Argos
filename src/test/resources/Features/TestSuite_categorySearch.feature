@@ -5,7 +5,7 @@ Feature: CategorySearch
   	Given customer is anywhere on website
 
 
-  @CategorySearch @Just    
+  @CategorySearch 
    Scenario Outline: customer searches by category using category menu
 	When customer clicks on category: <Category> in the menu
 	Then category splash screen is shown
@@ -79,17 +79,17 @@ Feature: CategorySearch
     | JEWELLERY				 	| JEWLERY					|
 
 
-  @CategorySearch
+  @CategorySearch @Short
   Scenario Outline: customer searches for unrecognised category
 	When customer searches for unrecognised category: <Category> using search feature
 	Then no search results page is shown
    Examples:
     | Category 			|
     | gdfgdfe			|
-    | 12332432			|
-    | xxxxxxx			|
-    | TBYSPOS 			|
-    | SPOSPO			|
-    | AND AND AND 		|
-    | OR OR OR  		|        
-    | @@@				| 
+#    | 12332432			|
+#    | xxxxxxx			|
+#    | TBYSPOS 			|
+#    | SPOSPO			|
+#    | AND AND AND 		|
+#    | OR OR OR  		|        
+#    | @@@				| 

@@ -4,6 +4,7 @@ import org.junit.Assert;
 
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import integrationTests.selenium.Selenium_core;
 
 public class Cucumber_hooks   {
@@ -21,6 +22,12 @@ public class Cucumber_hooks   {
 
     }
 	
+	@Before
+    public void beforeScenario() throws Exception{
+		
+		Selenium_core.deleteCookies();
+		
+	}
 
 }
 
