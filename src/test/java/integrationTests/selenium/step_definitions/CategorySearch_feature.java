@@ -18,9 +18,9 @@ public class CategorySearch_feature extends Page_object_model {
 	@Given("^customer is anywhere on website$")
 	public void customer_is_anywhere_on_website() throws Throwable {
 
-		deleteCookies();
-		gotoHomePage();
 		
+		gotoHomePage();
+		deleteCookies();
 		popup.escPopup(); 
 		
 	}
@@ -124,7 +124,6 @@ public class CategorySearch_feature extends Page_object_model {
 	
 	@Then("^no search results page is shown$")
 	public void no_search_results_page_is_shown() throws Throwable {
-
 
 		Assert.assertTrue(getText(productResults.txtNoResults).contains("couldn't find any products"));
 			

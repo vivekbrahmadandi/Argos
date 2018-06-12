@@ -8,7 +8,7 @@ Feature: Basket
 	Then empty basket is shown
 
  
-  @Basket  
+  @Basket   
   Scenario Outline: Customer views basket with one item x1 quantity
 	Given customer is on product page : <Product>
 	And adds product to basket
@@ -26,7 +26,7 @@ Feature: Basket
 #    | RING					 	| 1				| 1			|	
 
 
-  @Basket
+  @Basket @Retest
   Scenario Outline:  Customer views basket with one item x2 quantity
 	Given customer is on product page : <Product>
 	And adds product: <Product> to basket twice

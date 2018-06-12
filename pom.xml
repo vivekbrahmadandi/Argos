@@ -315,8 +315,8 @@
 									<cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir>
 
 									<tags>
-<!-- 										<tag>@Basket</tag> -->
-										<tag>@Short</tag>
+										<!-- <tag>@Basket</tag> -->
+										<tag>not @Ignored</tag>
 									</tags>
 									<parallelScheme>FEATURE</parallelScheme>
 								</configuration>

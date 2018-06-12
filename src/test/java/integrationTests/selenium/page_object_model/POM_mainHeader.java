@@ -12,41 +12,49 @@ public class POM_mainHeader extends Page_object_model {
 	public By txtSearchBar = By.xpath("//*[@id=\"searchTerm\"]");
 	public By btnSearch = By.xpath("//button[@class=\"argos-header__search-button\"]");
 	public By btnLogin = By.xpath("//a[@class=\"font-condensed uppercase argos-header__link argos-header__link--signin\"]");
-
 	public By txtCategory = By.xpath("//li[@class=\"font-condensed-extra-bold uppercase meganav__nav-item meganav__nav-item--categories \"]");
 
 	//Category Links
-	public By LinkTechnology = By.linkText("TECHNOLOGY"); 
-	public By LinkHomeAndGarden = By.linkText("HOME & GARDEN");
-	public By LinkBabyAndNursery = By.linkText("BABY & NURSERY");
-	public By LinkToys = By.linkText("TOYS");
-	public By LinkSportsAndLeisure = By.linkText("SPORTS & LEISURE");
-	public By LinkHealthAndBeauty = By.linkText("HEALTH & BEAUTY");
-	public By LinkClothing = By.linkText("CLOTHING");
-	public By LinkJewelleryAndWatches = By.linkText("JEWELLERY & WATCHES");
+	public By LinkTechnology = By.xpath(buildLinkXpath("technology/c:29949/"));
+	public By LinkHomeAndGarden = By.xpath(buildLinkXpath("home-and-garden/c:29351/"));
+	public By LinkBabyAndNursery = By.xpath(buildLinkXpath("baby-and-nursery/c:29000/"));
+	public By LinkToys = By.xpath(buildLinkXpath("toys/c:30299/"));
+	public By LinkSportsAndLeisure = By.xpath(buildLinkXpath("sports-and-leisure/c:30468/"));
+	public By LinkHealthAndBeauty = By.xpath(buildLinkXpath("health-and-beauty/c:29203/"));
+	public By LinkClothing = By.xpath(buildLinkXpath("clothing/c:29131/"));
+	public By LinkJewelleryAndWatches = By.xpath(buildLinkXpath("jewellery-and-watches/c:29298/"));
 
 	//Sub-Category links
-	public By LinkTelevisionsAndAccessories = By.linkText("Televisions & Accessories"); 
-	public By LinkLaptopsAndPCs = By.linkText("Laptops & PCs"); 
-	public By LinkLivingRoomFurniture = By.linkText("Living Room Furniture"); 
-	public By LinkBedding = By.linkText("Bedding"); 
-	public By LinkTravel = By.linkText("Travel"); 
-	public By LinkMaternity = By.linkText("Maternity"); 
-	public By LinkWomenClothing = By.linkText("All Women's Clothing"); 
-	public By LinkMenClothing = By.linkText("All Men's Clothing"); 
+	public By LinkTelevisionsAndAccessories = By.xpath(buildLinkXpath("technology/televisions-and-accessories/c:29955/"));
+	public By LinkLaptopsAndPCs = By.xpath(buildLinkXpath("technology/laptops-and-pcs/c:29953/"));
+	public By LinkLivingRoomFurniture = By.xpath(buildLinkXpath("home-and-garden/living-room-furniture/c:29368/"));
+	public By LinkBedding = By.xpath(buildLinkXpath("home-and-garden/bedding/c:29358/"));
+	public By LinkTravel = By.xpath(buildLinkXpath("baby-and-nursery/travel/c:29002/"));
+	public By LinkMaternity = By.xpath(buildLinkXpath("baby-and-nursery/maternity/c:29007/")); 
+	public By LinkWomenClothing = By.xpath(buildLinkXpath("clothing/womens/c:691104/"));
+	public By LinkMenClothing = By.xpath(buildLinkXpath("Clothing/Mens/c:691144/"));
 
 	//Niche-Category links
-	public By LinkDashCams = By.linkText("Dash Cams"); 
-	public By LinkSofas = By.linkText("Sofas"); 
-	public By LinkPushchairs = By.linkText("Pushchairs"); 
-	public By LinkBatteries = By.linkText("Batteries"); 
-	public By LinkTreadmills = By.linkText("Treadmills"); 
-	public By LinkHairDryers = By.linkText("Hair Dryers"); 
-	public By LinkBras = By.linkText("Bras"); 
-	public By LinkLadiesEarrings = By.linkText("Earrings"); 
+	public By LinkDashCams = By.xpath(buildLinkXpath("technology/dash-cams/c:30278/"));
+	public By LinkSofas = By.xpath(buildLinkXpath("home-and-garden/living-room-furniture/sofas/c:29643/")); 
+	public By LinkPushchairs = By.xpath(buildLinkXpath("baby-and-nursery/travel/pushchairs/c:29042/"));
+	public By LinkBatteries = By.xpath(buildLinkXpath("technology/batteries-and-chargers/batteries-and-rechargeable-batteries/c:30218/"));
+	public By LinkTreadmills = By.xpath(buildLinkXpath("sports-and-leisure/fitness-equipment/treadmills/c:30612/")); 
+	public By LinkHairDryers = By.xpath(buildLinkXpath("health-and-beauty/hair-care/hair-dryers/c:29235/"));
+	public By LinkBras = By.xpath(buildLinkXpath("Clothing/Womens/Lingerie/Bras/c:691137/"));
+	public By LinkLadiesEarrings = By.xpath(buildLinkXpath("jewellery-and-watches/ladies-jewellery/ladies-earrings/c:29315/"));
 	
 	public By popupMenu = By.xpath("//span[@class=\"meganav__level-2-title\"]");	
 	//<span class="meganav__level-2-title">Womens Clothing</span>
+	
+	private String buildLinkXpath(String indentifier){
+		
+		String path = "//a[@href=\"/browse/" + indentifier + "\"]";
+		
+		return path;
+			
+	}
+	
 	
 	
 	public void clickCategory(String category) throws Exception{

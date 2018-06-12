@@ -12,15 +12,15 @@ Feature: CategorySearch
    Examples:
     | Category 					|
     | TECHNOLOGY 				|
-#    | HOME AND GARDEN 			|
-#    | BABY AND NURSERY 			|
-#    | TOYS 						|
-#    | SPORTS AND LEISURE 		|
-#    | HEALTH AND BEAUTY 		|
-#    | CLOTHING 					|        
-#    | JEWELLERY AND WATCHES 	| 	
+    | HOME AND GARDEN 			|
+    | BABY AND NURSERY 			|
+    | TOYS 						|
+    | SPORTS AND LEISURE 		|
+    | HEALTH AND BEAUTY 		|
+    | CLOTHING 					|        
+    | JEWELLERY AND WATCHES 	| 	
 
-  @CategorySearch  
+  @CategorySearch   
  Scenario Outline: customer navigates to subcategory via category menu hover feature then goes to niche-category
 	When customer hovers on category: <Category> in the menu
 	And clicks on sub-category: <Sub-category>
@@ -42,10 +42,9 @@ Feature: CategorySearch
     | BABY AND NURSERY 		|Maternity						|maternity-accessories			|
     | CLOTHING 				|Womens 						|accessories					| 
     | CLOTHING 				|Womens 						|dresses						|
-    | CLOTHING 				|Mens 							|accessories					|
     | CLOTHING 				|Mens 							|coats-and-jackets				|      
 
-  @CategorySearch	
+  @CategorySearch	 
   Scenario Outline: customer navigates to niche-category via category menu hover feature
 	When customer hovers on category: <Category> in the menu
 	And clicks on niche-category via main header: <Niche-category>
@@ -63,7 +62,7 @@ Feature: CategorySearch
 
 
 
-  @CategorySearch 
+  @CategorySearch
   Scenario Outline: customer searches for category using misspelling
 	When customer searches and misspells <category> with <misspelling> using search feature
 	Then results of matching products are shown by order of popularity
@@ -79,17 +78,17 @@ Feature: CategorySearch
     | JEWELLERY				 	| JEWLERY					|
 
 
-  @CategorySearch @Short
+  @CategorySearch  
   Scenario Outline: customer searches for unrecognised category
 	When customer searches for unrecognised category: <Category> using search feature
 	Then no search results page is shown
    Examples:
     | Category 			|
     | gdfgdfe			|
-#    | 12332432			|
-#    | xxxxxxx			|
-#    | TBYSPOS 			|
-#    | SPOSPO			|
-#    | AND AND AND 		|
-#    | OR OR OR  		|        
-#    | @@@				| 
+    | 12332432			|
+    | xxxxxxx			|
+    | TBYSPOS 			|
+    | SPOSPO			|
+    | AND AND AND 		|
+    | OR OR OR  		|        
+    | @@@				| 

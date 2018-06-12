@@ -22,12 +22,5 @@ public class Cucumber_hooks   {
 
     }
 	
-	@Before
-    public void beforeScenario() throws Exception{
-		
-		Selenium_core.deleteCookies();
-		
-	}
-
 }
 

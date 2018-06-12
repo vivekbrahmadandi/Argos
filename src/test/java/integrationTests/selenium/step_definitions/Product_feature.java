@@ -15,8 +15,9 @@ public class Product_feature extends Page_object_model {
 	@Given("^customer is on product page : (.+)$")
 	public void customer_is_on_product_page(String product) throws Throwable {
 		
-		deleteCookies();
 		gotoHomePage();
+		deleteCookies();
+		popup.escPopup();
 		customer_searches_by_product_using_search_feature(product);
 		customer_clicks_on_first_product();
 		
@@ -108,7 +109,9 @@ public class Product_feature extends Page_object_model {
 
 		Assert.assertTrue(textExists("Order now, collect right away") || 
 						  textExists("Not in stock") || 
-						  textExists("Delivery within"));
+						  textExists("Delivery within") ||
+						  textExists("How would you like to get your item")
+				);
 				
 	}
 

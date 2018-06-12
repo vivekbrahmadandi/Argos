@@ -10,7 +10,8 @@ public class POM_productResults extends Page_object_model {
 	public By dropProductSort = By.xpath("//select[@class=\"font-standard form-control sort-select\"]");
 
 	public By txtNoResults = By.xpath("//h1[@class=\"no-results__heading\"]");	
-
+	
+	
 	public By btnAddToBasketFirstProduct = By.xpath("(//button[@class=\" add-to-trolley-button button button--primary button--full add-to-trolley-button--beta\"])[1]");	
 	public By btnAddToBasketSecondProduct = By.xpath("(//button[@class=\" add-to-trolley-button button button--primary button--full add-to-trolley-button--beta\"])[2]");	
 
