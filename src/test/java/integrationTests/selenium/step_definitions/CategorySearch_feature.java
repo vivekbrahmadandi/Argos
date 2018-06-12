@@ -125,6 +125,7 @@ public class CategorySearch_feature extends Page_object_model {
 	@Then("^no search results page is shown$")
 	public void no_search_results_page_is_shown() throws Throwable {
 
+
 		Assert.assertTrue(getText(productResults.txtNoResults).contains("couldn't find any products"));
 			
 	}	

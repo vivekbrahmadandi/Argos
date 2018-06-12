@@ -46,6 +46,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
 //import com.smartbear.ready.cmd.runner.SoapUITestCaseRunner;
 
 public class Selenium_core{
@@ -53,38 +54,11 @@ public class Selenium_core{
 	public static WebDriver webdriver;
 	protected static WebDriverWait wait;
 
-	static String os; 
-	static String env; 
-	static String browser; 
-	static boolean browserHeadless; 		
-	static String browserParallelCount; 
-
-	
-	//static blocks only called once 
-	static{
-
-		//===========================
-		//Get system properties set within Maven using the maven-failsafe-plugin
-		//Create webdriver to launch browser
-		//===========================
-
-		os = System.getProperty("os");
-		env = System.getProperty("env");	
-		browser = System.getProperty("browser");
-		browserHeadless = Boolean.parseBoolean(System.getProperty("browser.headless"));
-		browserParallelCount = System.getProperty("browser.parallel.count");
-
-		System.out.println("BUILD CONFIGURATION");
-		System.out.println("===========================");
-		System.out.println("Operating system: " + os );		
-		System.out.println("Web Browser: " + browser );	
-		System.out.println("Browser headless mode: " + browserHeadless );	
-		System.out.println("Browser max parallel count: " + browserParallelCount );		
-		System.out.println("===========================");
-
-		createWebDriver();
-
-	}
+	public static String os; 
+	public static String env; 
+	public static String browser; 
+	public static boolean browserHeadless; 		
+	public static String browserParallelCount; 
 
 	public static void createWebDriver() {
 
@@ -181,6 +155,9 @@ public class Selenium_core{
 		case "ie":
 		case "edge":
 
+			
+			//Cucumber_runConfig_IT a = new Cucumber_runConfig_IT();
+			
 			if (browserHeadless){
 
 				System.out.println("===========================");
@@ -362,6 +339,9 @@ public class Selenium_core{
 		}finally{
 			webdriver.findElement(target).sendKeys(textToSend);	
 		}	
+		
+		
+		webdriver.findElement(target).sendKeys(textToSend);	
 
 	}
 
