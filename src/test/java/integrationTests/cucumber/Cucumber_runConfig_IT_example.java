@@ -37,7 +37,7 @@ import cucumber.api.junit.Cucumber;
 //it finds this java file, which has @RunWith, and so cucumber takes over.
 //Cucumber then finds the steps to trigger using both feature files and the step definitions.
 //It finds java files containing the step definitions using the glue command above.
-public class Cucumber_runConfig_IT_ignore {
+public class Cucumber_runConfig_IT_example {
 	//Intentionally blank
 		
 }

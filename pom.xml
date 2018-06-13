@@ -13,15 +13,15 @@
 		<preprod_env>http://www.argos.co.uk</preprod_env>
 		<prod_env>http://www.argos.co.uk</prod_env>
 
-		<!-- Specific to integration testing with Selenium -->
+		<!-- Default values for build profile qa_build (testing with Selenium) -->
+		<!-- Values can be overwritten via command line / CI job -->
 		<os>windows</os>
 		<browser>chrome</browser>
 		<browser.headless>false</browser.headless>
-		<browser.parallel.count>4</browser.parallel.count>
+		<browser.parallel.count>1</browser.parallel.count>
 	</properties>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
@@ -46,7 +46,6 @@
 			<scope>test</scope>
 		</dependency>
 
-
 		<!-- ================================================ -->
 		<!-- SELENIUM dependency -->
 		<!-- ================================================ -->
@@ -56,7 +55,6 @@
 			<artifactId>selenium-java</artifactId>
 			<version>3.12.0</version>
 		</dependency>
-
 
 		<!-- ================================================ -->
 		<!-- CUCUMBER dependencies -->
@@ -180,24 +178,15 @@
 
 	<profiles>
 
+
 		<!-- ================================================ -->
-		<!-- DEVELOPERS BUILD (Only doing Unit test for quick feedback) -->
+		<!-- MY BUILD PROFILE FOR SELENIUM INTEGRATION TESTING -->
 		<!-- ================================================ -->
 
 		<!-- Build command example: -->
 		<!-- clean verify -P qa_build -Dos=windows -Dbrowser=firefox -Dbrowser.headless=false 
 			-Dbrowser.parallel.count=4 -->
 
-		<profile>
-			<id>dev_build</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-		</profile>
-
-		<!-- ================================================ -->
-		<!-- MY BUILD PROFILE FOR SELENIUM INTEGRATION TESTING -->
-		<!-- ================================================ -->
 
 		<profile>
 			<id>qa_build</id>
@@ -307,13 +296,9 @@
 										<package>integrationTests.selenium.step_definitions</package>
 										<package>integrationTests.cucumber</package>
 									</glue>
-
 									<outputDirectory>${project.build.directory}/generated-test-sources/cucumber</outputDirectory>
-
 									<featuresDirectory>src/test/resources/Features/</featuresDirectory>
-
 									<cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir>
-
 									<tags>
 										<!-- <tag>@Basket</tag> -->
 										<tag>not @Ignored</tag>

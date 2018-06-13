@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -181,11 +182,10 @@ public class Selenium_core{
 
 		}
 
-		wait = new WebDriverWait(webdriver,15);
+		wait = new WebDriverWait(webdriver,60);
 		quickWait = new WebDriverWait(webdriver, 1);
 
 		deleteCookies();
-
 
 	}
 
@@ -208,7 +208,7 @@ public class Selenium_core{
 	// Common operations
 	//===========================
 
-	public void gotoHomePage() throws Exception{
+	public void gotoPage() throws Exception{
 
 		webdriver.get(env);
 		waitForAjaxComplete();
@@ -259,7 +259,7 @@ public class Selenium_core{
 	public void waitForElementInvisible(By target) throws Exception{
 
 		waitForAjaxComplete();
-		
+
 		try{
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(target));
 		}catch(Exception e){
@@ -272,7 +272,7 @@ public class Selenium_core{
 	public void waitForElementNotClickable(By target) throws Exception{
 
 		waitForAjaxComplete();
-		
+
 		try{
 			wait.until(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(target)));
 		}catch(Exception e){
@@ -286,7 +286,7 @@ public class Selenium_core{
 	// Wait for DOM ready and Ajax calls on page to complete (Start)
 	//==================================================
 
-	public void waitForPageLoad() throws InterruptedException {
+	public static void waitForPageLoad() throws InterruptedException {
 
 		JavascriptExecutor javascriptExecutor = (JavascriptExecutor) webdriver;
 
@@ -307,29 +307,31 @@ public class Selenium_core{
 
 	}
 
-	public void waitForAjaxComplete() throws InterruptedException{
 
-		waitForPageLoad();
+	public static void waitForAjaxComplete() throws InterruptedException {
+		
+		long startTime = System.currentTimeMillis();
+		
+		waitForPageLoad(); 
+		
+		webdriver.manage().timeouts().setScriptTimeout(5, TimeUnit.SECONDS);
+		((JavascriptExecutor) webdriver).executeAsyncScript(
+				"var callback = arguments[arguments.length - 1];" +
+						"var xhr = new XMLHttpRequest();" +
+						"xhr.open('POST', '/" + "Ajax_call" + "', true);" +
+						"xhr.onreadystatechange = function() {" +
+						"  if (xhr.readyState == 4) {" +
+						"    callback(xhr.responseText);" +
+						"  }" +
+						"};" +
+				"xhr.send();");
+		
+		long endTime = System.currentTimeMillis();
 
-		int iWaitTime = 0;
-		int iWaitFinish = 200;
-
-		JavascriptExecutor executor = (JavascriptExecutor)webdriver;
-
-		if((Boolean) executor.executeScript("return window.jQuery != undefined")){
-			while(!(Boolean) executor.executeScript("return jQuery.active == 0")){
-
-				Thread.sleep(500);
-				iWaitTime++;
-
-				//System.out.println(iWaitTime + "/" + iWaitFinish + " Waiting for active AJAX calls to complete");
-
-				//fail-safe 
-				if (iWaitTime==iWaitFinish){break;}        
-
-			}
-		}
-
+		long duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
+		
+		//System.out.println("waiting for AJAX:" + duration);
+		
 	}
 
 	//==================================================
@@ -394,7 +396,6 @@ public class Selenium_core{
 
 	}	
 
-
 	public void selectByIndex(By target,int index) throws Exception{
 
 		waitForElement(target);
@@ -403,7 +404,6 @@ public class Selenium_core{
 		select.selectByIndex(index);
 
 	}
-
 
 	public void selectByVisibleText(By target,String text) throws Exception{
 
@@ -469,7 +469,6 @@ public class Selenium_core{
 
 	}	
 
-
 	public static void deleteCookies(){
 
 		if (webdriver.getCurrentUrl().equals("data:,") || 
@@ -490,7 +489,6 @@ public class Selenium_core{
 	//================================================
 	// - Scrolling  (Start)
 	//================================================
-
 
 	public void scrollTo(By target) throws Exception {
 
@@ -542,7 +540,6 @@ public class Selenium_core{
 
 	}	
 
-
 	//================================================
 	// Take Screenshots
 	//================================================
@@ -566,7 +563,6 @@ public class Selenium_core{
 		System.out.println("Screenshot on failure can be found here:");
 		System.out.println(filePath + fileName);
 	}
-
 
 	public void getAllJS(){
 

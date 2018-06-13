@@ -13,12 +13,12 @@ public class Cucumber_report_generate {
 
 		File folder = new File(rootDir + "\\" + dir);
 
-		if (folder.listFiles() != null ){
+		if (folder.listFiles() != null){
 
 			File[] listOfFiles = folder.listFiles();
 
 			for (int i = 0; i < listOfFiles.length; i++) {
-				if (listOfFiles[i].isFile()) {
+				if (listOfFiles[i].isFile() && listOfFiles[i].length()> 0) {
 					if (listOfFiles[i].getName().contains(".json")){
 
 						String filepath = dir + "\\" + listOfFiles[i].getName();

@@ -1,4 +1,4 @@
-package integrationTests.selenium.page_object_model;
+package integrationTests.selenium.pom;
 
 import org.openqa.selenium.By;
 
@@ -11,7 +11,9 @@ public class POM_popup extends Page_object_model {
 	
 	public void escPopup() throws Exception{
 
-		Thread.sleep(500);
+		//Thread.sleep(500);
+		
+		waitForAjaxComplete();
 
 		if(elementExists(btnClose)){ 
 

@@ -78,17 +78,17 @@ Feature: CategorySearch
     | JEWELLERY				 	| JEWLERY					|
 
 
-  @CategorySearch  
+  @CategorySearch @Short
   Scenario Outline: customer searches for unrecognised category
 	When customer searches for unrecognised category: <Category> using search feature
 	Then no search results page is shown
    Examples:
     | Category 			|
     | gdfgdfe			|
-    | 12332432			|
-    | xxxxxxx			|
-    | TBYSPOS 			|
-    | SPOSPO			|
-    | AND AND AND 		|
-    | OR OR OR  		|        
-    | @@@				| 
+#    | 12332432			|
+#    | xxxxxxx			|
+#    | TBYSPOS 			|
+#    | SPOSPO			|
+#    | AND AND AND 		|
+#    | OR OR OR  		|        
+#    | @@@				| 

@@ -5,9 +5,7 @@ import org.junit.Assert;
 
 //Cucumber Test framework
 import cucumber.api.java.en.*;
-
-//POM Object
-import integrationTests.selenium.page_object_model.Page_object_model;
+import integrationTests.selenium.pom.Page_object_model;
 
 public class Basket_feature extends Page_object_model {
 

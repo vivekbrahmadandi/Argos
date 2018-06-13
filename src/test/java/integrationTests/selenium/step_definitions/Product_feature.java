@@ -5,8 +5,7 @@ import org.junit.Assert;
 
 //Cucumber Test framework
 import cucumber.api.java.en.*;
-
-import integrationTests.selenium.page_object_model.Page_object_model;
+import integrationTests.selenium.pom.Page_object_model;
 
 public class Product_feature extends Page_object_model {
 
@@ -15,7 +14,7 @@ public class Product_feature extends Page_object_model {
 	@Given("^customer is on product page : (.+)$")
 	public void customer_is_on_product_page(String product) throws Throwable {
 		
-		gotoHomePage();
+		gotoPage();
 		deleteCookies();
 		popup.escPopup();
 		customer_searches_by_product_using_search_feature(product);

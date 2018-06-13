@@ -1,7 +1,7 @@
 Feature: Basket 
 		 Customer has ability to Add, view, update and delete items from basket.
 
-  @Basket 
+  @Basket @Short
   Scenario: Customer views empty basket
 	Given customer is anywhere on website
 	When customer views basket

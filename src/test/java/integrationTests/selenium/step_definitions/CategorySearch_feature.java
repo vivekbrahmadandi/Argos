@@ -5,9 +5,7 @@ import org.junit.Assert;
 
 //Cucumber Test framework
 import cucumber.api.java.en.*;
-
-//POM Object
-import integrationTests.selenium.page_object_model.Page_object_model;
+import integrationTests.selenium.pom.Page_object_model;
 
 public class CategorySearch_feature extends Page_object_model {
 
@@ -18,8 +16,7 @@ public class CategorySearch_feature extends Page_object_model {
 	@Given("^customer is anywhere on website$")
 	public void customer_is_anywhere_on_website() throws Throwable {
 
-		
-		gotoHomePage();
+		gotoPage();
 		deleteCookies();
 		popup.escPopup(); 
 		
@@ -91,7 +88,6 @@ public class CategorySearch_feature extends Page_object_model {
 	public void customer_searches_for_unrecognised_category_using_search_feature(String unrecognisedCategory) throws Throwable {
 		
 		popup.escPopup(); 
-		
 		mainHeader.searchBar(unrecognisedCategory);
 		
 		//this.unrecognisedCategory = unrecognisedCategory;

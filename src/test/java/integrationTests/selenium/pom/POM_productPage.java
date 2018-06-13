@@ -1,4 +1,4 @@
-package integrationTests.selenium.page_object_model;
+package integrationTests.selenium.pom;
 
 import org.openqa.selenium.By;
 
@@ -45,6 +45,8 @@ public class POM_productPage extends Page_object_model {
 	
 	public void change_store_location(String postcode) throws Throwable {
 
+		popup.escPopup();
+		
 		sendkeys(txtPostCode,postcode);
 		waitForElementInvisible(loadingWheel);
 		click(btnCheckPostcode);

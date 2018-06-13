@@ -1,4 +1,4 @@
-package integrationTests.selenium.page_object_model;
+package integrationTests.selenium.pom;
 
 import org.openqa.selenium.By;
 

@@ -44,7 +44,7 @@ Feature: Products
     | RING					 	| 	
     
      
-  @Product
+  @Product @Short
   Scenario Outline: customer changes store location
 	Given customer is on product page : <Product>
 	When customer changes store location : <Postcode>
@@ -52,9 +52,9 @@ Feature: Products
   Examples:
     | Product 	| Postcode 	|
     | XBOX		| SE6 1SB	|
-    | COOKERS	| BL0 9JH	|
-    | PUSHCHAIR	| SS1 2TW	|
-    | SPIDERMAN	| FK7 7TZ	|
+#    | COOKERS	| BL0 9JH	|
+#    | PUSHCHAIR	| SS1 2TW	|
+#    | SPIDERMAN	| FK7 7TZ	|
   
  
 

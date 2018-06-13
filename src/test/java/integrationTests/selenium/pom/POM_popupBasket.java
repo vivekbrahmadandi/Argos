@@ -1,4 +1,4 @@
-package integrationTests.selenium.page_object_model;
+package integrationTests.selenium.pom;
 
 import org.openqa.selenium.By;
 
@@ -9,6 +9,8 @@ public class POM_popupBasket extends Page_object_model {
 	
 	public void checkContinueShopping() throws Exception{
 
+		popup.escPopup();
+		
 		waitForElement(btnContinueShopping);
 		
 		waitForElementInvisible(loadingWheel);

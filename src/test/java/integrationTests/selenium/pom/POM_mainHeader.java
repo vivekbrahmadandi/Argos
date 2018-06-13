@@ -1,4 +1,4 @@
-package integrationTests.selenium.page_object_model;
+package integrationTests.selenium.pom;
 
 //JUNIT Test framework
 import org.junit.Assert;

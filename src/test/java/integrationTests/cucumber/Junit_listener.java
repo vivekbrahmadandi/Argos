@@ -54,21 +54,17 @@ public class Junit_listener extends RunListener {
 	@Override
 	public void testStarted(Description description) throws Exception {
 		
-	
 	}
 
 	
 	@Override
 	public void testFinished(Description description) throws Exception {
-	
 		
 	}
 
 	@Override
 	public void testFailure(Failure failure) throws Exception {
-	
 		
 	}
 	
-
 }
