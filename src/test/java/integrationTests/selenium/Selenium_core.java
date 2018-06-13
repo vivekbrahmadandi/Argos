@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -314,6 +315,9 @@ public class Selenium_core{
 		
 		waitForPageLoad(); 
 		
+		
+		try{
+			
 		webdriver.manage().timeouts().setScriptTimeout(5, TimeUnit.SECONDS);
 		((JavascriptExecutor) webdriver).executeAsyncScript(
 				"var callback = arguments[arguments.length - 1];" +
@@ -326,12 +330,16 @@ public class Selenium_core{
 						"};" +
 				"xhr.send();");
 		
-		long endTime = System.currentTimeMillis();
+		}catch(Exception e){
+			
+			System.out.println("Selenium_core.waitForAjaxComplete() threw: " + e.getMessage());
+			
+			long endTime = System.currentTimeMillis();
+			long duration = (endTime - startTime); 
+			System.out.println("waiting for AJAX took: " + duration + "MS");
+			
+		}
 
-		long duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
-		
-		//System.out.println("waiting for AJAX:" + duration);
-		
 	}
 
 	//==================================================
