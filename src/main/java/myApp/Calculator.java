@@ -4,7 +4,7 @@ public class Calculator {
 
 	public int add(int... nums ){
 
-		int total=1;
+		int total=0;
 
 
 		for (int num:nums){
