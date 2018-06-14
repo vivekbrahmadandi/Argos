@@ -10,9 +10,7 @@ public class POM_basket extends Page_object_model {
 	public By txtH1 = By.xpath("//*[@id=\"emptytrolleylister\"]/div[1]/h1");
 	public By dropQuantity = By.xpath("//select[starts-with(@id,'quantity')]");
 	public By txtPrice = By.xpath("//span[@class=\"price\"]");
-	public By btnRemove = By.xpath("//input[@class=\"input-link\"]");
-	public By btnRemove2 = By.xpath("//button[starts-with(@class,'ProductCard__removeButton')]");
-	
+	public By btnRemove = By.xpath("//input[@value=\"Remove\"]");	
 	
 	public int productCount() throws InterruptedException{
 	
@@ -45,6 +43,26 @@ public class POM_basket extends Page_object_model {
 		return quantityCount;
 
 	}
+	
+	
+	public void remove_first_product_from_basket() throws Throwable {
+
+		popup.escPopup();
+		waitForElement(btnRemove);
+		click(btnRemove);
+
+	}
+	
+	
+	public void change_quantity_first_product(int quantity) throws Throwable {
+
+		popup.escPopup();
+		waitForElement(dropQuantity);
+		selectByVisibleText(dropQuantity,String.valueOf(quantity));
+		
+
+	}
+	
 	
 	
 	public void wait_for_basket_to_load() throws Exception{

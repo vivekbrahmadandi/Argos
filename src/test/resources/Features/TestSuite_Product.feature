@@ -1,6 +1,5 @@
 Feature: Products
-		 Customer has ability to search for specific product and review its description, price, stock and delivery information.
-		 Also customer can see related and recommended products
+		 Customer has ability to search for product, sort results and look at specific product data and delivery information.
 
 
   @Product 
@@ -14,13 +13,13 @@ Feature: Products
    Examples:
     | Product 					|
     | XBOX		 				|
-    | COOKERS 					|
-    | PUSHCHAIR 				|
-    | SPIDERMAN					|
-    | FOOTBALL 					|
-    | WEIGHTS					|
-    | JEANS 					|        
-    | RING					 	| 	
+#    | COOKERS 					|
+#    | PUSHCHAIR 				|
+#    | SPIDERMAN					|
+#    | FOOTBALL 					|
+#    | WEIGHTS					|
+#    | JEANS 					|        
+#    | RING					 	| 	
 	
   @Product
   Scenario Outline: customer searches for product and changes list order
@@ -35,16 +34,16 @@ Feature: Products
    Examples:
     | Product 					|
     | XBOX		 				|
-    | COOKERS 					|
-    | PUSHCHAIR 				|
-    | SPIDERMAN					|
-    | FOOTBALL 					|
-    | WEIGHTS					|
-    | JEANS 					|        
-    | RING					 	| 	
+#    | COOKERS 					|
+#    | PUSHCHAIR 				|
+#    | SPIDERMAN					|
+#    | FOOTBALL 					|
+#    | WEIGHTS					|
+#    | JEANS 					|        
+#    | RING					 	| 	
     
      
-  @Product @Short
+  @Product
   Scenario Outline: customer changes store location
 	Given customer is on product page : <Product>
 	When customer changes store location : <Postcode>

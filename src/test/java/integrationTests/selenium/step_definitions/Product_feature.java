@@ -16,7 +16,7 @@ public class Product_feature extends Page_object_model {
 		
 		gotoPage();
 		deleteCookies();
-		popup.escPopup();
+		
 		customer_searches_by_product_using_search_feature(product);
 		customer_clicks_on_first_product();
 		
@@ -37,29 +37,31 @@ public class Product_feature extends Page_object_model {
 	@When("^customer clicks on first product$")
 	public void customer_clicks_on_first_product() throws Throwable {
 	    
-		popup.escPopup(); 
-		click(productPage.linkProduct);
+		productPage.click_on_first_product();
 			
 	}
 
 	@When("^customer sorts by price low-to-high$")
 	public void customer_sorts_by_price_low_to_high() throws Throwable {
 
-		selectByVisibleText(productPage.dropSort,"Price: Low - High");
+		productPage.sort_products("Price: Low - High");
+		
 	}
 
 
 	@When("^customer sorts by price high-to-low$")
 	public void customer_sorts_by_price_high_to_low() throws Throwable {
 
-		selectByVisibleText(productPage.dropSort,"Price: High - Low");
+		productPage.sort_products("Price: High - Low");
+		
 		
 	}
 
 	@When("^customer sorts by customer rating$")
 	public void customer_sorts_by_customer_rating() throws Throwable {
 
-		selectByVisibleText(productPage.dropSort,"Customer Rating");
+	
+		productPage.sort_products("Customer Rating");
 		
 	}
 	

@@ -300,15 +300,14 @@
 									<featuresDirectory>src/test/resources/Features/</featuresDirectory>
 									<cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir>
 									<tags>
-										<!-- <tag>@Basket</tag> -->
-										<tag>not @Ignored</tag>
+										<!-- <tag>@Retest</tag> -->
+										<!-- <tag>not @Ignored</tag> -->
 									</tags>
 									<parallelScheme>FEATURE</parallelScheme>
 								</configuration>
 							</execution>
 						</executions>
 					</plugin>
-
 				</plugins>
 			</build>
 		</profile>

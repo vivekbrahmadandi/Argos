@@ -12,13 +12,13 @@ Feature: CategorySearch
    Examples:
     | Category 					|
     | TECHNOLOGY 				|
-    | HOME AND GARDEN 			|
-    | BABY AND NURSERY 			|
-    | TOYS 						|
-    | SPORTS AND LEISURE 		|
-    | HEALTH AND BEAUTY 		|
-    | CLOTHING 					|        
-    | JEWELLERY AND WATCHES 	| 	
+#    | HOME AND GARDEN 			|
+#    | BABY AND NURSERY 			|
+#    | TOYS 						|
+#    | SPORTS AND LEISURE 		|
+#    | HEALTH AND BEAUTY 		|
+#    | CLOTHING 					|        
+#    | JEWELLERY AND WATCHES 	| 	
 
   @CategorySearch   
  Scenario Outline: customer navigates to subcategory via category menu hover feature then goes to niche-category
@@ -30,19 +30,19 @@ Feature: CategorySearch
    Examples:
     | Category 				|Sub-category					|Niche-category 				|
     | TECHNOLOGY 			|televisions and accessories	|hdmi-cables-and-optical-cables	|
-    | TECHNOLOGY 			|televisions and accessories	|tv-remote-controls 			|  
-    | TECHNOLOGY 			|Laptops and PCs 				|Gaming laptops and PCs 		|
-    | TECHNOLOGY 			|Laptops and PCs 				|imacs				 			|
-    | HOME AND GARDEN 		|living room furniture			|armchairs-and-chairs			|
-    | HOME AND GARDEN 		|living room furniture			|cd-and-dvd-storage				|
-    | HOME AND GARDEN 		|Bedding						|duvets							|
-    | HOME AND GARDEN 		|Bedding						|pillows						|
-    | BABY AND NURSERY 		|Travel							|pushchairs						|
-    | BABY AND NURSERY 		|Travel							|baby-carriers					|
-    | BABY AND NURSERY 		|Maternity						|maternity-accessories			|
-    | CLOTHING 				|Womens 						|accessories					| 
-    | CLOTHING 				|Womens 						|dresses						|
-    | CLOTHING 				|Mens 							|coats-and-jackets				|      
+#    | TECHNOLOGY 			|televisions and accessories	|tv-remote-controls 			|  
+#    | TECHNOLOGY 			|Laptops and PCs 				|Gaming laptops and PCs 		|
+#    | TECHNOLOGY 			|Laptops and PCs 				|imacs				 			|
+#    | HOME AND GARDEN 		|living room furniture			|armchairs-and-chairs			|
+#    | HOME AND GARDEN 		|living room furniture			|cd-and-dvd-storage				|
+#    | HOME AND GARDEN 		|Bedding						|duvets							|
+#    | HOME AND GARDEN 		|Bedding						|pillows						|
+#    | BABY AND NURSERY 		|Travel							|pushchairs						|
+#    | BABY AND NURSERY 		|Travel							|baby-carriers					|
+#    | BABY AND NURSERY 		|Maternity						|maternity-accessories			|
+#    | CLOTHING 				|Womens 						|accessories					| 
+#    | CLOTHING 				|Womens 						|dresses						|
+#    | CLOTHING 				|Mens 							|coats-and-jackets				|      
 
   @CategorySearch	 
   Scenario Outline: customer navigates to niche-category via category menu hover feature
@@ -52,13 +52,13 @@ Feature: CategorySearch
 	Examples:
     | Category 					| Niche-category 						|
     | TECHNOLOGY 				| Dash Cams 							|
-    | HOME AND GARDEN 			| Sofas		 							|
-    | BABY AND NURSERY 			| Pushchairs 							|
-    | TOYS 						| Batteries And Rechargeable Batteries	|
-    | SPORTS AND LEISURE 		| Treadmills 							|
-    | HEALTH AND BEAUTY 		| Hair Dryers							|
-    | CLOTHING 					| Bras		 							|       
-    | JEWELLERY AND WATCHES 	| Ladies' Earrings 						|
+#    | HOME AND GARDEN 			| Sofas		 							|
+#    | BABY AND NURSERY 			| Pushchairs 							|
+#    | TOYS 						| Batteries And Rechargeable Batteries	|
+#    | SPORTS AND LEISURE 		| Treadmills 							|
+#    | HEALTH AND BEAUTY 		| Hair Dryers							|
+#    | CLOTHING 					| Bras		 							|       
+#    | JEWELLERY AND WATCHES 	| Ladies' Earrings 						|
 
 
 
@@ -69,16 +69,16 @@ Feature: CategorySearch
    Examples:
     | Category 					| misspelling 				|
     | TECHNOLOGY 				| TECNOLOGY 			 	|
-    | GARGEN		 			| GARDON					|
-    | NURSERY 					| NERSERY					|
-    | TOYS 						| TOIS			 			|
-    | LEISURE 					| LESSURE					|
-    | HEALTH			 		| helth						|
-    | CLOTHING 					| CLOTHIN 			 		|       
-    | JEWELLERY				 	| JEWLERY					|
+#    | GARGEN		 			| GARDON					|
+#    | NURSERY 					| NERSERY					|
+#    | TOYS 						| TOIS			 			|
+#    | LEISURE 					| LESSURE					|
+#    | HEALTH			 		| helth						|
+#    | CLOTHING 					| CLOTHIN 			 		|       
+#    | JEWELLERY				 	| JEWLERY					|
 
 
-  @CategorySearch @Short
+  @CategorySearch
   Scenario Outline: customer searches for unrecognised category
 	When customer searches for unrecognised category: <Category> using search feature
 	Then no search results page is shown

@@ -20,7 +20,6 @@ public class Basket_feature extends Page_object_model {
 	@When("^adds product to basket$")
 	public void adds_product_to_basket() throws Throwable {
 
-		
 		productPage.adds_product_to_basket_via_productPage();
 
 	}
@@ -46,6 +45,24 @@ public class Basket_feature extends Page_object_model {
 		productResults.add_second_product_to_Basket_via_productResults(quantity);
 
 	}
+	
+
+	@When("customer removes firt product from basket")
+	public void customer_removes_firt_product_from_basket() throws Throwable {
+
+	  
+	    basket.remove_first_product_from_basket();
+	    
+	}
+	
+
+	@When("customer changes quantity of first product to x(\\d+)")
+	public void customer_increases_product_FOOTBALL_quantity_by_x(int quantity) throws Throwable {
+	
+		basket.change_quantity_first_product(quantity);
+		
+	}
+	
 	
 	@Then("^empty basket is shown$")
 	public void empty_basket_is_shown() throws Throwable {

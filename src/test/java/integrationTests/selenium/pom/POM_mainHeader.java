@@ -59,6 +59,8 @@ public class POM_mainHeader extends Page_object_model {
 	
 	public void clickCategory(String category) throws Exception{
 		
+		popup.escPopup(); 
+		
 		switch(category){
 		case "TECHNOLOGY": {click(LinkTechnology); break;}
 		case "HOME AND GARDEN": {click(LinkHomeAndGarden); break;}
@@ -76,6 +78,7 @@ public class POM_mainHeader extends Page_object_model {
 	
 	public void mouseToCategory(String category) throws Exception{
 		
+		popup.escPopup(); 
 
 		switch(category){
 		case "TECHNOLOGY": {mouseTo(LinkTechnology); break;}
@@ -95,6 +98,8 @@ public class POM_mainHeader extends Page_object_model {
 	
 	public void clickSubCategory(String category) throws Exception{
 		
+		popup.escPopup(); 
+		
 		switch(category){
 		case "televisions and accessories": {click(LinkTelevisionsAndAccessories); break;}
 		case "Laptops and PCs": {click(LinkLaptopsAndPCs); break;}
@@ -111,6 +116,8 @@ public class POM_mainHeader extends Page_object_model {
 	}
 	
 	public void clickNicheCategory_viaMainheader(String nicheCategory) throws Exception{
+		
+		popup.escPopup(); 
 		
 		switch(nicheCategory){
 
@@ -137,6 +144,8 @@ public class POM_mainHeader extends Page_object_model {
 	}	
 	
 	public void openBasket() throws Exception{
+		
+		popup.escPopup(); 	
 		
 		scrollTop();
 		click(btnBasket);	

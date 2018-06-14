@@ -356,7 +356,7 @@ public class Selenium_core{
 
 	public void click(By target) throws Exception{
 
-		waitForAjaxComplete();
+		waitForElement(target);
 
 		try{
 			wait.until(ExpectedConditions.elementToBeClickable(target));
@@ -410,6 +410,8 @@ public class Selenium_core{
 
 		Select select = new Select(webdriver.findElement(target));
 		select.selectByIndex(index);
+		
+		waitForAjaxComplete();
 
 	}
 
@@ -420,7 +422,9 @@ public class Selenium_core{
 		Select select = new Select(webdriver.findElement(target));
 		select.selectByVisibleText(text);
 
-		//Poll until dropDown menu text changes to what we expect.
+		waitForAjaxComplete();
+		
+		//[Fail-safe] Poll until dropDown menu text changes to what we expect.
 		int iWaitTime = 0;
 		while(!getDropDownMenuText(target).contains(text)){
 			Thread.sleep(500);
@@ -502,28 +506,29 @@ public class Selenium_core{
 
 		WebElement element = webdriver.findElement(target);
 		((JavascriptExecutor) webdriver).executeScript("arguments[0].scrollIntoView(true);", element);
-		Thread.sleep(100); 
+		
+		waitForAjaxComplete();
 
 	}
 
 	public void scrollBy(int pixels) throws InterruptedException {
 
 		((JavascriptExecutor) webdriver).executeScript("window.scrollBy(0," + pixels +")", "");
-		Thread.sleep(1500);
+		waitForAjaxComplete();
 
 	}
 
 	public void scrollBottom() throws InterruptedException {
 
 		((JavascriptExecutor) webdriver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
-		Thread.sleep(1500);
+		waitForAjaxComplete();
 
 	}
 
 	public void scrollTop() throws InterruptedException {
 
 		((JavascriptExecutor) webdriver).executeScript("window.scrollTo(0, 0)");
-		Thread.sleep(1500);
+		waitForAjaxComplete();
 
 	}	
 
@@ -537,7 +542,7 @@ public class Selenium_core{
 
 		Actions action = new Actions(webdriver);
 		action.moveToElement(webdriver.findElement(target)).build().perform();
-		//Thread.sleep(1500);
+		waitForAjaxComplete();
 
 	}	
 
@@ -572,8 +577,10 @@ public class Selenium_core{
 		System.out.println(filePath + fileName);
 	}
 
-	public void getAllJS(){
+	public void getAllJS() throws InterruptedException{
 
+		waitForAjaxComplete();
+		
 		//String scriptToExecute = "return performance.getEntries({initiatorType : \"script\"});";
 		String scriptToExecute = "return performance.getEntriesByType(\"resource\");";
 
@@ -605,8 +612,10 @@ public class Selenium_core{
 	}	
 
 
-	public boolean checkImageExists(By by){
+	public boolean checkImageExists(By by) throws InterruptedException{
 
+		waitForAjaxComplete();
+		
 		WebElement ImageFile = webdriver.findElement(by);
 		return  (Boolean) ((JavascriptExecutor)webdriver).executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", ImageFile);
 

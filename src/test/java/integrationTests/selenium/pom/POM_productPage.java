@@ -24,17 +24,34 @@ public class POM_productPage extends Page_object_model {
 	public By imgRelatedProduct = By.xpath("//img[@class=\"product-card__image\"]");				
 	public By dropSort = By.xpath("//select[@class=\"font-standard form-control sort-select\"]");
 	public By loadingWheel = By.xpath("//div[@class=\"ac-loading-wheel ac-loading-wheel--contained\"]");	
+		
+	
+	public void click_on_first_product() throws Exception{
+		
+		popup.escPopup(); 
+		click(linkProduct);
+	}
+
+	
+	
+	public void sort_products(String sortBy) throws Exception{
+		
+		popup.escPopup(); 
+		selectByVisibleText(dropSort,sortBy);
+		
+	}
+	
+	
 	
 	public void adds_product_to_basket_via_productPage() throws Throwable {
 
 		popup.escPopup();
 		
 		scrollBottom();
-		//scrollBy(2000,webdriver);
 
 		if (!textExists("Not available online")){
+			waitForElement(btnAddToBasket);
 			click(btnAddToBasket);
-			//popup.escPopup();
 			popupBasket.checkContinueShopping();
 		}else{
 			System.out.println("This item is not available online to add to basket");
@@ -42,6 +59,8 @@ public class POM_productPage extends Page_object_model {
 		}
 
 	}
+	
+	
 	
 	public void change_store_location(String postcode) throws Throwable {
 

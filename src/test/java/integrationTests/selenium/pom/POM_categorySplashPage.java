@@ -37,6 +37,8 @@ private String buildLinkXpath(String indentifier){
 
 public void clickNicheCategory_viaCategorySplashPage(String nicheCategory) throws Exception{
 	
+	popup.escPopup(); 
+	
 	switch(nicheCategory){
 	case "hdmi-cables-and-optical-cables": {click(LinkHDMIandCables); break;}
 	case "tv-remote-controls": {click(LinkTVremoteControls); break;}
