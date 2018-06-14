@@ -1,7 +1,7 @@
 Status: FAILED
-Time Taken: 759
+Time Taken: 781
 Size: 191
-Timestamp: Sun Jun 10 15:21:59 BST 2018
+Timestamp: Thu Jun 14 04:52:09 BST 2018
 TestStep: executePayment
 
 ----------------- Messages ------------------------------
@@ -9,35 +9,35 @@ TestStep: executePayment
        |           |  |
        |           |  false
        |           null
-       [debug_id:589fdce7dcb9f, information_link:https://developer.paypal.com/docs/api/payments/#errors, message:Payer has not approved payment, name:PAYMENT_NOT_APPROVED_FOR_EXECUTION]
+       [information_link:https://developer.paypal.com/docs/api/payments/#errors, debug_id:3a3e3c0c23630, name:PAYMENT_NOT_APPROVED_FOR_EXECUTION, message:Payer has not approved payment]
 [Contains: approved] Missing token ["state":"approved"] in Response
 [Contains: VERIFIED] Missing token ["status":"VERIFIED"] in Response
 [Valid HTTP Status Codes] Response status code:400 is not in acceptable list of status codes
 
 ----------------- Properties ------------------------------
 HTTP Version: HTTP/1.1
-Endpoint: https://api.sandbox.paypal.com/v1/payments/payment/PAY-5GG7149215748963NLMOTIAY/execute
+Endpoint: https://api.sandbox.paypal.com/v1/payments/payment/PAY-9AJ4643833650815ELMQ6M2I/execute
 Method: POST
 StatusCode: 400
-URL: https://api.sandbox.paypal.com/v1/payments/payment/PAY-5GG7149215748963NLMOTIAY/execute
+URL: https://api.sandbox.paypal.com/v1/payments/payment/PAY-9AJ4643833650815ELMQ6M2I/execute
 
 ---------------- Request ---------------------------
-Authorization: [Bearer A21AAHB920cjlj8jxprXAvpeKvYbVldBAmLT6NbT1cr72E33OVc9dT9_l4laHIbMOY6GjkknPxEleE0_PN6i84GMgypZK2_fQ]
+Authorization: [Bearer A21AAE7O0QWoqrgzOFQlAbNHOgchEDNLj40PaNbN_QzUSqVgp54-lPlqzdH8i6AcNE2TMFKwDjqYsrypxbZA_MzFlePpz9F7A]
 Connection: [Keep-Alive]
-User-Agent: [Apache-HttpClient/4.5.3 (Java/1.8.0_161)]
+User-Agent: [Apache-HttpClient/4.1.1 (java 1.5)]
 Host: [api.sandbox.paypal.com]
 Accept-Encoding: [gzip,deflate]
 Content-Length: [36]
 Content-Type: [application/json]
 
-POST https://api.sandbox.paypal.com/v1/payments/payment/PAY-5GG7149215748963NLMOTIAY/execute HTTP/1.1
+POST https://api.sandbox.paypal.com/v1/payments/payment/PAY-9AJ4643833650815ELMQ6M2I/execute HTTP/1.1
 Accept-Encoding: gzip,deflate
-Authorization: Bearer A21AAHB920cjlj8jxprXAvpeKvYbVldBAmLT6NbT1cr72E33OVc9dT9_l4laHIbMOY6GjkknPxEleE0_PN6i84GMgypZK2_fQ
+Authorization: Bearer A21AAE7O0QWoqrgzOFQlAbNHOgchEDNLj40PaNbN_QzUSqVgp54-lPlqzdH8i6AcNE2TMFKwDjqYsrypxbZA_MzFlePpz9F7A
 Content-Type: application/json
 Content-Length: 36
 Host: api.sandbox.paypal.com
 Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.3 (Java/1.8.0_161)
+User-Agent: Apache-HttpClient/4.1.1 (java 1.5)
 
 {
   "payer_id": "G2EF25X9TZW3E"
@@ -45,17 +45,17 @@ User-Agent: Apache-HttpClient/4.5.3 (Java/1.8.0_161)
 }
 
 ---------------- Response --------------------------
-paypal-debug-id: [589fdce7dcb9f]
-Paypal-Debug-Id: [589fdce7dcb9f]
+paypal-debug-id: [3a3e3c0c23630]
+Paypal-Debug-Id: [3a3e3c0c23630]
 Server: [Apache]
 Connection: [close]
 HTTP_X_PP_AZ_LOCATOR: [sandbox.slc]
-Set-Cookie: [X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D70524251%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Sun, 10 Jun 2018 14:51:57 GMT; domain=.paypal.com; path=/; Secure; HttpOnly, X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT]
+Set-Cookie: [X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D1880%26app%3Dapiplatformproxyserv%26TIME%3D1793466715%26HTTP_X_PP_AZ_LOCATOR%3Dsandbox.slc; Expires=Thu, 14 Jun 2018 04:22:10 GMT; domain=.paypal.com; path=/; Secure; HttpOnly, X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT]
 Vary: [Authorization]
 #status#: [HTTP/1.1 400 Bad Request]
 Content-Length: [191]
-Date: [Sun, 10 Jun 2018 14:21:56 GMT]
+Date: [Thu, 14 Jun 2018 03:52:10 GMT]
 Content-Language: [*]
 Content-Type: [application/json]
 
-{"name":"PAYMENT_NOT_APPROVED_FOR_EXECUTION","message":"Payer has not approved payment","information_link":"https://developer.paypal.com/docs/api/payments/#errors","debug_id":"589fdce7dcb9f"}
+{"name":"PAYMENT_NOT_APPROVED_FOR_EXECUTION","message":"Payer has not approved payment","information_link":"https://developer.paypal.com/docs/api/payments/#errors","debug_id":"3a3e3c0c23630"}

@@ -140,7 +140,6 @@
 			<artifactId>maven-install-plugin</artifactId>
 			<version>2.5.2</version>
 		</dependency>
-
 	</dependencies>
 
 	<pluginRepositories>
@@ -202,16 +201,27 @@
 					<!-- ================================================ -->
 
 					<!--Supports API testing with SOAPUI (both SOAP and REST projects) -->
-					<!--However not using Maven to trigger the API tests. Instead using 
-						the -->
-					<!--triggering tests within BDD step definitions using SoapUITestCaseRunner -->
-					<!--which relies on the 100s of SOAPUI dependencies included in this 
-						POM -->
 
 					<plugin>
 						<groupId>com.smartbear.soapui</groupId>
 						<artifactId>soapui-maven-plugin</artifactId>
 						<version>5.0.0</version>
+						<configuration>
+							<projectFile>src\test\java\integrationTests\soapui\PAYPAL_API.xml</projectFile>
+							<testCase>setPayment</testCase>
+							<outputFolder>${project.build.directory}/soapui-report</outputFolder>
+							<junitReport>true</junitReport>
+							<exportAll>true</exportAll>
+							<printReport>true</printReport>
+						</configuration>
+						<executions>
+							<execution>
+								<phase>integration-test</phase>
+								<goals>
+									<goal>test</goal>
+								</goals>
+							</execution>
+						</executions>
 					</plugin>
 
 					<!-- ================================================ -->
