@@ -26,6 +26,9 @@ public class Cucumber_runner extends AbstractTestNGCucumberTests{
 	public static boolean selenium_grid_enabled; 	
 	public static String selenium_grid_hub; 
 
+	public static String operating_system;
+	public static String browser;
+	
 	//==========================
 	// TestNG hook triggered before tests.  
 	//==========================	
@@ -59,6 +62,9 @@ public class Cucumber_runner extends AbstractTestNGCucumberTests{
 		System.out.println("Web Browser: " + browser );
 		System.out.println("Browser headless mode: " + browser_headless );		
 		System.out.println("===========================");	
+		
+		this.operating_system = operating_system;
+		this.browser = browser;	
 
 	}
 

@@ -26,17 +26,18 @@ import org.openqa.selenium.interactions.*;
 import org.openqa.selenium.remote.*;
 import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
+import org.testng.SkipException;
 
 //import com.smartbear.ready.cmd.runner.SoapUITestCaseRunner;
 
 public class Selenium_core {
 
 	public static String baseURL = System.getProperty("env.qa.url");
-	
+
 	public static WebDriver webdriver;
 	protected static WebDriverWait wait;
 	protected static WebDriverWait quickWait;
-	
+
 	private static String os_this_system = System.getProperty("os.name").toLowerCase();
 
 	public static void createGridWebDriver(String selenium_grid_hub,String operatingSystem, String browserType,boolean browserHeadless) throws MalformedURLException {
@@ -55,8 +56,10 @@ public class Selenium_core {
 
 	}
 
+	//If running locally or on single build machine, it must be windows,linux or mac using chrome,firefox or Edge.
+	//If more exotic configurations are required consider using Selenium grid, which is supported by the createGridWebDriver method.  
 	public static void createStandardWebDriver(String operatingSystem, String browserType,boolean browserHeadless) throws MalformedURLException {
-		
+
 		switch (operatingSystem){
 
 		case "windows":
@@ -64,15 +67,15 @@ public class Selenium_core {
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\windows\\chromedriver.exe");
 			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")  + "\\src\\test\\resources\\browser_drivers\\windows\\geckodriver.exe");
 			System.setProperty("webdriver.edge.driver", System.getProperty("user.dir")   + "\\src\\test\\resources\\browser_drivers\\windows\\MicrosoftWebDriver.exe");
-			
+
 			if (!(os_this_system.indexOf("win") >= 0)) {
-				
+
 				System.out.println("************");
-				System.out.println("************");
-				Assert.fail("This test configuration is expecting WINDOWS, but this is a " + os_this_system);
-				
+				System.out.println("This test configuration is expecting WINDOWS, but this is " + os_this_system);
+				System.out.println("************");	
+				throw new SkipException("skipping test");
 			}
-					
+
 			break;
 
 		case "linux":
@@ -80,15 +83,15 @@ public class Selenium_core {
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\linux\\chromedriver.exe");
 			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")  + "\\src\\test\\resources\\browser_drivers\\linux\\geckodriver.exe");
 			System.setProperty("webdriver.edge.driver", System.getProperty("user.dir")   + "\\src\\test\\resources\\browser_drivers\\linux\\MicrosoftWebDriver.exe");
-			
+
 			if (!(os_this_system.indexOf("nix") >= 0) || !(os_this_system.indexOf("nux") >= 0) || !(os_this_system.indexOf("aix") >= 0) ) {
-				
+
 				System.out.println("************");
-				System.out.println("************");
-				Assert.fail("This test configuration is expecting LINUX, but this is a " + os_this_system);
-				
+				System.out.println("This test configuration is expecting LINUX, but this is " + os_this_system);
+				System.out.println("************");	
+				throw new SkipException("skipping test");
 			}
-			
+
 			break;
 
 
@@ -97,15 +100,15 @@ public class Selenium_core {
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\mac\\chromedriver.exe");
 			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")  + "\\src\\test\\resources\\browser_drivers\\mac\\geckodriver.exe");
 			System.setProperty("webdriver.edge.driver", System.getProperty("user.dir")   + "\\src\\test\\resources\\browser_drivers\\mac\\MicrosoftWebDriver.exe");
-			
+
 			if (!(os_this_system.indexOf("mac") >= 0)) {
-				
+
 				System.out.println("************");
-				System.out.println("************");
-				Assert.fail("This test configuration is expecting MAC, but this is a " + os_this_system);
-				
+				System.out.println("This test configuration is expecting MAC, but this is " + os_this_system);
+				System.out.println("************");	
+				throw new SkipException("skipping test");
 			}
-			
+
 			break;
 
 		default: 
@@ -113,7 +116,7 @@ public class Selenium_core {
 			System.out.println("===========================");
 			System.out.println(operatingSystem + " is not a recognised operating system, please check config. Aborting test");
 			System.out.println("===========================");
-			System.exit(0);
+			throw new SkipException("skipping test");
 		}
 
 
@@ -180,20 +183,20 @@ public class Selenium_core {
 			System.out.println("===========================");
 			System.out.println(browserType + " is not a recognised web browser, please check config. Aborting test");
 			System.out.println("===========================");
-			System.exit(0);
+			throw new SkipException("skipping test");
 
 		}
 
 		setWebDriverWaitTime();
 
 	}
-	
-	
+
+
 	public static void setWebDriverWaitTime(){
-		
+
 		wait = new WebDriverWait(webdriver,60);
 		quickWait = new WebDriverWait(webdriver, 1);
-		
+
 	}
 
 	public static void quitWebDriver() throws Exception{
@@ -207,7 +210,7 @@ public class Selenium_core {
 	//===========================
 
 	public void gotoPage(String url) throws Exception{
-		
+
 		webdriver.get(url);
 		waitForAjaxComplete();
 

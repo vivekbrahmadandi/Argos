@@ -1,5 +1,7 @@
 package integrationTests.cucumber;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 
 import org.testng.ITestContext ;		
@@ -18,10 +20,10 @@ public class Listerners_and_hooks implements ITestListener
 	//==========================
 	// Cucumber hook triggered after each scenerio. 
 	//==========================	
-	
+
 	@After
-    public void takeScreenshotOnFailure(Scenario scenario) throws Exception{
-	
+	public void takeScreenshotOnFailure(Scenario scenario) throws Exception{
+
 		if(scenario.isFailed()) {
 
 			String dir = System.getProperty("user.dir")  + "\\target\\screenshots_on_failure\\";
@@ -29,52 +31,73 @@ public class Listerners_and_hooks implements ITestListener
 
 		}
 
-    }
-	
+	}
+
 	//==========================
 	// TestNG listener triggered after tests completed 
 	//==========================	
-	
-    @Override		
-    public void onFinish(ITestContext arg0) {					
 
-    	String testReport = System.getProperty("user.dir") + "\\target\\Masterthought\\feature-overview.html";	
-
-		System.out.println("---------------------------------------------");
-		System.out.println("[Test Report Location] " + testReport);
-		System.out.println("---------------------------------------------");
+	@Override		
+	public void onFinish(ITestContext arg0) {					
 
 		Cucumber_report_generate.GenerateMasterthoughtReport();
+
+		String testReportLocation = null;
+		
+		try {
+			testReportLocation = moveReports();
+		} catch (IOException e1) {
+
+			e1.printStackTrace();
+		}
+
+
+		System.out.println("---------------------------------------------");
+		System.out.println("[Test Report Location] " + testReportLocation);
+		System.out.println("---------------------------------------------");
 
 		try {
 			Selenium_core.quitWebDriver();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	
-        		
-    }	
-    
-    
-    //Not used
-    
-    @Override	
-    public void onStart(ITestContext arg0) { }		
 
-    @Override		
-    public void onTestFailedButWithinSuccessPercentage(ITestResult arg0) {}		
+	}	
 
-    @Override		
-    public void onTestFailure(ITestResult arg0) {}		
+	//Enable unique Masterthought reporting for each environment setup. 
+	public String moveReports() throws IOException{
 
-    @Override		
-    public void onTestSkipped(ITestResult arg0) { }		
+		File dir = new File(System.getProperty("user.dir") + "\\target\\Masterthought");
+		if (!dir.isDirectory()) {
+			System.err.println("There is no directory @ given path");
+		} else {
+			System.out .println("Enter new name of directory(Only Name and Not Path).");
 
-    @Override		
-    public void onTestStart(ITestResult arg0) {}		
+			File newDir = new File(dir.getParent() + "\\" + "Masterthought-"  + Cucumber_runner.operating_system + "-" + Cucumber_runner.browser);
+			dir.renameTo(newDir);
+		}
 
-    @Override		
-    public void onTestSuccess(ITestResult arg0) {}	
-    
+		return dir.getPath();
+	}
+
+
+	//Not used
+	@Override	
+	public void onStart(ITestContext arg0) { }		
+
+	@Override		
+	public void onTestFailedButWithinSuccessPercentage(ITestResult arg0) {}		
+
+	@Override		
+	public void onTestFailure(ITestResult arg0) {}		
+
+	@Override		
+	public void onTestSkipped(ITestResult arg0) { }		
+
+	@Override		
+	public void onTestStart(ITestResult arg0) {}		
+
+	@Override		
+	public void onTestSuccess(ITestResult arg0) {}	
+
 }
