@@ -8,47 +8,15 @@
 
 	<properties>
 		<jdk>1.8</jdk>
-		<dev_env>http://www.argos.co.uk</dev_env>
-		<qa_env>http://www.argos.co.uk</qa_env>
-		<preprod_env>http://www.argos.co.uk</preprod_env>
-		<prod_env>http://www.argos.co.uk</prod_env>
+		<env.qa.url>http://www.argos.co.uk</env.qa.url>
 
 		<!-- Default values for build profile qa_build (testing with Selenium) -->
 		<!-- Values can be overwritten via command line / CI job -->
-		<os>windows</os>
-		<browser>chrome</browser>
-		<browser.headless>false</browser.headless>
-		<browser.parallel.count>1</browser.parallel.count>
+		<selenium.grid.enabled>false</selenium.grid.enabled>
+		<selenium.grid.hub>http://192.168.0.17:4444</selenium.grid.hub>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>24.0-jre</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi</artifactId>
-			<version>3.7</version>
-		</dependency>
-
-		<!-- ================================================ -->
-		<!-- JUNIT dependency -->
-		<!-- Controls the scope and flow of test execution -->
-		<!-- As well as perform test assertions -->
-		<!-- ================================================ -->
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- ================================================ -->
-		<!-- SELENIUM dependency -->
-		<!-- ================================================ -->
 
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -56,62 +24,44 @@
 			<version>3.12.0</version>
 		</dependency>
 
-		<!-- ================================================ -->
-		<!-- CUCUMBER dependencies -->
-		<!-- Allows for BDD approach. Cucumber uses JUNIT (or testNG) framework -->
-		<!-- to execute tests, however controls the execution flow using feature 
-			files -->
-		<!-- ================================================ -->
-
-		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
 		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-junit</artifactId>
-			<version>3.0.2</version>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.11</version>
 			<scope>test</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-core -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-testng</artifactId>
+			<version>3.0.2</version>
+		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-core</artifactId>
 			<version>3.0.2</version>
 		</dependency>
-
-
-		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
 			<version>3.0.2</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/io.cucumber/gherkin -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>gherkin</artifactId>
 			<version>5.1.0</version>
 		</dependency>
-
-
 		<dependency>
 			<groupId>net.masterthought</groupId>
 			<artifactId>cucumber-reporting</artifactId>
 			<version>1.1.0</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.github.temyers/cucumber-jvm-parallel-plugin -->
 		<dependency>
 			<groupId>com.github.temyers</groupId>
 			<artifactId>cucumber-jvm-parallel-plugin</artifactId>
 			<version>5.0.0</version>
 		</dependency>
-
-
-		<!-- ================================================ -->
-		<!-- SUREFILE and FAILSAFE -->
-		<!-- Used by maven to executes tests in specific phases -->
-		<!-- ================================================ -->
 
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
@@ -119,7 +69,6 @@
 			<version>2.21.0</version>
 			<type>maven-plugin</type>
 		</dependency>
-
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-failsafe-plugin</artifactId>
@@ -133,12 +82,22 @@
 			<version>3.7.0</version>
 			<type>maven-plugin</type>
 		</dependency>
-
-
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-install-plugin</artifactId>
 			<version>2.5.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>24.0-jre</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.7</version>
 		</dependency>
 	</dependencies>
 
@@ -177,15 +136,9 @@
 
 	<profiles>
 
-
 		<!-- ================================================ -->
 		<!-- MY BUILD PROFILE FOR SELENIUM INTEGRATION TESTING -->
 		<!-- ================================================ -->
-
-		<!-- Build command example: -->
-		<!-- clean verify -P qa_build -Dos=windows -Dbrowser=firefox -Dbrowser.headless=false 
-			-Dbrowser.parallel.count=4 -->
-
 
 		<profile>
 			<id>qa_build</id>
@@ -202,71 +155,54 @@
 
 					<!--Supports API testing with SOAPUI (both SOAP and REST projects) -->
 
-					<plugin>
-						<groupId>com.smartbear.soapui</groupId>
-						<artifactId>soapui-maven-plugin</artifactId>
-						<version>5.0.0</version>
-						<configuration>
-							<projectFile>src\test\java\integrationTests\soapui\PAYPAL_API.xml</projectFile>
-							<testCase>setPayment</testCase>
-							<outputFolder>${project.build.directory}/soapui-report</outputFolder>
-							<junitReport>true</junitReport>
-							<exportAll>true</exportAll>
-							<printReport>true</printReport>
-						</configuration>
-						<executions>
-							<execution>
-								<phase>integration-test</phase>
-								<goals>
-									<goal>test</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
+					<!-- <plugin> -->
+					<!-- <groupId>com.smartbear.soapui</groupId> -->
+					<!-- <artifactId>soapui-maven-plugin</artifactId> -->
+					<!-- <version>5.0.0</version> -->
+					<!-- <configuration> -->
+					<!-- <projectFile>src\test\java\integrationTests\soapui\PAYPAL_API.xml</projectFile> -->
+					<!-- <testCase>setPayment</testCase> -->
+					<!-- <outputFolder>${project.build.directory}/soapui-report</outputFolder> -->
+					<!-- <junitReport>true</junitReport> -->
+					<!-- <exportAll>true</exportAll> -->
+					<!-- <printReport>true</printReport> -->
+					<!-- </configuration> -->
+					<!-- <executions> -->
+					<!-- <execution> -->
+					<!-- <phase>test</phase> -->
+					<!-- <goals> -->
+					<!-- <goal>test</goal> -->
+					<!-- </goals> -->
+					<!-- </execution> -->
+					<!-- </executions> -->
+					<!-- </plugin> -->
 
 					<!-- ================================================ -->
 					<!-- INTEGRATION TESTING CONFIG -->
 					<!-- ================================================ -->
 
-					<!--Looks for java files beginning/ending with "IT" to trigger in test -->
-
+					<!-- Triggers testng.xml -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-failsafe-plugin</artifactId>
 						<version>2.21.0</version>
-						<dependencies>
-							<dependency>
-								<groupId>org.apache.maven.surefire</groupId>
-								<artifactId>surefire-junit47</artifactId>
-								<version>2.21.0</version>
-							</dependency>
-						</dependencies>
+
 						<configuration>
+							<suiteXmlFiles>
+								<suiteXmlFile>environment_configurations_to_test.xml</suiteXmlFile>
+							</suiteXmlFiles>
 							<systemPropertyVariables>
-								<env>${qa_env}</env>
-								<os>${os}</os>
-								<browser>${browser}</browser>
-								<browser.headless>${browser.headless}</browser.headless>
-
-
-								<!-- <remoteDriver>${remote}</remoteDriver> -->
-								<!-- <gridURL>${seleniumGridURL}</gridURL> -->
-								<!-- <desiredPlatform>${platform}</desiredPlatform> -->
-								<!-- <desiredBrowserVersion>${browserVersion}</desiredBrowserVersion> -->
-								<!-- <proxyEnabled>${proxyEnabled}</proxyEnabled> -->
-								<!-- <proxyHost>${proxyHost}</proxyHost> -->
-								<!-- <proxyPort>${proxyPort}</proxyPort> -->
-
-								<!--Set properties passed in by the driver binary downloader -->
-
+								<env.qa.url>${env.qa.url}</env.qa.url>
+								<selenium.grid.enabled>${selenium.grid.enabled}</selenium.grid.enabled>
+								<selenium.grid.hub>${selenium.grid.hub}</selenium.grid.hub>
 							</systemPropertyVariables>
 							<properties>
 								<property>
 									<name>listener</name>
-									<value>integrationTests.cucumber.Junit_listener</value>
+									<value>integrationTests.cucumber.Listerners_and_hooks</value>
 								</property>
 							</properties>
-							<forkCount>${browser.parallel.count}</forkCount>
+							<forkCount>2</forkCount>
 							<reuseForks>true</reuseForks>
 						</configuration>
 						<executions>
@@ -290,34 +226,35 @@
 					<!--This is a replacement for the hard coded cucumber run file -->
 					<!--(Thie file which has: contains @RunWith and @CucumberOptions -->
 
-					<plugin>
-						<groupId>com.github.temyers</groupId>
-						<artifactId>cucumber-jvm-parallel-plugin</artifactId>
-						<version>5.0.0</version>
-						<executions>
-							<execution>
-								<id>generateRunners</id>
-								<phase>generate-test-sources</phase>
-								<goals>
-									<goal>generateRunners</goal>
-								</goals>
-								<configuration>
-									<glue>
-										<package>integrationTests.selenium.step_definitions</package>
-										<package>integrationTests.cucumber</package>
-									</glue>
-									<outputDirectory>${project.build.directory}/generated-test-sources/cucumber</outputDirectory>
-									<featuresDirectory>src/test/resources/Features/</featuresDirectory>
-									<cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir>
-									<tags>
-										<!-- <tag>@Retest</tag> -->
-										<!-- <tag>not @Ignored</tag> -->
-									</tags>
-									<parallelScheme>FEATURE</parallelScheme>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
+					<!-- <plugin> -->
+					<!-- <groupId>com.github.temyers</groupId> -->
+					<!-- <artifactId>cucumber-jvm-parallel-plugin</artifactId> -->
+					<!-- <version>5.0.0</version> -->
+					<!-- <executions> -->
+					<!-- <execution> -->
+					<!-- <id>generateRunners</id> -->
+					<!-- <phase>generate-test-sources</phase> -->
+					<!-- <goals> -->
+					<!-- <goal>generateRunners</goal> -->
+					<!-- </goals> -->
+					<!-- <configuration> -->
+					<!-- <glue> -->
+					<!-- <package>integrationTests.selenium.step_definitions</package> -->
+					<!-- <package>integrationTests.cucumber</package> -->
+					<!-- </glue> -->
+					<!-- <outputDirectory>${project.build.directory}/generated-test-sources/cucumber</outputDirectory> -->
+					<!-- <featuresDirectory>src/test/resources/features/</featuresDirectory> -->
+					<!-- <cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir> -->
+					<!-- <tags> -->
+					<!-- <tag>@Retest</tag> -->
+					<!-- <tag>not @Ignored</tag> -->
+					<!-- </tags> -->
+					<!-- <parallelScheme>FEATURE</parallelScheme> -->
+					<!-- </configuration> -->
+					<!-- </execution> -->
+					<!-- </executions> -->
+					<!-- </plugin> -->
+
 				</plugins>
 			</build>
 		</profile>

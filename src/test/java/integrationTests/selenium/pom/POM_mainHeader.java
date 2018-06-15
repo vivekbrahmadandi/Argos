@@ -1,9 +1,9 @@
 package integrationTests.selenium.pom;
 
-//JUNIT Test framework
-import org.junit.Assert;
+
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 public class POM_mainHeader extends Page_object_model {
 

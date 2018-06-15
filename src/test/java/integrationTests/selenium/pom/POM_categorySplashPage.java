@@ -1,13 +1,11 @@
 package integrationTests.selenium.pom;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
-
+import org.testng.Assert;
 
 public class POM_categorySplashPage extends Page_object_model {
 
 public By txtH1 = By.xpath("//h1");
-
 
 
 //Niche-Category links

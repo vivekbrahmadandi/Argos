@@ -11,109 +11,113 @@
 
 package integrationTests.selenium;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintStream;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Properties;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.io.*;
+import java.net.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import org.apache.commons.io.*;
 
-import org.apache.commons.io.FileUtils;
-import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxBinary;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.*;
+import org.openqa.selenium.edge.*;
+import org.openqa.selenium.firefox.*;
+import org.openqa.selenium.interactions.*;
+import org.openqa.selenium.remote.*;
+import org.openqa.selenium.support.ui.*;
+import org.testng.Assert;
 
 //import com.smartbear.ready.cmd.runner.SoapUITestCaseRunner;
 
-public class Selenium_core{
+public class Selenium_core {
 
+	public static String baseURL = System.getProperty("env.qa.url");
+	
 	public static WebDriver webdriver;
 	protected static WebDriverWait wait;
 	protected static WebDriverWait quickWait;
+	
+	private static String os_this_system = System.getProperty("os.name").toLowerCase();
 
-	public static String os; 
-	public static String env; 
-	public static String browser; 
-	public static boolean browserHeadless; 		
-	public static String browserParallelCount; 
+	public static void createGridWebDriver(String selenium_grid_hub,String operatingSystem, String browserType,boolean browserHeadless) throws MalformedURLException {
 
-	public static void createWebDriver() {
+		ChromeOptions options = new ChromeOptions();
+		options.setCapability(CapabilityType.PLATFORM_NAME, Platform.WINDOWS);
+		options.addArguments("disable-infobars");
+		options.addArguments("--no-default-browser-check");
+		options.setAcceptInsecureCerts(true);
+		options.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
+		options.setHeadless(false);
 
-		//===========================
-		// Multi operating-system configuration
-		//===========================v
+		webdriver = new RemoteWebDriver(new URL(selenium_grid_hub + "/wd/hub"), options);
 
-		//set system properties for webdriver depending on OS.
+		setWebDriverWaitTime();
 
-		os = os.toLowerCase();
+	}
 
-		switch (os){
+	public static void createStandardWebDriver(String operatingSystem, String browserType,boolean browserHeadless) throws MalformedURLException {
+		
+		switch (operatingSystem){
 
 		case "windows":
 
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\windows\\chromedriver.exe");
 			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")  + "\\src\\test\\resources\\browser_drivers\\windows\\geckodriver.exe");
 			System.setProperty("webdriver.edge.driver", System.getProperty("user.dir")   + "\\src\\test\\resources\\browser_drivers\\windows\\MicrosoftWebDriver.exe");
-			System.setProperty("webdriver.opera.driver",  System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\windows\\operadriver.exe");
+			
+			if (!(os_this_system.indexOf("win") >= 0)) {
+				
+				System.out.println("************");
+				System.out.println("************");
+				Assert.fail("This test configuration is expecting WINDOWS, but this is a " + os_this_system);
+				
+			}
+					
 			break;
 
 		case "linux":
 
-			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\linux\\");
-			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")  + "\\src\\test\\resources\\browser_drivers\\linux\\");
-			System.setProperty("webdriver.edge.driver", System.getProperty("user.dir")   + "\\src\\test\\resources\\browser_drivers\\linux\\");
-			System.setProperty("webdriver.opera.driver",  System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\linux\\");
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\linux\\chromedriver.exe");
+			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")  + "\\src\\test\\resources\\browser_drivers\\linux\\geckodriver.exe");
+			System.setProperty("webdriver.edge.driver", System.getProperty("user.dir")   + "\\src\\test\\resources\\browser_drivers\\linux\\MicrosoftWebDriver.exe");
+			
+			if (!(os_this_system.indexOf("nix") >= 0) || !(os_this_system.indexOf("nux") >= 0) || !(os_this_system.indexOf("aix") >= 0) ) {
+				
+				System.out.println("************");
+				System.out.println("************");
+				Assert.fail("This test configuration is expecting LINUX, but this is a " + os_this_system);
+				
+			}
+			
 			break;
 
 
 		case "mac":
 
-			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\mac\\");
-			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")  + "\\src\\test\\resources\\browser_drivers\\mac\\");
-			System.setProperty("webdriver.edge.driver", System.getProperty("user.dir")   + "\\src\\test\\resources\\browser_drivers\\mac\\");
-			System.setProperty("webdriver.opera.driver",  System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\mac\\");
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\mac\\chromedriver.exe");
+			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")  + "\\src\\test\\resources\\browser_drivers\\mac\\geckodriver.exe");
+			System.setProperty("webdriver.edge.driver", System.getProperty("user.dir")   + "\\src\\test\\resources\\browser_drivers\\mac\\MicrosoftWebDriver.exe");
+			
+			if (!(os_this_system.indexOf("mac") >= 0)) {
+				
+				System.out.println("************");
+				System.out.println("************");
+				Assert.fail("This test configuration is expecting MAC, but this is a " + os_this_system);
+				
+			}
+			
 			break;
 
 		default: 
 
 			System.out.println("===========================");
-			System.out.println(os + " is not a recognised operating system, please check config. Aborting test");
+			System.out.println(operatingSystem + " is not a recognised operating system, please check config. Aborting test");
 			System.out.println("===========================");
 			System.exit(0);
 		}
 
-		//===========================
-		// Multi web browser configuration
-		//===========================
 
-		browser = browser.toLowerCase();
-
-		switch(browser){
+		switch(browserType){
 
 		case "chrome":
 
@@ -129,6 +133,7 @@ public class Selenium_core{
 				webdriver = new ChromeDriver();
 				webdriver.manage().window().maximize();
 			}
+
 			break;
 
 
@@ -154,16 +159,12 @@ public class Selenium_core{
 			}
 			break;
 
-		case "ie":
 		case "edge":
-
-
-			//Cucumber_runConfig_IT a = new Cucumber_runConfig_IT();
 
 			if (browserHeadless){
 
 				System.out.println("===========================");
-				System.out.println(browser + " doesn't have a headless mode, launching normally");
+				System.out.println(browserType + " doesn't have a headless mode, launching normally");
 				System.out.println("===========================");
 
 			}	
@@ -177,17 +178,22 @@ public class Selenium_core{
 		default: 
 
 			System.out.println("===========================");
-			System.out.println(browser + " is not a recognised web browser, please check config. Aborting test");
+			System.out.println(browserType + " is not a recognised web browser, please check config. Aborting test");
 			System.out.println("===========================");
 			System.exit(0);
 
 		}
 
+		setWebDriverWaitTime();
+
+	}
+	
+	
+	public static void setWebDriverWaitTime(){
+		
 		wait = new WebDriverWait(webdriver,60);
 		quickWait = new WebDriverWait(webdriver, 1);
-
-		deleteCookies();
-
+		
 	}
 
 	public static void quitWebDriver() throws Exception{
@@ -196,22 +202,13 @@ public class Selenium_core{
 
 	}
 
-	public void restartWebDriver() throws Exception{
-
-		System.out.println("Restarting webdriver");	
-
-		quitWebDriver();
-		createWebDriver();
-
-	}
-
 	//===========================
 	// Common operations
 	//===========================
 
-	public void gotoPage() throws Exception{
-
-		webdriver.get(env);
+	public void gotoPage(String url) throws Exception{
+		
+		webdriver.get(url);
 		waitForAjaxComplete();
 
 	}
@@ -310,34 +307,34 @@ public class Selenium_core{
 
 
 	public static void waitForAjaxComplete() throws InterruptedException {
-		
+
 		long startTime = System.currentTimeMillis();
-		
+
 		waitForPageLoad(); 
-		
-		
+
+
 		try{
-			
-		webdriver.manage().timeouts().setScriptTimeout(5, TimeUnit.SECONDS);
-		((JavascriptExecutor) webdriver).executeAsyncScript(
-				"var callback = arguments[arguments.length - 1];" +
-						"var xhr = new XMLHttpRequest();" +
-						"xhr.open('POST', '/" + "Ajax_call" + "', true);" +
-						"xhr.onreadystatechange = function() {" +
-						"  if (xhr.readyState == 4) {" +
-						"    callback(xhr.responseText);" +
-						"  }" +
-						"};" +
-				"xhr.send();");
-		
+
+			webdriver.manage().timeouts().setScriptTimeout(5, TimeUnit.SECONDS);
+			((JavascriptExecutor) webdriver).executeAsyncScript(
+					"var callback = arguments[arguments.length - 1];" +
+							"var xhr = new XMLHttpRequest();" +
+							"xhr.open('POST', '/" + "Ajax_call" + "', true);" +
+							"xhr.onreadystatechange = function() {" +
+							"  if (xhr.readyState == 4) {" +
+							"    callback(xhr.responseText);" +
+							"  }" +
+							"};" +
+					"xhr.send();");
+
 		}catch(Exception e){
-			
+
 			System.out.println("Selenium_core.waitForAjaxComplete() threw: " + e.getMessage());
-			
+
 			long endTime = System.currentTimeMillis();
 			long duration = (endTime - startTime); 
 			System.out.println("waiting for AJAX took: " + duration + "MS");
-			
+
 		}
 
 	}
@@ -410,7 +407,7 @@ public class Selenium_core{
 
 		Select select = new Select(webdriver.findElement(target));
 		select.selectByIndex(index);
-		
+
 		waitForAjaxComplete();
 
 	}
@@ -423,7 +420,7 @@ public class Selenium_core{
 		select.selectByVisibleText(text);
 
 		waitForAjaxComplete();
-		
+
 		//[Fail-safe] Poll until dropDown menu text changes to what we expect.
 		int iWaitTime = 0;
 		while(!getDropDownMenuText(target).contains(text)){
@@ -506,7 +503,7 @@ public class Selenium_core{
 
 		WebElement element = webdriver.findElement(target);
 		((JavascriptExecutor) webdriver).executeScript("arguments[0].scrollIntoView(true);", element);
-		
+
 		waitForAjaxComplete();
 
 	}
@@ -580,7 +577,7 @@ public class Selenium_core{
 	public void getAllJS() throws InterruptedException{
 
 		waitForAjaxComplete();
-		
+
 		//String scriptToExecute = "return performance.getEntries({initiatorType : \"script\"});";
 		String scriptToExecute = "return performance.getEntriesByType(\"resource\");";
 
@@ -611,144 +608,13 @@ public class Selenium_core{
 
 	}	
 
-
 	public boolean checkImageExists(By by) throws InterruptedException{
 
 		waitForAjaxComplete();
-		
+
 		WebElement ImageFile = webdriver.findElement(by);
 		return  (Boolean) ((JavascriptExecutor)webdriver).executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", ImageFile);
 
 	}
-
-	//=====================================================
-	/* 
-	  Method will invoke a SOAPUI project and return the log to calling method
-
-	  Example use: 
-	  Within SOAPUI you have a groovy step which saves a particular value using log.info
-	  That value will be grabbed by this method and outputted. You may wish to then use that 
-	  value in a selenium script. Thus this method allows for continous integration between
-	  SOAPUI and Selenium/Java. 
-
-	  //Call the SOAPUI project using my runAPI method, and it returns all the logs to Java
-		List<String> logs = runAPI(dir + "PAYPAL_API.xml","PAYPAL_PAYMENT_TESTCASE","setPayment");
-
-		//Show logs to console.
-		for (String log: logs){
-			System.out.println(log);
-		}
-
-
-	 */ 
-	//=====================================================
-
-	//	private SoapUITestCaseRunner runner;
-	//	
-	//	public void loadAPI(String projectXML){
-	//
-	//		runner = new SoapUITestCaseRunner(); 
-	//		runner.setProjectFile(projectXML);
-	//		runner.setPrintReport(true);
-	//
-	//	}
-	//
-	//	public List<String> runAPI(String setTestSuite, String setTestCase) {
-	//
-	//		ByteArrayOutputStream baos = null;
-	//		PrintStream newPrintStream = null;
-	//		PrintStream oldPrintStream = null;
-	//
-	//		try{
-	//
-	//			//==========================================================================
-	//			//redirect console output so it can be saved to a string and queried later.
-	//			//==========================================================================
-	//
-	//			// new stream to hold console output
-	//			baos = new ByteArrayOutputStream();
-	//			newPrintStream = new PrintStream(baos);
-	//
-	//			// Save the old stream
-	//			oldPrintStream = System.out;
-	//
-	//			// Set Java to use new stream
-	//			System.setOut(newPrintStream);
-	//
-	//			//==========================================================================
-	//			//run SOAPUI test
-	//			//==========================================================================
-	//
-	//			System.out.println("===== SOAP UI LOG (START) =====");
-	//
-	//			runner.setTestSuite(setTestSuite);
-	//			runner.setTestCase(setTestCase);
-	//
-	//			runner.run();
-	//
-	//
-	//		}catch(Exception e){
-	//
-	//			//If test fails, fail build, and show SOAPUI exception.
-	//			Assert.fail(e.getMessage());
-	//
-	//			//finally block required to redirect Java back to old console output	
-	//		}finally{
-	//
-	//			//==========================================================================
-	//			//Save redirected output and put console output back to normal
-	//			//==========================================================================
-	//
-	//			System.out.flush();
-	//			System.setOut(oldPrintStream);
-	//
-	//			//==========================================================================
-	//			//Show and then return the console output to calling method
-	//			//==========================================================================
-	//
-	//			System.out.println(baos.toString());
-	//
-	//		}
-	//
-	//		List<String> logs = new ArrayList<String>();
-	//
-	//		String StringStart = "[log] ";
-	//		String StringEnd = "\r";
-	//
-	//		Pattern p = Pattern.compile(Pattern.quote(StringStart) + "(.*?)" + Pattern.quote(StringEnd));
-	//		Matcher m = p.matcher(baos.toString());
-	//		while (m.find()) {
-	//
-	//			logs.add(m.group(1));
-	//
-	//		}
-	//
-	//		//if method is succesful, then SOAPUI logs will be pulled and return to calling method.
-	//		return logs;
-	//
-	//	}	
-	//
-	//	//Use this to output to console all the logs returned by runAPI
-	//	public void showRunAPIlog(List<String> logs) {
-	//
-	//		System.out.println("#### showRunAPIlog results below ####");	
-	//
-	//		for (String a: logs){
-	//			System.out.println(a);	
-	//		}
-	//
-	//	}
-	//
-	//	public void setAPIproperties(String...properties) {
-	//
-	//		//Example use: 
-	//
-	//		//setAPIproperties("access_token="+accessToken,"execute_url="+executeURL_API);
-	//
-	//		runner.setProjectProperties(properties); 
-	//
-	//
-	//	}
-
 
 }

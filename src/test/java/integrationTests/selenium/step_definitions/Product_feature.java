@@ -1,7 +1,8 @@
 package integrationTests.selenium.step_definitions;
 
-//JUNIT Test framework
-import org.junit.Assert;
+
+
+import org.testng.Assert;
 
 //Cucumber Test framework
 import cucumber.api.java.en.*;
@@ -14,7 +15,7 @@ public class Product_feature extends Page_object_model {
 	@Given("^customer is on product page : (.+)$")
 	public void customer_is_on_product_page(String product) throws Throwable {
 		
-		gotoPage();
+		gotoPage(baseURL);
 		deleteCookies();
 		
 		customer_searches_by_product_using_search_feature(product);

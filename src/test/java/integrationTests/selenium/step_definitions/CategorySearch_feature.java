@@ -1,7 +1,8 @@
 package integrationTests.selenium.step_definitions;
 
-//JUNIT Test framework
-import org.junit.Assert;
+
+
+import org.testng.Assert;
 
 //Cucumber Test framework
 import cucumber.api.java.en.*;
@@ -16,7 +17,7 @@ public class CategorySearch_feature extends Page_object_model {
 	@Given("^customer is anywhere on website$")
 	public void customer_is_anywhere_on_website() throws Throwable {
 
-		gotoPage();
+		gotoPage(baseURL);
 		deleteCookies();
 		popup.escPopup(); 
 		

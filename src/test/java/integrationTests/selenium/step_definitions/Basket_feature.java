@@ -1,7 +1,8 @@
 package integrationTests.selenium.step_definitions;
 
-//JUNIT Test framework
-import org.junit.Assert;
+
+
+import org.testng.Assert;
 
 //Cucumber Test framework
 import cucumber.api.java.en.*;
