@@ -8,7 +8,8 @@ import org.testng.annotations.Parameters;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
-import integrationTests.selenium.Selenium_core;
+import integrationTests.selenium.main.Selenium_core;
+import integrationTests.selenium.main.WebDriver_control;
 
 @CucumberOptions( 
 		tags={"@Smoke"},
@@ -35,22 +36,11 @@ public class Cucumber_runner extends AbstractTestNGCucumberTests{
 
 	@Parameters({"operating_system","browser","browser_headless"})
 	@BeforeClass
-	public void before_All_Tests(String operating_system,String browser,String browser_headless ) throws MalformedURLException{
+	public void get_test_configurations(String operating_system,String browser,String browser_headless ) throws MalformedURLException{
 
 		//Selenium Grid flag/url set in Maven using System properties
 		selenium_grid_enabled= Boolean.parseBoolean(System.getProperty("selenium.grid.enabled"));
 		selenium_grid_hub = System.getProperty("selenium.grid.hub");
-
-		//Prerequisite (Ensure Hub and nodes are configured and running)
-		if (selenium_grid_enabled){
-			//Run on Selenium Grid
-			Selenium_core.createGridWebDriver(selenium_grid_hub,operating_system,browser,Boolean.parseBoolean(browser_headless));
-
-		}else{
-			//Run on this build machine
-			Selenium_core.createStandardWebDriver(operating_system,browser,Boolean.parseBoolean(browser_headless));
-
-		}
 
 		System.out.println("BUILD CONFIGURATION");
 		System.out.println("===========================");
@@ -63,8 +53,22 @@ public class Cucumber_runner extends AbstractTestNGCucumberTests{
 		System.out.println("Browser headless mode: " + browser_headless );		
 		System.out.println("===========================");	
 		
-		this.operating_system = operating_system;
-		this.browser = browser;	
+		Cucumber_runner.operating_system = operating_system;
+		Cucumber_runner.browser = browser;	
+		
+		
+		//Prerequisite (Ensure Hub and nodes are configured and running)
+		if (selenium_grid_enabled){
+			//Run on Selenium Grid
+			WebDriver_control.createGridWebDriver(selenium_grid_hub,operating_system,browser,Boolean.parseBoolean(browser_headless));
+
+		}else{
+			//Run on this build machine
+			WebDriver_control.createStandardWebDriver(operating_system,browser,Boolean.parseBoolean(browser_headless));
+
+		}
+
+
 
 	}
 

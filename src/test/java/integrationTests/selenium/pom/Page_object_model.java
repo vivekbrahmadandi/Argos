@@ -1,6 +1,6 @@
 package integrationTests.selenium.pom;
 
-import integrationTests.selenium.Selenium_core;
+import integrationTests.selenium.main.Selenium_core;
 
 public class Page_object_model extends Selenium_core {
 

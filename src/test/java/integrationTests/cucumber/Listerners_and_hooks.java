@@ -12,7 +12,8 @@ import org.testng.annotations.Parameters;
 
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
-import integrationTests.selenium.Selenium_core;		
+import integrationTests.selenium.main.Selenium_core;
+import integrationTests.selenium.main.WebDriver_control;		
 
 public class Listerners_and_hooks implements ITestListener						
 {	
@@ -34,7 +35,7 @@ public class Listerners_and_hooks implements ITestListener
 	}
 
 	//==========================
-	// TestNG listener triggered after tests completed 
+	// TestNG listener triggered after tests complete generates master thought Report
 	//==========================	
 
 	@Override		
@@ -46,9 +47,9 @@ public class Listerners_and_hooks implements ITestListener
 		
 		try {
 			testReportLocation = moveReports();
-		} catch (IOException e1) {
+		} catch (IOException e) {
 
-			e1.printStackTrace();
+			e.printStackTrace();
 		}
 
 
@@ -57,7 +58,7 @@ public class Listerners_and_hooks implements ITestListener
 		System.out.println("---------------------------------------------");
 
 		try {
-			Selenium_core.quitWebDriver();
+			WebDriver_control.quitWebDriver();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -67,17 +68,18 @@ public class Listerners_and_hooks implements ITestListener
 	//Enable unique Masterthought reporting for each environment setup. 
 	public String moveReports() throws IOException{
 
+		File newDir = null;
+		
 		File dir = new File(System.getProperty("user.dir") + "\\target\\Masterthought");
 		if (!dir.isDirectory()) {
 			System.err.println("There is no directory @ given path");
 		} else {
-			System.out .println("Enter new name of directory(Only Name and Not Path).");
 
-			File newDir = new File(dir.getParent() + "\\" + "Masterthought-"  + Cucumber_runner.operating_system + "-" + Cucumber_runner.browser);
+			newDir = new File(dir.getParent() + "\\" + "Masterthought-"  + Cucumber_runner.operating_system + "-" + Cucumber_runner.browser);
 			dir.renameTo(newDir);
 		}
 
-		return dir.getPath();
+		return newDir.getPath();
 	}
 
 

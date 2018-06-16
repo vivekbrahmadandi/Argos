@@ -13,11 +13,11 @@
 	<test name="windows firefox">
 		<parameter name="operating_system" value="windows" />
 		<parameter name="browser" value="firefox" />
-		<parameter name="browser_headless" value="true" />
+		<parameter name="browser_headless" value="false" />
 		<classes>
 			<class name="integrationTests.cucumber.Cucumber_runner" />
 		</classes>
-	</test>
+	</test> 
 		<test name="windows edge">
 		<parameter name="operating_system" value="windows" />
 		<parameter name="browser" value="edge" />
@@ -25,7 +25,7 @@
 		<classes>
 			<class name="integrationTests.cucumber.Cucumber_runner" />
 		</classes>
-	</test>
+ 	</test> 
 </suite> 
 
 

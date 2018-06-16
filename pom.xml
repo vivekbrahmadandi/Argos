@@ -12,7 +12,7 @@
 
 		<!-- Default values for build profile qa_build (testing with Selenium) -->
 		<!-- Values can be overwritten via command line / CI job -->
-		<selenium.grid.enabled>false</selenium.grid.enabled>
+		<selenium.grid.enabled>true</selenium.grid.enabled>
 		<selenium.grid.hub>http://192.168.0.17:4444</selenium.grid.hub>
 	</properties>
 
