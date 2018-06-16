@@ -68,8 +68,6 @@ public class Cucumber_runner extends AbstractTestNGCucumberTests{
 
 		}
 
-
-
 	}
 
 }

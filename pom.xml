@@ -13,7 +13,8 @@
 		<!-- Default values for build profile qa_build (testing with Selenium) -->
 		<!-- Values can be overwritten via command line / CI job -->
 		<selenium.grid.enabled>true</selenium.grid.enabled>
-		<selenium.grid.hub>http://192.168.0.17:4444</selenium.grid.hub>
+		<selenium.grid.hub>http://workpeter:ab9612ef-8ad0-4bc7-8cb5-489333766f7a@ondemand.saucelabs.com:80/wd/hub</selenium.grid.hub>
+		<selenium.tags>@Smoke</selenium.tags>
 	</properties>
 
 	<dependencies>
@@ -195,6 +196,7 @@
 								<env.qa.url>${env.qa.url}</env.qa.url>
 								<selenium.grid.enabled>${selenium.grid.enabled}</selenium.grid.enabled>
 								<selenium.grid.hub>${selenium.grid.hub}</selenium.grid.hub>
+								<selenium.tags>${selenium.tags}</selenium.tags>
 							</systemPropertyVariables>
 							<properties>
 								<property>

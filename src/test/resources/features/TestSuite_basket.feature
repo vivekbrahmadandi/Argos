@@ -1,7 +1,12 @@
 Feature: Basket 
 		 Customer has ability to View basket and add/update/delete products.
 
+
   @Basket @Smoke
+  Scenario: Quick scenerio for testing saucelabs selenium grid
+  Given customer is anywhere on website
+
+  @Basket 
   Scenario: Customer views empty basket
 	Given customer is anywhere on website
 	When customer views basket

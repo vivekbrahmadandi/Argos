@@ -15,6 +15,7 @@ import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.SkipException;
@@ -28,14 +29,14 @@ public class WebDriver_control extends Selenium_core{
 	//==================================
 	public static void createGridWebDriver(String selenium_grid_hub,String operatingSystem, String browserType,boolean browserHeadless) throws MalformedURLException {
 
-		System.out.println(selenium_grid_hub);
-		
+
+
 		MutableCapabilities options = null;
 
 		switch (browserType){
 
 		case "chrome":
-			
+
 			options = new ChromeOptions();
 			((ChromeOptions) options).setHeadless(browserHeadless);
 			break;
@@ -71,8 +72,8 @@ public class WebDriver_control extends Selenium_core{
 			break;
 
 		}
-		
-		webdriver = new RemoteWebDriver(new URL(selenium_grid_hub + "/wd/hub"), options);
+
+		webdriver = new RemoteWebDriver(new URL(selenium_grid_hub), options);
 	
 		setWebDriverWaitTime();
 
