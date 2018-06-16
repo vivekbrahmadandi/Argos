@@ -14,9 +14,12 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.ie.InternetExplorerOptions;
+import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.safari.SafariOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.SkipException;
 
@@ -27,54 +30,64 @@ public class WebDriver_control extends Selenium_core{
 	//==================================
 	// Selenium Grid Enabled: will find node/s to match current environment_configurations_to_test.xml test 
 	//==================================
-	public static void createGridWebDriver(String selenium_grid_hub,String operatingSystem, String browserType,boolean browserHeadless) throws MalformedURLException {
+	@SuppressWarnings("deprecation")
+	public static void createGridWebDriver(String selenium_grid_hub,String operating_system, String browser, String browser_version,boolean browser_headless) throws MalformedURLException {
 
-
-
+		
 		MutableCapabilities options = null;
 
-		switch (browserType){
+		//Create the desired browser options object
+		
+		browser = browser.toLowerCase();
+	
+		switch (browser){
 
 		case "chrome":
-
 			options = new ChromeOptions();
-			((ChromeOptions) options).setHeadless(browserHeadless);
 			break;
 
 		case "firefox":
-
 			options = new FirefoxOptions();
-			((FirefoxOptions) options).setHeadless(browserHeadless);
 			break;
 
 		case "edge":
-
 			options = new EdgeOptions();
 			break;
 
+		case "internet explorer":
+			options = new InternetExplorerOptions();
+			break;
+			
+		case "safari":
+			options = new SafariOptions();
+			break;		
+		
+		case "opera":
+			options = new OperaOptions();
+			break;
+			
+			//Browser needs to be specified in order to create the correct Options object 	
+		default:
+			System.out.println("===========================");
+			System.out.println(browser + " is not a recognised web browser, please check config. Aborting test");
+			System.out.println("===========================");
+			throw new SkipException("skipping test");	
 		}
 
-		switch (operatingSystem){
-
-		case "windows":
-
-			options.setCapability(CapabilityType.PLATFORM_NAME, Platform.WINDOWS);	
-			break;
-
-		case "linux":
-
-			options.setCapability(CapabilityType.PLATFORM_NAME, Platform.LINUX);
-			break;
-
-		case "mac":
-
-			options.setCapability(CapabilityType.PLATFORM_NAME, Platform.MAC);
-			break;
-
-		}
-
+		//Set desired capabilities based on the input provided from environment_configurations_to_test.xml 
+		if (!browser.equals("")) options.setCapability(CapabilityType.BROWSER_NAME, browser);
+		if (!browser_version.equals(""))options.setCapability(CapabilityType.BROWSER_VERSION, browser_version);
+		if (!operating_system.equals(""))options.setCapability(CapabilityType.PLATFORM_NAME, operating_system);
+		if (!operating_system.equals(""))options.setCapability(CapabilityType.PLATFORM, operating_system);
+		
+		
+		//Launch Selenium grid, looking for node/s which match above capabilities
 		webdriver = new RemoteWebDriver(new URL(selenium_grid_hub), options);
-	
+		
+		System.out.println("Webdriver launched on node successfully");
+		
+		webdriver.manage().window().maximize();
+		
 		setWebDriverWaitTime();
 
 	}
@@ -83,9 +96,10 @@ public class WebDriver_control extends Selenium_core{
 	// Selenium Grid not Enabled: - will run on current machine. Will still attempt to execute all tests found in environment_configurations_to_test.xml however will skip if operating system doesnt match. 
 	//==================================
 
-	public static void createStandardWebDriver(String operatingSystem, String browserType,boolean browserHeadless) throws MalformedURLException {
+	
+	public static void createStandardWebDriver(String operating_system, String browser,boolean browser_headless) throws MalformedURLException {
 
-		switch (operatingSystem){
+		switch (operating_system){
 
 		case "windows":
 
@@ -139,19 +153,19 @@ public class WebDriver_control extends Selenium_core{
 		default: 
 
 			System.out.println("===========================");
-			System.out.println(operatingSystem + " is not a recognised operating system, please check config. Aborting test");
+			System.out.println(operating_system + " is not a recognised operating system, please check config. Aborting test");
 			System.out.println("===========================");
 			throw new SkipException("skipping test");
 		}
 
 
-		switch(browserType){
+		switch(browser){
 
 		case "chrome":
 
 			ChromeOptions options = new ChromeOptions();
 
-			if (browserHeadless){
+			if (browser_headless){
 
 				options.addArguments("headless");
 				webdriver = new ChromeDriver(options);
@@ -170,7 +184,7 @@ public class WebDriver_control extends Selenium_core{
 			System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE,"true");
 			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");
 
-			if (browserHeadless){
+			if (browser_headless){
 
 				FirefoxBinary firefoxBinary = new FirefoxBinary();
 				firefoxBinary.addCommandLineOptions("--headless");
@@ -189,10 +203,10 @@ public class WebDriver_control extends Selenium_core{
 
 		case "edge":
 
-			if (browserHeadless){
+			if (browser_headless){
 
 				System.out.println("===========================");
-				System.out.println(browserType + " doesn't have a headless mode, launching normally");
+				System.out.println(browser + " doesn't have a headless mode, launching normally");
 				System.out.println("===========================");
 
 			}	
@@ -205,7 +219,7 @@ public class WebDriver_control extends Selenium_core{
 		default: 
 
 			System.out.println("===========================");
-			System.out.println(browserType + " is not a recognised web browser, please check config. Aborting test");
+			System.out.println(browser + " is not a recognised web browser, please check config. Aborting test");
 			System.out.println("===========================");
 			throw new SkipException("skipping test");
 

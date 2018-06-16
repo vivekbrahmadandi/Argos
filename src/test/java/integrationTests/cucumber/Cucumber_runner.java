@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 import cucumber.api.CucumberOptions;
@@ -29,14 +30,18 @@ public class Cucumber_runner extends AbstractTestNGCucumberTests{
 
 	public static String operating_system;
 	public static String browser;
-	
+
 	//==========================
 	// TestNG hook triggered before tests.  
 	//==========================	
 
-	@Parameters({"operating_system","browser","browser_headless"})
+	@Parameters({"operating_system","browser","browser_version","browser_headless"})
 	@BeforeClass
-	public void get_test_configurations(String operating_system,String browser,String browser_headless ) throws MalformedURLException{
+	public void get_test_configurations(
+			String operating_system,
+			String browser, 
+			@Optional("")  String browser_version, 
+			@Optional("false") String browser_headless ) throws MalformedURLException{
 
 		//Selenium Grid flag/url set in Maven using System properties
 		selenium_grid_enabled= Boolean.parseBoolean(System.getProperty("selenium.grid.enabled"));
@@ -52,15 +57,15 @@ public class Cucumber_runner extends AbstractTestNGCucumberTests{
 		System.out.println("Web Browser: " + browser );
 		System.out.println("Browser headless mode: " + browser_headless );		
 		System.out.println("===========================");	
-		
+
 		Cucumber_runner.operating_system = operating_system;
 		Cucumber_runner.browser = browser;	
-		
-		
+
+
 		//Prerequisite (Ensure Hub and nodes are configured and running)
 		if (selenium_grid_enabled){
 			//Run on Selenium Grid
-			WebDriver_control.createGridWebDriver(selenium_grid_hub,operating_system,browser,Boolean.parseBoolean(browser_headless));
+			WebDriver_control.createGridWebDriver(selenium_grid_hub,operating_system,browser,browser_version,Boolean.parseBoolean(browser_headless));
 
 		}else{
 			//Run on this build machine

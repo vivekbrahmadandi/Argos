@@ -2,30 +2,39 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="different environment configurations">
 
-	<test name="windows chrome">
+	<test name="mac chrome">
 		<parameter name="operating_system" value="mac" />
 		<parameter name="browser" value="chrome" />
-		<parameter name="browser_headless" value="false" />
+		<parameter name="browser_version" value="56.0" />
 		<classes>
 			<class name="integrationTests.cucumber.Cucumber_runner" />
 		</classes>
 	</test>
-	<test name="windows firefox">
+
+	<test name="linux firefox">
 		<parameter name="operating_system" value="linux" />
 		<parameter name="browser" value="firefox" />
-		<parameter name="browser_headless" value="false" />
+		<parameter name="browser_version" value="60.0" />
 		<classes>
 			<class name="integrationTests.cucumber.Cucumber_runner" />
 		</classes>
-	</test> 
-		<test name="windows edge">
+	</test>
+
+	<test name="windows edge">
 		<parameter name="operating_system" value="windows" />
 		<parameter name="browser" value="edge" />
-		<parameter name="browser_headless" value="false" />
 		<classes>
 			<class name="integrationTests.cucumber.Cucumber_runner" />
 		</classes>
- 	</test> 
+	</test>
+
+<!-- 	<test name="windows internet explorer"> -->
+<!-- 		<parameter name="operating_system" value="windows" /> -->
+<!-- 		<parameter name="browser" value="internet explorer" /> -->
+<!-- 		<classes> -->
+<!-- 			<class name="integrationTests.cucumber.Cucumber_runner" /> -->
+<!-- 		</classes> -->
+<!-- 	</test> -->
 </suite> 
 
 
