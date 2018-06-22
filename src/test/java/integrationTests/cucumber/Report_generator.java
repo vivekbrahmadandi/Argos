@@ -11,7 +11,7 @@ import java.util.Set;
 
 import org.apache.poi.util.SystemOutLogger;
 
-public class Cucumber_report_generate {
+public class Report_generator {
 
 	public static String  GenerateMasterthoughtReport() {
 
@@ -46,8 +46,6 @@ public class Cucumber_report_generate {
 			e.printStackTrace();
 		}
 
-		
-		
 		//return location of report
 		return System.getProperty("user.dir") + "\\target\\Masterthought\\feature-overview.html";
 
@@ -91,7 +89,7 @@ public class Cucumber_report_generate {
 			System.err.println("There is no directory @ given path");
 		} else {
 
-			newDir = new File(dir.getParent() + "\\" + "Masterthought-"  + Cucumber_runner.operating_system.get() + "-" + Cucumber_runner.browser.get());
+			newDir = new File(dir.getParent() + "\\" + "Masterthought-"  + Runner.operating_system.get() + "-" + Runner.browser.get());
 			dir.renameTo(newDir);
 		}
 

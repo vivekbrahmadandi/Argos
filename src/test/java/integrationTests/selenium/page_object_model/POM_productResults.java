@@ -1,10 +1,11 @@
-package integrationTests.selenium.pom;
+package integrationTests.selenium.page_object_model;
 
 import org.openqa.selenium.By;
 
+import integrationTests.selenium.main.Common_methods_and_pom;
 import integrationTests.selenium.step_definitions.Basket_feature;
 
-public class POM_productResults extends Page_object_model {
+public class POM_productResults extends Common_methods_and_pom {
 
 	public By txtSearchResultCount = By.xpath("//div[@class=\"font-standard md-hidden search-results-count\"]");
 	public By dropProductSort = By.xpath("//select[@class=\"font-standard form-control sort-select\"]");
@@ -34,7 +35,7 @@ public class POM_productResults extends Page_object_model {
 			}else{
 				click(btnChooseOptionsFirstProduct);
 				new Basket_feature().adds_product_to_basket();
-				webdriver.get().navigate().back();
+				navigateBack();
 			}
 
 		}
@@ -57,7 +58,7 @@ public class POM_productResults extends Page_object_model {
 			}else{
 				click(btnChooseOptionsSecondProduct);
 				new Basket_feature().adds_product_to_basket();
-				webdriver.get().navigate().back();
+				navigateBack();
 			}
 
 		}

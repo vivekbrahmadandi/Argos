@@ -6,9 +6,10 @@ import org.testng.Assert;
 
 //Cucumber Test framework
 import cucumber.api.java.en.*;
-import integrationTests.selenium.pom.Page_object_model;
+import integrationTests.selenium.main.Common_methods_and_pom;
 
-public class Product_feature extends Page_object_model {
+
+public class Product_feature extends Common_methods_and_pom {
 
 	String product;
 	

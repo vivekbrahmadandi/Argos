@@ -6,9 +6,9 @@ import org.testng.Assert;
 
 //Cucumber Test framework
 import cucumber.api.java.en.*;
-import integrationTests.selenium.pom.Page_object_model;
+import integrationTests.selenium.main.Common_methods_and_pom;
 
-public class Basket_feature extends Page_object_model {
+public class Basket_feature extends Common_methods_and_pom {
 
 	@When("^customer views basket$")
 	public void customer_views_basket() throws Throwable {

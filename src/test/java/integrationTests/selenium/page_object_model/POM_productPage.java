@@ -1,10 +1,11 @@
-package integrationTests.selenium.pom;
+package integrationTests.selenium.page_object_model;
 
 import org.openqa.selenium.By;
 
 import cucumber.api.PendingException;
+import integrationTests.selenium.main.Common_methods_and_pom;
 
-public class POM_productPage extends Page_object_model {
+public class POM_productPage extends Common_methods_and_pom {
 
 	public By linkProduct = By.xpath("//a[@class=\"ac-product-link ac-product-card__details\"]");
 	public By linkChangeStore = By.xpath("//class[@class=\"a xs-5--none change-store\"]");	

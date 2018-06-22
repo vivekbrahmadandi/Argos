@@ -1,8 +1,10 @@
-package integrationTests.selenium.pom;
+package integrationTests.selenium.page_object_model;
 
 import org.openqa.selenium.By;
 
-public class POM_popup extends Page_object_model {
+import integrationTests.selenium.main.Common_methods_and_pom;
+
+public class POM_popup extends Common_methods_and_pom {
 
 	private By btnClose = By.xpath("//a[@class=\"acsCloseButton acsAbandonButton \"]");	
 

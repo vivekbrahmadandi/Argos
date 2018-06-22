@@ -14,7 +14,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 
 //import org.testng.Reporter;
 
-public class Read_external_data_files{
+public class External_data_reader{
 
 	File file;
 	FileInputStream fis;
@@ -27,7 +27,7 @@ public class Read_external_data_files{
 	//TO-DO
 	//Add code to create backup of xls file incase it gets corrupt.
 
-	public Read_external_data_files(String filePath, String tabName) throws IOException {
+	public External_data_reader(String filePath, String tabName) throws IOException {
 
 		file = new File(filePath);
 		fis = new FileInputStream(file);

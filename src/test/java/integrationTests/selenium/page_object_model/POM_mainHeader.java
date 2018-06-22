@@ -1,11 +1,13 @@
-package integrationTests.selenium.pom;
+package integrationTests.selenium.page_object_model;
 
 
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-public class POM_mainHeader extends Page_object_model {
+import integrationTests.selenium.main.Common_methods_and_pom;
+
+public class POM_mainHeader extends Common_methods_and_pom {
 
 	public By btnBasket = By.xpath("(//span[@class=\"argos-header__link-label\"])[2]");
 	public By txtBasketCount = By.xpath("//span[@class=\"argos-header__trolley-count argos-header__trolley-badge badge\"]");

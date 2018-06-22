@@ -1,9 +1,11 @@
-package integrationTests.selenium.pom;
+package integrationTests.selenium.page_object_model;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-public class POM_categorySplashPage extends Page_object_model {
+import integrationTests.selenium.main.Common_methods_and_pom;
+
+public class POM_categorySplashPage extends Common_methods_and_pom {
 
 public By txtH1 = By.xpath("//h1");
 

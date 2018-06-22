@@ -10,11 +10,11 @@ import org.testng.annotations.Parameters;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
-import integrationTests.selenium.main.Selenium_core;
+import integrationTests.selenium.main.Common_methods_and_pom;
 import integrationTests.selenium.main.WebDriver_factory;
 
 @CucumberOptions( 
-		tags={"@Basket"},
+		tags={"@Smoke2"},
 		//dryRun=true,
 		strict = false,
 		plugin = {
@@ -24,14 +24,14 @@ import integrationTests.selenium.main.WebDriver_factory;
 		features = "src/test/resources/Features/"
 		,glue={"integrationTests.selenium.step_definitions","integrationTests.cucumber"}
 		)
-public class Cucumber_runner extends AbstractTestNGCucumberTests{
+public class Runner extends AbstractTestNGCucumberTests{
 
-	public static boolean selenium_grid_enabled; 	
-	public static String selenium_grid_hub; 
+	private static boolean selenium_grid_enabled; 	
+	private static String selenium_grid_hub; 
 
 	//Will be referenced when generating the master thought report names 
-	public static ThreadLocal<String> operating_system = new ThreadLocal<String>();
-	public static ThreadLocal<String> browser = new ThreadLocal<String>();
+	protected static ThreadLocal<String> operating_system = new ThreadLocal<String>();
+	protected static ThreadLocal<String> browser = new ThreadLocal<String>();
 	
 	//==========================
 	// TestNG hook triggered before tests.  
@@ -56,7 +56,7 @@ public class Cucumber_runner extends AbstractTestNGCucumberTests{
 		
 		System.out.println("BUILD CONFIGURATION");
 		System.out.println("===========================");
-		System.out.println("Test URL: " + Selenium_core.baseURL);	
+		System.out.println("Test URL: " + Common_methods_and_pom.baseURL);	
 		System.out.println("Selenium Grid Enabled: " + selenium_grid_enabled );	
 		if (selenium_grid_enabled) System.out.println("Selenium Grid hub: " + selenium_grid_hub );	
 
@@ -65,17 +65,17 @@ public class Cucumber_runner extends AbstractTestNGCucumberTests{
 		System.out.println("Browser headless mode: " + browser_headless );		
 		System.out.println("===========================");	
 
-		Cucumber_runner.operating_system.set(operating_system);
-		Cucumber_runner.browser.set(browser);
+		Runner.operating_system.set(operating_system);
+		Runner.browser.set(browser);
 
 		//Prerequisite (Ensure Hub and nodes are configured and running)
 		if (selenium_grid_enabled){
 			//Run on Selenium Grid
-			WebDriver_factory.createGridWebDriver(selenium_grid_hub,operating_system,browser,browser_version,Boolean.parseBoolean(browser_headless));
+			WebDriver_factory.createLocalThreadGridWebDriver(selenium_grid_hub,operating_system,browser,browser_version,Boolean.parseBoolean(browser_headless));
 
 		}else{
 			//Run on this build machine
-			WebDriver_factory.createStandardWebDriver(operating_system,browser,Boolean.parseBoolean(browser_headless));
+			WebDriver_factory.createLocalThreadWebDriver(operating_system,browser,Boolean.parseBoolean(browser_headless));
 
 		}
 

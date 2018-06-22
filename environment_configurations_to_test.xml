@@ -7,7 +7,7 @@
 		<parameter name="operating_system" value="windows" />
 		<parameter name="browser" value="chrome" />
 		<classes>
-			<class name="integrationTests.cucumber.Cucumber_runner" />
+			<class name="integrationTests.cucumber.Runner" />
 		</classes>
 	</test>
 
@@ -15,7 +15,7 @@
 		<parameter name="operating_system" value="windows" />
 		<parameter name="browser" value="firefox" />
 		<classes>
-			<class name="integrationTests.cucumber.Cucumber_runner" />
+			<class name="integrationTests.cucumber.Runner" />
 		</classes>
 	</test>
 
@@ -23,7 +23,7 @@
 		<parameter name="operating_system" value="windows" />
 		<parameter name="browser" value="edge" />
 		<classes>
-			<class name="integrationTests.cucumber.Cucumber_runner" />
+			<class name="integrationTests.cucumber.Runner" />
 		</classes>
 	</test>
 
@@ -31,7 +31,7 @@
 <!-- 		<parameter name="operating_system" value="windows" /> -->
 <!-- 		<parameter name="browser" value="internet explorer" /> -->
 <!-- 		<classes> -->
-<!-- 			<class name="integrationTests.cucumber.Cucumber_runner" /> -->
+<!-- 			<class name="integrationTests.cucumber.Runner" /> -->
 <!-- 		</classes> -->
 <!-- 	</test> -->
 </suite> 

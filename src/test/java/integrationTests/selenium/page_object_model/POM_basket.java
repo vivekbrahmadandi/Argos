@@ -1,11 +1,14 @@
-package integrationTests.selenium.pom;
+package integrationTests.selenium.page_object_model;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
+import integrationTests.selenium.main.Common_methods_and_pom;
+
+
 import java.util.*;
 
-public class POM_basket extends Page_object_model {
+public class POM_basket extends Common_methods_and_pom {
 
 	public By txtH1 = By.xpath("//*[@id=\"emptytrolleylister\"]/div[1]/h1");
 	public By dropQuantity = By.xpath("//select[starts-with(@id,'quantity')]");
@@ -14,12 +17,9 @@ public class POM_basket extends Page_object_model {
 	
 	public int productCount() throws InterruptedException{
 	
-		List<WebElement> rows = webdriver.get().findElements(dropQuantity);
-
 		int productCount = elementCount(dropQuantity);
 		//System.out.println("number of different products: " + productCount);
 		return  productCount;
-		
 		
 	}
 
@@ -27,7 +27,7 @@ public class POM_basket extends Page_object_model {
 
 		int quantityCount = 0;
 		
-		List<WebElement> rows = webdriver.get().findElements(dropQuantity);
+		List<WebElement> rows = getAllElements(dropQuantity);
 
 		Iterator<WebElement> iter = rows.iterator();
 		while (iter.hasNext()) {

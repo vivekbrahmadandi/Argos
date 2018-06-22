@@ -15,7 +15,7 @@ import org.testng.annotations.Parameters;
 
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
-import integrationTests.selenium.main.Selenium_core;
+import integrationTests.selenium.main.Common_methods_and_pom;
 import integrationTests.selenium.main.WebDriver_factory;		
 
 public class Listerners_and_hooks implements ITestListener	{	
@@ -30,7 +30,7 @@ public class Listerners_and_hooks implements ITestListener	{
 		if(scenario.isFailed()) {
 
 			String dir = System.getProperty("user.dir")  + "\\target\\screenshots_on_failure\\";
-			Selenium_core.takeSnapShot(dir);
+			Common_methods_and_pom.takeSnapShot(dir);
 
 		}
 
@@ -43,14 +43,13 @@ public class Listerners_and_hooks implements ITestListener	{
 	@Override		
 	public void onFinish(ITestContext arg0) {					
 
-		if (Selenium_core.webdriver.get() != null){
+		if (WebDriver_factory.getLocalThreadWebDriver() != null){
 
-
-			Cucumber_report_generate.GenerateMasterthoughtReport();
+			Report_generator.GenerateMasterthoughtReport();
 			
 			String testReportLocation = null;
 			try {
-				testReportLocation = Cucumber_report_generate.moveReports();
+				testReportLocation = Report_generator.moveReports();
 				
 				System.out.println("---------------------------------------------");
 				System.out.println("[Test Report Location] " + testReportLocation);
@@ -61,7 +60,7 @@ public class Listerners_and_hooks implements ITestListener	{
 			}
 			
 			try {
-				WebDriver_factory.quitWebDriver();
+				WebDriver_factory.quitLocalWebDriver();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -24,19 +24,20 @@ import org.openqa.selenium.safari.SafariOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.SkipException;
 
-public class WebDriver_factory extends Selenium_core{
+public class WebDriver_factory {
 
-	private static WebDriver webdriver_threadLocal;
-	private static WebDriverWait wait_threadLocal;
-	private static WebDriverWait quickWait_threadLocal;
-	
+	//Static webdriver required to support cross class cucumber step definition testing
+	//Parallel processing is achieved in testNG using ThreadLocal
+	private static ThreadLocal<WebDriver> webdriver_threadLocal = new ThreadLocal<WebDriver>();
+	private static WebDriver webdriver;
+
 	private static String os_name = System.getProperty("os.name").toLowerCase();
 
 	//==================================
 	// Selenium Grid Enabled: will find node/s to match current environment_configurations_to_test.xml test 
 	//==================================
 	@SuppressWarnings("deprecation")
-	public static void createGridWebDriver(String selenium_grid_hub,String operating_system, String browser, String browser_version,boolean browser_headless) throws MalformedURLException {
+	public static void createLocalThreadGridWebDriver(String selenium_grid_hub,String operating_system, String browser, String browser_version,boolean browser_headless) throws MalformedURLException {
 
 		MutableCapabilities options = null;
 
@@ -85,22 +86,21 @@ public class WebDriver_factory extends Selenium_core{
 		if (!operating_system.equals(""))options.setCapability(CapabilityType.PLATFORM, operating_system);
 
 		//Launch Selenium grid, looking for node/s which match above capabilities
-		webdriver_threadLocal = new RemoteWebDriver(new URL(selenium_grid_hub), options);
+		webdriver = new RemoteWebDriver(new URL(selenium_grid_hub), options);
 		
 		System.out.println("Webdriver launched on node successfully");
-		webdriver.set(webdriver_threadLocal);
 		
-		webdriver.get().manage().window().maximize();
-
-		setWebDriverWaitTime();
-
+		webdriver.manage().window().maximize();
+		
+		webdriver_threadLocal.set(webdriver);
+	
 	}
 
 	//==================================
 	// Selenium Grid not Enabled: - will run on current machine. Will still attempt to execute all tests found in environment_configurations_to_test.xml however will skip if operating system doesnt match. 
 	//==================================
 
-	public static void createStandardWebDriver(String operating_system, String browser,boolean browser_headless) throws MalformedURLException {
+	public static void createLocalThreadWebDriver(String operating_system, String browser,boolean browser_headless) throws MalformedURLException {
 
 		//Check the current test config specified operating system matches build machine, if not then skip test.
 		//If multiple OS testing is required then consider turning on Selenium Grid flag.
@@ -180,16 +180,13 @@ public class WebDriver_factory extends Selenium_core{
 
 				options.addArguments("headless");
 				
-				webdriver_threadLocal = new ChromeDriver(options);
-				webdriver.set(webdriver_threadLocal);
-	
-	
-				webdriver.get().manage().window().setSize(new Dimension(1080, 1920));
+				webdriver = new ChromeDriver(options);
+				webdriver.manage().window().setSize(new Dimension(1080, 1920));
+				
 			}else{
 
-				webdriver_threadLocal = new ChromeDriver(options);
-				webdriver.set(webdriver_threadLocal);
-				webdriver.get().manage().window().maximize();
+				webdriver = new ChromeDriver(options);
+				webdriver.manage().window().maximize();
 			}
 
 			break;
@@ -207,18 +204,16 @@ public class WebDriver_factory extends Selenium_core{
 				firefoxOptions.setBinary(firefoxBinary);
 				
 				
-				webdriver_threadLocal = new FirefoxDriver(firefoxOptions);
-				webdriver.set(webdriver_threadLocal);
-				webdriver.get().manage().window().setSize(new Dimension(1080, 1920));
+				webdriver = new FirefoxDriver(firefoxOptions);
+				webdriver.manage().window().setSize(new Dimension(1080, 1920));
 
 
 			}else{
 
-				webdriver_threadLocal = new FirefoxDriver();
-				webdriver.set(webdriver_threadLocal);
-	
-				webdriver.get().manage().window().maximize();
+				webdriver = new FirefoxDriver();
+				webdriver.manage().window().maximize();
 			}
+			
 			break;
 
 		case "edge":
@@ -232,10 +227,8 @@ public class WebDriver_factory extends Selenium_core{
 			}	
 			
 			
-			webdriver_threadLocal = new EdgeDriver();
-			webdriver.set(webdriver_threadLocal);
-			
-			webdriver.get().manage().window().maximize();
+			webdriver = new EdgeDriver();
+			webdriver.manage().window().maximize();
 
 			break;
 
@@ -247,29 +240,25 @@ public class WebDriver_factory extends Selenium_core{
 			throw new SkipException("skipping test");
 
 		}
-
-		setWebDriverWaitTime();
-
-	}
-
-
-	public static void setWebDriverWaitTime(){
-
-		wait_threadLocal = new WebDriverWait(webdriver.get(),60);
-		wait.set(wait_threadLocal);
 		
-		quickWait_threadLocal = new WebDriverWait(webdriver.get(), 1);
-		quickWait.set(quickWait_threadLocal);
+		webdriver_threadLocal.set(webdriver);
 
 	}
 
-	public static void quitWebDriver() throws Exception{
 
-		if (webdriver.get()!= null){
+	public static void quitLocalWebDriver() throws Exception{
 
-			webdriver.get().quit();
+		if (webdriver_threadLocal.get()!= null){
+
+			webdriver_threadLocal.get().quit();
 
 		}
+
+	}
+	
+	public static WebDriver getLocalThreadWebDriver() {
+
+		return webdriver_threadLocal.get();
 
 	}
 
