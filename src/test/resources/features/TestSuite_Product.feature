@@ -2,6 +2,10 @@ Feature: Products
 		 Customer has ability to search for product, sort results and look at specific product data and delivery information.
 
 
+  @Smoke
+  Scenario: Quick scenerio for testing saucelabs selenium grid
+  Given customer is anywhere on website
+
   @Product 
   Scenario Outline: customer searches for product by name 
   	Given customer is anywhere on website

@@ -2,12 +2,18 @@ package integrationTests.cucumber;
 
 import net.masterthought.cucumber.ReportBuilder;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
+import org.apache.poi.util.SystemOutLogger;
 
 public class Cucumber_report_generate {
 
-	public static void GenerateMasterthoughtReport(){
+	public static String  GenerateMasterthoughtReport() {
 
 		String rootDir = System.getProperty("user.dir");
 
@@ -16,7 +22,7 @@ public class Cucumber_report_generate {
 			File reportOutputDirectory = new File("target\\Masterthought");
 			List<String> list = new ArrayList<String>();
 			list.addAll(getListOfJsonReports(rootDir , "target"));
-			list.addAll(getListOfJsonReports(rootDir , "target\\cucumber-parallel"));
+			//list.addAll(getListOfJsonReports(rootDir , "target\\parallel-tests"));
 			String pluginUrlPath = "";
 			String buildNumber = "1";
 			String buildProject = "cucumber-jvm";
@@ -39,8 +45,14 @@ public class Cucumber_report_generate {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+
+		
+		
+		//return location of report
+		return System.getProperty("user.dir") + "\\target\\Masterthought\\feature-overview.html";
+
 	}
-	
+
 	public static List<String> getListOfJsonReports(String rootDir, String dir){
 
 		List<String> list = new ArrayList<String>();
@@ -68,6 +80,21 @@ public class Cucumber_report_generate {
 		return list;
 
 	}
-	
-	
+
+	//Enable unique Masterthought reporting for each environment setup. 
+	public static String moveReports() throws IOException{
+
+		File newDir = null;
+
+		File dir = new File(System.getProperty("user.dir") + "\\target\\Masterthought");
+		if (!dir.isDirectory()) {
+			System.err.println("There is no directory @ given path");
+		} else {
+
+			newDir = new File(dir.getParent() + "\\" + "Masterthought-"  + Cucumber_runner.operating_system.get() + "-" + Cucumber_runner.browser.get());
+			dir.renameTo(newDir);
+		}
+
+		return newDir.getPath();
+	}
 }

@@ -30,7 +30,7 @@ public class POM_paypal extends Page_object_model {
 	
 	public void login(String confirmURL, String username,String password) throws Exception{
 
-		webdriver.get(confirmURL);
+		webdriver.get().get(confirmURL);
 		
 		waitForElement(txtEmail);
 		
@@ -81,7 +81,7 @@ public class POM_paypal extends Page_object_model {
 		waitForElement(H1_retailersPage);
 		Assert.assertEquals(getText(H1_retailersPage), "Example Domain");
 	
-		System.out.println("###" + webdriver.getCurrentUrl());
+		System.out.println("###" + webdriver.get().getCurrentUrl());
 		
 			
 	}	

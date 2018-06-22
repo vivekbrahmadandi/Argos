@@ -33,18 +33,18 @@ public class Selenium_core {
 	public static String baseURL = System.getProperty("env.qa.url");
 
 	//Static webdriver required to support cross class cucumber step definition testing
-	//Parallel processing is achieved by spinning up multiple testNG/cucumber runners within environment_configurations_to_test.xml
-	public static WebDriver webdriver;
-	protected static WebDriverWait wait;
-	protected static WebDriverWait quickWait;
-
+	//Parallel processing is achieved in testNG using ThreadLocal
+	public static ThreadLocal<WebDriver> webdriver = new ThreadLocal<WebDriver>();
+	public static ThreadLocal<WebDriverWait> wait = new ThreadLocal<WebDriverWait>();
+	public static ThreadLocal<WebDriverWait> quickWait = new ThreadLocal<WebDriverWait>();
+	
 	//===========================
 	// Common methods
 	//===========================
 
 	public void gotoPage(String url) throws Exception{
 
-		webdriver.get(url);
+		webdriver.get().get(url);
 		waitForAjaxComplete();
 
 	}
@@ -52,7 +52,7 @@ public class Selenium_core {
 	public int elementCount(By target) throws InterruptedException{
 
 		waitForAjaxComplete();
-		return webdriver.findElements(target).size();
+		return webdriver.get().findElements(target).size();
 
 	}	
 
@@ -60,12 +60,12 @@ public class Selenium_core {
 
 		waitForAjaxComplete();
 
-		if (webdriver.findElements(target).size()>0){
+		if (webdriver.get().findElements(target).size()>0){
 
 			//[Fail-safe] check its clickable, to ensure it really does exist.
 			try{
 
-				quickWait.until(ExpectedConditions.elementToBeClickable(target));
+				quickWait.get().until(ExpectedConditions.elementToBeClickable(target));
 
 				return true;
 			}
@@ -83,7 +83,7 @@ public class Selenium_core {
 		waitForAjaxComplete();
 
 		try{
-			wait.until(ExpectedConditions.visibilityOfElementLocated(target));
+			wait.get().until(ExpectedConditions.visibilityOfElementLocated(target));
 		}
 		catch (Exception e){
 			System.out.println("Selenium has waiting its max time for the following element to be visible" + target );	
@@ -95,7 +95,7 @@ public class Selenium_core {
 		waitForAjaxComplete();
 
 		try{
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(target));
+			wait.get().until(ExpectedConditions.invisibilityOfElementLocated(target));
 		}catch(Exception e){
 
 			System.out.println("Selenium has waiting its max time for the following element to not be visible" + target );	
@@ -108,7 +108,7 @@ public class Selenium_core {
 		waitForAjaxComplete();
 
 		try{
-			wait.until(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(target)));
+			wait.get().until(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(target)));
 		}catch(Exception e){
 
 			System.out.println("Selenium has waiting its max time for the following element to not be clickable: " + target );	
@@ -122,7 +122,7 @@ public class Selenium_core {
 
 	public static void waitForPageLoad() throws InterruptedException {
 
-		JavascriptExecutor javascriptExecutor = (JavascriptExecutor) webdriver;
+		JavascriptExecutor javascriptExecutor = (JavascriptExecutor) webdriver.get();
 
 		int iWaitTime = 0;
 		int iWaitFinish = 200;	
@@ -151,8 +151,8 @@ public class Selenium_core {
 
 		try{
 
-			webdriver.manage().timeouts().setScriptTimeout(5, TimeUnit.SECONDS);
-			((JavascriptExecutor) webdriver).executeAsyncScript(
+			webdriver.get().manage().timeouts().setScriptTimeout(5, TimeUnit.SECONDS);
+			((JavascriptExecutor) webdriver.get()).executeAsyncScript(
 					"var callback = arguments[arguments.length - 1];" +
 							"var xhr = new XMLHttpRequest();" +
 							"xhr.open('POST', '/" + "Ajax_call" + "', true);" +
@@ -183,7 +183,7 @@ public class Selenium_core {
 
 		waitForAjaxComplete();
 
-		return webdriver.getPageSource().toLowerCase().contains(text.toLowerCase());
+		return webdriver.get().getPageSource().toLowerCase().contains(text.toLowerCase());
 
 	}
 
@@ -192,11 +192,11 @@ public class Selenium_core {
 		waitForElement(target);
 
 		try{
-			wait.until(ExpectedConditions.elementToBeClickable(target));
+			wait.get().until(ExpectedConditions.elementToBeClickable(target));
 		}catch(Exception e){
 			System.out.println("Selenium has waiting its max time for the following element to be clickable: " + target );	
 		}finally{
-			webdriver.findElement(target).click();
+			webdriver.get().findElement(target).click();
 		}
 
 	}
@@ -208,14 +208,14 @@ public class Selenium_core {
 		try{
 
 			//Clear text field if it has text before sending text.
-			if(!webdriver.findElement(target).getAttribute("innerHTML").equals("") ||
-					!webdriver.findElement(target).getText().equals("")){
+			if(!webdriver.get().findElement(target).getAttribute("innerHTML").equals("") ||
+					!webdriver.get().findElement(target).getText().equals("")){
 
-				webdriver.findElement(target).clear();
+				webdriver.get().findElement(target).clear();
 			}
 
 		}finally{
-			webdriver.findElement(target).sendKeys(textToSend);	
+			webdriver.get().findElement(target).sendKeys(textToSend);	
 		}	
 
 
@@ -225,7 +225,7 @@ public class Selenium_core {
 
 		waitForElement(target);
 
-		return webdriver.findElement(target).getText();
+		return webdriver.get().findElement(target).getText();
 
 	}	
 
@@ -233,7 +233,7 @@ public class Selenium_core {
 
 		waitForElement(target);
 
-		return webdriver.findElement(target).getAttribute("innerHTML");
+		return webdriver.get().findElement(target).getAttribute("innerHTML");
 
 	}	
 
@@ -241,7 +241,7 @@ public class Selenium_core {
 
 		waitForElement(target);
 
-		Select select = new Select(webdriver.findElement(target));
+		Select select = new Select(webdriver.get().findElement(target));
 		select.selectByIndex(index);
 
 		waitForAjaxComplete();
@@ -252,7 +252,7 @@ public class Selenium_core {
 
 		waitForElement(target);
 
-		Select select = new Select(webdriver.findElement(target));
+		Select select = new Select(webdriver.get().findElement(target));
 		select.selectByVisibleText(text);
 
 		waitForAjaxComplete();
@@ -273,7 +273,7 @@ public class Selenium_core {
 
 		waitForElement(target);
 
-		Select select = new Select(webdriver.findElement(target));
+		Select select = new Select(webdriver.get().findElement(target));
 
 		return select.getFirstSelectedOption().getText();
 
@@ -284,11 +284,11 @@ public class Selenium_core {
 		String parentWindow;
 		String childWindow;
 
-		parentWindow = webdriver.getWindowHandle();
+		parentWindow = webdriver.get().getWindowHandle();
 		childWindow = null;
 
 		//Get second tab (child window)
-		Set <String> allWindows =  webdriver.getWindowHandles();
+		Set <String> allWindows =  webdriver.get().getWindowHandles();
 
 		//Only attempt to switch to RecentTab, if a new tab exists. 
 
@@ -305,8 +305,8 @@ public class Selenium_core {
 
 		int attempts=1;
 		if (!childWindow.equals(parentWindow)){
-			while(webdriver.getWindowHandle().equals(parentWindow)) {
-				webdriver.switchTo().window(childWindow);
+			while(webdriver.get().getWindowHandle().equals(parentWindow)) {
+				webdriver.get().switchTo().window(childWindow);
 				//Reporter.log("Switch window attempt:" +  attempts,true);
 				attempts++;
 			}
@@ -316,13 +316,13 @@ public class Selenium_core {
 
 	public static void deleteCookies(){
 
-		if (webdriver.getCurrentUrl().equals("data:,") || 
-				webdriver.getCurrentUrl().equals("about:blank")){
+		if (webdriver.get().getCurrentUrl().equals("data:,") || 
+				webdriver.get().getCurrentUrl().equals("about:blank")){
 
 			return;
 		}
 
-		webdriver.manage().deleteAllCookies();
+		webdriver.get().manage().deleteAllCookies();
 
 
 		//[Fail-Safe] make sure cookies cleared
@@ -337,8 +337,8 @@ public class Selenium_core {
 
 	public void scrollTo(By target) throws Exception {
 
-		WebElement element = webdriver.findElement(target);
-		((JavascriptExecutor) webdriver).executeScript("arguments[0].scrollIntoView(true);", element);
+		WebElement element = webdriver.get().findElement(target);
+		((JavascriptExecutor) webdriver.get()).executeScript("arguments[0].scrollIntoView(true);", element);
 
 		waitForAjaxComplete();
 
@@ -346,21 +346,21 @@ public class Selenium_core {
 
 	public void scrollBy(int pixels) throws InterruptedException {
 
-		((JavascriptExecutor) webdriver).executeScript("window.scrollBy(0," + pixels +")", "");
+		((JavascriptExecutor) webdriver.get()).executeScript("window.scrollBy(0," + pixels +")", "");
 		waitForAjaxComplete();
 
 	}
 
 	public void scrollBottom() throws InterruptedException {
 
-		((JavascriptExecutor) webdriver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+		((JavascriptExecutor) webdriver.get()).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 		waitForAjaxComplete();
 
 	}
 
 	public void scrollTop() throws InterruptedException {
 
-		((JavascriptExecutor) webdriver).executeScript("window.scrollTo(0, 0)");
+		((JavascriptExecutor) webdriver.get()).executeScript("window.scrollTo(0, 0)");
 		waitForAjaxComplete();
 
 	}	
@@ -373,16 +373,16 @@ public class Selenium_core {
 
 		waitForElement(target);
 
-		Actions action = new Actions(webdriver);
-		action.moveToElement(webdriver.findElement(target)).build().perform();
+		Actions action = new Actions(webdriver.get());
+		action.moveToElement(webdriver.get().findElement(target)).build().perform();
 		waitForAjaxComplete();
 
 	}	
 
 	public void highLightElement(By by)  {
 
-		WebElement we = webdriver.findElement(by);
-		((JavascriptExecutor) webdriver).executeScript("arguments[0].style.border='3px dotted blue'", we);
+		WebElement we = webdriver.get().findElement(by);
+		((JavascriptExecutor) webdriver.get()).executeScript("arguments[0].style.border='3px dotted blue'", we);
 
 	}	
 
@@ -393,7 +393,7 @@ public class Selenium_core {
 	public static void takeSnapShot(String filePath) throws Exception{
 
 		//Convert web driver object to TakeScreenshot
-		TakesScreenshot scrShot =((TakesScreenshot)webdriver);
+		TakesScreenshot scrShot =((TakesScreenshot)webdriver.get());
 
 		//Call getScreenshotAs method to create image file
 		File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
@@ -417,7 +417,7 @@ public class Selenium_core {
 		//String scriptToExecute = "return performance.getEntries({initiatorType : \"script\"});";
 		String scriptToExecute = "return performance.getEntriesByType(\"resource\");";
 
-		String netData = ((JavascriptExecutor)webdriver).executeScript(scriptToExecute).toString();
+		String netData = ((JavascriptExecutor)webdriver.get()).executeScript(scriptToExecute).toString();
 		String[] resourceNames = netData.split("name=");
 
 		//========================================
@@ -440,7 +440,7 @@ public class Selenium_core {
 
 		}
 		System.out.println("==================================================");
-		System.out.println(scriptCounter + " scripts executed by " + webdriver.getCurrentUrl());
+		System.out.println(scriptCounter + " scripts executed by " + webdriver.get().getCurrentUrl());
 
 	}	
 
@@ -448,8 +448,8 @@ public class Selenium_core {
 
 		waitForAjaxComplete();
 
-		WebElement ImageFile = webdriver.findElement(by);
-		return  (Boolean) ((JavascriptExecutor)webdriver).executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", ImageFile);
+		WebElement ImageFile = webdriver.get().findElement(by);
+		return  (Boolean) ((JavascriptExecutor)webdriver.get()).executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", ImageFile);
 
 	}
 

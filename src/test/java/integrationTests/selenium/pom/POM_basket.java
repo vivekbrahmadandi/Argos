@@ -14,7 +14,7 @@ public class POM_basket extends Page_object_model {
 	
 	public int productCount() throws InterruptedException{
 	
-		List<WebElement> rows = webdriver.findElements(dropQuantity);
+		List<WebElement> rows = webdriver.get().findElements(dropQuantity);
 
 		int productCount = elementCount(dropQuantity);
 		//System.out.println("number of different products: " + productCount);
@@ -27,7 +27,7 @@ public class POM_basket extends Page_object_model {
 
 		int quantityCount = 0;
 		
-		List<WebElement> rows = webdriver.findElements(dropQuantity);
+		List<WebElement> rows = webdriver.get().findElements(dropQuantity);
 
 		Iterator<WebElement> iter = rows.iterator();
 		while (iter.hasNext()) {

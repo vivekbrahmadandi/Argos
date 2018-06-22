@@ -34,7 +34,7 @@ public class POM_productResults extends Page_object_model {
 			}else{
 				click(btnChooseOptionsFirstProduct);
 				new Basket_feature().adds_product_to_basket();
-				webdriver.navigate().back();
+				webdriver.get().navigate().back();
 			}
 
 		}
@@ -57,7 +57,7 @@ public class POM_productResults extends Page_object_model {
 			}else{
 				click(btnChooseOptionsSecondProduct);
 				new Basket_feature().adds_product_to_basket();
-				webdriver.navigate().back();
+				webdriver.get().navigate().back();
 			}
 
 		}

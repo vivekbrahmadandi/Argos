@@ -12,7 +12,7 @@
 
 		<!-- Default values for build profile qa_build (testing with Selenium) -->
 		<!-- Values can be overwritten via command line / CI job -->
-		<selenium.grid.enabled>true</selenium.grid.enabled>
+		<selenium.grid.enabled>false</selenium.grid.enabled>
 		<selenium.grid.hub>http://workpeter:ab9612ef-8ad0-4bc7-8cb5-489333766f7a@ondemand.saucelabs.com:80/wd/hub</selenium.grid.hub>
 		<selenium.tags>@Smoke</selenium.tags>
 	</properties>
@@ -204,8 +204,8 @@
 									<value>integrationTests.cucumber.Listerners_and_hooks</value>
 								</property>
 							</properties>
-							<forkCount>2</forkCount>
-							<reuseForks>true</reuseForks>
+<!-- 							<forkCount>2</forkCount> -->
+<!-- 							<reuseForks>true</reuseForks> -->
 						</configuration>
 						<executions>
 							<execution>
@@ -228,34 +228,34 @@
 					<!--This is a replacement for the hard coded cucumber run file -->
 					<!--(Thie file which has: contains @RunWith and @CucumberOptions -->
 
-					<!-- <plugin> -->
-					<!-- <groupId>com.github.temyers</groupId> -->
-					<!-- <artifactId>cucumber-jvm-parallel-plugin</artifactId> -->
-					<!-- <version>5.0.0</version> -->
-					<!-- <executions> -->
-					<!-- <execution> -->
-					<!-- <id>generateRunners</id> -->
-					<!-- <phase>generate-test-sources</phase> -->
-					<!-- <goals> -->
-					<!-- <goal>generateRunners</goal> -->
-					<!-- </goals> -->
-					<!-- <configuration> -->
-					<!-- <glue> -->
-					<!-- <package>integrationTests.selenium.step_definitions</package> -->
-					<!-- <package>integrationTests.cucumber</package> -->
-					<!-- </glue> -->
-					<!-- <outputDirectory>${project.build.directory}/generated-test-sources/cucumber</outputDirectory> -->
-					<!-- <featuresDirectory>src/test/resources/features/</featuresDirectory> -->
-					<!-- <cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir> -->
-					<!-- <tags> -->
-					<!-- <tag>@Retest</tag> -->
-					<!-- <tag>not @Ignored</tag> -->
-					<!-- </tags> -->
-					<!-- <parallelScheme>FEATURE</parallelScheme> -->
-					<!-- </configuration> -->
-					<!-- </execution> -->
-					<!-- </executions> -->
-					<!-- </plugin> -->
+<!-- 					<plugin> -->
+<!-- 						<groupId>com.github.temyers</groupId> -->
+<!-- 						<artifactId>cucumber-jvm-parallel-plugin</artifactId> -->
+<!-- 						<version>5.0.0</version> -->
+<!-- 						<executions> -->
+<!-- 							<execution> -->
+<!-- 								<id>generateRunners</id> -->
+<!-- 								<phase>generate-test-sources</phase> -->
+<!-- 								<goals> -->
+<!-- 									<goal>generateRunners</goal> -->
+<!-- 								</goals> -->
+<!-- 								<configuration> -->
+<!-- 									<glue> -->
+<!-- 										<package>integrationTests.selenium.step_definitions</package> -->
+<!-- 										<package>integrationTests.cucumber</package> -->
+<!-- 									</glue> -->
+<!-- 									<outputDirectory>${project.build.directory}/generated-test-sources/cucumber</outputDirectory> -->
+<!-- 									<featuresDirectory>src/test/resources/features/</featuresDirectory> -->
+<!-- 									<cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir> -->
+<!-- 									<tags> -->
+<!-- 										<tag>@Smoke</tag> -->
+<!-- 									</tags> -->
+<!-- 									<useTestNG>true</useTestNG> -->
+<!-- 									<parallelScheme>FEATURE</parallelScheme> -->
+<!-- 								</configuration> -->
+<!-- 							</execution> -->
+<!-- 						</executions> -->
+<!-- 					</plugin> -->
 
 				</plugins>
 			</build>
