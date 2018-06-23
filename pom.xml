@@ -198,14 +198,6 @@
 								<selenium.grid.hub>${selenium.grid.hub}</selenium.grid.hub>
 								<selenium.tags>${selenium.tags}</selenium.tags>
 							</systemPropertyVariables>
-							<properties>
-								<property>
-									<name>listener</name>
-									<value>integrationTests.cucumber.Listerners_and_hooks</value>
-								</property>
-							</properties>
-<!-- 							<forkCount>2</forkCount> -->
-<!-- 							<reuseForks>true</reuseForks> -->
 						</configuration>
 						<executions>
 							<execution>
@@ -218,44 +210,6 @@
 							</execution>
 						</executions>
 					</plugin>
-
-					<!-- ================================================ -->
-					<!-- CUCUMBER PARALLEL INTEGRATION TESTING CONFIG -->
-					<!-- ================================================ -->
-
-					<!--Auto generates multiple cucumber run-files on the fly & executes 
-						them -->
-					<!--This is a replacement for the hard coded cucumber run file -->
-					<!--(Thie file which has: contains @RunWith and @CucumberOptions -->
-
-<!-- 					<plugin> -->
-<!-- 						<groupId>com.github.temyers</groupId> -->
-<!-- 						<artifactId>cucumber-jvm-parallel-plugin</artifactId> -->
-<!-- 						<version>5.0.0</version> -->
-<!-- 						<executions> -->
-<!-- 							<execution> -->
-<!-- 								<id>generateRunners</id> -->
-<!-- 								<phase>generate-test-sources</phase> -->
-<!-- 								<goals> -->
-<!-- 									<goal>generateRunners</goal> -->
-<!-- 								</goals> -->
-<!-- 								<configuration> -->
-<!-- 									<glue> -->
-<!-- 										<package>integrationTests.selenium.step_definitions</package> -->
-<!-- 										<package>integrationTests.cucumber</package> -->
-<!-- 									</glue> -->
-<!-- 									<outputDirectory>${project.build.directory}/generated-test-sources/cucumber</outputDirectory> -->
-<!-- 									<featuresDirectory>src/test/resources/features/</featuresDirectory> -->
-<!-- 									<cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir> -->
-<!-- 									<tags> -->
-<!-- 										<tag>@Smoke</tag> -->
-<!-- 									</tags> -->
-<!-- 									<useTestNG>true</useTestNG> -->
-<!-- 									<parallelScheme>FEATURE</parallelScheme> -->
-<!-- 								</configuration> -->
-<!-- 							</execution> -->
-<!-- 						</executions> -->
-<!-- 					</plugin> -->
 
 				</plugins>
 			</build>

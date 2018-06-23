@@ -5,7 +5,7 @@ Feature: CategorySearch
   	Given customer is anywhere on website
 
  
-  @CategorySearch  
+  @CategorySearch @Cross
    Scenario Outline: customer searches by category using category menu
 	When customer clicks on category: <Category> in the menu
 	Then category splash screen is shown
@@ -30,19 +30,19 @@ Feature: CategorySearch
    Examples:
     | Category 				|Sub-category					|Niche-category 				|
     | TECHNOLOGY 			|televisions and accessories	|hdmi-cables-and-optical-cables	|
-#    | TECHNOLOGY 			|televisions and accessories	|tv-remote-controls 			|  
-#    | TECHNOLOGY 			|Laptops and PCs 				|Gaming laptops and PCs 		|
-#    | TECHNOLOGY 			|Laptops and PCs 				|imacs				 			|
-#    | HOME AND GARDEN 		|living room furniture			|armchairs-and-chairs			|
-#    | HOME AND GARDEN 		|living room furniture			|cd-and-dvd-storage				|
-#    | HOME AND GARDEN 		|Bedding						|duvets							|
-#    | HOME AND GARDEN 		|Bedding						|pillows						|
-#    | BABY AND NURSERY 		|Travel							|pushchairs						|
-#    | BABY AND NURSERY 		|Travel							|baby-carriers					|
-#    | BABY AND NURSERY 		|Maternity						|maternity-accessories			|
-#    | CLOTHING 				|Womens 						|accessories					| 
-#    | CLOTHING 				|Womens 						|dresses						|
-#    | CLOTHING 				|Mens 							|coats-and-jackets				|      
+    | TECHNOLOGY 			|televisions and accessories	|tv-remote-controls 			|  
+    | TECHNOLOGY 			|Laptops and PCs 				|Gaming laptops and PCs 		|
+    | TECHNOLOGY 			|Laptops and PCs 				|imacs				 			|
+    | HOME AND GARDEN 		|living room furniture			|armchairs-and-chairs			|
+    | HOME AND GARDEN 		|living room furniture			|cd-and-dvd-storage				|
+    | HOME AND GARDEN 		|Bedding						|duvets							|
+    | HOME AND GARDEN 		|Bedding						|pillows						|
+    | BABY AND NURSERY 		|Travel							|pushchairs						|
+    | BABY AND NURSERY 		|Travel							|baby-carriers					|
+    | BABY AND NURSERY 		|Maternity						|maternity-accessories			|
+    | CLOTHING 				|Womens 						|accessories					| 
+    | CLOTHING 				|Womens 						|dresses						|
+    | CLOTHING 				|Mens 							|coats-and-jackets				|      
 
   @CategorySearch	 
   Scenario Outline: customer navigates to niche-category via category menu hover feature
@@ -52,13 +52,13 @@ Feature: CategorySearch
 	Examples:
     | Category 					| Niche-category 						|
     | TECHNOLOGY 				| Dash Cams 							|
-#    | HOME AND GARDEN 			| Sofas		 							|
-#    | BABY AND NURSERY 			| Pushchairs 							|
-#    | TOYS 						| Batteries And Rechargeable Batteries	|
-#    | SPORTS AND LEISURE 		| Treadmills 							|
-#    | HEALTH AND BEAUTY 		| Hair Dryers							|
-#    | CLOTHING 					| Bras		 							|       
-#    | JEWELLERY AND WATCHES 	| Ladies' Earrings 						|
+    | HOME AND GARDEN 			| Sofas		 							|
+    | BABY AND NURSERY 			| Pushchairs 							|
+    | TOYS 						| Batteries And Rechargeable Batteries	|
+    | SPORTS AND LEISURE 		| Treadmills 							|
+    | HEALTH AND BEAUTY 		| Hair Dryers							|
+    | CLOTHING 					| Bras		 							|       
+    | JEWELLERY AND WATCHES 	| Ladies' Earrings 						|
 
 
 
@@ -69,13 +69,13 @@ Feature: CategorySearch
    Examples:
     | Category 					| misspelling 				|
     | TECHNOLOGY 				| TECNOLOGY 			 	|
-#    | GARGEN		 			| GARDON					|
-#    | NURSERY 					| NERSERY					|
-#    | TOYS 						| TOIS			 			|
-#    | LEISURE 					| LESSURE					|
-#    | HEALTH			 		| helth						|
-#    | CLOTHING 					| CLOTHIN 			 		|       
-#    | JEWELLERY				 	| JEWLERY					|
+    | GARGEN		 			| GARDON					|
+    | NURSERY 					| NERSERY					|
+    | TOYS 						| TOIS			 			|
+    | LEISURE 					| LESSURE					|
+    | HEALTH			 		| helth						|
+    | CLOTHING 					| CLOTHIN 			 		|       
+    | JEWELLERY				 	| JEWLERY					|
 
 
   @CategorySearch
@@ -85,10 +85,10 @@ Feature: CategorySearch
    Examples:
     | Category 			|
     | gdfgdfe			|
-#    | 12332432			|
-#    | xxxxxxx			|
-#    | TBYSPOS 			|
-#    | SPOSPO			|
-#    | AND AND AND 		|
-#    | OR OR OR  		|        
-#    | @@@				| 
+    | 12332432			|
+    | xxxxxxx			|
+    | TBYSPOS 			|
+    | SPOSPO			|
+    | AND AND AND 		|
+    | OR OR OR  		|        
+    | @@@				| 

@@ -48,7 +48,6 @@ public class POM_basket extends Common_methods_and_pom {
 	public void remove_first_product_from_basket() throws Throwable {
 
 		popup.escPopup();
-		waitForElement(btnRemove);
 		click(btnRemove);
 
 	}
@@ -57,10 +56,8 @@ public class POM_basket extends Common_methods_and_pom {
 	public void change_quantity_first_product(int quantity) throws Throwable {
 
 		popup.escPopup();
-		waitForElement(dropQuantity);
 		selectByVisibleText(dropQuantity,String.valueOf(quantity));
 		
-
 	}
 	
 	

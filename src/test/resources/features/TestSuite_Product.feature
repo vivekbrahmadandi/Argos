@@ -6,7 +6,7 @@ Feature: Products
   Scenario: Quick scenerio for testing saucelabs selenium grid
   Given customer is anywhere on website
 
-  @Product 
+  @Product @Cross
   Scenario Outline: customer searches for product by name 
   	Given customer is anywhere on website
     When customer searches by product: <Product> using search feature
@@ -38,13 +38,13 @@ Feature: Products
    Examples:
     | Product 					|
     | XBOX		 				|
-#    | COOKERS 					|
-#    | PUSHCHAIR 				|
-#    | SPIDERMAN					|
-#    | FOOTBALL 					|
-#    | WEIGHTS					|
-#    | JEANS 					|        
-#    | RING					 	| 	
+    | COOKERS 					|
+    | PUSHCHAIR 				|
+    | SPIDERMAN					|
+    | FOOTBALL 					|
+    | WEIGHTS					|
+    | JEANS 					|        
+    | RING					 	| 	
     
      
   @Product
@@ -55,9 +55,9 @@ Feature: Products
   Examples:
     | Product 	| Postcode 	|
     | XBOX		| SE6 1SB	|
-#    | COOKERS	| BL0 9JH	|
-#    | PUSHCHAIR	| SS1 2TW	|
-#    | SPIDERMAN	| FK7 7TZ	|
+    | COOKERS	| BL0 9JH	|
+    | PUSHCHAIR	| SS1 2TW	|
+    | SPIDERMAN	| FK7 7TZ	|
   
  
 

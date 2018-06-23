@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="739" started-at="2018-06-22T22:33:32Z" finished-at="2018-06-22T22:33:33Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="739" started-at="2018-06-22T22:33:32Z" finished-at="2018-06-22T22:33:33Z">
+      <class name="integrationTests.cucumber.Runner2">
+        <test-method status="PASS" signature="get_test_configurations(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:integrationTests.cucumber.Runner2@20322d26]" name="get_test_configurations" duration-ms="715" started-at="2018-06-22T23:33:32Z" finished-at="2018-06-22T23:33:33Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[false]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- get_test_configurations -->
+      </class> <!-- integrationTests.cucumber.Runner2 -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

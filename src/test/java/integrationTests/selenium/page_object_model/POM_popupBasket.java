@@ -13,10 +13,7 @@ public class POM_popupBasket extends Common_methods_and_pom {
 
 		popup.escPopup();
 		
-		waitForElement(btnContinueShopping);
-		
 		waitForElementInvisible(loadingWheel);
-		
 		click(btnContinueShopping);
 
 	}

@@ -46,6 +46,12 @@ public class Common_methods_and_pom {
 	protected static POM_popupBasket popupBasket = new POM_popupBasket();	
 	
 
+	public static String valueOf(){
+		final String e = "e";
+		
+		return e;
+	}
+	
 	//===========================
 	// Common methods
 	//===========================
@@ -71,7 +77,6 @@ public class Common_methods_and_pom {
 
 	}	
 	
-	
 	public List<WebElement> getAllElements(By target) throws InterruptedException {
 
 		waitForAjaxComplete();
@@ -79,7 +84,6 @@ public class Common_methods_and_pom {
 
 	}	
 	
-
 	public boolean elementExists(By target) throws InterruptedException{
 
 		waitForAjaxComplete();
@@ -315,19 +319,14 @@ public class Common_methods_and_pom {
 		parentWindow = WebDriver_factory.getLocalThreadWebDriver().getWindowHandle();
 		childWindow = null;
 
-		//Get second tab (child window)
 		Set <String> allWindows =  WebDriver_factory.getLocalThreadWebDriver().getWindowHandles();
 
 		//Only attempt to switch to RecentTab, if a new tab exists. 
-
 		for(String wHandle: allWindows){
-
-			//System.out.println(wHandle);
 
 			if (wHandle != parentWindow) {
 
 				childWindow = wHandle;
-
 			}
 		}
 
@@ -475,5 +474,4 @@ public class Common_methods_and_pom {
 		return  (Boolean) ((JavascriptExecutor)WebDriver_factory.getLocalThreadWebDriver()).executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", ImageFile);
 
 	}
-
 }

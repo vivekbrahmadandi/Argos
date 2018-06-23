@@ -8,7 +8,7 @@ Feature: Basket
 	Then empty basket is shown
 
  
-  @Basket  @Smoke2  
+  @Basket  @Cross
   Scenario Outline: Customer views basket with x1 products, totalling x1 quantity
 	Given customer is on product page : <Product>
 	And adds product to basket
@@ -17,7 +17,7 @@ Feature: Basket
    Examples:
     | Product 					| ProductCount	| Quantity	|
     | XBOX		 				| 1				| 1			|
-    | COOKERS 					| 1				| 1			|
+#    | COOKERS 					| 1				| 1			|
 #    | PUSHCHAIR 				| 1				| 1			|
 #    | SPIDERMAN					| 1				| 1			|
 #    | FOOTBALL 					| 1				| 1			|
@@ -38,8 +38,8 @@ Feature: Basket
    Examples:
     | Product 					| ProductCount	| Quantity	| QuantityUpdated	|
     | FOOTBALL 					| 1				| 2			| 10				| 
-#    | WEIGHTS					| 1				| 2			| 10				| 
-#    | JEANS 					| 1				| 2			| 10				|       
+    | WEIGHTS					| 1				| 2			| 10				| 
+    | JEANS 					| 1				| 2			| 10				|       
 
     
   @Basket 
@@ -53,8 +53,8 @@ Feature: Basket
    Examples:
     | Product 					| ProductCount	| Quantity	|
     | PUSHCHAIR 				| 2				| 2			|
-#    | SPIDERMAN					| 2				| 2			|
-#    | FOOTBALL 					| 2				| 2			|
+    | SPIDERMAN					| 2				| 2			|
+    | FOOTBALL 					| 2				| 2			|
 
     
   @Basket 
@@ -71,8 +71,8 @@ Feature: Basket
    Examples:
     | Product 					| ProductCount	| Quantity	| ProductCountUpdated	| QuantityUpdated	|
     | XBOX		 				| 2				| 4			| 1						| 2					|
-#    | COOKERS 					| 2				| 4			| 1						| 2					|
-#    | JEANS 					| 2				| 4			| 1 					| 2					|      
+    | COOKERS 					| 2				| 4			| 1						| 2					|
+    | JEANS 					| 2				| 4			| 1 					| 2					|      
 
 
 

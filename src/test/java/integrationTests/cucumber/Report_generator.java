@@ -9,17 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.poi.util.SystemOutLogger;
 
 public class Report_generator {
 
-	public static String  GenerateMasterthoughtReport() {
+	public static void GenerateMasterthoughtReport() {
 
 		String rootDir = System.getProperty("user.dir");
 
 		try{
 
-			File reportOutputDirectory = new File("target\\Masterthought");
+			File reportOutputDirectory = new File("target/Masterthought");
 			List<String> list = new ArrayList<String>();
 			list.addAll(getListOfJsonReports(rootDir , "target"));
 			//list.addAll(getListOfJsonReports(rootDir , "target\\parallel-tests"));
@@ -46,16 +47,19 @@ public class Report_generator {
 			e.printStackTrace();
 		}
 
-		//return location of report
-		return System.getProperty("user.dir") + "\\target\\Masterthought\\feature-overview.html";
-
+		 String testReportLocation = System.getProperty("user.dir") + "/target/Masterthought/feature-overview.html";
+		
+		System.out.println("---------------------------------------------");
+		System.out.println("[Test Report Location] " + testReportLocation);
+		System.out.println("---------------------------------------------");
+		
 	}
 
 	public static List<String> getListOfJsonReports(String rootDir, String dir){
 
 		List<String> list = new ArrayList<String>();
 
-		File folder = new File(rootDir + "\\" + dir);
+		File folder = new File(rootDir + "/" + dir);
 
 		if (folder.listFiles() != null){
 
@@ -65,7 +69,7 @@ public class Report_generator {
 				if (listOfFiles[i].isFile() && listOfFiles[i].length()> 0) {
 					if (listOfFiles[i].getName().contains(".json")){
 
-						String filepath = dir + "\\" + listOfFiles[i].getName();
+						String filepath = dir + "/" + listOfFiles[i].getName();
 
 						System.out.println(filepath);
 
@@ -79,20 +83,4 @@ public class Report_generator {
 
 	}
 
-	//Enable unique Masterthought reporting for each environment setup. 
-	public static String moveReports() throws IOException{
-
-		File newDir = null;
-
-		File dir = new File(System.getProperty("user.dir") + "\\target\\Masterthought");
-		if (!dir.isDirectory()) {
-			System.err.println("There is no directory @ given path");
-		} else {
-
-			newDir = new File(dir.getParent() + "\\" + "Masterthought-"  + Runner.operating_system.get() + "-" + Runner.browser.get());
-			dir.renameTo(newDir);
-		}
-
-		return newDir.getPath();
-	}
 }

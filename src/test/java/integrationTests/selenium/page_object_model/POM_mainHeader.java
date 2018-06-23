@@ -34,7 +34,7 @@ public class POM_mainHeader extends Common_methods_and_pom {
 	public By LinkTravel = By.xpath(buildLinkXpath("baby-and-nursery/travel/c:29002/"));
 	public By LinkMaternity = By.xpath(buildLinkXpath("baby-and-nursery/maternity/c:29007/")); 
 	public By LinkWomenClothing = By.xpath(buildLinkXpath("clothing/womens/c:691104/"));
-	public By LinkMenClothing = By.xpath(buildLinkXpath("Clothing/Mens/c:691144/"));
+	public By LinkMenClothing = By.xpath(buildLinkXpath("clothing/mens/c:691144/"));
 
 	//Niche-Category links
 	public By LinkDashCams = By.xpath(buildLinkXpath("technology/dash-cams/c:30278/"));
@@ -43,9 +43,9 @@ public class POM_mainHeader extends Common_methods_and_pom {
 	public By LinkBatteries = By.xpath(buildLinkXpath("technology/batteries-and-chargers/batteries-and-rechargeable-batteries/c:30218/"));
 	public By LinkTreadmills = By.xpath(buildLinkXpath("sports-and-leisure/fitness-equipment/treadmills/c:30612/")); 
 	public By LinkHairDryers = By.xpath(buildLinkXpath("health-and-beauty/hair-care/hair-dryers/c:29235/"));
-	public By LinkBras = By.xpath(buildLinkXpath("Clothing/Womens/Lingerie/Bras/c:691137/"));
-	public By LinkLadiesEarrings = By.xpath(buildLinkXpath("jewellery-and-watches/ladies-jewellery/ladies-earrings/c:29315/"));
-	
+	public By LinkBras = By.xpath(buildLinkXpath("clothing/womens/lingerie/bras/c:691137/"));
+	public By LinkLadiesEarrings = By.xpath(buildLinkXpath("jewellery-and-watches/ladies'-jewellery/ladies'-earrings/c:29315/"));
+	            
 	public By popupMenu = By.xpath("//span[@class=\"meganav__level-2-title\"]");	
 	//<span class="meganav__level-2-title">Womens Clothing</span>
 	

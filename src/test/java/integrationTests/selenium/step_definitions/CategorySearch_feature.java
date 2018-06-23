@@ -26,9 +26,8 @@ public class CategorySearch_feature extends Common_methods_and_pom {
 	@When("^customer clicks on category: (.+) in the menu$")
 	public void customer_clicks_on_a_category_in_the_menu(String category) throws Throwable {
 
-		popup.escPopup();
 		mainHeader.clickCategory(category);
-		
+
 		this.category = category;
 
 	}
@@ -36,7 +35,6 @@ public class CategorySearch_feature extends Common_methods_and_pom {
 	@When("^customer hovers on category: (.+) in the menu$")
 	public void customer_hovers_on_a_category_in_the_menu(String category) throws Throwable {
 		
-		popup.escPopup();
 		mainHeader.mouseToCategory(category);
 		
 		this.category = category;
@@ -46,7 +44,6 @@ public class CategorySearch_feature extends Common_methods_and_pom {
 	@When("^clicks on sub-category: (.+)$")
 	public void clicks_on_a_sub_category(String category) throws Throwable {
 
-		popup.escPopup(); 
 		mainHeader.clickSubCategory(category);
 		
 		this.category = category;
@@ -57,10 +54,7 @@ public class CategorySearch_feature extends Common_methods_and_pom {
 	@When("^clicks on niche-category via main header: (.+)$")
 	public void clicks_on_a_niche_category_mh(String nicheCategory) throws Throwable {
 
-		popup.escPopup(); 
 		mainHeader.clickNicheCategory_viaMainheader(nicheCategory);
-		
-		//this.nicheCategory = nicheCategory;
 		
 	}
 
@@ -68,17 +62,13 @@ public class CategorySearch_feature extends Common_methods_and_pom {
 	@When("^clicks on niche-category via category splash screen: (.+)$")
 	public void clicks_on_a_niche_category_css(String nicheCategory) throws Throwable {
 
-		popup.escPopup(); 
 		categorySplashPage.clickNicheCategory_viaCategorySplashPage(nicheCategory);
-		
-		//this.nicheCategory = nicheCategory;
 		
 	}
 	
 	@When("^customer searches and misspells (.+) with (.+) using search feature$")
 	public void customer_searches_and_misspells_category_using_search_feature(String category, String misspelling) throws Throwable {
 		
-		popup.escPopup(); 
 		mainHeader.searchBar(misspelling);
 
 		this.category = category;
@@ -88,10 +78,8 @@ public class CategorySearch_feature extends Common_methods_and_pom {
 	@When("^customer searches for unrecognised category: (.+) using search feature$")
 	public void customer_searches_for_unrecognised_category_using_search_feature(String unrecognisedCategory) throws Throwable {
 		
-		popup.escPopup(); 
 		mainHeader.searchBar(unrecognisedCategory);
-		
-		//this.unrecognisedCategory = unrecognisedCategory;
+
 	}
 
 	
@@ -106,7 +94,7 @@ public class CategorySearch_feature extends Common_methods_and_pom {
 	@Then("^results of matching products are shown by order of relevance$")
 	public void results_of_matching_products_are_shown_by_order_of_relevance() throws Throwable {
 
-		popup.escPopup(); //if required
+		popup.escPopup(); 
 		Assert.assertEquals("Relevance",getDropDownMenuText(productResults.dropProductSort));
 
 	}
@@ -121,7 +109,8 @@ public class CategorySearch_feature extends Common_methods_and_pom {
 	
 	@Then("^no search results page is shown$")
 	public void no_search_results_page_is_shown() throws Throwable {
-
+		
+		popup.escPopup(); 
 		Assert.assertTrue(getText(productResults.txtNoResults).contains("couldn't find any products"));
 			
 	}	
