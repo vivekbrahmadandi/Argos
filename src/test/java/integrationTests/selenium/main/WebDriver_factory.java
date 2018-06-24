@@ -1,29 +1,18 @@
 package integrationTests.selenium.main;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
+import java.net.*;
 import java.util.logging.Level;
-
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.MutableCapabilities;
-
+import org.openqa.selenium.*;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
-import org.openqa.selenium.firefox.FirefoxBinary;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.ie.InternetExplorerOptions;
-import org.openqa.selenium.logging.LogType;
-import org.openqa.selenium.logging.LoggingPreferences;
-import org.openqa.selenium.opera.OperaOptions;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.safari.SafariOptions;
+import org.openqa.selenium.chrome.*;
+import org.openqa.selenium.firefox.*;
+import org.openqa.selenium.edge.*;
+import org.openqa.selenium.opera.*;
+import org.openqa.selenium.safari.*;
+import org.openqa.selenium.ie.*;
+import org.openqa.selenium.logging.*;
+import org.openqa.selenium.remote.*;
+
 
 import org.testng.SkipException;
 
@@ -108,7 +97,6 @@ public class WebDriver_factory {
 			break;
 			
 		}
-
 
 		//Create browser specific webdriver with capabilities
 		options = setBrowserCapabilities(browser , browser_headless);

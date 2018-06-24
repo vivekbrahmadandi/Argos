@@ -1,11 +1,8 @@
 package integrationTests.selenium.step_definitions;
 
-
-
 import org.testng.Assert;
-
-//Cucumber Test framework
 import cucumber.api.java.en.*;
+
 import integrationTests.selenium.main.Common_methods_and_pom;
 
 

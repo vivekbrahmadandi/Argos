@@ -1,8 +1,8 @@
 package integrationTests.selenium.page_object_model;
 
 import org.openqa.selenium.By;
-
 import cucumber.api.PendingException;
+
 import integrationTests.selenium.main.Common_methods_and_pom;
 
 public class POM_productPage extends Common_methods_and_pom {

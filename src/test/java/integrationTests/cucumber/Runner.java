@@ -3,28 +3,12 @@ package integrationTests.cucumber;
 import cucumber.api.CucumberOptions;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
-import cucumber.api.testng.CucumberFeatureWrapper;
-import cucumber.api.testng.PickleEventWrapper;
-import cucumber.api.testng.TestNGCucumberRunner;
-
+import cucumber.api.testng.*;
 import java.lang.annotation.Annotation;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Proxy;
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.reflect.*;
 import java.util.Map;
-
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-import org.testng.xml.XmlSuite;
-
-import integrationTests.selenium.main.Common_methods_and_pom;
-import integrationTests.selenium.main.WebDriver_factory;
+import org.testng.annotations.*;
+import integrationTests.selenium.main.*;
 
 @CucumberOptions( 
 //		plugin = {"json:target/default.json"},
@@ -136,7 +120,6 @@ public class Runner {
 
 	}
     
-	
 	 //==============================================
 	// Using reflection to dynamically change cucumber options (create unique .json files/results).
 	//==============================================  
@@ -158,6 +141,5 @@ public class Runner {
 		memberValues.remove(key);                                                          //renove the key entry...don't worry, we'll add it back
 		memberValues.put(key,newValue);                                                    //add the new key-value pair. The annotation is now updated.
 	
-	}
-    
+	}  
 }

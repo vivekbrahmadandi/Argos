@@ -1,16 +1,9 @@
 package integrationTests.cucumber;
 
-import net.masterthought.cucumber.ReportBuilder;
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.poi.util.SystemOutLogger;
+import net.masterthought.cucumber.ReportBuilder;
 
 public class Report_generator {
 

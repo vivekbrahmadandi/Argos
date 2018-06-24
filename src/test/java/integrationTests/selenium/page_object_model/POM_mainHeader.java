@@ -1,7 +1,5 @@
 package integrationTests.selenium.page_object_model;
 
-
-
 import org.openqa.selenium.By;
 import org.testng.Assert;
 

@@ -5,7 +5,6 @@ import org.openqa.selenium.support.ui.Select;
 
 import integrationTests.selenium.main.Common_methods_and_pom;
 
-
 import java.util.*;
 
 public class POM_basket extends Common_methods_and_pom {

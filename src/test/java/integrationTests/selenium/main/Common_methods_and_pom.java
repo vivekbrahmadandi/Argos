@@ -1,14 +1,3 @@
-//===================================
-/* 
- 	This is first class to be called by cucumber.
-	It's annotated with @Before and modified so 
-	it only runs the conditional code once before all tests.
-
-	The conditional points to Selenium setup
-
- */
-//===================================
-
 package integrationTests.selenium.main;
 
 import java.io.*;
@@ -19,18 +8,9 @@ import org.apache.commons.io.*;
 import org.json.JSONObject;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.*;
-import org.openqa.selenium.logging.LogEntries;
-import org.openqa.selenium.logging.LogEntry;
-import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.*;
 import org.openqa.selenium.support.ui.*;
-import integrationTests.selenium.main.WebDriver_factory;
-import integrationTests.selenium.page_object_model.POM_basket;
-import integrationTests.selenium.page_object_model.POM_categorySplashPage;
-import integrationTests.selenium.page_object_model.POM_mainHeader;
-import integrationTests.selenium.page_object_model.POM_popup;
-import integrationTests.selenium.page_object_model.POM_popupBasket;
-import integrationTests.selenium.page_object_model.POM_productPage;
-import integrationTests.selenium.page_object_model.POM_productResults;
+import integrationTests.selenium.page_object_model.*;
 
 public class Common_methods_and_pom {
 
