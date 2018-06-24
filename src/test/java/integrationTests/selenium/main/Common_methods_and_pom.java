@@ -443,7 +443,6 @@ public class Common_methods_and_pom {
 		//Output LOGS to text file alongside the screenshot (only works for Chrome)
 		File logFile = new File(uniqueDirName + "logs.txt");
 		FileWriter fw;
-		String currentURL = WebDriver_factory.getLocalThreadWebDriver().getCurrentUrl();
 
 		if (browser.equals("chrome")) {
 

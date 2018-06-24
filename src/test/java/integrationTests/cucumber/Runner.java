@@ -11,6 +11,8 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.testng.annotations.AfterClass;
@@ -19,6 +21,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import org.testng.xml.XmlSuite;
+
 import integrationTests.selenium.main.Common_methods_and_pom;
 import integrationTests.selenium.main.WebDriver_factory;
 
@@ -35,7 +39,7 @@ public class Runner {
 	
 	private static boolean selenium_grid_enabled; 	
 	private static String selenium_grid_hub; 
-
+	
     private TestNGCucumberRunner testNGCucumberRunner;
 
     @BeforeClass(alwaysRun = true)
@@ -45,7 +49,6 @@ public class Runner {
 			String browser,
 			@Optional("") String browser_version,
 			@Optional("false") String browser_headless ) throws Exception{
-    	
     	
 		changeCucumberAnnotation(this.getClass(), "plugin", new String [] {"json:target/" + operating_system + "-" + browser + "-" + Thread.currentThread().getId() + ".json"});
      
@@ -63,9 +66,7 @@ public class Runner {
 		}else{
 			//Run on this build machine
 			new WebDriver_factory().createLocalThreadWebDriver(operating_system,browser,Boolean.parseBoolean(browser_headless));
-
 		}
-
 
 		//==========================
 		// Output build configuration (Good for showing uniqueness between threads/env tests
@@ -83,7 +84,6 @@ public class Runner {
         
     }
 
-    
 	//==========================
 	// Using TestNG DataProvider execute cucumber scenarios
 	//==========================	
@@ -120,7 +120,6 @@ public class Runner {
         
     }
     
- 
 	//==========================
 	// Cucumber hook used to capture analysis data on failure
 	//==========================	
@@ -137,20 +136,19 @@ public class Runner {
 
 	}
     
-   
-	//==============================================
-	// Using reflection to dynamically change cucumber options.
-	//==============================================  
-    
-    static int sleep = 0;	
-    
-	private static void changeCucumberAnnotation(Class<?> clazz, String key, Object newValue) throws Exception{  
-		
-		//Slightly offset parallel threads, so each thread gets assigned unique CucumberOptions
-    	ThreadLocal<Integer> sleep_threadLocal = new ThreadLocal<Integer>();
-    	sleep_threadLocal.set(sleep++);
-    	Thread.sleep(6000 * sleep_threadLocal.get());
 	
+	 //==============================================
+	// Using reflection to dynamically change cucumber options (create unique .json files/results).
+	//==============================================  
+
+	static volatile boolean firstThread = true;
+	
+	private synchronized static void changeCucumberAnnotation(Class<?> clazz, String key, Object newValue) throws Exception{  
+		
+		//Slightly offset each parralel thread so each gets unique CucumberOptions (.json file name)
+		if (!firstThread) Thread.sleep(3000);
+		firstThread = false;
+		
 		Annotation options = clazz.getAnnotation(CucumberOptions.class);                   //get the CucumberOptions annotation  
 		InvocationHandler proxyHandler = Proxy.getInvocationHandler(options);              //setup handler so we can update Annotation using reflection. Basically creates a proxy for the Cucumber Options class
 		Field f = proxyHandler.getClass().getDeclaredField("memberValues");                //the annotaton key/values are stored in the memberValues field

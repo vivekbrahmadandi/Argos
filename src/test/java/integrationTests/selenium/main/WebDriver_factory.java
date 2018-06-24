@@ -2,13 +2,12 @@ package integrationTests.selenium.main;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Iterator;
+
 import java.util.logging.Level;
 
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.MutableCapabilities;
-import org.openqa.selenium.Platform;
-import org.openqa.selenium.UnexpectedAlertBehaviour;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -25,7 +24,7 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariOptions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 import org.testng.SkipException;
 
 public class WebDriver_factory {
@@ -132,7 +131,6 @@ public class WebDriver_factory {
 		browser_threadLocal.set(browser);
 
 	}
-
 	
 	public static void quitLocalWebDriver() throws Exception{
 
