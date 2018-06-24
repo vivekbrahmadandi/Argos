@@ -20,6 +20,7 @@ public class CategorySearch_feature extends Common_methods_and_pom {
 		gotoPage(baseURL);
 		deleteCookies();
 		popup.escPopup(); 
+	
 		
 	}
 	

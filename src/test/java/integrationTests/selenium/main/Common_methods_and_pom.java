@@ -16,8 +16,12 @@ import java.text.*;
 import java.util.*;
 import java.util.concurrent.*;
 import org.apache.commons.io.*;
+import org.json.JSONObject;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.*;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.support.ui.*;
 import integrationTests.selenium.main.WebDriver_factory;
 import integrationTests.selenium.page_object_model.POM_basket;
@@ -33,7 +37,7 @@ public class Common_methods_and_pom {
 	public static String baseURL = System.getProperty("env.qa.url");
 
 	private WebDriverWait wait;
-	
+
 	//===========================
 	//create POM objects
 	//===========================
@@ -44,14 +48,14 @@ public class Common_methods_and_pom {
 	protected static POM_popup popup = new POM_popup();
 	protected static POM_productPage productPage = new POM_productPage();
 	protected static POM_popupBasket popupBasket = new POM_popupBasket();	
-	
+
 
 	public static String valueOf(){
 		final String e = "e";
-		
+
 		return e;
 	}
-	
+
 	//===========================
 	// Common methods
 	//===========================
@@ -62,28 +66,28 @@ public class Common_methods_and_pom {
 		waitForAjaxComplete();
 
 	}
-	
+
 	public void navigateBack() throws Exception{
 
 		WebDriver_factory.getLocalThreadWebDriver().navigate().back();
 		waitForAjaxComplete();
 
 	}
-	
+
 	public int elementCount(By target) throws InterruptedException {
 
 		waitForAjaxComplete();
 		return WebDriver_factory.getLocalThreadWebDriver().findElements(target).size();
 
 	}	
-	
+
 	public List<WebElement> getAllElements(By target) throws InterruptedException {
 
 		waitForAjaxComplete();
 		return  WebDriver_factory.getLocalThreadWebDriver().findElements(target);
 
 	}	
-	
+
 	public boolean elementExists(By target) throws InterruptedException{
 
 		waitForAjaxComplete();
@@ -94,7 +98,7 @@ public class Common_methods_and_pom {
 			try{
 
 				WebDriverWait quickWait = new WebDriverWait(WebDriver_factory.getLocalThreadWebDriver(), 1);
-				
+
 				quickWait.until(ExpectedConditions.elementToBeClickable(target));
 
 				return true;
@@ -113,7 +117,7 @@ public class Common_methods_and_pom {
 		waitForAjaxComplete();
 
 		try{
-			
+
 			wait = new WebDriverWait(WebDriver_factory.getLocalThreadWebDriver(),60);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(target));
 		}
@@ -197,11 +201,12 @@ public class Common_methods_and_pom {
 
 		}catch(Exception e){
 
-			System.out.println("Selenium_core.waitForAjaxComplete() threw: " + e.getMessage());
+			//System.out.println("Selenium_core.waitForAjaxComplete() threw: " + e.getMessage());
 
 			long endTime = System.currentTimeMillis();
 			long duration = (endTime - startTime); 
-			System.out.println("waiting for AJAX took: " + duration + "MS");
+			System.out.println("waiting for AJAX took: " + duration + "MS on URL: " 
+					+ WebDriver_factory.getLocalThreadWebDriver().getCurrentUrl());
 
 		}
 
@@ -409,10 +414,12 @@ public class Common_methods_and_pom {
 	}	
 
 	//================================================
-	// Take Screenshots
+	// Save Screenshots and log info (includes HTTP response code)
 	//================================================
 
-	public static void takeSnapShot(String filePath) throws Exception{
+	public static void takeSnapShotAndLogs(String filePath) throws Exception{
+
+		String browser = WebDriver_factory.getLocalThreadBrowser();
 
 		//Convert web driver object to TakeScreenshot
 		TakesScreenshot scrShot =((TakesScreenshot)WebDriver_factory.getLocalThreadWebDriver());
@@ -420,16 +427,74 @@ public class Common_methods_and_pom {
 		//Call getScreenshotAs method to create image file
 		File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
 
-		String fileName =  new SimpleDateFormat("yyyy-MM-dd_HHmmss'.png'").format(new Date());
-
+		String uniqueFolderName =  new SimpleDateFormat("yyyy-MM-dd_HHmm").format(new Date());
+		String uniqueDirName = filePath + "/" + browser + "_" + uniqueFolderName + "/"; 
 		//Move image file to new destination
-		File DestFile=new File(filePath + fileName);
+		String screenshotLocation = uniqueDirName + "screenshot.png";
+
+		File DestFile=new File(screenshotLocation);
 
 		//Copy file at destination
 		FileUtils.copyFile(SrcFile, DestFile);
 
 		System.out.println("Screenshot on failure can be found here:");
-		System.out.println(filePath + fileName);
+		System.out.println(screenshotLocation);
+
+		//Output LOGS to text file alongside the screenshot (only works for Chrome)
+		File logFile = new File(uniqueDirName + "logs.txt");
+		FileWriter fw;
+		String currentURL = WebDriver_factory.getLocalThreadWebDriver().getCurrentUrl();
+
+		if (browser.equals("chrome")) {
+
+			List<LogEntry> entries = WebDriver_factory.getLocalThreadWebDriver().manage().logs().get(LogType.PERFORMANCE).getAll();
+			System.out.println(entries.size() + " " + LogType.PERFORMANCE + " log entries found");
+			fw = new FileWriter(logFile, false);
+			BufferedWriter bw = new BufferedWriter(fw);   
+
+			for (LogEntry entry : entries) {
+
+				JSONObject json = new JSONObject(entry.getMessage());
+				JSONObject message = json.getJSONObject("message");
+				String method = message.getString("method");
+
+				if (method != null
+						&& "Network.responseReceived".equals(method)
+						)
+				{
+					JSONObject params = message.getJSONObject("params");
+					JSONObject response = params.getJSONObject("response");
+					String messageUrl = response.getString("url");
+
+					int status = response.getInt("status");
+
+					try {
+
+						bw.write("(HTTP " + status  + ") " +  messageUrl +"\r\n" + 
+								"headers: " + response.get("headers") + "\r\n\r\n");
+
+					} catch (IOException e) {
+						e.printStackTrace();
+					}    
+
+				}
+			}
+
+			bw.close();
+			fw.close();
+
+		}else{
+
+			try {
+				fw = new FileWriter(logFile, false);
+				fw.write("Browser being used :" + browser + "\r\n" +  
+						"Advanced logs only available for Chrome");
+				fw.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}  
+		}
+
 	}
 
 	public void getAllJS() throws InterruptedException{
@@ -443,7 +508,7 @@ public class Common_methods_and_pom {
 		String[] resourceNames = netData.split("name=");
 
 		//========================================
-		//=== Output resource details
+		// Output resource details
 		//========================================
 		String[] _resourceNames = new String[resourceNames.length];
 
@@ -474,4 +539,5 @@ public class Common_methods_and_pom {
 		return  (Boolean) ((JavascriptExecutor)WebDriver_factory.getLocalThreadWebDriver()).executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", ImageFile);
 
 	}
+
 }

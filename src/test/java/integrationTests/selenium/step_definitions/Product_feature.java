@@ -22,6 +22,7 @@ public class Product_feature extends Common_methods_and_pom {
 		customer_searches_by_product_using_search_feature(product);
 		customer_clicks_on_first_product();
 		
+	
 	}
 	
 	

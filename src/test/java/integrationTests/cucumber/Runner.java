@@ -67,7 +67,6 @@ public class Runner {
 		}
 
 
-	
 		//==========================
 		// Output build configuration (Good for showing uniqueness between threads/env tests
 		//==========================	
@@ -121,25 +120,24 @@ public class Runner {
         
     }
     
-    
+ 
 	//==========================
-	// Cucumber hook - Take screenshot on failure
+	// Cucumber hook used to capture analysis data on failure
 	//==========================	
 
 	@After
-	public void takeScreenshotOnFailure(Scenario scenario) throws Exception{
+	public void capture_logs_and_screenshot_on_failure(Scenario scenario) throws Exception{
 
 		if(scenario.isFailed()) {
 
-			String dir = System.getProperty("user.dir")  + "\\target\\screenshots_on_failure\\";
-			Common_methods_and_pom.takeSnapShot(dir);
+			String dir = System.getProperty("user.dir")  + "\\target\\screenshots_logs_on_failure\\";
+			Common_methods_and_pom.takeSnapShotAndLogs(dir);
 
 		}
 
 	}
     
-    
-    
+   
 	//==============================================
 	// Using reflection to dynamically change cucumber options.
 	//==============================================  
@@ -148,10 +146,10 @@ public class Runner {
     
 	private static void changeCucumberAnnotation(Class<?> clazz, String key, Object newValue) throws Exception{  
 		
-		//Add a 3 second delay between parallel threads, so each thread gets assigned unique CucumberOptions
+		//Slightly offset parallel threads, so each thread gets assigned unique CucumberOptions
     	ThreadLocal<Integer> sleep_threadLocal = new ThreadLocal<Integer>();
     	sleep_threadLocal.set(sleep++);
-    	Thread.sleep(3000 * sleep_threadLocal.get());
+    	Thread.sleep(6000 * sleep_threadLocal.get());
 	
 		Annotation options = clazz.getAnnotation(CucumberOptions.class);                   //get the CucumberOptions annotation  
 		InvocationHandler proxyHandler = Proxy.getInvocationHandler(options);              //setup handler so we can update Annotation using reflection. Basically creates a proxy for the Cucumber Options class

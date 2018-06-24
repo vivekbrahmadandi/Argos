@@ -2,6 +2,8 @@ package integrationTests.selenium.main;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Iterator;
+import java.util.logging.Level;
 
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.MutableCapabilities;
@@ -16,6 +18,8 @@ import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerOptions;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -28,68 +32,40 @@ public class WebDriver_factory {
 
 	//Parallel processing achieved in testNG using ThreadLocal
 	private static ThreadLocal<WebDriver> webdriver_threadLocal = new ThreadLocal<WebDriver>();
-	private WebDriver webdriver; //(non static to make thread safe)
+	
+	//Relevent to getLocalThreadBrowser() - giving option to find out the threads web browser
+	private static ThreadLocal<String> browser_threadLocal = new ThreadLocal<String>();
 
+	
 	private static String os_name = System.getProperty("os.name").toLowerCase();
+
+	private MutableCapabilities options;
 
 	//==================================
 	// Selenium Grid Enabled: will find node/s to match current environment_configurations_to_test.xml test 
 	//==================================
 	@SuppressWarnings("deprecation")
-	public  void createLocalThreadGridWebDriver(String selenium_grid_hub,String operating_system, String browser, String browser_version,boolean browser_headless) throws MalformedURLException {
+	public void createLocalThreadGridWebDriver(String selenium_grid_hub,String operating_system, String browser, String browser_version,boolean browser_headless) throws MalformedURLException {
 
-		MutableCapabilities options = null;
+		//build browser options / capabilities
+		options = setBrowserCapabilities(browser , browser_headless);
 
-		//Create the correct webdriver based on test requirements
-		browser = browser.toLowerCase();
-
-		switch (browser){
-
-		case "chrome":
-			options = new ChromeOptions();
-			break;
-
-		case "firefox":
-			options = new FirefoxOptions();
-			break;
-
-		case "edge":
-			options = new EdgeOptions();
-			break;
-
-		case "internet explorer":
-			options = new InternetExplorerOptions();
-			break;
-
-		case "safari":
-			options = new SafariOptions();
-			break;		
-
-		case "opera":
-			options = new OperaOptions();
-			break;
-	
-		default:
-			System.out.println("===========================");
-			System.out.println("[skipping test] " + browser + " is not a recognised web browser, please check config.");
-			System.out.println("===========================");
-			throw new SkipException("skipping test");	
-		}
-
-		//Set desired capabilities based on the input provided from environment_configurations_to_test.xml 
+		//Set capabilityType, which is used to find grid node with matching capabilities
 		options.setCapability(CapabilityType.BROWSER_NAME, browser);
 		if (!browser_version.equals(""))options.setCapability(CapabilityType.BROWSER_VERSION, browser_version);
 		if (!operating_system.equals(""))options.setCapability(CapabilityType.PLATFORM_NAME, operating_system);
 		if (!operating_system.equals(""))options.setCapability(CapabilityType.PLATFORM, operating_system);
 
 		//Launch Selenium grid, looking for node/s which match above capabilities
-		webdriver = new RemoteWebDriver(new URL(selenium_grid_hub), options);
+		WebDriver webdriver = new RemoteWebDriver(new URL(selenium_grid_hub), options);
 
-		System.out.println("Webdriver launched on node successfully");
-
+		webdriver.manage().window().setSize(new Dimension(1080, 1920));
 		webdriver.manage().window().maximize();
 
 		webdriver_threadLocal.set(webdriver);
+		browser_threadLocal.set(browser);
+
+		System.out.println("Webdriver launched on node successfully");
 
 	}
 
@@ -99,116 +75,133 @@ public class WebDriver_factory {
 
 	public void createLocalThreadWebDriver(String operating_system, String browser,boolean browser_headless) throws MalformedURLException {
 
-		//Check the current test config specified operating system matches build machine, if not then skip test.
-		//If multiple OS testing is required then consider turning on Selenium Grid flag.
-		switch (operating_system){
-
+		if (!build_machine_supports_desired_OperatingSystem(operating_system)){
+			
+			System.out.println("************");
+			System.out.println("[skipping test] This build machine does not support operating system: " + os_name);
+			System.out.println("************");	
+			throw new SkipException("skipping test");
+			
+		}
+		
+		//Set driver location
+		switch(operating_system){
+		
 		case "windows":
-
-			if (!(os_name.indexOf("win") >= 0)) {
-
-				System.out.println("************");
-				System.out.println("[skipping test] This test configuration is expecting WINDOWS, but this build machine is " + os_name);
-				System.out.println("************");	
-				throw new SkipException("skipping test");
-			}
-
+			
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\windows\\chromedriver.exe");
 			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")  + "\\src\\test\\resources\\browser_drivers\\windows\\geckodriver.exe");
 			System.setProperty("webdriver.edge.driver", System.getProperty("user.dir")   + "\\src\\test\\resources\\browser_drivers\\windows\\MicrosoftWebDriver.exe");
-
-
 			break;
-
+			
 		case "linux":
-
-			//Check if the build machine is linux, otherwise a linux test is not possible, so skip.  
-			if (!(os_name.indexOf("nix") >= 0) || !(os_name.indexOf("nux") >= 0) || !(os_name.indexOf("aix") >= 0) ) {
-
-				System.out.println("************");
-				System.out.println("[skipping test] This test configuration is expecting LINUX, but this build machine is " + os_name);
-				System.out.println("************");	
-				throw new SkipException("skipping test");
-			}
-
+			
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\linux\\todo");
 			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")  + "\\src\\test\\resources\\browser_drivers\\linux\\todo");
 			System.setProperty("webdriver.edge.driver", System.getProperty("user.dir")   + "\\src\\test\\resources\\browser_drivers\\linux\\todo");
-
 			break;
-
+			
 		case "mac":
-
-			//Check if the build machine is mac, otherwise a mac test is not possible, so skip. 
-			if (!(os_name.indexOf("mac") >= 0)) {
-
-				System.out.println("************");
-				System.out.println("[skipping test] This test configuration is expecting MAC, but this build machine is " + os_name);
-				System.out.println("************");	
-				throw new SkipException("skipping test");
-			}
-
+		
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\mac\\todo");
 			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")  + "\\src\\test\\resources\\browser_drivers\\mac\\todo");
 			System.setProperty("webdriver.edge.driver", System.getProperty("user.dir")   + "\\src\\test\\resources\\browser_drivers\\mac\\todo");
-
 			break;
-
-		default: 
-
-			System.out.println("===========================");
-			System.out.println("[skipping test] " +  operating_system + " is not a recognised operating system, please check config.");
-			System.out.println("===========================");
-			throw new SkipException("skipping test");
+			
 		}
 
+
+		//Create browser specific webdriver with capabilities
+		options = setBrowserCapabilities(browser , browser_headless);
+
+		WebDriver webdriver = null;
+		
 		//Create the correct webdriver based on test requirements
 		switch(browser){
 
-		case "chrome":
+		case "chrome": webdriver = new ChromeDriver((ChromeOptions)options); break;
+		case "firefox": webdriver = new FirefoxDriver((FirefoxOptions)options); break;
+		case "edge": webdriver = new EdgeDriver((EdgeOptions)options);break;
 
-			ChromeOptions options = new ChromeOptions();
+		}
 
-			if (browser_headless){
+		webdriver.manage().window().setSize(new Dimension(1080, 1920));
+		webdriver.manage().window().maximize();
 
-				options.addArguments("headless");
+		webdriver_threadLocal.set(webdriver);
+		browser_threadLocal.set(browser);
 
-				webdriver = new ChromeDriver(options);
-				webdriver.manage().window().setSize(new Dimension(1080, 1920));
+	}
 
-			}else{
+	
+	public static void quitLocalWebDriver() throws Exception{
 
-				webdriver = new ChromeDriver(options);
-				webdriver.manage().window().maximize();
-			}
+		if (webdriver_threadLocal.get()!= null) webdriver_threadLocal.get().quit();
 
+	}
+
+	public static WebDriver getLocalThreadWebDriver() {
+
+		return webdriver_threadLocal.get();
+
+	}
+	
+
+	public static String getLocalThreadBrowser() {
+
+		return browser_threadLocal.get();
+
+	}
+	
+
+	private MutableCapabilities setBrowserCapabilities(String browser, boolean browser_headless){
+
+		MutableCapabilities options;
+
+		browser = browser.toLowerCase();
+
+		switch (browser){
+
+		case "chrome":    
+
+			options = new ChromeOptions(); 
+
+			if (browser_headless)((ChromeOptions) options).addArguments("headless");			
+
+			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+
+			LoggingPreferences logPrefs = new LoggingPreferences();
+			logPrefs.enable(LogType.PERFORMANCE, Level.ALL);
+			capabilities.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
+
+			options.merge(capabilities);
+			
+			
+			
 			break;
 
-		case "firefox":
+		case "firefox": 		
 
 			System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE,"true");
 			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");
+
+			options = new FirefoxOptions(); 
 
 			if (browser_headless){
 
 				FirefoxBinary firefoxBinary = new FirefoxBinary();
 				firefoxBinary.addCommandLineOptions("--headless");
-				FirefoxOptions firefoxOptions = new FirefoxOptions();
-				firefoxOptions.setBinary(firefoxBinary);
 
-				webdriver = new FirefoxDriver(firefoxOptions);
-				webdriver.manage().window().setSize(new Dimension(1080, 1920));
+				((FirefoxOptions) options).setBinary(firefoxBinary);
 
-
-			}else{
-
-				webdriver = new FirefoxDriver();
-				webdriver.manage().window().maximize();
 			}
 
 			break;
 
 		case "edge":
+
+			options = new EdgeOptions();
 
 			if (browser_headless){
 
@@ -218,39 +211,48 @@ public class WebDriver_factory {
 
 			}	
 
-			webdriver = new EdgeDriver();
-			webdriver.manage().window().maximize();
-
 			break;
 
-		default: 
+		case "internet explorer":	
+			options = new InternetExplorerOptions();
+			break;
+		case "safari":				
+			options = new SafariOptions();
+			break;		
+		case "opera":				
+			options = new OperaOptions();
+			break;
 
+		default:
 			System.out.println("===========================");
 			System.out.println("[skipping test] " + browser + " is not a recognised web browser, please check config.");
 			System.out.println("===========================");
-			throw new SkipException("skipping test");
-
+			throw new SkipException("skipping test");	
 		}
 
-		webdriver_threadLocal.set(webdriver);
+		return options;
+
 
 	}
 
+	
+	private boolean build_machine_supports_desired_OperatingSystem(String operating_system){
 
-	public static void quitLocalWebDriver() throws Exception{
 
-		if (webdriver_threadLocal.get()!= null){
+		//Check the current test config specified operating system matches build machine, if not then skip test.
+		//If multiple OS testing is required then consider turning on Selenium Grid flag.
+		
+		boolean valid = false;
+		
+		if (operating_system.equals("windows") && os_name.indexOf("win") >= 0) valid = true;
+		if (operating_system.equals("linux") && (os_name.indexOf("nix") >= 0 || os_name.indexOf("nux") >= 0 || os_name.indexOf("aix") >= 0)) valid = true;
+		if (operating_system.equals("mac") && os_name.indexOf("mac") >= 0) valid = true;
+				
 
-			webdriver_threadLocal.get().quit();
-
-		}
-
+		return valid;
+		
 	}
-
-	public static WebDriver getLocalThreadWebDriver() {
-
-		return webdriver_threadLocal.get();
-
-	}
+	
+	
 
 }
