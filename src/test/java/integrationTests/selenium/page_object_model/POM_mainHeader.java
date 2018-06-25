@@ -7,13 +7,16 @@ import integrationTests.selenium.main.Common_methods_and_pom;
 
 public class POM_mainHeader extends Common_methods_and_pom {
 
+	public By btnWishList = By.xpath("(//span[@class=\"argos-header__link-label\"])[1]");
 	public By btnBasket = By.xpath("(//span[@class=\"argos-header__link-label\"])[2]");
 	public By txtBasketCount = By.xpath("//span[@class=\"argos-header__trolley-count argos-header__trolley-badge badge\"]");
 	public By txtSearchBar = By.xpath("//*[@id=\"searchTerm\"]");
 	public By btnSearch = By.xpath("//button[@class=\"argos-header__search-button\"]");
 	public By btnLogin = By.xpath("//a[@class=\"font-condensed uppercase argos-header__link argos-header__link--signin\"]");
 	public By txtCategory = By.xpath("//li[@class=\"font-condensed-extra-bold uppercase meganav__nav-item meganav__nav-item--categories \"]");
+	public By btnLogo = By.xpath("//*[@id=\"argos-logo\"]/path[2]");
 
+	
 	//Category Links
 	public By LinkTechnology = By.xpath(buildLinkXpath("technology/c:29949/"));
 	public By LinkHomeAndGarden = By.xpath(buildLinkXpath("home-and-garden/c:29351/"));

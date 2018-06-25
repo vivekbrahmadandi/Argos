@@ -11,16 +11,7 @@ public class CategorySearch_feature extends Common_methods_and_pom {
 	String nicheCategory;
 	String unrecognisedCategory;
 	
-	@Given("^customer is anywhere on website$")
-	public void customer_is_anywhere_on_website() throws Throwable {
 
-		gotoPage(baseURL);
-		deleteCookies();
-		popup.escPopup(); 
-	
-		
-	}
-	
 	@When("^customer clicks on category: (.+) in the menu$")
 	public void customer_clicks_on_a_category_in_the_menu(String category) throws Throwable {
 
@@ -48,9 +39,8 @@ public class CategorySearch_feature extends Common_methods_and_pom {
 		
 	}
 
-
 	@When("^clicks on niche-category via main header: (.+)$")
-	public void clicks_on_a_niche_category_mh(String nicheCategory) throws Throwable {
+	public void clicks_on_a_niche_category_via_mh(String nicheCategory) throws Throwable {
 
 		mainHeader.clickNicheCategory_viaMainheader(nicheCategory);
 		
@@ -85,7 +75,7 @@ public class CategorySearch_feature extends Common_methods_and_pom {
 	public void category_splash_screen_is_shown() throws Throwable {
 
 		popup.escPopup();
-		Assert.assertEquals(category.toLowerCase(),getText(categorySplashPage.txtH1).toLowerCase());
+		Assert.assertEquals(getText(categorySplashPage.txtH1).toLowerCase(),category.toLowerCase());
 		
 	}
 	
@@ -93,15 +83,15 @@ public class CategorySearch_feature extends Common_methods_and_pom {
 	public void results_of_matching_products_are_shown_by_order_of_relevance() throws Throwable {
 
 		popup.escPopup(); 
-		Assert.assertEquals("Relevance",getDropDownMenuText(productResults.dropProductSort));
-
+		Assert.assertEquals(getDropDownMenuText(productResults.dropProductSort),"Relevance");
+		
 	}
 	
 	@Then("^results of matching products are shown by order of popularity$")
 	public void results_of_matching_products_are_shown_by_order_of_popularity() throws Throwable {
 
 		popup.escPopup(); 
-		Assert.assertEquals("Most Popular",getDropDownMenuText(productResults.dropProductSort));
+		Assert.assertEquals(getDropDownMenuText(productResults.dropProductSort),"Most Popular");
 
 	}
 	

@@ -167,7 +167,7 @@ public class Common_methods_and_pom {
 
 		try{
 
-			WebDriver_factory.getLocalThreadWebDriver().manage().timeouts().setScriptTimeout(5, TimeUnit.SECONDS);
+			WebDriver_factory.getLocalThreadWebDriver().manage().timeouts().setScriptTimeout(15, TimeUnit.SECONDS);
 			((JavascriptExecutor) WebDriver_factory.getLocalThreadWebDriver()).executeAsyncScript(
 					"var callback = arguments[arguments.length - 1];" +
 							"var xhr = new XMLHttpRequest();" +
@@ -397,9 +397,10 @@ public class Common_methods_and_pom {
 	// Save Screenshots and log info (includes HTTP response code)
 	//================================================
 
-	public static void takeSnapShotAndLogs(String filePath) throws Exception{
+	public static void takeSnapShotAndLogs(String scenarioName) throws Exception{
 
 		String browser = WebDriver_factory.getLocalThreadBrowser();
+		String operatingSystem = WebDriver_factory.getLocalThreadOS();
 
 		//Convert web driver object to TakeScreenshot
 		TakesScreenshot scrShot =((TakesScreenshot)WebDriver_factory.getLocalThreadWebDriver());
@@ -407,70 +408,90 @@ public class Common_methods_and_pom {
 		//Call getScreenshotAs method to create image file
 		File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
 
-		String uniqueFolderName =  new SimpleDateFormat("yyyy-MM-dd_HHmm").format(new Date());
-		String uniqueDirName = filePath + "/" + browser + "_" + uniqueFolderName + "/"; 
-		//Move image file to new destination
-		String screenshotLocation = uniqueDirName + "screenshot.png";
+		String currentDateTime =  new SimpleDateFormat("yyyy-MM-dd_HHmm").format(new Date());
+		
+		String filePath = System.getProperty("user.dir").replace("\\", "/")  + 
+						  "/target/screenshots_logs_on_failure/" + 
+						  operatingSystem + "-" + browser + "_" + currentDateTime; 
+		
+		
+		String screenshotPath = filePath + "/" + "screenshot.png";
 
-		File DestFile=new File(screenshotLocation);
+		File DestFile=new File(screenshotPath);
 
 		//Copy file at destination
 		FileUtils.copyFile(SrcFile, DestFile);
 
-		System.out.println("Screenshot on failure can be found here:");
-		System.out.println(screenshotLocation);
+		System.out.println("Scenario Failed: " + scenarioName);
+		System.out.println("Environment: " + WebDriver_factory.getLocalThreadOS() + "_" + WebDriver_factory.getLocalThreadBrowser());
+		System.out.println("Screenshot ands logs found here: ");		
+		System.out.println(filePath);
 
 		//Output LOGS to text file alongside the screenshot (only works for Chrome)
-		File logFile = new File(uniqueDirName + "logs.txt");
-		FileWriter fw;
+		File logFile = new File(filePath + "/" + "logs.txt");
+		FileWriter fw = new FileWriter(logFile, false);
+		BufferedWriter bw = new BufferedWriter(fw);
 
 		if (browser.equals("chrome")) {
 
-			List<LogEntry> entries = WebDriver_factory.getLocalThreadWebDriver().manage().logs().get(LogType.PERFORMANCE).getAll();
-			System.out.println(entries.size() + " " + LogType.PERFORMANCE + " log entries found");
-			fw = new FileWriter(logFile, false);
-			BufferedWriter bw = new BufferedWriter(fw);   
+			try{
 
-			for (LogEntry entry : entries) {
+				LogEntries logs = WebDriver_factory.getLocalThreadWebDriver().manage().logs().get("performance");
 
-				JSONObject json = new JSONObject(entry.getMessage());
-				JSONObject message = json.getJSONObject("message");
-				String method = message.getString("method");
-
-				if (method != null
-						&& "Network.responseReceived".equals(method)
-						)
+				bw.write("Failed Scenario: " + scenarioName + System.lineSeparator() + System.lineSeparator()); 	
+				
+				for (Iterator<LogEntry> it = logs.iterator(); it.hasNext();)
 				{
-					JSONObject params = message.getJSONObject("params");
-					JSONObject response = params.getJSONObject("response");
-					String messageUrl = response.getString("url");
+					LogEntry entry = it.next();
 
-					int status = response.getInt("status");
+					JSONObject json = new JSONObject(entry.getMessage());
+					JSONObject message = json.getJSONObject("message");
+					String method = message.getString("method");
 
-					try {
+					if (method != null
+							&& "Network.responseReceived".equals(method)
+							)
+					{
+						JSONObject params = message.getJSONObject("params");
+						JSONObject response = params.getJSONObject("response");
+						String messageUrl = response.getString("url");
 
-						bw.write("(HTTP " + status  + ") " +  messageUrl +"\r\n" + 
-								"headers: " + response.get("headers") + "\r\n\r\n");
+						int status = response.getInt("status");
 
-					} catch (IOException e) {
-						e.printStackTrace();
-					}    
+						try {
 
+							bw.write("(HTTP " + status  + ") " +  messageUrl + System.lineSeparator() + 
+									"headers: " + response.get("headers") + System.lineSeparator() + System.lineSeparator());
+
+						} catch (IOException e) {
+							e.printStackTrace();
+						}    
+					}
 				}
-			}
 
-			bw.close();
-			fw.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally{
+
+				bw.close();
+				fw.close();	
+
+			}
 
 		}else{
 
 			try {
-				fw = new FileWriter(logFile, false);
-				fw.write("Browser being used :" + browser + "\r\n" +  
-						"Advanced logs only available for Chrome");
-				fw.close();
+	
+				bw.write("Failed Scenario: " + scenarioName + System.lineSeparator() + System.lineSeparator()); 	
+				bw.write("HTTP logs only available with Chrome browser");
+				
 			} catch (IOException e) {
 				e.printStackTrace();
+			} finally{
+
+				bw.close();
+				fw.close();	
+
 			}  
 		}
 

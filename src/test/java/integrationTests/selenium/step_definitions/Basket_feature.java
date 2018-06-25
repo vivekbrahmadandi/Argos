@@ -44,18 +44,16 @@ public class Basket_feature extends Common_methods_and_pom {
 
 	}
 	
-
 	@When("customer removes firt product from basket")
 	public void customer_removes_firt_product_from_basket() throws Throwable {
 
-	  
 	    basket.remove_first_product_from_basket();
 	    
 	}
 	
 
 	@When("customer changes quantity of first product to x(\\d+)")
-	public void customer_increases_product_FOOTBALL_quantity_by_x(int quantity) throws Throwable {
+	public void customer_changes_quantity_of_first_product_to_x(int quantity) throws Throwable {
 	
 		basket.change_quantity_first_product(quantity);
 		
@@ -73,7 +71,7 @@ public class Basket_feature extends Common_methods_and_pom {
 	}
 	
 	@Then("^basket with (.+) products and (.+) quantity is shown$")
-	public void basket_with_products_is_shown(String productCount, String quantityCount) throws Throwable {
+	public void basket_with_products_and_quantity_is_shown(String productCount, String quantityCount) throws Throwable {
 
 		popup.escPopup();
 		basket.wait_for_basket_to_load();
@@ -82,8 +80,8 @@ public class Basket_feature extends Common_methods_and_pom {
 		int iproductCount = Integer.valueOf(productCount);
 		int iquantityCount = Integer.valueOf(quantityCount);	
 
-		Assert.assertEquals(iproductCount,basket.productCount());
-		Assert.assertEquals(iquantityCount,basket.quantityCount());
+		Assert.assertEquals(basket.productCount(),iproductCount);
+		Assert.assertEquals(basket.quantityCount(),iquantityCount);
 
 	}
 	

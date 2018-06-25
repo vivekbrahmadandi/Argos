@@ -23,7 +23,9 @@ public class WebDriver_factory {
 	
 	//Relevent to getLocalThreadBrowser() - giving option to find out the threads web browser
 	private static ThreadLocal<String> browser_threadLocal = new ThreadLocal<String>();
-
+	//Relevent to getLocalThreadOS() - giving option to find out the threads OS
+	private static ThreadLocal<String> operating_system_threadLocal = new ThreadLocal<String>();
+	
 	
 	private static String os_name = System.getProperty("os.name").toLowerCase();
 
@@ -35,6 +37,9 @@ public class WebDriver_factory {
 	@SuppressWarnings("deprecation")
 	public void createLocalThreadGridWebDriver(String selenium_grid_hub,String operating_system, String browser, String browser_version,boolean browser_headless) throws MalformedURLException {
 
+		browser_threadLocal.set(browser);
+		operating_system_threadLocal.set(operating_system);
+		
 		//build browser options / capabilities
 		options = setBrowserCapabilities(browser , browser_headless);
 
@@ -51,9 +56,8 @@ public class WebDriver_factory {
 		webdriver.manage().window().maximize();
 
 		webdriver_threadLocal.set(webdriver);
-		browser_threadLocal.set(browser);
 
-		System.out.println("Webdriver launched on node successfully");
+		System.out.println("Webdriver launched on node successfully for: " + operating_system + "/" + browser);
 
 	}
 
@@ -63,6 +67,9 @@ public class WebDriver_factory {
 
 	public void createLocalThreadWebDriver(String operating_system, String browser,boolean browser_headless) throws MalformedURLException {
 
+		browser_threadLocal.set(browser);
+		operating_system_threadLocal.set(operating_system);
+		
 		if (!build_machine_supports_desired_OperatingSystem(operating_system)){
 			
 			System.out.println("************");
@@ -116,8 +123,7 @@ public class WebDriver_factory {
 		webdriver.manage().window().maximize();
 
 		webdriver_threadLocal.set(webdriver);
-		browser_threadLocal.set(browser);
-
+	
 	}
 	
 	public static void quitLocalWebDriver() throws Exception{
@@ -139,7 +145,13 @@ public class WebDriver_factory {
 
 	}
 	
+	
+	public static String getLocalThreadOS() {
 
+		return operating_system_threadLocal.get();
+
+	}
+	
 	private MutableCapabilities setBrowserCapabilities(String browser, boolean browser_headless){
 
 		MutableCapabilities options;
@@ -162,8 +174,6 @@ public class WebDriver_factory {
 			capabilities.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
 
 			options.merge(capabilities);
-			
-			
 			
 			break;
 
@@ -194,7 +204,6 @@ public class WebDriver_factory {
 				System.out.println("===========================");
 				System.out.println(browser + " doesn't have a headless mode, launching normally");
 				System.out.println("===========================");
-
 			}	
 
 			break;
@@ -218,10 +227,9 @@ public class WebDriver_factory {
 
 		return options;
 
-
 	}
 
-	
+
 	private boolean build_machine_supports_desired_OperatingSystem(String operating_system){
 
 

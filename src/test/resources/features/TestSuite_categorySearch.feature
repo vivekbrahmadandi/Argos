@@ -2,23 +2,23 @@ Feature: CategorySearch
 		 Customer has ability to browse for items by category (both search and click)
 
   Background: 
-  	Given customer is anywhere on website
+  	Given customer is on homepage
 
  
-  @CategorySearch @Cross
+  @CategorySearch
    Scenario Outline: customer searches by category using category menu
 	When customer clicks on category: <Category> in the menu
 	Then category splash screen is shown
    Examples:
     | Category 					|
     | TECHNOLOGY 				|
-#    | HOME AND GARDEN 			|
-#    | BABY AND NURSERY 			|
-#    | TOYS 						|
-#    | SPORTS AND LEISURE 		|
-#    | HEALTH AND BEAUTY 		|
-#    | CLOTHING 					|        
-#    | JEWELLERY AND WATCHES 	| 	
+    | HOME AND GARDEN 			|
+    | BABY AND NURSERY 			|
+    | TOYS 						|
+    | SPORTS AND LEISURE 		|
+    | HEALTH AND BEAUTY 		|
+    | CLOTHING 					|        
+    | JEWELLERY AND WATCHES 	| 	
 
   @CategorySearch   
  Scenario Outline: customer navigates to subcategory via category menu hover feature then goes to niche-category

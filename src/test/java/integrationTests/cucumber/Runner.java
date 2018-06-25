@@ -11,33 +11,36 @@ import org.testng.annotations.*;
 import integrationTests.selenium.main.*;
 
 @CucumberOptions( 
-//		plugin = {"json:target/default.json"},
+		//Tags (Send using Maven:[clean verify -P qa_build -Dcucumber.options="-t @Retest"]
 		features = "src/test/resources/Features/",
 		glue={"integrationTests.selenium.step_definitions","integrationTests.cucumber"}
+		//Plugin (Json plugin dynamically created per test env. Used for reporting)
 		)
 public class Runner {
-	
+
 	//==============================================
 	// Calls the Grid (or non Grid) webdriver and pass on paramters to it
 	//==============================================
-	
+
 	private static boolean selenium_grid_enabled; 	
 	private static String selenium_grid_hub; 
-	
-    private TestNGCucumberRunner testNGCucumberRunner;
 
-    @BeforeClass(alwaysRun = true)
+	private volatile static int testID;
+
+	private TestNGCucumberRunner testNGCucumberRunner;
+
+	@BeforeClass(alwaysRun = true)
 	@Parameters({"operating_system","browser","browser_version","browser_headless"})
-    public void setUpClass(
+	public void setUpClass(
 			String operating_system,
 			String browser,
 			@Optional("") String browser_version,
 			@Optional("false") String browser_headless ) throws Exception{
-    	
-		changeCucumberAnnotation(this.getClass(), "plugin", new String [] {"json:target/" + operating_system + "-" + browser + "-" + Thread.currentThread().getId() + ".json"});
-     
+
+		changeCucumberAnnotation(this.getClass(), "plugin", new String [] {"json:target/" + operating_system + "_" + browser + ".json"});
+
 		testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
-        
+
 		//Selenium Grid flag/url set in Maven using System properties
 		selenium_grid_enabled= Boolean.parseBoolean(System.getProperty("selenium.grid.enabled"));
 		selenium_grid_hub = System.getProperty("selenium.grid.hub");
@@ -53,57 +56,66 @@ public class Runner {
 		}
 
 		//==========================
-		// Output build configuration (Good for showing uniqueness between threads/env tests
+		// Output build configurations being tested
 		//==========================	
-		
-		System.out.println("===========================");
-		System.out.println("BUILD CONFIGURATION");
-		System.out.println("Test URL: " + Common_methods_and_pom.baseURL);	
-		System.out.println("Selenium Grid Enabled: " + selenium_grid_enabled );	
-		if (selenium_grid_enabled) System.out.println("Selenium Grid hub: " + selenium_grid_hub );	
-		System.out.println("Operating system: " + operating_system );
-		System.out.println("Web Browser: " + browser );
-		System.out.println("Browser headless mode: " + browser_headless );	
-		System.out.println("===========================");	
-        
-    }
+
+		synchronized(this){testID++;}
+
+		//Output once
+		if (testID == 1){
+			System.out.println("Test URL: " + Common_methods_and_pom.baseURL);	
+			System.out.println("Selenium Grid Enabled: " + selenium_grid_enabled );	
+			if (selenium_grid_enabled) System.out.println("Selenium Grid hub: " + selenium_grid_hub );		
+		}
+		System.out.println("");
+
+		System.out.println("Starting Test ID: " + testID +
+						   " (" + operating_system + " " +  browser + ")");
+
+	}
 
 	//==========================
 	// Using TestNG DataProvider execute cucumber scenarios
 	//==========================	
-    
-    @Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
-    public void scenario(PickleEventWrapper pickleEvent, CucumberFeatureWrapper cucumberFeature) throws Throwable {
-        testNGCucumberRunner.runScenario(pickleEvent.getPickleEvent());
-    }
 
-    @DataProvider
-    public Object[][] scenarios() {
-        return testNGCucumberRunner.provideScenarios();
-    }
+	@Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
+	public void scenario(PickleEventWrapper pickleEvent, CucumberFeatureWrapper cucumberFeature) throws Throwable {
+		testNGCucumberRunner.runScenario(pickleEvent.getPickleEvent());
+	}
 
-    @AfterClass(alwaysRun = true)
-    public void tearDownClass() throws Exception {
-        
-    	testNGCucumberRunner.finish();
-      
-    	//==========================
-    	// Generate report and quit local thread web driver 
-    	//==========================	
-    	
+	@DataProvider
+	public Object[][] scenarios() {
+		return testNGCucumberRunner.provideScenarios();
+	}
+
+	@AfterClass(alwaysRun = true)
+	public void tearDownClass() throws Exception {
+
+		testNGCucumberRunner.finish();
+
+		//==========================
+		// Generate report and quit local thread web driver 
+		//==========================	
+
 		if (WebDriver_factory.getLocalThreadWebDriver() != null){
 
-			Report_generator.GenerateMasterthoughtReport();
-			
+			Report_generator.GenerateMasterthoughtReport();	
+
 			try {
 				WebDriver_factory.quitLocalWebDriver();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else{
+
+			System.out.println("There was an issue generating WebDriver for [OS/Browser]:"
+					+ " " + WebDriver_factory.getLocalThreadOS() 
+					+ "/" + WebDriver_factory.getLocalThreadBrowser() );
+
 		}
-        
-    }
-    
+
+	}
+
 	//==========================
 	// Cucumber hook used to capture analysis data on failure
 	//==========================	
@@ -113,25 +125,24 @@ public class Runner {
 
 		if(scenario.isFailed()) {
 
-			String dir = System.getProperty("user.dir")  + "\\target\\screenshots_logs_on_failure\\";
-			Common_methods_and_pom.takeSnapShotAndLogs(dir);
+			Common_methods_and_pom.takeSnapShotAndLogs(scenario.getName());
 
 		}
 
 	}
-    
-	 //==============================================
-	// Using reflection to dynamically change cucumber options (create unique .json files/results).
+
+	//==============================================
+	// Use reflection to dynamically change cucumber options (create unique .json files/results).
 	//==============================================  
 
 	static volatile boolean firstThread = true;
-	
+
 	private synchronized static void changeCucumberAnnotation(Class<?> clazz, String key, Object newValue) throws Exception{  
-		
+
 		//Slightly offset each parralel thread so each gets unique CucumberOptions (.json file name)
 		if (!firstThread) Thread.sleep(3000);
 		firstThread = false;
-		
+
 		Annotation options = clazz.getAnnotation(CucumberOptions.class);                   //get the CucumberOptions annotation  
 		InvocationHandler proxyHandler = Proxy.getInvocationHandler(options);              //setup handler so we can update Annotation using reflection. Basically creates a proxy for the Cucumber Options class
 		Field f = proxyHandler.getClass().getDeclaredField("memberValues");                //the annotaton key/values are stored in the memberValues field
@@ -140,6 +151,7 @@ public class Runner {
 		Map<String, Object> memberValues = (Map<String, Object>) f.get(proxyHandler);      //get the key-value map for the proxy
 		memberValues.remove(key);                                                          //renove the key entry...don't worry, we'll add it back
 		memberValues.put(key,newValue);                                                    //add the new key-value pair. The annotation is now updated.
-	
+
 	}  
+
 }

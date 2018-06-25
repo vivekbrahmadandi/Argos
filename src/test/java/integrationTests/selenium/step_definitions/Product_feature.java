@@ -65,8 +65,8 @@ public class Product_feature extends Common_methods_and_pom {
 		
 	}
 	
-	@When("^customer changes store location : (.+)$")
-	public void customer_changes_store_location_to_postcode(String postcode) throws Throwable {
+	@When("^customer changes store location to : (.+)$")
+	public void customer_changes_store_location_to(String postcode) throws Throwable {
 	  
 		
 		productPage.change_store_location(postcode);
@@ -82,25 +82,24 @@ public class Product_feature extends Common_methods_and_pom {
 		Assert.assertTrue(getText(productPage.txtProductPrice).contains("£"));
 	}
 	
-	
 	@Then("^results of matching products are shown by order of price low-to-high$")
 	public void results_of_matching_products_are_shown_by_order_of_price_low_to_high() throws Throwable {
 	
-		Assert.assertEquals("Price: Low - High",getDropDownMenuText(productPage.dropSort));
+		Assert.assertEquals(getDropDownMenuText(productPage.dropSort),"Price: Low - High");
 	}
 	
 	
 	@Then("^results of matching products are shown by order of price high-to-low$")
 	public void results_of_matching_products_are_shown_by_order_of_price_high_to_low() throws Throwable {
 
-		Assert.assertEquals("Price: High - Low",getDropDownMenuText(productPage.dropSort));	
+		Assert.assertEquals(getDropDownMenuText(productPage.dropSort),"Price: High - Low");	
 		
 	}
 	
 	@Then("^results of matching products are shown by order of customer rating$")
 	public void results_of_matching_products_are_shown_by_order_of_customer_rating() throws Throwable {
 		
-		Assert.assertEquals("Customer Rating",getDropDownMenuText(productPage.dropSort));	
+		Assert.assertEquals(getDropDownMenuText(productPage.dropSort),"Customer Rating");	
 		
 	}
 	

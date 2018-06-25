@@ -4,11 +4,11 @@ Feature: Products
 
   @Smoke
   Scenario: Quick scenerio for testing saucelabs selenium grid
-  Given customer is anywhere on website
+  Given customer is on homepage
 
-  @Product @Cross
+  @Product 
   Scenario Outline: customer searches for product by name 
-  	Given customer is anywhere on website
+  	Given customer is on homepage
     When customer searches by product: <Product> using search feature
 	Then results of matching products are shown by order of popularity
 	When customer clicks on first product
@@ -17,17 +17,17 @@ Feature: Products
    Examples:
     | Product 					|
     | XBOX		 				|
-#    | COOKERS 					|
-#    | PUSHCHAIR 				|
-#    | SPIDERMAN					|
-#    | FOOTBALL 					|
-#    | WEIGHTS					|
-#    | JEANS 					|        
-#    | RING					 	| 	
+    | COOKERS 					|
+    | PUSHCHAIR 				|
+    | SPIDERMAN					|
+    | FOOTBALL 					|
+    | WEIGHTS					|
+    | JEANS 					|        
+    | RING					 	| 	
 	
   @Product
   Scenario Outline: customer searches for product and changes list order
-  	Given customer is anywhere on website
+  	Given customer is on homepage
     When customer searches by product: <Product> using search feature
 	And customer sorts by price low-to-high
 	Then results of matching products are shown by order of price low-to-high
@@ -50,7 +50,7 @@ Feature: Products
   @Product
   Scenario Outline: customer changes store location
 	Given customer is on product page : <Product>
-	When customer changes store location : <Postcode>
+	When customer changes store location to : <Postcode>
 	Then customer can see stock availability
   Examples:
     | Product 	| Postcode 	|

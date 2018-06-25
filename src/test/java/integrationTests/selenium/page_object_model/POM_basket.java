@@ -13,7 +13,8 @@ public class POM_basket extends Common_methods_and_pom {
 	public By dropQuantity = By.xpath("//select[starts-with(@id,'quantity')]");
 	public By txtPrice = By.xpath("//span[@class=\"price\"]");
 	public By btnRemove = By.xpath("//input[@value=\"Remove\"]");	
-	
+	public By btnRemoveAlternative = By.xpath("//button[starts-with(@class,'ProductCard')]");
+
 	public int productCount() throws InterruptedException{
 	
 		int productCount = elementCount(dropQuantity);
@@ -47,7 +48,9 @@ public class POM_basket extends Common_methods_and_pom {
 	public void remove_first_product_from_basket() throws Throwable {
 
 		popup.escPopup();
-		click(btnRemove);
+		
+		if (elementExists(btnRemove)){click(btnRemove);}
+		else{click(btnRemoveAlternative);}
 
 	}
 	

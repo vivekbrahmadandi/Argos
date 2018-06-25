@@ -3,12 +3,12 @@ Feature: Basket
 
   @Basket 
   Scenario: Customer views empty basket
-	Given customer is anywhere on website
+	Given customer is on homepage
 	When customer views basket
 	Then empty basket is shown
 
  
-  @Basket  @Cross
+  @Basket 
   Scenario Outline: Customer views basket with x1 products, totalling x1 quantity
 	Given customer is on product page : <Product>
 	And adds product to basket
@@ -17,13 +17,13 @@ Feature: Basket
    Examples:
     | Product 					| ProductCount	| Quantity	|
     | XBOX		 				| 1				| 1			|
-#    | COOKERS 					| 1				| 1			|
-#    | PUSHCHAIR 				| 1				| 1			|
-#    | SPIDERMAN					| 1				| 1			|
-#    | FOOTBALL 					| 1				| 1			|
-#    | WEIGHTS					| 1				| 1			|
-#    | JEANS 					| 1				| 1			|       
-#    | RING					 	| 1				| 1			|	
+    | COOKERS 					| 1				| 1			|
+    | PUSHCHAIR 				| 1				| 1			|
+    | SPIDERMAN					| 1				| 1			|
+    | FOOTBALL 					| 1				| 1			|
+    | WEIGHTS					| 1				| 1			|
+    | JEANS 					| 1				| 1			|       
+    | RING					 	| 1				| 1			|	
 
 
   @Basket
@@ -44,7 +44,7 @@ Feature: Basket
     
   @Basket 
   Scenario Outline: Customer views basket with x2 products, totalling x2 quantity
-	Given customer is anywhere on website
+	Given customer is on homepage
     When customer searches by product: <Product> using search feature
 	And adds first product to basket x1 quantity
 	And adds second product to basket x1 quantity
@@ -57,9 +57,9 @@ Feature: Basket
     | FOOTBALL 					| 2				| 2			|
 
     
-  @Basket 
+  @Basket @Retest
   Scenario Outline: Customer views basket with x2 products, totalling x4 quantity then removes 1st product
-	Given customer is anywhere on website
+	Given customer is on homepage
     When customer searches by product: <Product> using search feature
 	And adds first product to basket x2 quantity
 	And adds second product to basket x2 quantity

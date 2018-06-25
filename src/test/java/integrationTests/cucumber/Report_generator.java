@@ -7,7 +7,7 @@ import net.masterthought.cucumber.ReportBuilder;
 
 public class Report_generator {
 
-	public static void GenerateMasterthoughtReport() {
+	public synchronized static String GenerateMasterthoughtReport() {
 
 		String rootDir = System.getProperty("user.dir");
 
@@ -40,11 +40,7 @@ public class Report_generator {
 			e.printStackTrace();
 		}
 
-		 String testReportLocation = System.getProperty("user.dir") + "/target/Masterthought/feature-overview.html";
-		
-		System.out.println("---------------------------------------------");
-		System.out.println("[Test Report Location] " + testReportLocation);
-		System.out.println("---------------------------------------------");
+		 return System.getProperty("user.dir") + "/target/Masterthought/feature-overview.html";
 		
 	}
 
@@ -64,7 +60,7 @@ public class Report_generator {
 
 						String filepath = dir + "/" + listOfFiles[i].getName();
 
-						System.out.println(filepath);
+						//System.out.println(filepath);
 
 						list.add(filepath);
 
