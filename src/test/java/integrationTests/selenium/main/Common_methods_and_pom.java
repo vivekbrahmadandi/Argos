@@ -185,8 +185,8 @@ public class Common_methods_and_pom {
 
 			long endTime = System.currentTimeMillis();
 			long duration = (endTime - startTime); 
-			System.out.println("waiting for AJAX took: " + duration + "MS on URL: " 
-					+ WebDriver_factory.getLocalThreadWebDriver().getCurrentUrl());
+//			System.out.println("waiting for AJAX took: " + duration + "MS on URL: " 
+//					+ WebDriver_factory.getLocalThreadWebDriver().getCurrentUrl());
 
 		}
 
@@ -422,10 +422,12 @@ public class Common_methods_and_pom {
 		//Copy file at destination
 		FileUtils.copyFile(SrcFile, DestFile);
 
+		System.out.println("");
 		System.out.println("Scenario Failed: " + scenarioName);
 		System.out.println("Environment: " + WebDriver_factory.getLocalThreadOS() + "_" + WebDriver_factory.getLocalThreadBrowser());
 		System.out.println("Screenshot ands logs found here: ");		
 		System.out.println(filePath);
+		System.out.println("");
 
 		//Output LOGS to text file alongside the screenshot (only works for Chrome)
 		File logFile = new File(filePath + "/" + "logs.txt");

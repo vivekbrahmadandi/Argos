@@ -1,20 +1,20 @@
-2018-06-25 22:13:24,720 WARN  [SoapUI] Missing folder [C:\Users\workpeter\Documents\Eclipse-workspace\ARGOS\ext] for external libraries
-2018-06-25 22:13:24,896 INFO  [DefaultSoapUICore] initialized soapui-settings from [C:\Users\workpeter\soapui-settings.xml]
-2018-06-25 22:13:25,777 INFO  [WsdlProject] Loaded project from [file:/C:/Users/workpeter/Documents/Eclipse-workspace/ARGOS/src/test/java/integrationTests/soapui/PAYPAL_API.xml]
-2018-06-25 22:13:26,183 INFO  [SoapUITestCaseRunner] Running SoapUI tests in project [REST Project - PayPal Payment]
-2018-06-25 22:13:26,183 INFO  [SoapUITestCaseRunner] Running TestCase [setPayment]
-2018-06-25 22:13:26,196 INFO  [SoapUITestCaseRunner] Running SoapUI testcase [setPayment]
-2018-06-25 22:13:26,200 INFO  [SoapUITestCaseRunner] running step [getTokenBearer]
-2018-06-25 22:13:27,447 INFO  [SoapUITestCaseRunner] Assertion [Valid HTTP Status Codes] has status VALID
-2018-06-25 22:13:27,448 INFO  [SoapUITestCaseRunner] Assertion [Script Assertion - Verify access token exists] has status VALID
-2018-06-25 22:13:27,452 INFO  [SoapUITestCaseRunner] running step [save TokenBearer into a testcase parameter]
-2018-06-25 22:13:27,550 INFO  [log] A21AAGO70xyvM06QomM2gNFrE1jAQV95iiZB9bKoyPcdvTxBww_nv3YAqQ-k_fJdUQXz67WRGWsl0K0q8v41Udyo18wXHFsog
-2018-06-25 22:13:27,555 INFO  [SoapUITestCaseRunner] running step [Create  Invoice ID]
-2018-06-25 22:13:27,596 INFO  [log] 82189595109
-2018-06-25 22:13:27,597 INFO  [SoapUITestCaseRunner] running step [createPayement]
-2018-06-25 22:13:28,683 INFO  [SoapUITestCaseRunner] Assertion [Script Assertion] has status VALID
-2018-06-25 22:13:28,684 INFO  [SoapUITestCaseRunner] running step [save payerConfirmURL into a testcase paramter]
-2018-06-25 22:13:28,726 INFO  [log] https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-75F845759D869311X
-2018-06-25 22:13:28,726 INFO  [log] https://api.sandbox.paypal.com/v1/payments/payment/PAY-11X51128HX581310LLMYVV5Q/execute
-2018-06-25 22:13:28,731 INFO  [SoapUITestCaseRunner] Finished running SoapUI testcase [setPayment], time taken: 2056ms, status: FINISHED
-2018-06-25 22:13:28,731 INFO  [SoapUITestCaseRunner] TestCase [setPayment] finished with status [FINISHED] in 2056ms
+2018-06-25 22:16:14,911 WARN  [SoapUI] Missing folder [C:\Users\workpeter\Documents\Eclipse-workspace\ARGOS\ext] for external libraries
+2018-06-25 22:16:15,105 INFO  [DefaultSoapUICore] initialized soapui-settings from [C:\Users\workpeter\soapui-settings.xml]
+2018-06-25 22:16:15,994 INFO  [WsdlProject] Loaded project from [file:/C:/Users/workpeter/Documents/Eclipse-workspace/ARGOS/src/test/java/integrationTests/soapui/PAYPAL_API.xml]
+2018-06-25 22:16:16,366 INFO  [SoapUITestCaseRunner] Running SoapUI tests in project [REST Project - PayPal Payment]
+2018-06-25 22:16:16,367 INFO  [SoapUITestCaseRunner] Running TestCase [setPayment]
+2018-06-25 22:16:16,371 INFO  [SoapUITestCaseRunner] Running SoapUI testcase [setPayment]
+2018-06-25 22:16:16,384 INFO  [SoapUITestCaseRunner] running step [getTokenBearer]
+2018-06-25 22:16:17,749 INFO  [SoapUITestCaseRunner] Assertion [Valid HTTP Status Codes] has status VALID
+2018-06-25 22:16:17,749 INFO  [SoapUITestCaseRunner] Assertion [Script Assertion - Verify access token exists] has status VALID
+2018-06-25 22:16:17,754 INFO  [SoapUITestCaseRunner] running step [save TokenBearer into a testcase parameter]
+2018-06-25 22:16:17,869 INFO  [log] A21AAGO70xyvM06QomM2gNFrE1jAQV95iiZB9bKoyPcdvTxBww_nv3YAqQ-k_fJdUQXz67WRGWsl0K0q8v41Udyo18wXHFsog
+2018-06-25 22:16:17,874 INFO  [SoapUITestCaseRunner] running step [Create  Invoice ID]
+2018-06-25 22:16:17,911 INFO  [log] 78849438017
+2018-06-25 22:16:17,912 INFO  [SoapUITestCaseRunner] running step [createPayement]
+2018-06-25 22:16:19,017 INFO  [SoapUITestCaseRunner] Assertion [Script Assertion] has status VALID
+2018-06-25 22:16:19,019 INFO  [SoapUITestCaseRunner] running step [save payerConfirmURL into a testcase paramter]
+2018-06-25 22:16:19,057 INFO  [log] https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-8YK90439VP7632315
+2018-06-25 22:16:19,058 INFO  [log] https://api.sandbox.paypal.com/v1/payments/payment/PAY-0YJ18494DN517435JLMYVXIA/execute
+2018-06-25 22:16:19,069 INFO  [SoapUITestCaseRunner] Finished running SoapUI testcase [setPayment], time taken: 2154ms, status: FINISHED
+2018-06-25 22:16:19,073 INFO  [SoapUITestCaseRunner] TestCase [setPayment] finished with status [FINISHED] in 2154ms

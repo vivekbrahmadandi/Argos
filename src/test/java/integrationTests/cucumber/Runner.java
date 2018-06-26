@@ -6,6 +6,7 @@ import cucumber.api.java.After;
 import cucumber.api.testng.*;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
+import java.net.MalformedURLException;
 import java.util.Map;
 import org.testng.annotations.*;
 import integrationTests.selenium.main.*;
@@ -22,9 +23,6 @@ public class Runner {
 	// Calls the Grid (or non Grid) webdriver and pass on paramters to it
 	//==============================================
 
-	private static boolean selenium_grid_enabled; 	
-	private static String selenium_grid_hub; 
-
 	private volatile static int testID;
 
 	private TestNGCucumberRunner testNGCucumberRunner;
@@ -37,22 +35,33 @@ public class Runner {
 			@Optional("") String browser_version,
 			@Optional("false") String browser_headless ) throws Exception{
 
-		changeCucumberAnnotation(this.getClass(), "plugin", new String [] {"json:target/" + operating_system + "_" + browser + ".json"});
-
 		testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
+		
+		create_unique_json_file(this.getClass(), "plugin", new String [] {"json:target/" + operating_system + "_" + browser + ".json"});
 
-		//Selenium Grid flag/url set in Maven using System properties
-		selenium_grid_enabled= Boolean.parseBoolean(System.getProperty("selenium.grid.enabled"));
-		selenium_grid_hub = System.getProperty("selenium.grid.hub");
-
-		//Prerequisite (Ensure Hub and nodes are configured and running)
+		//System properties set from Maven POM.xml
+		Boolean selenium_grid_enabled= Boolean.parseBoolean(System.getProperty("selenium.grid.enabled"));
+		String selenium_grid_hub = System.getProperty("selenium.grid.hub");
+		Boolean web_proxy= Boolean.parseBoolean(System.getProperty("browsermob.proxy.enabled"));
+		
 		if (selenium_grid_enabled){
-			//Run on Selenium Grid
-			new WebDriver_factory().createLocalThreadGridWebDriver(selenium_grid_hub,operating_system,browser,browser_version,Boolean.parseBoolean(browser_headless));
-
+			//Prerequisite (Ensure Hub and nodes are configured and running)
+			WebDriver_factory.setWebDriver(
+					operating_system, 
+					browser, 
+					browser_version, 
+					Boolean.parseBoolean(browser_headless), 
+					web_proxy, 
+					selenium_grid_hub);
 		}else{
-			//Run on this build machine
-			new WebDriver_factory().createLocalThreadWebDriver(operating_system,browser,Boolean.parseBoolean(browser_headless));
+			
+			WebDriver_factory.setWebDriver(
+					operating_system, 
+					browser, 
+					browser_version, 
+					Boolean.parseBoolean(browser_headless), 
+					web_proxy, 
+					null);
 		}
 
 		//==========================
@@ -67,10 +76,10 @@ public class Runner {
 			System.out.println("Selenium Grid Enabled: " + selenium_grid_enabled );	
 			if (selenium_grid_enabled) System.out.println("Selenium Grid hub: " + selenium_grid_hub );		
 		}
+		
 		System.out.println("");
-
 		System.out.println("Starting Test ID: " + testID +
-						   " (" + operating_system + " " +  browser + ")");
+				" (" + operating_system + " " +  browser + ")");
 
 	}
 
@@ -106,6 +115,7 @@ public class Runner {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		}else{
 
 			System.out.println("There was an issue generating WebDriver for [OS/Browser]:"
@@ -113,7 +123,6 @@ public class Runner {
 					+ "/" + WebDriver_factory.getLocalThreadBrowser() );
 
 		}
-
 	}
 
 	//==========================
@@ -137,7 +146,7 @@ public class Runner {
 
 	static volatile boolean firstThread = true;
 
-	private synchronized static void changeCucumberAnnotation(Class<?> clazz, String key, Object newValue) throws Exception{  
+	private synchronized static void create_unique_json_file(Class<?> clazz, String key, Object newValue) throws Exception{  
 
 		//Slightly offset each parralel thread so each gets unique CucumberOptions (.json file name)
 		if (!firstThread) Thread.sleep(3000);

@@ -118,3 +118,7 @@
 2018-06-25 22:13:27,596 INFO  [log] 82189595109
 2018-06-25 22:13:28,726 INFO  [log] https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-75F845759D869311X
 2018-06-25 22:13:28,726 INFO  [log] https://api.sandbox.paypal.com/v1/payments/payment/PAY-11X51128HX581310LLMYVV5Q/execute
+2018-06-25 22:16:17,869 INFO  [log] A21AAGO70xyvM06QomM2gNFrE1jAQV95iiZB9bKoyPcdvTxBww_nv3YAqQ-k_fJdUQXz67WRGWsl0K0q8v41Udyo18wXHFsog
+2018-06-25 22:16:17,911 INFO  [log] 78849438017
+2018-06-25 22:16:19,057 INFO  [log] https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-8YK90439VP7632315
+2018-06-25 22:16:19,058 INFO  [log] https://api.sandbox.paypal.com/v1/payments/payment/PAY-0YJ18494DN517435JLMYVXIA/execute

@@ -11,6 +11,7 @@
 		<env.qa.url>http://www.argos.co.uk</env.qa.url>
 		<selenium.grid.enabled>false</selenium.grid.enabled>
 		<selenium.grid.hub>http://workpeter:ab9612ef-8ad0-4bc7-8cb5-489333766f7a@ondemand.saucelabs.com:80/wd/hub</selenium.grid.hub>
+		<browsermob.proxy.enabled>false</browsermob.proxy.enabled>
 	</properties>
 
 	<dependencies>
@@ -189,6 +190,7 @@
 								<env.qa.url>${env.qa.url}</env.qa.url>
 								<selenium.grid.enabled>${selenium.grid.enabled}</selenium.grid.enabled>
 								<selenium.grid.hub>${selenium.grid.hub}</selenium.grid.hub>
+								<browsermob.proxy.enabled>${browsermob.proxy.enabled}</browsermob.proxy.enabled>
 							</systemPropertyVariables>
 						</configuration>
 						<executions>
