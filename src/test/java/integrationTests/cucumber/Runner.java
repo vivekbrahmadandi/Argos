@@ -102,6 +102,8 @@ public class Runner {
 
 		testNGCucumberRunner.finish();
 
+		WebDriver_factory.getLocalThreadBrowserMobProxyServer().stop();
+		
 		//==========================
 		// Generate report and quit local thread web driver 
 		//==========================	

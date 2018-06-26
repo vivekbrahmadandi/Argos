@@ -122,3 +122,15 @@
 2018-06-25 22:16:17,911 INFO  [log] 78849438017
 2018-06-25 22:16:19,057 INFO  [log] https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-8YK90439VP7632315
 2018-06-25 22:16:19,058 INFO  [log] https://api.sandbox.paypal.com/v1/payments/payment/PAY-0YJ18494DN517435JLMYVXIA/execute
+2018-06-26 19:29:36,591 INFO  [log] A21AAGKYW3nkseieS7NtuXiYSKSyxOdlwySWT_FGfGv1tPYHf2ywjNKgV0ujnGzlH_65Jz7SiAeeR5Sgi8mWNCHg9fovTlwPw
+2018-06-26 19:29:36,636 INFO  [log] 84728270184
+2018-06-26 19:29:37,888 INFO  [log] https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-13821049B2955130S
+2018-06-26 19:29:37,889 INFO  [log] https://api.sandbox.paypal.com/v1/payments/payment/PAY-7RL20046GS658140MLMZIMEI/execute
+2018-06-26 19:30:55,608 INFO  [log] A21AAGKYW3nkseieS7NtuXiYSKSyxOdlwySWT_FGfGv1tPYHf2ywjNKgV0ujnGzlH_65Jz7SiAeeR5Sgi8mWNCHg9fovTlwPw
+2018-06-26 19:30:55,655 INFO  [log] 63673629332
+2018-06-26 19:30:57,063 INFO  [log] https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-66247301VC788310T
+2018-06-26 19:30:57,063 INFO  [log] https://api.sandbox.paypal.com/v1/payments/payment/PAY-1253737786500071ELMZIMYA/execute
+2018-06-26 19:35:04,183 INFO  [log] A21AAGKYW3nkseieS7NtuXiYSKSyxOdlwySWT_FGfGv1tPYHf2ywjNKgV0ujnGzlH_65Jz7SiAeeR5Sgi8mWNCHg9fovTlwPw
+2018-06-26 19:35:04,231 INFO  [log] 03567129640
+2018-06-26 19:35:05,471 INFO  [log] https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-8SF90575SY164040W
+2018-06-26 19:35:05,472 INFO  [log] https://api.sandbox.paypal.com/v1/payments/payment/PAY-6ML20323E0083492ULMZIOWI/execute

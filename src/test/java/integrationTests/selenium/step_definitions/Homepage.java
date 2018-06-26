@@ -22,7 +22,7 @@ public class Homepage extends Common_methods_and_pom {
 		Assert.assertTrue(elementExists(mainHeader.btnBasket));
 		Assert.assertTrue(elementExists(mainHeader.btnSearch));
 		Assert.assertTrue(elementExists(mainHeader.btnLogin));
-		Assert.assertTrue(elementExists(mainHeader.btnWishList));		
+		Assert.assertTrue(elementExists(mainHeader.btnWishList));	
 		Assert.assertTrue(elementExists(mainHeader.LinkTechnology));
 		Assert.assertTrue(elementExists(mainHeader.LinkHomeAndGarden));
 		Assert.assertTrue(elementExists(mainHeader.LinkBabyAndNursery));

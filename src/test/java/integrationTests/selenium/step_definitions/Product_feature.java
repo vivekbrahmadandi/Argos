@@ -109,6 +109,7 @@ public class Product_feature extends Common_methods_and_pom {
 
 		Assert.assertTrue(textExists("Order now, collect right away") || 
 						  textExists("Not in stock") || 
+						  textExists("Not availble") || 
 						  textExists("Delivery within") ||
 						  textExists("How would you like to get your item")
 				);

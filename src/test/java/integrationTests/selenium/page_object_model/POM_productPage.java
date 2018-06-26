@@ -55,7 +55,7 @@ public class POM_productPage extends Common_methods_and_pom {
 			click(btnAddToBasket);
 			popupBasket.checkContinueShopping();
 		}else{
-			System.out.println("This item is not available online to add to basket");
+			System.out.println("[Skipping next scenerio step/s] This item is not available online to add to basket");
 			throw new PendingException();
 		}
 

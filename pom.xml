@@ -11,11 +11,10 @@
 		<env.qa.url>http://www.argos.co.uk</env.qa.url>
 		<selenium.grid.enabled>false</selenium.grid.enabled>
 		<selenium.grid.hub>http://workpeter:ab9612ef-8ad0-4bc7-8cb5-489333766f7a@ondemand.saucelabs.com:80/wd/hub</selenium.grid.hub>
-		<browsermob.proxy.enabled>false</browsermob.proxy.enabled>
+		<browsermob.proxy.enabled>true</browsermob.proxy.enabled>
 	</properties>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
@@ -56,9 +55,20 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>20180130</version>
+			<groupId>net.lightbody.bmp</groupId>
+			<artifactId>browsermob-core</artifactId>
+			<version>2.1.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.25</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.25</version>
+			<scope>test</scope>
 		</dependency>
 
 		<dependency>
@@ -151,27 +161,27 @@
 
 					<!--Supports API testing with SOAPUI (both SOAP and REST projects) -->
 
-					<plugin>
-						<groupId>com.smartbear.soapui</groupId>
-						<artifactId>soapui-maven-plugin</artifactId>
-						<version>5.0.0</version>
-						<configuration>
-							<projectFile>src\test\java\integrationTests\soapui\PAYPAL_API.xml</projectFile>
-							<testCase>setPayment</testCase>
-							<outputFolder>${project.build.directory}/soapui-report</outputFolder>
-							<junitReport>true</junitReport>
-							<exportAll>true</exportAll>
-							<printReport>true</printReport>
-						</configuration>
-						<executions>
-							<execution>
-								<phase>test</phase>
-								<goals>
-									<goal>test</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
+					<!-- <plugin> -->
+					<!-- <groupId>com.smartbear.soapui</groupId> -->
+					<!-- <artifactId>soapui-maven-plugin</artifactId> -->
+					<!-- <version>5.0.0</version> -->
+					<!-- <configuration> -->
+					<!-- <projectFile>src\test\java\integrationTests\soapui\PAYPAL_API.xml</projectFile> -->
+					<!-- <testCase>setPayment</testCase> -->
+					<!-- <outputFolder>${project.build.directory}/soapui-report</outputFolder> -->
+					<!-- <junitReport>true</junitReport> -->
+					<!-- <exportAll>true</exportAll> -->
+					<!-- <printReport>true</printReport> -->
+					<!-- </configuration> -->
+					<!-- <executions> -->
+					<!-- <execution> -->
+					<!-- <phase>test</phase> -->
+					<!-- <goals> -->
+					<!-- <goal>test</goal> -->
+					<!-- </goals> -->
+					<!-- </execution> -->
+					<!-- </executions> -->
+					<!-- </plugin> -->
 
 					<!-- ================================================ -->
 					<!-- INTEGRATION TESTING CONFIG -->

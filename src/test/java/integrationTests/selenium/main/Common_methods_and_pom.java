@@ -5,12 +5,15 @@ import java.text.*;
 import java.util.*;
 import java.util.concurrent.*;
 import org.apache.commons.io.*;
-import org.json.JSONObject;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.*;
-import org.openqa.selenium.logging.*;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.Logs;
 import org.openqa.selenium.support.ui.*;
 import integrationTests.selenium.page_object_model.*;
+import net.lightbody.bmp.core.har.Har;
 
 public class Common_methods_and_pom {
 
@@ -28,13 +31,6 @@ public class Common_methods_and_pom {
 	protected static POM_popup popup = new POM_popup();
 	protected static POM_productPage productPage = new POM_productPage();
 	protected static POM_popupBasket popupBasket = new POM_popupBasket();	
-
-
-	public static String valueOf(){
-		final String e = "e";
-
-		return e;
-	}
 
 	//===========================
 	// Common methods
@@ -185,8 +181,8 @@ public class Common_methods_and_pom {
 
 			long endTime = System.currentTimeMillis();
 			long duration = (endTime - startTime); 
-//			System.out.println("waiting for AJAX took: " + duration + "MS on URL: " 
-//					+ WebDriver_factory.getLocalThreadWebDriver().getCurrentUrl());
+			//			System.out.println("waiting for AJAX took: " + duration + "MS on URL: " 
+			//					+ WebDriver_factory.getLocalThreadWebDriver().getCurrentUrl());
 
 		}
 
@@ -409,12 +405,11 @@ public class Common_methods_and_pom {
 		File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
 
 		String currentDateTime =  new SimpleDateFormat("yyyy-MM-dd_HHmm").format(new Date());
-		
+
 		String filePath = System.getProperty("user.dir").replace("\\", "/")  + 
-						  "/target/screenshots_logs_on_failure/" + 
-						  operatingSystem + "-" + browser + "_" + currentDateTime; 
-		
-		
+				"/target/screenshots_logs_on_failure/" + 
+				operatingSystem + "-" + browser + "_" + currentDateTime; 
+
 		String screenshotPath = filePath + "/" + "screenshot.png";
 
 		File DestFile=new File(screenshotPath);
@@ -429,73 +424,48 @@ public class Common_methods_and_pom {
 		System.out.println(filePath);
 		System.out.println("");
 
-		//Output LOGS to text file alongside the screenshot (only works for Chrome)
-		File logFile = new File(filePath + "/" + "logs.txt");
-		FileWriter fw = new FileWriter(logFile, false);
-		BufferedWriter bw = new BufferedWriter(fw);
+		//Output LOGS to text file alongside the screenshot
+		File failed_scenario_name = new File(filePath + "/" + "failed_scenario_name.txt");
+		FileWriter fw = new FileWriter(failed_scenario_name, false);
 
-		if (browser.equals("chrome")) {
+		try {
 
-			try{
+			fw.write("Failed Scenario: " + scenarioName); 	
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally{
+			fw.close();	
+		}  
 
-				LogEntries logs = WebDriver_factory.getLocalThreadWebDriver().manage().logs().get("performance");
 
-				bw.write("Failed Scenario: " + scenarioName + System.lineSeparator() + System.lineSeparator()); 	
-				
-				for (Iterator<LogEntry> it = logs.iterator(); it.hasNext();)
-				{
-					LogEntry entry = it.next();
+		Logs logs = WebDriver_factory.getBrowserLogs();
 
-					JSONObject json = new JSONObject(entry.getMessage());
-					JSONObject message = json.getJSONObject("message");
-					String method = message.getString("method");
+		LogEntries driverLogEntries = logs.get(LogType.DRIVER);
+		LogEntries browserLogEntries = logs.get(LogType.BROWSER );
+		LogEntries clientLogEntries = logs.get(LogType.CLIENT);
+		LogEntries performanceLogEntries = logs.get(LogType.PERFORMANCE);
 
-					if (method != null
-							&& "Network.responseReceived".equals(method)
-							)
-					{
-						JSONObject params = message.getJSONObject("params");
-						JSONObject response = params.getJSONObject("response");
-						String messageUrl = response.getString("url");
 
-						int status = response.getInt("status");
+		if ( driverLogEntries != null )
+		{
 
-						try {
+			for ( LogEntry logEntry : driverLogEntries )
+				System.out.println(logEntry.getMessage() + System.lineSeparator()) ; 
 
-							bw.write("(HTTP " + status  + ") " +  messageUrl + System.lineSeparator() + 
-									"headers: " + response.get("headers") + System.lineSeparator() + System.lineSeparator());
 
-						} catch (IOException e) {
-							e.printStackTrace();
-						}    
-					}
-				}
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally{
-
-				bw.close();
-				fw.close();	
-
-			}
-
-		}else{
-
-			try {
-	
-				bw.write("Failed Scenario: " + scenarioName + System.lineSeparator() + System.lineSeparator()); 	
-				bw.write("HTTP logs only available with Chrome browser");
-				
-			} catch (IOException e) {
-				e.printStackTrace();
-			} finally{
-
-				bw.close();
-				fw.close();	
-
-			}  
 		}
+
+
+
+
+		//Get the HAR data
+		Har har = WebDriver_factory.getLocalThreadBrowserMobProxyServer().getHar();
+		File harFile = new File(filePath + "/" + 
+				WebDriver_factory.getLocalThreadOS() + "_" + 
+				WebDriver_factory.getLocalThreadBrowser() + ".har");
+
+		//Write the HAR data
+		har.writeTo(harFile);
 
 	}
 

@@ -2,17 +2,24 @@ package integrationTests.selenium.main;
 
 import java.net.*;
 import java.util.logging.Level;
+
 import org.openqa.selenium.*;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.chrome.*;
 import org.openqa.selenium.firefox.*;
 import org.openqa.selenium.edge.*;
 import org.openqa.selenium.opera.*;
 import org.openqa.selenium.safari.*;
 import org.openqa.selenium.ie.*;
-import org.openqa.selenium.logging.*;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.logging.Logs;
 import org.openqa.selenium.remote.*;
 
+import net.lightbody.bmp.BrowserMobProxyServer;
+import net.lightbody.bmp.client.ClientUtil;
+import net.lightbody.bmp.proxy.CaptureType;
 
 import org.testng.SkipException;
 
@@ -21,28 +28,32 @@ public class WebDriver_factory {
 	//Parallel processing achieved in testNG using ThreadLocal
 	private static final ThreadLocal<WebDriver> webdriver_threadLocal = new ThreadLocal<WebDriver>();
 
-	//Relevent to getLocalThreadBrowser() - giving option to find out the threads web browser
-	private static final ThreadLocal<String> browser_threadLocal = new ThreadLocal<String>();
 	//Relevent to getLocalThreadOS() - giving option to find out the threads OS
 	private static final ThreadLocal<String> operating_system_threadLocal = new ThreadLocal<String>();
+	
+	//Relevent to getLocalThreadBrowser() - giving option to find out the threads web browser
+	private static final ThreadLocal<String> browser_threadLocal = new ThreadLocal<String>();
+
+	//Relevent to getLocalThreadBrowserMobProxyServer() - giving option to find out the threads BrowserMob Proxy server
+	private static final ThreadLocal<BrowserMobProxyServer> mobProxyServer_threadLocal = new ThreadLocal<BrowserMobProxyServer>();
 
 	private static final String os_name = System.getProperty("os.name").toLowerCase();
 
 	@SuppressWarnings("deprecation")
 	public static void setWebDriver(
-								String operating_system, 
-								String browser, 
-								String browser_version,
-								boolean browser_headless,
-								boolean web_proxy,
-								String selenium_grid_hub) throws MalformedURLException {
+			String operating_system, 
+			String browser, 
+			String browser_version,
+			boolean browser_headless,
+			boolean web_proxy,
+			String selenium_grid_hub) throws MalformedURLException {
 
 		browser_threadLocal.set(browser);
 		operating_system_threadLocal.set(operating_system);
-		
+
 		WebDriver webdriver = null;
 		MutableCapabilities options;
-		
+
 		//==================================
 		// Selenium Grid not Enabled: - will run on current machine. Will still attempt to execute all tests found in environment_configurations_to_test.xml however will skip if operating system doesnt match. 
 		//==================================
@@ -59,23 +70,23 @@ public class WebDriver_factory {
 			}
 
 			setDriverProperty(operating_system);
-			
+
 			//Create browser specific webdriver with capabilities
 			options = setBrowserCapabilities(browser , browser_headless, web_proxy);
 
 			//Create the correct webdriver based on test requirements
 			switch(browser){
-				case "chrome": webdriver = new ChromeDriver((ChromeOptions)options); break;
-				case "firefox": webdriver = new FirefoxDriver((FirefoxOptions)options); break;
-				case "edge": webdriver = new EdgeDriver((EdgeOptions)options);break;
+			case "chrome": webdriver = new ChromeDriver((ChromeOptions)options); break;
+			case "firefox": webdriver = new FirefoxDriver((FirefoxOptions)options); break;
+			case "edge": webdriver = new EdgeDriver((EdgeOptions)options);break;
 			}
-			
+
 		}else{
 
 			//==================================
 			// Selenium Grid Enabled: will find node/s to match current environment_configurations_to_test.xml test 
 			//==================================
-	
+
 			//build browser options / capabilities
 			options = setBrowserCapabilities(browser , browser_headless, web_proxy);
 
@@ -91,12 +102,12 @@ public class WebDriver_factory {
 			System.out.println("Webdriver launched on node successfully for: " + operating_system + "/" + browser);
 
 		}
-		
+
 		webdriver.manage().window().setSize(new Dimension(1080, 1920));
 		webdriver.manage().window().maximize();
 
 		webdriver_threadLocal.set(webdriver);
-		
+
 	}
 
 	public static void quitLocalWebDriver() throws Exception{
@@ -125,9 +136,21 @@ public class WebDriver_factory {
 
 	}
 
+	public static BrowserMobProxyServer getLocalThreadBrowserMobProxyServer() {
+
+		return mobProxyServer_threadLocal.get();
+
+	}
 	
+	public static Logs getBrowserLogs() {
+
+		return getLocalThreadWebDriver().manage().logs();
+
+	}	
+	
+
 	private static void setDriverProperty(String operating_system){
-		
+
 		//Set driver property
 		switch(operating_system){
 
@@ -153,9 +176,9 @@ public class WebDriver_factory {
 			break;
 
 		}
-		
+
 	}
-	
+
 	private static MutableCapabilities setBrowserCapabilities(String browser, Boolean browser_headless, Boolean web_proxy){
 
 		MutableCapabilities options;
@@ -167,6 +190,7 @@ public class WebDriver_factory {
 		case "chrome":    
 
 			options = new ChromeOptions(); 
+			((ChromeOptions) options).setAcceptInsecureCerts(true);
 
 			if (browser_headless)((ChromeOptions) options).addArguments("headless");			
 
@@ -178,6 +202,7 @@ public class WebDriver_factory {
 			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");
 
 			options = new FirefoxOptions(); 
+			((FirefoxOptions) options).setAcceptInsecureCerts(true);
 
 			if (browser_headless){
 
@@ -190,16 +215,7 @@ public class WebDriver_factory {
 			break;
 
 		case "edge":
-
 			options = new EdgeOptions();
-
-			if (browser_headless){
-
-				System.out.println("===========================");
-				System.out.println(browser + " doesn't have a headless mode, launching normally");
-				System.out.println("===========================");
-			}	
-
 			break;
 
 		case "internet explorer":	
@@ -219,12 +235,28 @@ public class WebDriver_factory {
 			throw new SkipException("skipping test");	
 		}
 
-		
+		//Create a browser proxy to capture HTTP data for analysis
 		if (web_proxy){
-			
-			
+
+			final BrowserMobProxyServer mobProxyServer = new BrowserMobProxyServer();
+
+			mobProxyServer.setTrustAllServers(true);
+			mobProxyServer.setHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
+			mobProxyServer.start(0);
+
+			Proxy seleniumProxy  = ClientUtil.createSeleniumProxy(mobProxyServer);
+
+			options.setCapability(CapabilityType.PROXY, seleniumProxy);
+
+			System.out.println("Port started:" +  mobProxyServer.getPort());
+
+			mobProxyServer.newHar(getLocalThreadOS() + "_" + getLocalThreadBrowser() + ".har");
+
+			mobProxyServer_threadLocal.set(mobProxyServer);
+
 		}
-		
+
+		enableLogging(options);
 		
 		return options;
 
@@ -245,6 +277,22 @@ public class WebDriver_factory {
 
 		return valid;
 
+	}
+	
+	private static void enableLogging(MutableCapabilities options){
+		
+		LoggingPreferences logs = new LoggingPreferences();
+
+		logs.enable(LogType.BROWSER, Level.ALL);
+		logs.enable(LogType.CLIENT, Level.ALL);
+		logs.enable(LogType.DRIVER, Level.ALL);
+		logs.enable(LogType.PERFORMANCE, Level.ALL);
+		logs.enable(LogType.PROFILER, Level.ALL);
+		logs.enable(LogType.SERVER, Level.ALL);
+
+		options.setCapability(CapabilityType.LOGGING_PREFS, logs);
+
+			
 	}
 
 

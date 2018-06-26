@@ -16,16 +16,15 @@ public class POM_mainHeader extends Common_methods_and_pom {
 	public By txtCategory = By.xpath("//li[@class=\"font-condensed-extra-bold uppercase meganav__nav-item meganav__nav-item--categories \"]");
 	public By btnLogo = By.xpath("//*[@id=\"argos-logo\"]/path[2]");
 
-	
 	//Category Links
-	public By LinkTechnology = By.xpath(buildLinkXpath("technology/c:29949/"));
-	public By LinkHomeAndGarden = By.xpath(buildLinkXpath("home-and-garden/c:29351/"));
-	public By LinkBabyAndNursery = By.xpath(buildLinkXpath("baby-and-nursery/c:29000/"));
-	public By LinkToys = By.xpath(buildLinkXpath("toys/c:30299/"));
-	public By LinkSportsAndLeisure = By.xpath(buildLinkXpath("sports-and-leisure/c:30468/"));
-	public By LinkHealthAndBeauty = By.xpath(buildLinkXpath("health-and-beauty/c:29203/"));
-	public By LinkClothing = By.xpath(buildLinkXpath("clothing/c:29131/"));
-	public By LinkJewelleryAndWatches = By.xpath(buildLinkXpath("jewellery-and-watches/c:29298/"));
+	public By LinkTechnology = By.xpath("//a[contains(.,'Technology')]");
+	public By LinkHomeAndGarden = By.xpath("//a[contains(.,'Home & Garden')]");
+	public By LinkBabyAndNursery = By.xpath("//a[contains(.,'Baby & Nursery')]");
+	public By LinkToys = By.xpath("//a[contains(.,'Toys')]");
+	public By LinkSportsAndLeisure =By.xpath("//a[contains(.,'Sports & Leisure')]");
+	public By LinkHealthAndBeauty = By.xpath("//a[contains(.,'Health & Beauty')]");
+	public By LinkClothing = By.xpath("//a[contains(.,'Clothing')]");
+	public By LinkJewelleryAndWatches = By.xpath("//a[contains(.,'Jewellery &')]");
 
 	//Sub-Category links
 	public By LinkTelevisionsAndAccessories = By.xpath(buildLinkXpath("technology/televisions-and-accessories/c:29955/"));
@@ -57,8 +56,6 @@ public class POM_mainHeader extends Common_methods_and_pom {
 		return path;
 			
 	}
-	
-	
 	
 	public void clickCategory(String category) throws Exception{
 		
@@ -115,7 +112,6 @@ public class POM_mainHeader extends Common_methods_and_pom {
 		default: Assert.fail("Category not defined in Selenium page object model (POM) - contact tester");
 		}	
 
-		
 	}
 	
 	public void clickNicheCategory_viaMainheader(String nicheCategory) throws Exception{
