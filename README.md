@@ -5,10 +5,10 @@
 I created this framework to use as a template for future projects.  
 Although existing projects often have an established (well integrated) framework, there is always room for improvement. This framework does many things well, such as: 
 * Testing across multiple operating systems and browsers in parallel with a single build command
-* Consolidates the results into a single Cucumber report 
-[Feature Overview](https://ibb.co/d11ezo) 
-[Scenario breakdown](https://ibb.co/jWXf5T) 
-[Scenario breakdown (with failing step)](https://ibb.co/fHbq5T) 
+* Consolidates the results into a single Cucumber report  
+[Feature Overview](https://ibb.co/d11ezo)  
+[Scenario breakdown](https://ibb.co/jWXf5T)  
+[Scenario breakdown (with failing step)](https://ibb.co/fHbq5T)  
 * BDD framework which organizes tests by the features they are testing. Each feature is tested with scenarios, which are written in human readable (easy to follow) steps that non-technical people can understand. The Selenium code is triggered by these steps under the hood.
 * Testing is Data driven through BDD framework however framework also supports external data files (.xls).
 * Generates screenshot on failure including detailed HTTP logs and information about the failed scenario. 
