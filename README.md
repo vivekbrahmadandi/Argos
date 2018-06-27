@@ -88,15 +88,29 @@ Manages various environment configurations (Operating system, browser,  browser 
 * TestNG's xml file executes these tests by pointing to the runner class 
 * The runner class triggers WebDriver creation (which is wrapped in a static thread Local variable) to allow for multi-threading.
 * (WebDriver creation also supports various browser types, web proxy HTTP capture and headless mode).
-* The runner class then loops through the cucumber scenarios using data provider anotation. 
+* The runner class then loops through the cucumber scenarios using data provider annotation. 
 * (Any failures are captured with Scenerio name, HTTP traffic and screenshot).
 * The runner class (after testing) performs tear down and triggers report generation. 
 * Masterthought reporter consolidates the results after each thread completes. 
 
 
-### Selenium framework
+### Selenium design pattern 
 
+* Page object model (pom) classes 
+A java class is created per page which contains the pages key DOM objects, and methods to manipulate the page.  
 
+* Base class (Common_methods_and_pom) 
+A base class stores lots of custom-made web driver methods, which are designed to make test scripts as robust as possible. One key aspect to this is the use of fluid waits and Ajax call waits prior to interacting with DOM elements.  
+This base class also creates objects for all the page object model classes. When this class is inherited, all these objects can be utilized, which removes the need to create them within each Scenario.  
+
+* Cucumber steps classes 
+Are kept as abstract as possible, and inherit the base class, which enables them to call page object model objects, which in turn do most of the Selenium execution. They also have the option of utilizing any useful methods inherited from the base class.  
+
+* Runner class
+Controls the test framework and combines testing with Cucumber. Java refraction is used so each env config test can generated a unique JSON file name. JSON files are consolidated by the Master Thoughts cucumber reporter. If refraction wasn't done, then a runner class would need to be created per env config test, to get unique JSON file names (since cucumber annotation cant be parameterized). This in my opinion isn't very fluid. Without unique JSON file names, the reporting would be corrupt.  
+
+* WebDriver_factory class 
+Creates static thread local WebDriver. This allows for unique WebDriver per thread, and allows for static reference which is simpler than having to pass around a WebDriver object throughout the framework. This class can generate Grid and non grid web drivers, and different operating systems and browsers. 
 
 
  
