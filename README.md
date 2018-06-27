@@ -1,10 +1,22 @@
 # Selenium BDD framework 
-#### By Peter Anderson
-#### Contact: peter.x4000@gmail.com
-
-Software used: Java, Selenium, Maven, TestNG, Browsermob web proxy, Master Thoughts (Cucumber reporter) and SOAPUI
 
 This framework enables parallel tests across multiple environment configurations then consolidates the results into a single Cucumber report. Here is an example: https://ibb.co/d7xc28 based on this framework.
+
+## Authors
+
+* **Peter Anderson (peter.x4000@gmail.com)** 
+
+## Built With
+
+* [Java](https://en.wikipedia.org/wiki/Java_(programming_language)) - Programming language
+* [Selenium](https://en.wikipedia.org/wiki/Selenium_(software)) - Automates web applications
+* [Cucumber-JVM](https://github.com/cucumber/cucumber-jvm) - Cucumber-JVM is a pure Java implementation of Cucumber
+* [Maven](https://en.wikipedia.org/wiki/Apache_Maven) - Maven is a build automation tool
+* [TestNG](https://en.wikipedia.org/wiki/TestNG) - TestNG is a testing framework for the Java programming language
+* [Browsermob web proxy](https://github.com/lightbody/browsermob-proxy) - Capture HTTP content
+* [Master Thoughts](https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting) - Provides pretty html reports for Cucumber
+* [SOAPUI](https://en.wikipedia.org/wiki/SoapUI) - web service testing (SOAP and REST)
+
 
 The Selenium tests are driven using cucumber BDD with the TestNG framework. 
 Maven is used to build the project and the failsafe plugin is used to trigger TestNG, which in turn executes the Cucumber scenarios.  
