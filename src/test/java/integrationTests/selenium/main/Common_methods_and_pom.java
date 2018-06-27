@@ -17,10 +17,6 @@ import net.lightbody.bmp.core.har.Har;
 
 public class Common_methods_and_pom {
 
-	public static String baseURL = System.getProperty("env.qa.url");
-
-	private WebDriverWait wait;
-
 	//===========================
 	//create POM objects
 	//===========================
@@ -36,6 +32,8 @@ public class Common_methods_and_pom {
 	// Common methods
 	//===========================
 
+	private WebDriverWait wait;
+	
 	public void gotoPage(String url) throws Exception{
 
 		WebDriver_factory.getLocalThreadWebDriver().get(url);
@@ -134,7 +132,7 @@ public class Common_methods_and_pom {
 	// Wait for DOM ready and Ajax calls on page to complete (Start)
 	//==================================================
 
-	public static void waitForPageLoad() throws InterruptedException {
+	public void waitForPageLoad() throws InterruptedException {
 
 		JavascriptExecutor javascriptExecutor = (JavascriptExecutor) WebDriver_factory.getLocalThreadWebDriver();
 
@@ -155,7 +153,7 @@ public class Common_methods_and_pom {
 
 	}
 
-	public static void waitForAjaxComplete() throws InterruptedException {
+	public void waitForAjaxComplete() throws InterruptedException {
 
 		long startTime = System.currentTimeMillis();
 
@@ -322,7 +320,7 @@ public class Common_methods_and_pom {
 
 	}	
 
-	public static void deleteCookies(){
+	public void deleteCookies(){
 
 		if (WebDriver_factory.getLocalThreadWebDriver().getCurrentUrl().equals("data:,") || 
 				WebDriver_factory.getLocalThreadWebDriver().getCurrentUrl().equals("about:blank")){
@@ -424,48 +422,33 @@ public class Common_methods_and_pom {
 		System.out.println(filePath);
 		System.out.println("");
 
-		//Output LOGS to text file alongside the screenshot
-		File failed_scenario_name = new File(filePath + "/" + "failed_scenario_name.txt");
-		FileWriter fw = new FileWriter(failed_scenario_name, false);
+		if(WebDriver_factory.getLocalThreadBrowserMobProxyServer() != null){
 
-		try {
+			//Get the HAR data
+			Har har = WebDriver_factory.getLocalThreadBrowserMobProxyServer().getHar();
+			File harFile = new File(filePath + "/" + 
+					WebDriver_factory.getLocalThreadOS() + "_" + 
+					WebDriver_factory.getLocalThreadBrowser() + ".har");
 
-			fw.write("Failed Scenario: " + scenarioName); 	
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally{
-			fw.close();	
-		}  
-
-
-		Logs logs = WebDriver_factory.getBrowserLogs();
-
-		LogEntries driverLogEntries = logs.get(LogType.DRIVER);
-		LogEntries browserLogEntries = logs.get(LogType.BROWSER );
-		LogEntries clientLogEntries = logs.get(LogType.CLIENT);
-		LogEntries performanceLogEntries = logs.get(LogType.PERFORMANCE);
-
-
-		if ( driverLogEntries != null )
-		{
-
-			for ( LogEntry logEntry : driverLogEntries )
-				System.out.println(logEntry.getMessage() + System.lineSeparator()) ; 
-
+			//Write the HAR data
+			har.writeTo(harFile);
 
 		}
 
+		//Output failed scenario name, URL + page title to text file next to screenshot
+		File failed_scenario_details_file = new File(filePath + "/" + "failed_scenario_details.txt");
 
+		FileWriter fw = new FileWriter(failed_scenario_details_file, false);
 
-
-		//Get the HAR data
-		Har har = WebDriver_factory.getLocalThreadBrowserMobProxyServer().getHar();
-		File harFile = new File(filePath + "/" + 
-				WebDriver_factory.getLocalThreadOS() + "_" + 
-				WebDriver_factory.getLocalThreadBrowser() + ".har");
-
-		//Write the HAR data
-		har.writeTo(harFile);
+		try {
+			fw.write("Failed Scenario: " + scenarioName + System.lineSeparator() +
+					"Failed URL: " + WebDriver_factory.getLocalThreadWebDriver().getCurrentUrl() + System.lineSeparator() +
+					"Page Title: " + WebDriver_factory.getLocalThreadWebDriver().getTitle()); 	
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally{
+			fw.close();
+		}	
 
 	}
 

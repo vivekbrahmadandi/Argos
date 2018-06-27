@@ -13,7 +13,6 @@ public class POM_popup extends Common_methods_and_pom {
 	
 	public void escPopup() throws Exception{
 
-		//Thread.sleep(500);
 		
 		waitForAjaxComplete();
 

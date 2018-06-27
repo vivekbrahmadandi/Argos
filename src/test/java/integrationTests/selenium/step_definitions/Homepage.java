@@ -3,6 +3,8 @@ package integrationTests.selenium.step_definitions;
 import org.testng.Assert;
 
 import cucumber.api.java.en.*;
+
+import integrationTests.cucumber.Runner;
 import integrationTests.selenium.main.Common_methods_and_pom;
 
 public class Homepage extends Common_methods_and_pom {
@@ -10,10 +12,10 @@ public class Homepage extends Common_methods_and_pom {
 	@Given("^customer is on homepage$")
 	public void customer_is_on_homepage() throws Throwable {
 
-		gotoPage(baseURL);
+		gotoPage(Runner.getBaseURL());
 		deleteCookies();
 		popup.escPopup(); 
-			
+		
 	}
 	
 	@Then("all key homepage elements are shown")

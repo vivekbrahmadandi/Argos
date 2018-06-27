@@ -1,7 +1,6 @@
 package integrationTests.selenium.main;
 
 import java.net.*;
-import java.util.logging.Level;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.Proxy;
@@ -11,9 +10,7 @@ import org.openqa.selenium.edge.*;
 import org.openqa.selenium.opera.*;
 import org.openqa.selenium.safari.*;
 import org.openqa.selenium.ie.*;
-import org.openqa.selenium.logging.LogEntries;
-import org.openqa.selenium.logging.LogType;
-import org.openqa.selenium.logging.LoggingPreferences;
+
 import org.openqa.selenium.logging.Logs;
 import org.openqa.selenium.remote.*;
 
@@ -26,18 +23,18 @@ import org.testng.SkipException;
 public class WebDriver_factory {
 
 	//Parallel processing achieved in testNG using ThreadLocal
-	private static final ThreadLocal<WebDriver> webdriver_threadLocal = new ThreadLocal<WebDriver>();
+	private static ThreadLocal<WebDriver> webdriver_threadLocal = new ThreadLocal<WebDriver>();
 
 	//Relevent to getLocalThreadOS() - giving option to find out the threads OS
-	private static final ThreadLocal<String> operating_system_threadLocal = new ThreadLocal<String>();
+	private static ThreadLocal<String> operating_system_threadLocal = new ThreadLocal<String>();
 	
 	//Relevent to getLocalThreadBrowser() - giving option to find out the threads web browser
-	private static final ThreadLocal<String> browser_threadLocal = new ThreadLocal<String>();
+	private static ThreadLocal<String> browser_threadLocal = new ThreadLocal<String>();
 
 	//Relevent to getLocalThreadBrowserMobProxyServer() - giving option to find out the threads BrowserMob Proxy server
-	private static final ThreadLocal<BrowserMobProxyServer> mobProxyServer_threadLocal = new ThreadLocal<BrowserMobProxyServer>();
+	private static ThreadLocal<BrowserMobProxyServer> mobProxyServer_threadLocal = new ThreadLocal<BrowserMobProxyServer>();
 
-	private static final String os_name = System.getProperty("os.name").toLowerCase();
+	private static String os_name = System.getProperty("os.name").toLowerCase();
 
 	@SuppressWarnings("deprecation")
 	public static void setWebDriver(
@@ -142,13 +139,7 @@ public class WebDriver_factory {
 
 	}
 	
-	public static Logs getBrowserLogs() {
-
-		return getLocalThreadWebDriver().manage().logs();
-
-	}	
 	
-
 	private static void setDriverProperty(String operating_system){
 
 		//Set driver property
@@ -176,7 +167,6 @@ public class WebDriver_factory {
 			break;
 
 		}
-
 	}
 
 	private static MutableCapabilities setBrowserCapabilities(String browser, Boolean browser_headless, Boolean web_proxy){
@@ -248,20 +238,19 @@ public class WebDriver_factory {
 
 			options.setCapability(CapabilityType.PROXY, seleniumProxy);
 
-			System.out.println("Port started:" +  mobProxyServer.getPort());
+			//System.out.println("Port started:" +  mobProxyServer.getPort());
 
 			mobProxyServer.newHar(getLocalThreadOS() + "_" + getLocalThreadBrowser() + ".har");
 
 			mobProxyServer_threadLocal.set(mobProxyServer);
+			
 
 		}
-
-		enableLogging(options);
 		
 		return options;
 
 	}
-
+	
 
 	private static boolean build_machine_supports_desired_OperatingSystem(String operating_system){
 
@@ -274,26 +263,8 @@ public class WebDriver_factory {
 		if (operating_system.equals("linux") && (os_name.indexOf("nix") >= 0 || os_name.indexOf("nux") >= 0 || os_name.indexOf("aix") >= 0)) valid = true;
 		if (operating_system.equals("mac") && os_name.indexOf("mac") >= 0) valid = true;
 
-
 		return valid;
 
 	}
-	
-	private static void enableLogging(MutableCapabilities options){
-		
-		LoggingPreferences logs = new LoggingPreferences();
-
-		logs.enable(LogType.BROWSER, Level.ALL);
-		logs.enable(LogType.CLIENT, Level.ALL);
-		logs.enable(LogType.DRIVER, Level.ALL);
-		logs.enable(LogType.PERFORMANCE, Level.ALL);
-		logs.enable(LogType.PROFILER, Level.ALL);
-		logs.enable(LogType.SERVER, Level.ALL);
-
-		options.setCapability(CapabilityType.LOGGING_PREFS, logs);
-
-			
-	}
-
 
 }

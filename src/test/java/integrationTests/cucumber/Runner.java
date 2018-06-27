@@ -6,7 +6,6 @@ import cucumber.api.java.After;
 import cucumber.api.testng.*;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
-import java.net.MalformedURLException;
 import java.util.Map;
 import org.testng.annotations.*;
 import integrationTests.selenium.main.*;
@@ -35,15 +34,11 @@ public class Runner {
 			@Optional("") String browser_version,
 			@Optional("false") String browser_headless ) throws Exception{
 
-		testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
-		
-		create_unique_json_file(this.getClass(), "plugin", new String [] {"json:target/" + operating_system + "_" + browser + ".json"});
-
 		//System properties set from Maven POM.xml
 		Boolean selenium_grid_enabled= Boolean.parseBoolean(System.getProperty("selenium.grid.enabled"));
 		String selenium_grid_hub = System.getProperty("selenium.grid.hub");
 		Boolean web_proxy= Boolean.parseBoolean(System.getProperty("browsermob.proxy.enabled"));
-		
+
 		if (selenium_grid_enabled){
 			//Prerequisite (Ensure Hub and nodes are configured and running)
 			WebDriver_factory.setWebDriver(
@@ -54,7 +49,7 @@ public class Runner {
 					web_proxy, 
 					selenium_grid_hub);
 		}else{
-			
+
 			WebDriver_factory.setWebDriver(
 					operating_system, 
 					browser, 
@@ -64,6 +59,7 @@ public class Runner {
 					null);
 		}
 
+
 		//==========================
 		// Output build configurations being tested
 		//==========================	
@@ -72,15 +68,18 @@ public class Runner {
 
 		//Output once
 		if (testID == 1){
-			System.out.println("Test URL: " + Common_methods_and_pom.baseURL);	
+			System.out.println("Test URL: " + getBaseURL());	
 			System.out.println("Selenium Grid Enabled: " + selenium_grid_enabled );	
 			if (selenium_grid_enabled) System.out.println("Selenium Grid hub: " + selenium_grid_hub );		
 		}
-		
+
 		System.out.println("");
 		System.out.println("Starting Test ID: " + testID +
 				" (" + operating_system + " " +  browser + ")");
 
+		
+		create_unique_json_file(this.getClass(), "plugin", new String [] {"json:target/" + operating_system + "_" + browser + ".json"});
+		
 	}
 
 	//==========================
@@ -89,12 +88,23 @@ public class Runner {
 
 	@Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
 	public void scenario(PickleEventWrapper pickleEvent, CucumberFeatureWrapper cucumberFeature) throws Throwable {
+
+		if(WebDriver_factory.getLocalThreadBrowserMobProxyServer() != null){
+
+			WebDriver_factory.getLocalThreadBrowserMobProxyServer().newHar(WebDriver_factory.getLocalThreadOS() + "_" + WebDriver_factory.getLocalThreadBrowser() + ".har");
+
+		}
+		
 		testNGCucumberRunner.runScenario(pickleEvent.getPickleEvent());
+	
 	}
 
 	@DataProvider
 	public Object[][] scenarios() {
+
 		return testNGCucumberRunner.provideScenarios();
+
+
 	}
 
 	@AfterClass(alwaysRun = true)
@@ -102,8 +112,12 @@ public class Runner {
 
 		testNGCucumberRunner.finish();
 
-		WebDriver_factory.getLocalThreadBrowserMobProxyServer().stop();
-		
+		if(WebDriver_factory.getLocalThreadBrowserMobProxyServer() != null){
+
+			WebDriver_factory.getLocalThreadBrowserMobProxyServer().stop();
+
+		}
+
 		//==========================
 		// Generate report and quit local thread web driver 
 		//==========================	
@@ -117,7 +131,7 @@ public class Runner {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+
 		}else{
 
 			System.out.println("There was an issue generating WebDriver for [OS/Browser]:"
@@ -148,7 +162,7 @@ public class Runner {
 
 	static volatile boolean firstThread = true;
 
-	private synchronized static void create_unique_json_file(Class<?> clazz, String key, Object newValue) throws Exception{  
+	private synchronized void create_unique_json_file(Class<?> clazz, String key, Object newValue) throws Exception{  
 
 		//Slightly offset each parralel thread so each gets unique CucumberOptions (.json file name)
 		if (!firstThread) Thread.sleep(3000);
@@ -161,8 +175,17 @@ public class Runner {
 		@SuppressWarnings("unchecked")
 		Map<String, Object> memberValues = (Map<String, Object>) f.get(proxyHandler);      //get the key-value map for the proxy
 		memberValues.remove(key);                                                          //renove the key entry...don't worry, we'll add it back
-		memberValues.put(key,newValue);                                                    //add the new key-value pair. The annotation is now updated.
+		memberValues.put(key,newValue);     
+		//add the new key-value pair. The annotation is now updated.
+
+		testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
 
 	}  
+
+	public static String getBaseURL(){
+
+		return System.getProperty("env.qa.url");
+
+	}
 
 }

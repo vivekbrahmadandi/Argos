@@ -47,15 +47,15 @@ Feature: Products
     | RING					 	| 	
     
      
-  @Product
+  @Product @Retest
   Scenario Outline: customer changes store location
 	Given customer is on product page : <Product>
 	When customer changes store location to : <Postcode>
 	Then customer can see stock availability
   Examples:
     | Product 	| Postcode 	|
-    | XBOX		| SE6 1SB	|
     | COOKERS	| BL0 9JH	|
+    | XBOX		| SE6 1SB	|
     | PUSHCHAIR	| SS1 2TW	|
     | SPIDERMAN	| FK7 7TZ	|
   

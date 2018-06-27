@@ -2,7 +2,7 @@ package integrationTests.selenium.step_definitions;
 
 import org.testng.Assert;
 import cucumber.api.java.en.*;
-
+import integrationTests.cucumber.Runner;
 import integrationTests.selenium.main.Common_methods_and_pom;
 
 
@@ -13,15 +13,15 @@ public class Product_feature extends Common_methods_and_pom {
 	@Given("^customer is on product page : (.+)$")
 	public void customer_is_on_product_page(String product) throws Throwable {
 		
-		gotoPage(baseURL);
+		//Goto Homepage
+		gotoPage(Runner.getBaseURL());
 		deleteCookies();
+		popup.escPopup(); 
 		
 		customer_searches_by_product_using_search_feature(product);
 		customer_clicks_on_first_product();
 		
-	
 	}
-	
 	
 	@When("^customer searches by product: (.+) using search feature$")
 	public void customer_searches_by_product_using_search_feature(String product) throws Throwable {
@@ -109,21 +109,20 @@ public class Product_feature extends Common_methods_and_pom {
 
 		Assert.assertTrue(textExists("Order now, collect right away") || 
 						  textExists("Not in stock") || 
-						  textExists("Not availble") || 
+						  textExists("Not available") || 
 						  textExists("Delivery within") ||
 						  textExists("How would you like to get your item")
 				);
 				
 	}
 
-	
 	@Then("^customer can see important product data$")
 	public void customer_can_see_important_product_data() throws Throwable {
 
-		Assert.assertTrue(elementExists(productPage.txtPrice));				//price
-		Assert.assertTrue(elementExists(productPage.txtProductDescription));	//description
-		Assert.assertTrue(checkImageExists(productPage.imgProduct));			//image
-		Assert.assertTrue(elementExists(productPage.linkProductOwner));		//product owner
+		Assert.assertTrue(elementExists(productPage.txtPrice));		
+		Assert.assertTrue(elementExists(productPage.txtProductDescription));	
+		Assert.assertTrue(checkImageExists(productPage.imgProduct));			
+		Assert.assertTrue(elementExists(productPage.linkProductOwner));		
 
 	}	
 	
