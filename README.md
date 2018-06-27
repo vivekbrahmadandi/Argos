@@ -1,9 +1,22 @@
-# Selenium BDD framework 
+# Introduction
 
-This framework enables testing across multiple environment configurations in parallel then consolidates the results into a single Cucumber report. Here is an example report:  
-* [Feature Overview](https://ibb.co/d11ezo)
-* [Scenario breakdown](https://ibb.co/jWXf5T)
-* [Scenario breakdown (with failing step)](https://ibb.co/fHbq5T)
+[Link to framework](https://github.com/workpeter/ARGOS)  
+
+I created this framework to use as a template for future projects.  
+Although existing projects often have an established (well integrated) framework, there is always room for improvement. This framework does many things well, such as: 
+* Testing across multiple operating systems and browsers in parallel with a single build command
+* Consolidates the results into a single Cucumber report  
+[Feature Overview](https://ibb.co/d11ezo)  
+[Scenario breakdown](https://ibb.co/jWXf5T)  
+[Scenario breakdown (with failing step)](https://ibb.co/fHbq5T)  
+* BDD framework which organizes tests by the features they are testing. Each feature is tested with scenarios, which are written in human readable (easy to follow) steps that non-technical people can understand. The Selenium code is triggered by these steps under the hood.
+* Testing is Data driven through BDD framework and there is also support for external data files (.xls).
+* Generates screenshot on failure including detailed HTTP logs and information about the failed scenario. 
+* Includes support for SOAP UI, which enables SOAP and REST services testing.
+* Selenium design pattern utilizes page object model, which promotes code modularisation and reusable objects. Allowing for rapid creation of tests, and easy maintenance of existing tests.
+* Includes lots of custom Selenium methods which are designed to make tests as robust as possible. One key aspect to this is the use of fluid waits and Ajax call waits prior to interacting with DOM elements. 
+
+# Selenium BDD framework 
 
 ## Author
 
@@ -96,20 +109,20 @@ Manages various environment configurations (Operating system, browser,  browser 
 
 ### Selenium design pattern 
 
-* Page object model (pom) classes 
+* Page object model (pom) classes   
 A java class is created per page which contains the pages key DOM objects, and methods to manipulate the page.  
 
-* Base class (Common_methods_and_pom) 
+* Base class (Common_methods_and_pom)  
 A base class stores lots of custom-made web driver methods, which are designed to make test scripts as robust as possible. One key aspect to this is the use of fluid waits and Ajax call waits prior to interacting with DOM elements.  
 This base class also creates objects for all the page object model classes. When this class is inherited, all these objects can be utilized, which removes the need to create them within each Scenario.  
 
-* Cucumber steps classes 
+* Cucumber steps classes   
 Are kept as abstract as possible, and inherit the base class, which enables them to call page object model objects, which in turn do most of the Selenium execution. They also have the option of utilizing any useful methods inherited from the base class.  
 
-* Runner class
+* Runner class   
 Controls the test framework and combines testing with Cucumber. Java refraction is used so each env config test can generated a unique JSON file name. JSON files are consolidated by the Master Thoughts cucumber reporter. If refraction wasn't done, then a runner class would need to be created per env config test, to get unique JSON file names (since cucumber annotation cant be parameterized). This in my opinion isn't very fluid. Without unique JSON file names, the reporting would be corrupt.  
 
-* WebDriver_factory class 
+* WebDriver_factory class   
 Creates static thread local WebDriver. This allows for unique WebDriver per thread, and allows for static reference which is simpler than having to pass around a WebDriver object throughout the framework. This class can generate Grid and non grid web drivers, and different operating systems and browsers. 
 
 
