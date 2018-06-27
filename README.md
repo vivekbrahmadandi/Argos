@@ -2,13 +2,7 @@
 #### By Peter Anderson
 #### Contact: peter.x4000@gmail.com
 
-Software used:
-Java
-Selenium
-Maven
-TestNG
-Browsermob web proxy
-SOAPUI
+Software used: Java, Selenium, Maven, TestNG, Browsermob web proxy, Master Thoughts (Cucumber reporter) and SOAPUI
 
 This framework enables parallel tests across multiple environment configurations then consolidates the results into a single Cucumber report. Here is an example: https://ibb.co/d7xc28 based on this framework.
 
