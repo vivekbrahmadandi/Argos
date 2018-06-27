@@ -10,7 +10,7 @@ Although existing projects often have an established (well integrated) framework
 [Scenario breakdown](https://ibb.co/jWXf5T)  
 [Scenario breakdown (with failing step)](https://ibb.co/fHbq5T)  
 * BDD framework which organizes tests by the features they are testing. Each feature is tested with scenarios, which are written in human readable (easy to follow) steps that non-technical people can understand. The Selenium code is triggered by these steps under the hood.
-* Testing is Data driven through BDD framework however framework also supports external data files (.xls).
+* Testing is Data driven through BDD framework and there is also support for external data files (.xls).
 * Generates screenshot on failure including detailed HTTP logs and information about the failed scenario. 
 * Includes support for SOAP UI, which enables SOAP and REST services testing.
 * Selenium design pattern utilizes page object model, which promotes code modularisation and reusable objects. Allowing for rapid creation of tests, and easy maintenance of existing tests.
