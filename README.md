@@ -2,7 +2,8 @@
 #### By Peter Anderson
 #### Contact: peter.x4000@gmail.com
 
-This framework enables the tester to execute parallel execution across multiple environment configurations and automatically consolidate the results into a single Cucumber report. Here is an example: https://ibb.co/d7xc28 based on this framework. 
+This framework enables parallel tests across multiple environment configurations then consolidates the results into a single Cucumber report. Here is an example: https://ibb.co/d7xc28 based on this framework.
+
 The Selenium tests are driven using cucumber BDD with the TestNG framework. 
 Maven is used to build the project and the failsafe plugin is used to trigger TestNG, which in turn executes the Cucumber scenarios.  
 
