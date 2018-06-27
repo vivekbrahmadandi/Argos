@@ -1,0 +1,16 @@
+integrationTests\selenium\page_object_model\POM_categorySplashPage.class
+integrationTests\selenium\step_definitions\CategorySearch_feature.class
+integrationTests\selenium\step_definitions\Homepage.class
+integrationTests\selenium\step_definitions\Basket_feature.class
+integrationTests\selenium\page_object_model\POM_mainHeader.class
+integrationTests\selenium\main\Common_methods_and_pom.class
+integrationTests\selenium\page_object_model\POM_productPage.class
+integrationTests\selenium\step_definitions\Product_feature.class
+integrationTests\cucumber\Report_generator.class
+integrationTests\cucumber\Runner.class
+integrationTests\selenium\page_object_model\POM_productResults.class
+integrationTests\selenium\page_object_model\POM_popup.class
+integrationTests\selenium\main\External_data_reader.class
+integrationTests\selenium\page_object_model\POM_basket.class
+integrationTests\selenium\main\WebDriver_factory.class
+integrationTests\selenium\page_object_model\POM_popupBasket.class

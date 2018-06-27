@@ -1,0 +1,3 @@
+Failed Scenario: Customer views basket with x2 products, totalling x4 quantity then removes 1st product
+Failed URL: https://www.argos.co.uk/webapp/wcs/stores/servlet/OrderItemDisplay?GiftMode=Reset&catalogId=10001&langId=110&storeId=10151&krypto=Y9col2utuG7PS2U7kGx8u4%2FCkzrKasF1b4F4a6jv4L5yS0bawihMmmpu%2FVAYNfcC%2Fp1k6Tr%2B9yfD%0ADu9WDn8XKUW0YCP4l9R3eH440KxFbwgtBEbQWsceccz9dNjteXhZ8RcVHa7YzPN92vwnyrYP8JuO%0AyFCaQsSNH0WgBnr1rnE%3D
+Page Title: Trolley

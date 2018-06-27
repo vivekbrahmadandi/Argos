@@ -1,0 +1,3 @@
+Failed Scenario: customer navigates to subcategory via category menu hover feature then goes to niche-category
+Failed URL: http://www.argos.co.uk/
+Page Title: Argos | Same Day Delivery or Faster In-Store Collection

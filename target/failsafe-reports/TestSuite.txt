@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 258, Failures: 1, Errors: 0, Skipped: 4, Time elapsed: 1,734.635 s <<< FAILURE! - in TestSuite
+scenario(integrationTests.cucumber.Runner)  Time elapsed: 2.604 s  <<< FAILURE!
+java.lang.AssertionError: expected [1] but found [2]
+

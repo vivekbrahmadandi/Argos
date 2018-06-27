@@ -1,0 +1,1512 @@
+<html>
+<head>
+<title>TestNG:  windows chrome</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>windows chrome</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>84/1/1</td>
+</tr><tr>
+<td>Started on:</td><td>Wed Jun 27 15:38:31 BST 2018</td>
+</tr>
+<tr><td>Total time:</td><td>1545 seconds (1545157 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x2 products, totalling x4 quantity then removes 1st product", "Basket"<br/>
+<a href="#Output-1044467378" onClick='toggleBox("Output-1044467378", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1044467378" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1044467378">
+<div "result">customer is on homepage (PASSED : 5s)</div><br/>
+<div "result">customer searches by product: XBOX using search feature (PASSED : 4s)</div><br/>
+<div "result">adds first product to basket x2 quantity (PASSED : 26s)</div><br/>
+<div "result">adds second product to basket x2 quantity (PASSED : 23s)</div><br/>
+<div "result">customer views basket (PASSED : 4s)</div><br/>
+<div "result">basket with 2 products and 4 quantity is shown (PASSED : 1s)</div><br/>
+<div "result">customer removes firt product from basket (PASSED : 0s)</div><br/>
+<div "result">basket with 1 products and 2 quantity is shown (FAILED : 61s)</div><br/>
+</div>
+</td>
+<td><div><pre>java.lang.AssertionError: expected [1] but found [2]
+	at integrationTests.selenium.step_definitions.Basket_feature.basket_with_products_and_quantity_is_shown(Basket_feature.java:83)
+	at ?.basket with 1 products and 2 quantity is shown(src/test/resources/Features/TestSuite_basket.feature:69)
+... Removed 6 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1044467378", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1044467378'><pre>java.lang.AssertionError: expected [1] but found [2]
+	at org.testng.Assert.fail(Assert.java:93)
+	at org.testng.Assert.failNotEquals(Assert.java:512)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:134)
+	at org.testng.Assert.assertEquals(Assert.java:115)
+	at org.testng.Assert.assertEquals(Assert.java:388)
+	at org.testng.Assert.assertEquals(Assert.java:398)
+	at integrationTests.selenium.step_definitions.Basket_feature.basket_with_products_and_quantity_is_shown(Basket_feature.java:83)
+	at ?.basket with 1 products and 2 quantity is shown(src/test/resources/Features/TestSuite_basket.feature:69)
+</pre></div></td>
+<td>130</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Quick scenerio for testing saucelabs selenium grid", "Products"<br/>
+<a href="#Output-767751985" onClick='toggleBox("Output-767751985", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-767751985" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-767751985">
+<div "result">customer is on homepage (PASSED : 12s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>12</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product by name", "Products"<br/>
+<a href="#Output-2094793637" onClick='toggleBox("Output-2094793637", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2094793637" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2094793637">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches by product: XBOX using search feature (PASSED : 7s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 2s)</div><br/>
+<div "result">customer clicks on first product (PASSED : 9s)</div><br/>
+<div "result">customer can see important product data (PASSED : 1s)</div><br/>
+<div "result">customer can see related products (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>23</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product by name", "Products"<br/>
+<a href="#Output-1927705303" onClick='toggleBox("Output-1927705303", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1927705303" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1927705303">
+<div "result">customer is on homepage (PASSED : 5s)</div><br/>
+<div "result">customer searches by product: COOKERS using search feature (PASSED : 5s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 2s)</div><br/>
+<div "result">customer clicks on first product (PASSED : 5s)</div><br/>
+<div "result">customer can see important product data (PASSED : 1s)</div><br/>
+<div "result">customer can see related products (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>19</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product by name", "Products"<br/>
+<a href="#Output-185974560" onClick='toggleBox("Output-185974560", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-185974560" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-185974560">
+<div "result">customer is on homepage (PASSED : 4s)</div><br/>
+<div "result">customer searches by product: PUSHCHAIR using search feature (PASSED : 5s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 2s)</div><br/>
+<div "result">customer clicks on first product (PASSED : 5s)</div><br/>
+<div "result">customer can see important product data (PASSED : 1s)</div><br/>
+<div "result">customer can see related products (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>19</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product by name", "Products"<br/>
+<a href="#Output-1202817734" onClick='toggleBox("Output-1202817734", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1202817734" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1202817734">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer searches by product: SPIDERMAN using search feature (PASSED : 4s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 2s)</div><br/>
+<div "result">customer clicks on first product (PASSED : 6s)</div><br/>
+<div "result">customer can see important product data (PASSED : 2s)</div><br/>
+<div "result">customer can see related products (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>20</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product by name", "Products"<br/>
+<a href="#Output-453980998" onClick='toggleBox("Output-453980998", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-453980998" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-453980998">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer searches by product: FOOTBALL using search feature (PASSED : 5s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 1s)</div><br/>
+<div "result">customer clicks on first product (PASSED : 6s)</div><br/>
+<div "result">customer can see important product data (PASSED : 0s)</div><br/>
+<div "result">customer can see related products (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>17</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product by name", "Products"<br/>
+<a href="#Output-783977050" onClick='toggleBox("Output-783977050", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-783977050" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-783977050">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer searches by product: WEIGHTS using search feature (PASSED : 4s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 2s)</div><br/>
+<div "result">customer clicks on first product (PASSED : 5s)</div><br/>
+<div "result">customer can see important product data (PASSED : 2s)</div><br/>
+<div "result">customer can see related products (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>18</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product by name", "Products"<br/>
+<a href="#Output-1321406010" onClick='toggleBox("Output-1321406010", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1321406010" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1321406010">
+<div "result">customer is on homepage (PASSED : 4s)</div><br/>
+<div "result">customer searches by product: JEANS using search feature (PASSED : 5s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 1s)</div><br/>
+<div "result">customer clicks on first product (PASSED : 5s)</div><br/>
+<div "result">customer can see important product data (PASSED : 2s)</div><br/>
+<div "result">customer can see related products (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>19</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product by name", "Products"<br/>
+<a href="#Output-2016303488" onClick='toggleBox("Output-2016303488", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2016303488" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2016303488">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer searches by product: RING using search feature (PASSED : 5s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 2s)</div><br/>
+<div "result">customer clicks on first product (PASSED : 5s)</div><br/>
+<div "result">customer can see important product data (PASSED : 2s)</div><br/>
+<div "result">customer can see related products (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>20</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product and changes list order", "Products"<br/>
+<a href="#Output-413796220" onClick='toggleBox("Output-413796220", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-413796220" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-413796220">
+<div "result">customer is on homepage (PASSED : 4s)</div><br/>
+<div "result">customer searches by product: XBOX using search feature (PASSED : 7s)</div><br/>
+<div "result">customer sorts by price low-to-high (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of price low-to-high (PASSED : 0s)</div><br/>
+<div "result">customer sorts by price high-to-low (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of price high-to-low (PASSED : 0s)</div><br/>
+<div "result">customer sorts by customer rating (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of customer rating (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>25</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product and changes list order", "Products"<br/>
+<a href="#Output-1027779895" onClick='toggleBox("Output-1027779895", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1027779895" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1027779895">
+<div "result">customer is on homepage (PASSED : 4s)</div><br/>
+<div "result">customer searches by product: COOKERS using search feature (PASSED : 5s)</div><br/>
+<div "result">customer sorts by price low-to-high (PASSED : 4s)</div><br/>
+<div "result">results of matching products are shown by order of price low-to-high (PASSED : 1s)</div><br/>
+<div "result">customer sorts by price high-to-low (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of price high-to-low (PASSED : 0s)</div><br/>
+<div "result">customer sorts by customer rating (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of customer rating (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>24</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product and changes list order", "Products"<br/>
+<a href="#Output-1724998661" onClick='toggleBox("Output-1724998661", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1724998661" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1724998661">
+<div "result">customer is on homepage (PASSED : 6s)</div><br/>
+<div "result">customer searches by product: PUSHCHAIR using search feature (PASSED : 5s)</div><br/>
+<div "result">customer sorts by price low-to-high (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of price low-to-high (PASSED : 0s)</div><br/>
+<div "result">customer sorts by price high-to-low (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of price high-to-low (PASSED : 0s)</div><br/>
+<div "result">customer sorts by customer rating (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of customer rating (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>23</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product and changes list order", "Products"<br/>
+<a href="#Output-800423872" onClick='toggleBox("Output-800423872", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-800423872" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-800423872">
+<div "result">customer is on homepage (PASSED : 4s)</div><br/>
+<div "result">customer searches by product: SPIDERMAN using search feature (PASSED : 4s)</div><br/>
+<div "result">customer sorts by price low-to-high (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of price low-to-high (PASSED : 0s)</div><br/>
+<div "result">customer sorts by price high-to-low (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of price high-to-low (PASSED : 0s)</div><br/>
+<div "result">customer sorts by customer rating (PASSED : 5s)</div><br/>
+<div "result">results of matching products are shown by order of customer rating (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>23</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product and changes list order", "Products"<br/>
+<a href="#Output-1537570200" onClick='toggleBox("Output-1537570200", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1537570200" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1537570200">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer searches by product: FOOTBALL using search feature (PASSED : 5s)</div><br/>
+<div "result">customer sorts by price low-to-high (PASSED : 2s)</div><br/>
+<div "result">results of matching products are shown by order of price low-to-high (PASSED : 0s)</div><br/>
+<div "result">customer sorts by price high-to-low (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of price high-to-low (PASSED : 0s)</div><br/>
+<div "result">customer sorts by customer rating (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of customer rating (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>20</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product and changes list order", "Products"<br/>
+<a href="#Output-330122630" onClick='toggleBox("Output-330122630", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-330122630" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-330122630">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer searches by product: WEIGHTS using search feature (PASSED : 5s)</div><br/>
+<div "result">customer sorts by price low-to-high (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of price low-to-high (PASSED : 0s)</div><br/>
+<div "result">customer sorts by price high-to-low (PASSED : 2s)</div><br/>
+<div "result">results of matching products are shown by order of price high-to-low (PASSED : 0s)</div><br/>
+<div "result">customer sorts by customer rating (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of customer rating (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>20</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product and changes list order", "Products"<br/>
+<a href="#Output-1368114499" onClick='toggleBox("Output-1368114499", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1368114499" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1368114499">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer searches by product: JEANS using search feature (PASSED : 4s)</div><br/>
+<div "result">customer sorts by price low-to-high (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of price low-to-high (PASSED : 0s)</div><br/>
+<div "result">customer sorts by price high-to-low (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of price high-to-low (PASSED : 0s)</div><br/>
+<div "result">customer sorts by customer rating (PASSED : 2s)</div><br/>
+<div "result">results of matching products are shown by order of customer rating (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>17</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product and changes list order", "Products"<br/>
+<a href="#Output-462571628" onClick='toggleBox("Output-462571628", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-462571628" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-462571628">
+<div "result">customer is on homepage (PASSED : 4s)</div><br/>
+<div "result">customer searches by product: RING using search feature (PASSED : 4s)</div><br/>
+<div "result">customer sorts by price low-to-high (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of price low-to-high (PASSED : 0s)</div><br/>
+<div "result">customer sorts by price high-to-low (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of price high-to-low (PASSED : 0s)</div><br/>
+<div "result">customer sorts by customer rating (PASSED : 2s)</div><br/>
+<div "result">results of matching products are shown by order of customer rating (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>19</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer changes store location", "Products"<br/>
+<a href="#Output-1412268885" onClick='toggleBox("Output-1412268885", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1412268885" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1412268885">
+<div "result">customer is on product page : COOKERS (PASSED : 12s)</div><br/>
+<div "result">customer changes store location to : BL0 9JH (PASSED : 2s)</div><br/>
+<div "result">customer can see stock availability (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>15</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer changes store location", "Products"<br/>
+<a href="#Output-488413759" onClick='toggleBox("Output-488413759", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-488413759" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-488413759">
+<div "result">customer is on product page : XBOX (PASSED : 12s)</div><br/>
+<div "result">customer changes store location to : SE6 1SB (PASSED : 2s)</div><br/>
+<div "result">customer can see stock availability (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>15</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer changes store location", "Products"<br/>
+<a href="#Output-1038131055" onClick='toggleBox("Output-1038131055", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1038131055" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1038131055">
+<div "result">customer is on product page : PUSHCHAIR (PASSED : 13s)</div><br/>
+<div "result">customer changes store location to : SS1 2TW (PASSED : 2s)</div><br/>
+<div "result">customer can see stock availability (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>16</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer changes store location", "Products"<br/>
+<a href="#Output-2090935778" onClick='toggleBox("Output-2090935778", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2090935778" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2090935778">
+<div "result">customer is on product page : SPIDERMAN (PASSED : 16s)</div><br/>
+<div "result">customer changes store location to : FK7 7TZ (PASSED : 3s)</div><br/>
+<div "result">customer can see stock availability (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>19</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views empty basket", "Basket"<br/>
+<a href="#Output-1779908861" onClick='toggleBox("Output-1779908861", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1779908861" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1779908861">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer views basket (PASSED : 7s)</div><br/>
+<div "result">empty basket is shown (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>13</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x1 products, totalling x1 quantity", "Basket"<br/>
+<a href="#Output-1313629932" onClick='toggleBox("Output-1313629932", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1313629932" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1313629932">
+<div "result">customer is on product page : XBOX (PASSED : 15s)</div><br/>
+<div "result">adds product to basket (PASSED : 5s)</div><br/>
+<div "result">customer views basket (PASSED : 6s)</div><br/>
+<div "result">basket with 1 products and 1 quantity is shown (PASSED : 4s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>32</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x1 products, totalling x1 quantity", "Basket"<br/>
+<a href="#Output-1131771203" onClick='toggleBox("Output-1131771203", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1131771203" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1131771203">
+<div "result">customer is on product page : COOKERS (PASSED : 13s)</div><br/>
+<div "result">adds product to basket (PASSED : 4s)</div><br/>
+<div "result">customer views basket (PASSED : 7s)</div><br/>
+<div "result">basket with 1 products and 1 quantity is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>28</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x1 products, totalling x1 quantity", "Basket"<br/>
+<a href="#Output-2011831522" onClick='toggleBox("Output-2011831522", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2011831522" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2011831522">
+<div "result">customer is on product page : PUSHCHAIR (PASSED : 15s)</div><br/>
+<div "result">adds product to basket (PASSED : 4s)</div><br/>
+<div "result">customer views basket (PASSED : 6s)</div><br/>
+<div "result">basket with 1 products and 1 quantity is shown (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>28</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x1 products, totalling x1 quantity", "Basket"<br/>
+<a href="#Output-919028595" onClick='toggleBox("Output-919028595", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-919028595" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-919028595">
+<div "result">customer is on product page : SPIDERMAN (PASSED : 12s)</div><br/>
+<div "result">adds product to basket (PASSED : 4s)</div><br/>
+<div "result">customer views basket (PASSED : 4s)</div><br/>
+<div "result">basket with 1 products and 1 quantity is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>23</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x1 products, totalling x1 quantity", "Basket"<br/>
+<a href="#Output-1426681467" onClick='toggleBox("Output-1426681467", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1426681467" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1426681467">
+<div "result">customer is on product page : FOOTBALL (PASSED : 13s)</div><br/>
+<div "result">adds product to basket (PASSED : 4s)</div><br/>
+<div "result">customer views basket (PASSED : 6s)</div><br/>
+<div "result">basket with 1 products and 1 quantity is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>25</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x1 products, totalling x1 quantity", "Basket"<br/>
+<a href="#Output-1577849069" onClick='toggleBox("Output-1577849069", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1577849069" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1577849069">
+<div "result">customer is on product page : WEIGHTS (PASSED : 15s)</div><br/>
+<div "result">adds product to basket (PASSED : 3s)</div><br/>
+<div "result">customer views basket (PASSED : 4s)</div><br/>
+<div "result">basket with 1 products and 1 quantity is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>24</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x1 products, totalling x1 quantity", "Basket"<br/>
+<a href="#Output-1886739412" onClick='toggleBox("Output-1886739412", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1886739412" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1886739412">
+<div "result">customer is on product page : JEANS (PASSED : 12s)</div><br/>
+<div "result">adds product to basket (PASSED : 3s)</div><br/>
+<div "result">customer views basket (PASSED : 4s)</div><br/>
+<div "result">basket with 1 products and 1 quantity is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>21</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x1 products, totalling x2 quantity", "Basket"<br/>
+<a href="#Output-1923081886" onClick='toggleBox("Output-1923081886", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1923081886" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1923081886">
+<div "result">customer is on product page : FOOTBALL (PASSED : 15s)</div><br/>
+<div "result">adds product: FOOTBALL to basket twice (PASSED : 5s)</div><br/>
+<div "result">customer views basket (PASSED : 3s)</div><br/>
+<div "result">basket with 1 products and 2 quantity is shown (PASSED : 2s)</div><br/>
+<div "result">customer changes quantity of first product to x10 (PASSED : 7s)</div><br/>
+<div "result">basket with 1 products and 10 quantity is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>35</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x1 products, totalling x2 quantity", "Basket"<br/>
+<a href="#Output-972871934" onClick='toggleBox("Output-972871934", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-972871934" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-972871934">
+<div "result">customer is on product page : WEIGHTS (PASSED : 13s)</div><br/>
+<div "result">adds product: WEIGHTS to basket twice (PASSED : 7s)</div><br/>
+<div "result">customer views basket (PASSED : 5s)</div><br/>
+<div "result">basket with 1 products and 2 quantity is shown (PASSED : 3s)</div><br/>
+<div "result">customer changes quantity of first product to x10 (PASSED : 9s)</div><br/>
+<div "result">basket with 1 products and 10 quantity is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>40</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x1 products, totalling x2 quantity", "Basket"<br/>
+<a href="#Output-651729065" onClick='toggleBox("Output-651729065", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-651729065" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-651729065">
+<div "result">customer is on product page : JEANS (PASSED : 13s)</div><br/>
+<div "result">adds product: JEANS to basket twice (PASSED : 6s)</div><br/>
+<div "result">customer views basket (PASSED : 4s)</div><br/>
+<div "result">basket with 1 products and 2 quantity is shown (PASSED : 2s)</div><br/>
+<div "result">customer changes quantity of first product to x10 (PASSED : 4s)</div><br/>
+<div "result">basket with 1 products and 10 quantity is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>32</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x2 products, totalling x2 quantity", "Basket"<br/>
+<a href="#Output-766360583" onClick='toggleBox("Output-766360583", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-766360583" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-766360583">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer searches by product: PUSHCHAIR using search feature (PASSED : 3s)</div><br/>
+<div "result">adds first product to basket x1 quantity (PASSED : 4s)</div><br/>
+<div "result">adds second product to basket x1 quantity (PASSED : 4s)</div><br/>
+<div "result">customer views basket (PASSED : 7s)</div><br/>
+<div "result">basket with 2 products and 2 quantity is shown (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>26</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x2 products, totalling x2 quantity", "Basket"<br/>
+<a href="#Output-222931261" onClick='toggleBox("Output-222931261", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-222931261" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-222931261">
+<div "result">customer is on homepage (PASSED : 5s)</div><br/>
+<div "result">customer searches by product: SPIDERMAN using search feature (PASSED : 4s)</div><br/>
+<div "result">adds first product to basket x1 quantity (PASSED : 5s)</div><br/>
+<div "result">adds second product to basket x1 quantity (PASSED : 5s)</div><br/>
+<div "result">customer views basket (PASSED : 6s)</div><br/>
+<div "result">basket with 2 products and 2 quantity is shown (PASSED : 4s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>31</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x2 products, totalling x2 quantity", "Basket"<br/>
+<a href="#Output-503960432" onClick='toggleBox("Output-503960432", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-503960432" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-503960432">
+<div "result">customer is on homepage (PASSED : 5s)</div><br/>
+<div "result">customer searches by product: FOOTBALL using search feature (PASSED : 4s)</div><br/>
+<div "result">adds first product to basket x1 quantity (PASSED : 4s)</div><br/>
+<div "result">adds second product to basket x1 quantity (PASSED : 5s)</div><br/>
+<div "result">customer views basket (PASSED : 7s)</div><br/>
+<div "result">basket with 2 products and 2 quantity is shown (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>30</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x2 products, totalling x4 quantity then removes 1st product", "Basket"<br/>
+<a href="#Output-945993279" onClick='toggleBox("Output-945993279", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-945993279" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-945993279">
+<div "result">customer is on homepage (PASSED : 4s)</div><br/>
+<div "result">customer searches by product: COOKERS using search feature (PASSED : 4s)</div><br/>
+<div "result">adds first product to basket x2 quantity (PASSED : 21s)</div><br/>
+<div "result">adds second product to basket x2 quantity (PASSED : 19s)</div><br/>
+<div "result">customer views basket (PASSED : 4s)</div><br/>
+<div "result">basket with 2 products and 4 quantity is shown (PASSED : 2s)</div><br/>
+<div "result">customer removes firt product from basket (PASSED : 3s)</div><br/>
+<div "result">basket with 1 products and 2 quantity is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>61</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x2 products, totalling x4 quantity then removes 1st product", "Basket"<br/>
+<a href="#Output-779895651" onClick='toggleBox("Output-779895651", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-779895651" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-779895651">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer searches by product: JEANS using search feature (PASSED : 4s)</div><br/>
+<div "result">adds first product to basket x2 quantity (PASSED : 21s)</div><br/>
+<div "result">adds second product to basket x2 quantity (PASSED : 20s)</div><br/>
+<div "result">customer views basket (PASSED : 4s)</div><br/>
+<div "result">basket with 2 products and 4 quantity is shown (PASSED : 2s)</div><br/>
+<div "result">customer removes firt product from basket (PASSED : 4s)</div><br/>
+<div "result">basket with 1 products and 2 quantity is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>61</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches by category using category menu", "CategorySearch"<br/>
+<a href="#Output-585145999" onClick='toggleBox("Output-585145999", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-585145999" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-585145999">
+<div "result">customer is on homepage (PASSED : 4s)</div><br/>
+<div "result">customer clicks on category: TECHNOLOGY in the menu (PASSED : 4s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>10</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches by category using category menu", "CategorySearch"<br/>
+<a href="#Output-1350497183" onClick='toggleBox("Output-1350497183", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1350497183" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1350497183">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer clicks on category: HOME AND GARDEN in the menu (PASSED : 3s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>8</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches by category using category menu", "CategorySearch"<br/>
+<a href="#Output-313786045" onClick='toggleBox("Output-313786045", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-313786045" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-313786045">
+<div "result">customer is on homepage (PASSED : 4s)</div><br/>
+<div "result">customer clicks on category: BABY AND NURSERY in the menu (PASSED : 2s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>9</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches by category using category menu", "CategorySearch"<br/>
+<a href="#Output-2105022607" onClick='toggleBox("Output-2105022607", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2105022607" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2105022607">
+<div "result">customer is on homepage (PASSED : 4s)</div><br/>
+<div "result">customer clicks on category: TOYS in the menu (PASSED : 2s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 3s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>10</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches by category using category menu", "CategorySearch"<br/>
+<a href="#Output-1225862175" onClick='toggleBox("Output-1225862175", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1225862175" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1225862175">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer clicks on category: SPORTS AND LEISURE in the menu (PASSED : 2s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches by category using category menu", "CategorySearch"<br/>
+<a href="#Output-1368355924" onClick='toggleBox("Output-1368355924", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1368355924" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1368355924">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer clicks on category: HEALTH AND BEAUTY in the menu (PASSED : 3s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>9</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches by category using category menu", "CategorySearch"<br/>
+<a href="#Output-1060395939" onClick='toggleBox("Output-1060395939", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1060395939" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1060395939">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer clicks on category: CLOTHING in the menu (PASSED : 2s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>7</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches by category using category menu", "CategorySearch"<br/>
+<a href="#Output-22871578" onClick='toggleBox("Output-22871578", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-22871578" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-22871578">
+<div "result">customer is on homepage (PASSED : 4s)</div><br/>
+<div "result">customer clicks on category: JEWELLERY AND WATCHES in the menu (PASSED : 3s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>9</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-2134748372" onClick='toggleBox("Output-2134748372", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2134748372" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2134748372">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer hovers on category: TECHNOLOGY in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on sub-category: televisions and accessories (PASSED : 3s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 2s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: hdmi-cables-and-optical-cables (PASSED : 1s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 3s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>15</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-2137001685" onClick='toggleBox("Output-2137001685", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2137001685" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2137001685">
+<div "result">customer is on homepage (PASSED : 4s)</div><br/>
+<div "result">customer hovers on category: TECHNOLOGY in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on sub-category: televisions and accessories (PASSED : 3s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: tv-remote-controls (PASSED : 1s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 3s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>15</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-126758528" onClick='toggleBox("Output-126758528", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-126758528" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-126758528">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer hovers on category: TECHNOLOGY in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on sub-category: Laptops and PCs (PASSED : 3s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 2s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: Gaming laptops and PCs (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>16</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-494298101" onClick='toggleBox("Output-494298101", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-494298101" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-494298101">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: TECHNOLOGY in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on sub-category: Laptops and PCs (PASSED : 3s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 2s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: imacs (PASSED : 1s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>14</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-1821994138" onClick='toggleBox("Output-1821994138", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1821994138" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1821994138">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: HOME AND GARDEN in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on sub-category: living room furniture (PASSED : 2s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: armchairs-and-chairs (PASSED : 1s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>12</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-1898361349" onClick='toggleBox("Output-1898361349", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1898361349" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1898361349">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: HOME AND GARDEN in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on sub-category: living room furniture (PASSED : 2s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: cd-and-dvd-storage (PASSED : 2s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>12</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-951726198" onClick='toggleBox("Output-951726198", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-951726198" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-951726198">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: HOME AND GARDEN in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on sub-category: Bedding (PASSED : 2s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: duvets (PASSED : 1s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>12</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-679295943" onClick='toggleBox("Output-679295943", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-679295943" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-679295943">
+<div "result">customer is on homepage (PASSED : 4s)</div><br/>
+<div "result">customer hovers on category: HOME AND GARDEN in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on sub-category: Bedding (PASSED : 2s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: pillows (PASSED : 2s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 3s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>15</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-2006801867" onClick='toggleBox("Output-2006801867", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2006801867" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2006801867">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer hovers on category: BABY AND NURSERY in the menu (PASSED : 0s)</div><br/>
+<div "result">clicks on sub-category: Travel (PASSED : 2s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 2s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: pushchairs (PASSED : 1s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>13</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-10448155" onClick='toggleBox("Output-10448155", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-10448155" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-10448155">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: BABY AND NURSERY in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on sub-category: Travel (PASSED : 2s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: baby-carriers (PASSED : 1s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>12</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-1509854381" onClick='toggleBox("Output-1509854381", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1509854381" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1509854381">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: BABY AND NURSERY in the menu (PASSED : 0s)</div><br/>
+<div "result">clicks on sub-category: Maternity (PASSED : 1s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: maternity-accessories (PASSED : 1s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>11</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-75349269" onClick='toggleBox("Output-75349269", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-75349269" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-75349269">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: CLOTHING in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on sub-category: Womens (PASSED : 2s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: accessories (PASSED : 1s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>11</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-1822698893" onClick='toggleBox("Output-1822698893", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1822698893" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1822698893">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: CLOTHING in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on sub-category: Womens (PASSED : 2s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: dresses (PASSED : 1s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>12</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-1915917235" onClick='toggleBox("Output-1915917235", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1915917235" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1915917235">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: CLOTHING in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on sub-category: Mens (PASSED : 3s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: coats-and-jackets (PASSED : 1s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>13</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to niche-category via category menu hover feature", "CategorySearch"<br/>
+<a href="#Output-1192232830" onClick='toggleBox("Output-1192232830", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1192232830" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1192232830">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: TECHNOLOGY in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via main header: Dash Cams (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>8</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to niche-category via category menu hover feature", "CategorySearch"<br/>
+<a href="#Output-286051691" onClick='toggleBox("Output-286051691", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-286051691" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-286051691">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: HOME AND GARDEN in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via main header: Sofas (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>10</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to niche-category via category menu hover feature", "CategorySearch"<br/>
+<a href="#Output-381599042" onClick='toggleBox("Output-381599042", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-381599042" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-381599042">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: BABY AND NURSERY in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via main header: Pushchairs (PASSED : 5s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>11</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to niche-category via category menu hover feature", "CategorySearch"<br/>
+<a href="#Output-1351671582" onClick='toggleBox("Output-1351671582", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1351671582" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1351671582">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer hovers on category: TOYS in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via main header: Batteries And Rechargeable Batteries (PASSED : 4s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>11</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to niche-category via category menu hover feature", "CategorySearch"<br/>
+<a href="#Output-694361012" onClick='toggleBox("Output-694361012", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-694361012" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-694361012">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer hovers on category: SPORTS AND LEISURE in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via main header: Treadmills (PASSED : 4s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>11</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to niche-category via category menu hover feature", "CategorySearch"<br/>
+<a href="#Output-16727313" onClick='toggleBox("Output-16727313", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-16727313" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-16727313">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: HEALTH AND BEAUTY in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via main header: Hair Dryers (PASSED : 4s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>10</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to niche-category via category menu hover feature", "CategorySearch"<br/>
+<a href="#Output-2036688014" onClick='toggleBox("Output-2036688014", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2036688014" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2036688014">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: CLOTHING in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via main header: Bras (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>8</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to niche-category via category menu hover feature", "CategorySearch"<br/>
+<a href="#Output-320351177" onClick='toggleBox("Output-320351177", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-320351177" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-320351177">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: JEWELLERY AND WATCHES in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via main header: Ladies&#x27; Earrings (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>8</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for category using misspelling", "CategorySearch"<br/>
+<a href="#Output-553656907" onClick='toggleBox("Output-553656907", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-553656907" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-553656907">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches and misspells &lt;category&gt; with TECNOLOGY using search feature (PASSED : 4s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>8</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for category using misspelling", "CategorySearch"<br/>
+<a href="#Output-1205494381" onClick='toggleBox("Output-1205494381", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1205494381" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1205494381">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches and misspells &lt;category&gt; with GARDON using search feature (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>7</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for category using misspelling", "CategorySearch"<br/>
+<a href="#Output-105196549" onClick='toggleBox("Output-105196549", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-105196549" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-105196549">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches and misspells &lt;category&gt; with NERSERY using search feature (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>7</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for category using misspelling", "CategorySearch"<br/>
+<a href="#Output-65210202" onClick='toggleBox("Output-65210202", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-65210202" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-65210202">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches and misspells &lt;category&gt; with TOIS using search feature (PASSED : 2s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for category using misspelling", "CategorySearch"<br/>
+<a href="#Output-107412225" onClick='toggleBox("Output-107412225", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-107412225" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-107412225">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches and misspells &lt;category&gt; with LESSURE using search feature (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>7</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for category using misspelling", "CategorySearch"<br/>
+<a href="#Output-357331090" onClick='toggleBox("Output-357331090", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-357331090" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-357331090">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches and misspells &lt;category&gt; with helth using search feature (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>7</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for category using misspelling", "CategorySearch"<br/>
+<a href="#Output-120550680" onClick='toggleBox("Output-120550680", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-120550680" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-120550680">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches and misspells &lt;category&gt; with CLOTHIN using search feature (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>8</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for category using misspelling", "CategorySearch"<br/>
+<a href="#Output-875576290" onClick='toggleBox("Output-875576290", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-875576290" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-875576290">
+<div "result">customer is on homepage (PASSED : 1s)</div><br/>
+<div "result">customer searches and misspells &lt;category&gt; with JEWLERY using search feature (PASSED : 4s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>7</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for unrecognised category", "CategorySearch"<br/>
+<a href="#Output-1737136404" onClick='toggleBox("Output-1737136404", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1737136404" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1737136404">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches for unrecognised category: gdfgdfe using search feature (PASSED : 2s)</div><br/>
+<div "result">no search results page is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for unrecognised category", "CategorySearch"<br/>
+<a href="#Output-1104982733" onClick='toggleBox("Output-1104982733", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1104982733" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1104982733">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches for unrecognised category: 12332432 using search feature (PASSED : 2s)</div><br/>
+<div "result">no search results page is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for unrecognised category", "CategorySearch"<br/>
+<a href="#Output-978707793" onClick='toggleBox("Output-978707793", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-978707793" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-978707793">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches for unrecognised category: xxxxxxx using search feature (PASSED : 3s)</div><br/>
+<div "result">no search results page is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for unrecognised category", "CategorySearch"<br/>
+<a href="#Output-296965489" onClick='toggleBox("Output-296965489", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-296965489" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-296965489">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches for unrecognised category: TBYSPOS using search feature (PASSED : 2s)</div><br/>
+<div "result">no search results page is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for unrecognised category", "CategorySearch"<br/>
+<a href="#Output-307185694" onClick='toggleBox("Output-307185694", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-307185694" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-307185694">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches for unrecognised category: SPOSPO using search feature (PASSED : 2s)</div><br/>
+<div "result">no search results page is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for unrecognised category", "CategorySearch"<br/>
+<a href="#Output-563015555" onClick='toggleBox("Output-563015555", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-563015555" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-563015555">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches for unrecognised category: AND AND AND using search feature (PASSED : 2s)</div><br/>
+<div "result">no search results page is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>5</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for unrecognised category", "CategorySearch"<br/>
+<a href="#Output-85005008" onClick='toggleBox("Output-85005008", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-85005008" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-85005008">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches for unrecognised category: OR OR OR using search feature (PASSED : 2s)</div><br/>
+<div "result">no search results page is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for unrecognised category", "CategorySearch"<br/>
+<a href="#Output-2006249903" onClick='toggleBox("Output-2006249903", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2006249903" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2006249903">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches for unrecognised category: @@@ using search feature (PASSED : 2s)</div><br/>
+<div "result">no search results page is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer able to see all key features on homepage", "Homepage"<br/>
+<a href="#Output-2091450952" onClick='toggleBox("Output-2091450952", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2091450952" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2091450952">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">all key homepage elements are shown (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>4</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='integrationTests.cucumber.Runner.scenario()'><b>scenario</b><br>Test class: integrationTests.cucumber.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x1 products, totalling x1 quantity", "Basket"<br/>
+<a href="#Output-2086529462" onClick='toggleBox("Output-2086529462", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2086529462" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2086529462">
+<div "result">customer is on product page : RING (PASSED : 12s)</div><br/>
+<div "result">adds product to basket (PENDING : 0s)</div><br/>
+<div "result">customer views basket (SKIPPED)</div><br/>
+<div "result">basket with 1 products and 1 quantity is shown (SKIPPED)</div><br/>
+</div>
+</td>
+<td><div><pre>org.testng.SkipException: cucumber.api.PendingException: TODO: implement me
+	at integrationTests.selenium.page_object_model.POM_productPage.adds_product_to_basket_via_productPage(POM_productPage.java:59)
+	at integrationTests.selenium.step_definitions.Basket_feature.adds_product_to_basket(Basket_feature.java:21)
+	at ?.adds product to basket(src/test/resources/Features/TestSuite_basket.feature:14)
+
+	at cucumber.api.testng.TestCaseResultListener.getError(TestCaseResultListener.java:52)
+	at cucumber.api.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:59)
+	at integrationTests.cucumber.Runner.scenario(Runner.java:98)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: cucumber.api.PendingException: TODO: implement me
+	at integrationTests.selenium.page_object_model.POM_productPage.adds_product_to_basket_via_productPage(POM_productPage.java:59)
+	at integrationTests.selenium.step_definitions.Basket_feature.adds_product_to_basket(Basket_feature.java:21)
+	at ?.adds product to basket(src/test/resources/Features/TestSuite_basket.feature:14)
+... Removed 15 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2086529462", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2086529462'><pre>org.testng.SkipException: cucumber.api.PendingException: TODO: implement me
+	at integrationTests.selenium.page_object_model.POM_productPage.adds_product_to_basket_via_productPage(POM_productPage.java:59)
+	at integrationTests.selenium.step_definitions.Basket_feature.adds_product_to_basket(Basket_feature.java:21)
+	at ?.adds product to basket(src/test/resources/Features/TestSuite_basket.feature:14)
+
+	at cucumber.api.testng.TestCaseResultListener.getError(TestCaseResultListener.java:52)
+	at cucumber.api.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:59)
+	at integrationTests.cucumber.Runner.scenario(Runner.java:98)
+	at sun.reflect.GeneratedMethodAccessor5.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:661)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:869)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1193)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:744)
+	at org.testng.TestRunner.run(TestRunner.java:602)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:39)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:414)
+	at org.testng.internal.thread.ThreadUtil$1.call(ThreadUtil.java:52)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: cucumber.api.PendingException: TODO: implement me
+	at integrationTests.selenium.page_object_model.POM_productPage.adds_product_to_basket_via_productPage(POM_productPage.java:59)
+	at integrationTests.selenium.step_definitions.Basket_feature.adds_product_to_basket(Basket_feature.java:21)
+	at ?.adds product to basket(src/test/resources/Features/TestSuite_basket.feature:14)
+</pre></div></td>
+<td>13</td>
+<td>integrationTests.cucumber.Runner@3e6fa38a</td></tr>
+</table><p>
+</body>
+</html>
