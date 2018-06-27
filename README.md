@@ -39,7 +39,7 @@ Manages library dependency, plugins and used to set env URL, switch on/off Selen
 
 * TestNG's xml file (environment_configurations_to_test.xml):  
   
-Manages various environment configurations (Operating system, browser and browser version) and parallel testing using multi-threading. 
+Manages various environment configurations (Operating system, browser,  browser version and headless mode) and parallel testing using multi-threading. 
 
 ### TestNG's xml file (environment_configurations_to_test.xml): 
 
