@@ -41,20 +41,6 @@ Manages library dependency, plugins and used to set env URL, switch on/off Selen
   
 Manages various environment configurations (Operating system, browser and browser version) and parallel testing using multi-threading. 
 
-### Steps
-
-* Maven triggers build. 
-* Fail-safe plugin triggers testNG looking at TestNG's xml file. 
-* TestNG's xml file is currently configured to run 3 env configs in parallel. 
-* TestNG's xml file executes these tests by pointing to the runner class 
-* The runner class triggers WebDriver creation (which is wrapped in a static thread Local variable) to allow for multi-threading.
-* (WebDriver creation also supports various browser types, web proxy HTTP capture and headless mode).
-* The runner class then loops through the cucumber scenarios using data provider anotation. 
-* (Any failures are captured with Scenerio name, HTTP traffic and screenshot).
-* The runner class (after testing) performs tear down and triggers report generation. 
-* Masterthought reporter consolidates the results after each thread completes. 
-
-
 ### TestNG's xml file (environment_configurations_to_test.xml): 
 
 ```xml
@@ -93,6 +79,20 @@ Manages various environment configurations (Operating system, browser and browse
 	
 </suite>
 ```
+
+### Steps
+
+* Maven triggers build. 
+* Fail-safe plugin triggers testNG looking at TestNG's xml file. 
+* TestNG's xml file is currently configured to run 3 env configs in parallel. 
+* TestNG's xml file executes these tests by pointing to the runner class 
+* The runner class triggers WebDriver creation (which is wrapped in a static thread Local variable) to allow for multi-threading.
+* (WebDriver creation also supports various browser types, web proxy HTTP capture and headless mode).
+* The runner class then loops through the cucumber scenarios using data provider anotation. 
+* (Any failures are captured with Scenerio name, HTTP traffic and screenshot).
+* The runner class (after testing) performs tear down and triggers report generation. 
+* Masterthought reporter consolidates the results after each thread completes. 
+
 
 ### Selenium framework
 
